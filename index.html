@@ -126,13 +126,34 @@ h1{font-size:24px;font-weight:800;margin:0;letter-spacing:-0.01em;color:var(--pu
   content:'';position:absolute;top:-20px;right:-20px;width:80px;height:80px;border-radius:50%;
   background:radial-gradient(circle, rgba(4,245,255,0.18), transparent 70%);
 }
+.stat-card.bottom{background:linear-gradient(135deg, #B2004F, #7A0038);border-color:#7A0038;}
+.stat-card.bottom::before{
+  content:'';position:absolute;top:-20px;right:-20px;width:80px;height:80px;border-radius:50%;
+  background:radial-gradient(circle, rgba(255,255,255,0.16), transparent 70%);
+}
 .stat-card{position:relative;overflow:hidden;}
 .stat-card .lbl{font-size:11px;font-weight:600;text-transform:uppercase;letter-spacing:.05em;color:var(--text-mute);margin-bottom:8px;}
-.stat-card.champ .lbl{color:rgba(255,255,255,0.6);}
+.stat-card.champ .lbl, .stat-card.bottom .lbl{color:rgba(255,255,255,0.65);}
 .stat-card .big{font-family:var(--mono);font-weight:700;font-size:24px;color:var(--purple);font-variant-numeric:tabular-nums;}
-.stat-card.champ .big{color:#fff;font-family:var(--font);font-size:19px;font-weight:800;}
+.stat-card.champ .big, .stat-card.bottom .big{color:#fff;font-family:var(--font);font-size:19px;font-weight:800;}
 .stat-card .sub{font-size:12px;color:var(--text-2);margin-top:3px;}
-.stat-card.champ .sub{color:rgba(255,255,255,0.65);}
+.stat-card.champ .sub, .stat-card.bottom .sub{color:rgba(255,255,255,0.7);}
+
+.stat-card.win{background:linear-gradient(155deg, rgba(0,168,89,0.10), var(--surface) 65%);border-color:#BFEFD6;}
+.stat-card.low{background:linear-gradient(155deg, rgba(233,0,82,0.08), var(--surface) 65%);border-color:#F4C6D6;}
+.stat-card.win .lbl{color:var(--green-ink);letter-spacing:.07em;}
+.stat-card.low .lbl{color:var(--pink-ink);letter-spacing:.07em;}
+.stat-card .pts-big{font-family:var(--mono);font-weight:800;font-size:32px;line-height:1;font-variant-numeric:tabular-nums;}
+.stat-card .pts-big span{font-size:13px;font-weight:600;color:var(--text-mute);margin-left:5px;font-family:var(--font);}
+.stat-card.win .pts-big{color:var(--green-ink);}
+.stat-card.low .pts-big{color:var(--pink-ink);}
+.stat-card .team-line{font-size:17px;font-weight:800;color:var(--purple);margin:8px 0 1px;}
+.stat-card .manager-line{font-size:12.5px;color:var(--text-mute);font-weight:600;margin-bottom:12px;}
+.stat-card .tie-note{font-size:10.5px;color:var(--text-mute);font-style:italic;margin-top:10px;}
+.stat-card.champ .team-line, .stat-card.bottom .team-line{color:#fff;}
+.stat-card.champ .manager-line, .stat-card.bottom .manager-line{color:rgba(255,255,255,0.65);}
+.stat-card.champ .pts-big, .stat-card.bottom .pts-big{color:#fff;}
+.stat-card.champ .pts-big span, .stat-card.bottom .pts-big span{color:rgba(255,255,255,0.6);}
 
 .deadline-banner{
   border-radius:16px;padding:20px 24px;margin-bottom:20px;position:relative;overflow:hidden;
@@ -154,6 +175,21 @@ h1{font-size:24px;font-weight:800;margin:0;letter-spacing:-0.01em;color:var(--pu
 .deadline-unit .lbl{font-size:9px;color:var(--text-mute);text-transform:uppercase;letter-spacing:.05em;margin-top:3px;}
 .deadline-link{font-size:11px;color:var(--text-mute);margin-top:8px;display:block;}
 
+.klasemen-hero{
+  display:flex;align-items:center;gap:18px;padding:26px 30px;border-radius:18px;margin-bottom:20px;
+  background:linear-gradient(120deg, var(--purple), var(--purple-2));color:#fff;position:relative;overflow:hidden;
+  box-shadow:0 10px 28px rgba(55,0,60,0.18);
+}
+.klasemen-hero::before{content:'';position:absolute;top:-50px;right:-40px;width:200px;height:200px;border-radius:50%;background:radial-gradient(circle, rgba(255,255,255,0.14), transparent 70%);pointer-events:none;}
+.klasemen-hero::after{content:'';position:absolute;bottom:-60px;left:20%;width:160px;height:160px;border-radius:50%;background:radial-gradient(circle, var(--cyan), transparent 70%);opacity:0.18;pointer-events:none;}
+.klasemen-hero-icon{
+  font-size:34px;flex:0 0 auto;width:64px;height:64px;border-radius:16px;
+  background:rgba(255,255,255,0.14);display:flex;align-items:center;justify-content:center;
+  position:relative;z-index:1;
+}
+.klasemen-hero-title{font-size:22px;font-weight:800;margin:0;color:#fff;position:relative;z-index:1;letter-spacing:-0.01em;}
+.klasemen-hero-sub{font-size:13px;color:rgba(255,255,255,0.75);margin:4px 0 0;position:relative;z-index:1;}
+
 .card{background:var(--bg);border:1px solid var(--line);border-radius:12px;overflow:hidden;box-shadow:0 1px 2px rgba(55,0,60,0.04), 0 8px 24px rgba(55,0,60,0.03);transition:box-shadow .2s ease;}
 .card-head{padding:16px 20px;border-bottom:1px solid var(--line);display:flex;align-items:center;justify-content:space-between;gap:14px;flex-wrap:wrap;}
 .card-head h2{font-size:16px;font-weight:700;margin:0;color:var(--purple);}
@@ -170,12 +206,12 @@ tbody tr.top1{border-left:3px solid #D4A62A;}
 tbody tr.top2{border-left:3px solid #9C9CA8;}
 tbody tr.top3{border-left:3px solid #B0723F;}
 tbody tr.top1 td:first-child, tbody tr.top2 td:first-child, tbody tr.top3 td:first-child{padding-left:15px;}
-.rank-cell{display:flex;align-items:center;gap:6px;width:50px;}
+.rank-cell{display:flex;align-items:center;gap:6px;min-width:64px;white-space:nowrap;}
 .rank-num{font-family:var(--mono);font-weight:700;color:var(--purple);font-size:13px;}
-.rank-badge-medal{width:22px;height:22px;border-radius:50%;display:flex;align-items:center;justify-content:center;font-family:var(--mono);font-weight:800;font-size:11px;color:#fff;}
-.medal-1{background:linear-gradient(160deg,#E8C560,#B8901E);}
-.medal-2{background:linear-gradient(160deg,#D6D6DE,#9C9CA8);}
-.medal-3{background:linear-gradient(160deg,#D69A6C,#A15E33);}
+.rank-badge-medal{width:26px;height:26px;flex:0 0 auto;border-radius:50%;display:flex;align-items:center;justify-content:center;font-family:var(--mono);font-weight:800;font-size:12px;color:#fff;box-shadow:0 1px 3px rgba(0,0,0,0.2);}
+.medal-1{background:linear-gradient(160deg,#F0D27A,#B8901E);}
+.medal-2{background:linear-gradient(160deg,#E4E4EC,#9C9CA8);}
+.medal-3{background:linear-gradient(160deg,#E0AC7E,#A15E33);}
 .team-cell{display:flex;align-items:center;gap:10px;}
 .team-badge{
   width:32px;height:32px;border-radius:8px;flex:0 0 auto;
@@ -262,7 +298,95 @@ select:focus, textarea:focus, input:focus{border-color:var(--purple);}
 .empty-state .glyph{font-size:28px;margin-bottom:10px;opacity:0.4;}
 .empty-state p{font-size:13px;max-width:320px;margin:0 auto;line-height:1.6;}
 
+/* ---- Prize & Rule Book components ---- */
+.page-hero{
+  display:flex;align-items:center;gap:18px;padding:26px 30px;border-radius:18px;margin-bottom:22px;
+  background:linear-gradient(120deg, var(--purple), var(--purple-2));color:#fff;position:relative;overflow:hidden;
+  box-shadow:0 10px 28px rgba(55,0,60,0.18);
+}
+.page-hero::before{content:'';position:absolute;top:-50px;right:-40px;width:200px;height:200px;border-radius:50%;background:radial-gradient(circle, rgba(255,255,255,0.14), transparent 70%);pointer-events:none;}
+.page-hero::after{content:'';position:absolute;bottom:-60px;left:20%;width:160px;height:160px;border-radius:50%;background:radial-gradient(circle, var(--cyan), transparent 70%);opacity:0.18;pointer-events:none;}
+.page-hero-icon{font-size:34px;flex:0 0 auto;width:64px;height:64px;border-radius:16px;background:rgba(255,255,255,0.14);display:flex;align-items:center;justify-content:center;position:relative;z-index:1;}
+.page-hero-title{font-size:22px;font-weight:800;margin:0;color:#fff;position:relative;z-index:1;letter-spacing:-0.01em;}
+.page-hero-sub{font-size:13px;color:rgba(255,255,255,0.75);margin:4px 0 0;position:relative;z-index:1;}
+
+.section-heading{display:flex;align-items:center;gap:10px;margin:28px 0 14px;}
+.section-heading:first-of-type{margin-top:0;}
+.section-heading .icon-badge{width:34px;height:34px;border-radius:10px;background:var(--purple-tint);color:var(--purple);display:flex;align-items:center;justify-content:center;font-size:16px;flex:0 0 auto;}
+.section-heading h3{margin:0;font-size:16px;font-weight:800;color:var(--purple);}
+.section-heading p{margin:1px 0 0;font-size:12px;color:var(--text-mute);}
+
+.weekly-rule-card{
+  display:flex;align-items:center;gap:18px;padding:22px 26px;border-radius:16px;margin-bottom:24px;
+  background:linear-gradient(120deg, rgba(0,168,89,0.09), var(--surface) 60%);border:1px solid #BFEFD6;
+}
+.weekly-rule-icon{font-size:30px;flex:0 0 auto;width:56px;height:56px;border-radius:14px;background:rgba(0,168,89,0.14);display:flex;align-items:center;justify-content:center;}
+.weekly-rule-text{font-size:14.5px;color:var(--text);line-height:1.6;}
+.weekly-rule-text strong{color:var(--green-ink);}
+
+.prize-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(220px,1fr));gap:14px;margin-bottom:8px;}
+.prize-card{background:var(--card);border:1px solid var(--line);border-radius:16px;padding:22px 22px 20px;position:relative;overflow:hidden;box-shadow:0 1px 2px rgba(55,0,60,0.04), 0 8px 24px rgba(55,0,60,0.03);}
+.prize-card .tier-icon{font-size:26px;margin-bottom:10px;}
+.prize-card .tier-lbl{font-size:11px;font-weight:700;text-transform:uppercase;letter-spacing:.06em;color:var(--text-mute);margin-bottom:6px;}
+.prize-card .tier-name{font-size:14.5px;font-weight:800;color:var(--purple);margin-bottom:12px;line-height:1.3;}
+.prize-card .tier-amount{font-family:var(--mono);font-weight:800;font-size:24px;color:var(--green-ink);}
+.prize-card.gold{border-color:#F0D27A;background:linear-gradient(160deg, rgba(240,210,122,0.14), var(--card) 60%);}
+.prize-card.gold .tier-amount{color:#B8901E;}
+.prize-card.silver{border-color:#D9D2E8;background:linear-gradient(160deg, rgba(139,92,246,0.08), var(--card) 60%);}
+.prize-card.h2h{border-color:var(--purple-line);background:linear-gradient(160deg, rgba(139,92,246,0.10), var(--card) 60%);}
+.prize-card.h2h .tier-amount{color:var(--purple);}
+
+.penalty-card{
+  display:flex;align-items:center;gap:18px;padding:22px 26px;border-radius:16px;margin-top:22px;
+  background:linear-gradient(120deg, rgba(233,0,82,0.08), var(--surface) 60%);border:1px solid #F4C6D6;
+}
+.penalty-icon{font-size:30px;flex:0 0 auto;width:56px;height:56px;border-radius:14px;background:rgba(233,0,82,0.14);display:flex;align-items:center;justify-content:center;}
+.penalty-text{font-size:14.5px;color:var(--text);line-height:1.6;}
+.penalty-text strong{color:var(--pink-ink);}
+
+.spec-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(150px,1fr));gap:12px;margin-bottom:8px;}
+.spec-item{background:var(--card);border:1px solid var(--line);border-radius:14px;padding:16px 18px;display:flex;align-items:center;gap:12px;}
+.spec-item .spec-icon{font-size:20px;flex:0 0 auto;width:40px;height:40px;border-radius:10px;background:var(--purple-tint);display:flex;align-items:center;justify-content:center;}
+.spec-item .spec-lbl{font-size:10.5px;color:var(--text-mute);font-weight:600;text-transform:uppercase;letter-spacing:.04em;}
+.spec-item .spec-val{font-family:var(--mono);font-weight:800;font-size:15px;color:var(--purple);margin-top:2px;}
+
+.chip-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(150px,1fr));gap:12px;margin-bottom:8px;}
+.chip-item{background:linear-gradient(150deg, var(--purple-tint), var(--card) 65%);border:1px solid var(--purple-line);border-radius:14px;padding:18px;text-align:center;}
+.chip-item .chip-icon{font-size:24px;margin-bottom:8px;}
+.chip-item .chip-name{font-size:12.5px;font-weight:700;color:var(--purple);margin-bottom:4px;}
+.chip-item .chip-count{font-family:var(--mono);font-weight:800;font-size:18px;color:var(--text);}
+
+.match-cond-list{display:flex;flex-direction:column;gap:10px;margin-bottom:8px;}
+.match-cond-item{display:flex;align-items:flex-start;gap:12px;background:var(--card);border:1px solid var(--line);border-radius:12px;padding:14px 18px;}
+.match-cond-item .mc-icon{font-size:18px;flex:0 0 auto;margin-top:1px;}
+.match-cond-item .mc-title{font-size:13.5px;font-weight:700;color:var(--purple);}
+.match-cond-item .mc-desc{font-size:12.5px;color:var(--text-2);margin-top:2px;line-height:1.5;}
+
+.rule-card{display:flex;gap:16px;background:var(--card);border:1px solid var(--line);border-radius:14px;padding:18px 20px;margin-bottom:12px;}
+.rule-num{flex:0 0 auto;width:36px;height:36px;border-radius:10px;background:var(--purple);color:#fff;display:flex;align-items:center;justify-content:center;font-family:var(--mono);font-weight:800;font-size:14px;}
+.rule-card h4{margin:0 0 4px;font-size:14.5px;font-weight:800;color:var(--purple);display:flex;align-items:center;gap:8px;}
+.rule-card p{margin:0;font-size:13px;color:var(--text-2);line-height:1.6;}
+.rule-callout{display:flex;gap:12px;align-items:flex-start;background:linear-gradient(120deg, rgba(233,0,82,0.07), var(--surface) 65%);border:1px solid #F4C6D6;border-radius:12px;padding:14px 18px;margin-top:10px;}
+.rule-callout .rc-icon{font-size:18px;flex:0 0 auto;}
+.rule-callout .rc-text{font-size:12.5px;color:var(--text-2);line-height:1.6;}
+.rule-callout .rc-text strong{color:var(--pink-ink);}
+
 footer{text-align:center;padding:30px 20px 8px;font-family:var(--mono);font-size:11px;color:var(--text-mute);}
+
+.toast-stack{position:fixed;top:20px;right:20px;z-index:200;display:flex;flex-direction:column;gap:10px;max-width:360px;}
+.toast{
+  display:flex;align-items:flex-start;gap:12px;padding:14px 16px;border-radius:12px;
+  background:var(--card);border:1px solid var(--line);box-shadow:0 12px 32px rgba(0,0,0,0.18);
+  animation:toastIn .25s ease;font-size:13px;color:var(--text);
+}
+.toast.ok{border-color:#BFEFD6;background:linear-gradient(120deg, rgba(0,168,89,0.10), var(--card) 60%);}
+.toast.err{border-color:#F4C6D6;background:linear-gradient(120deg, rgba(233,0,82,0.08), var(--card) 60%);}
+.toast .toast-icon{font-size:18px;flex:0 0 auto;}
+.toast .toast-text strong{display:block;font-size:13px;color:var(--purple);margin-bottom:2px;}
+.toast .toast-text span{font-size:12px;color:var(--text-2);line-height:1.5;}
+.toast .toast-close{margin-left:auto;background:none;border:none;color:var(--text-mute);cursor:pointer;font-size:15px;flex:0 0 auto;}
+@keyframes toastIn{from{opacity:0;transform:translateX(24px);}to{opacity:1;transform:translateX(0);}}
+@media (max-width:640px){.toast-stack{left:12px;right:12px;top:12px;max-width:none;}}
 
 @media (max-width:640px){
   .wrap{padding:0 12px 60px;}
@@ -304,6 +428,50 @@ footer{text-align:center;padding:30px 20px 8px;font-family:var(--mono);font-size
 }
 .pos-chip span{font-size:8.5px;font-weight:600;color:var(--text-mute);text-transform:uppercase;}
 
+.manager-picker-row{display:flex;align-items:center;justify-content:space-between;gap:14px;flex-wrap:wrap;margin-bottom:20px;}
+.manager-hero{display:flex;align-items:center;gap:16px;background:var(--card);border:1px solid var(--line);border-radius:16px;padding:22px 26px;margin-bottom:20px;box-shadow:0 1px 2px rgba(55,0,60,0.04), 0 8px 24px rgba(55,0,60,0.03);}
+.manager-hero .team-name-wrap .team-name{font-size:22px;}
+.manager-hero .team-name-wrap .team-manager{font-size:14px;}
+.perf-bar-row{display:flex;align-items:flex-end;gap:6px;height:120px;padding:10px 4px 0;overflow-x:auto;}
+.perf-bar{flex:0 0 auto;width:28px;display:flex;flex-direction:column;align-items:center;gap:4px;}
+.perf-bar .bar{width:100%;border-radius:6px 6px 0 0;background:linear-gradient(180deg, var(--purple-2), var(--purple));min-height:4px;}
+.perf-bar .val{font-family:var(--mono);font-size:9.5px;color:var(--text-2);font-weight:700;}
+.perf-bar .gwlbl{font-family:var(--mono);font-size:8.5px;color:var(--text-mute);}
+
+.h2h-subtabs{display:inline-flex;background:var(--surface);border:1px solid var(--line);border-radius:12px;padding:4px;gap:4px;}
+.h2h-subtab-btn{
+  font-family:var(--font);font-weight:700;font-size:13.5px;padding:9px 20px;border-radius:9px;
+  border:none;background:transparent;color:var(--text-mute);cursor:pointer;transition:all .15s ease;
+}
+.h2h-subtab-btn.active{background:var(--bg);color:var(--purple);box-shadow:0 1px 4px rgba(0,0,0,0.08);}
+.h2h-subview{display:none;}
+.h2h-subview.active{display:block;}
+
+.h2h-filter-row{display:flex;gap:10px;flex-wrap:wrap;margin-bottom:18px;}
+.h2h-filter-row select{width:auto;min-width:160px;margin:0;}
+
+.h2h-match-row{
+  display:grid;grid-template-columns:56px 1fr auto 1fr;align-items:center;gap:14px;
+  padding:18px 22px;border-bottom:1px solid var(--line);transition:background .15s ease;
+}
+.h2h-match-row:last-child{border-bottom:none;}
+.h2h-match-row:hover{background:linear-gradient(90deg, var(--purple-tint), transparent 70%);}
+.h2h-match-row.win-highlight{background:linear-gradient(90deg, var(--cyan), var(--purple));}
+.h2h-match-row.win-highlight .h2h-side-name, .h2h-match-row.win-highlight .h2h-side-team{color:#fff;}
+.h2h-gw-label{font-family:var(--mono);font-size:11px;font-weight:700;color:var(--text-mute);}
+.h2h-side{display:flex;flex-direction:column;}
+.h2h-side.right{align-items:flex-end;text-align:right;}
+.h2h-side-name{font-weight:800;font-size:15px;color:var(--purple);}
+.h2h-side-team{font-size:12px;color:var(--text-mute);margin-top:1px;}
+.h2h-side.winner .h2h-side-name{color:var(--green-ink);}
+.h2h-match-row.win-highlight .h2h-side.winner .h2h-side-name{color:#fff;}
+.h2h-score{
+  display:flex;align-items:center;background:var(--purple);border-radius:9px;overflow:hidden;
+  font-family:var(--mono);font-weight:800;font-size:18px;color:#fff;
+}
+.h2h-score span{padding:9px 16px;}
+.h2h-score .divider{padding:0;color:rgba(255,255,255,0.4);font-weight:400;}
+
 .cup-round{margin-bottom:22px;border:1px solid var(--line);border-radius:12px;overflow:hidden;}
 .cup-round-head{background:var(--surface);padding:12px 16px;display:flex;align-items:center;justify-content:space-between;gap:10px;}
 .cup-round-head h4{margin:0;font-size:14px;font-weight:700;color:var(--purple);}
@@ -321,6 +489,7 @@ footer{text-align:center;padding:30px 20px 8px;font-family:var(--mono);font-size
 </head>
 <body>
 
+<div class="toast-stack" id="toast-stack"></div>
 <div class="topstripe"></div>
 <div class="header">
   <div class="header-inner">
@@ -343,7 +512,7 @@ footer{text-align:center;padding:30px 20px 8px;font-family:var(--mono);font-size
         <div>
           <h1>Coffee &amp; Juice League <em style="font-style:normal;color:var(--pink);">Divisi IT</em></h1>
           <p class="tagline">Ngopi. Main. Menang.</p>
-          <p class="subtitle">Fantasy Premier League 2026/27 &middot; Klasemen 26 klub</p>
+          <p class="subtitle">Fantasy Premier League 2026/27</p>
         </div>
       </div>
       <div class="header-meta">
@@ -355,10 +524,13 @@ footer{text-align:center;padding:30px 20px 8px;font-family:var(--mono);font-size
     </div>
     <div class="tabs" id="tabs">
       <button class="tab-btn active" data-tab="beranda">Beranda</button>
-      <button class="tab-btn" data-tab="klasemen">Klasemen</button>
+      <button class="tab-btn" data-tab="klasemen">Klasemen Game Week</button>
       <button class="tab-btn" data-tab="mingguan">Game Week</button>
       <button class="tab-btn" data-tab="grafik">Grafik</button>
       <button class="tab-btn" data-tab="h2h">Head to Head</button>
+      <button class="tab-btn" data-tab="manager">Manager</button>
+      <button class="tab-btn" data-tab="prize">Prize</button>
+      <button class="tab-btn" data-tab="rules">Rule Book</button>
     </div>
     <div class="tabs admin-tabs" id="admin-tabs" style="display:none;">
       <button class="tab-btn admin-tab active" data-admintab="api">Update API</button>
@@ -366,6 +538,7 @@ footer{text-align:center;padding:30px 20px 8px;font-family:var(--mono);font-size
       <button class="tab-btn admin-tab" data-admintab="point">Manual Point</button>
       <button class="tab-btn admin-tab" data-admintab="manager">Manager Mapping</button>
       <button class="tab-btn admin-tab" data-admintab="validation">Data Validation</button>
+      <button class="tab-btn admin-tab" data-admintab="h2hadmin">Head to Head</button>
       <button class="tab-btn" id="btn-exit-admin" style="margin-left:auto;color:var(--pink);">&#8592; Mode Publik</button>
     </div>
   </div>
@@ -376,12 +549,16 @@ footer{text-align:center;padding:30px 20px 8px;font-family:var(--mono);font-size
   <div class="view active" id="view-beranda">
     <div class="deadline-banner" id="deadline-banner" style="display:none;"></div>
     <div class="stat-grid" id="hero-stats"></div>
+    <div class="klasemen-hero">
+      <div class="klasemen-hero-icon">&#127942;</div>
+      <div>
+        <h2 class="klasemen-hero-title">Papan Klasemen</h2>
+        <p class="klasemen-hero-sub">Peringkat resmi 26 klub Coffee &amp; Juice League Divisi IT &mdash; musim 2026/27</p>
+      </div>
+    </div>
     <div class="card">
       <div class="card-head">
-        <div>
-          <h2>Klasemen</h2>
-          <p style="margin:2px 0 0;font-size:11.5px;color:var(--text-mute);">Peringkat 26 klub Coffee &amp; Juice League Divisi IT &mdash; total poin bersih sejak GW1</p>
-        </div>
+        <h2>Top Klasemen</h2>
         <span style="font-family:var(--mono);font-size:11px;color:var(--text-mute);">detail lengkap di tab Klasemen</span>
       </div>
       <div class="table-scroll"><table id="home-table"></table></div>
@@ -389,11 +566,18 @@ footer{text-align:center;padding:30px 20px 8px;font-family:var(--mono);font-size
   </div>
 
   <div class="view" id="view-klasemen">
+    <div class="klasemen-hero">
+      <div class="klasemen-hero-icon">&#128197;</div>
+      <div>
+        <h2 class="klasemen-hero-title">Klasemen Game Week</h2>
+        <p class="klasemen-hero-sub">Peringkat 29 klub Coffee &amp; Juice League Divisi IT berdasarkan poin di Game Week terpilih &mdash; bukan akumulasi</p>
+      </div>
+    </div>
     <div class="card">
       <div class="card-head">
-        <h2>Klasemen &middot; 26 klub</h2>
+        <h2>Peringkat Game Week</h2>
         <div class="gw-scope-picker">
-          <span class="gw-scope-label">Sampai dengan</span>
+          <span class="gw-scope-label">Game Week ke</span>
           <select id="gw-scope-select"></select>
           <input class="search-box" id="team-search" type="text" placeholder="Cari tim...">
         </div>
@@ -433,36 +617,220 @@ footer{text-align:center;padding:30px 20px 8px;font-family:var(--mono);font-size
       <div class="card-head">
         <div>
           <h2>Head to Head</h2>
-          <p style="margin:2px 0 0;font-size:11.5px;color:var(--text-mute);">Data pertandingan dari liga H2H terpisah (roster &amp; manager sama) &mdash; <a class="link-inline" href="https://fantasy.premierleague.com/en/leagues/807173/matches/h?page_matches=1&event=0" target="_blank" rel="noopener">lihat di FPL &#8599;</a></p>
+          <p style="margin:2px 0 0;font-size:11.5px;color:var(--text-mute);">Data dari liga H2H terpisah (roster &amp; manager sama) &mdash; <a class="link-inline" href="https://fantasy.premierleague.com/en/leagues/807173/matches/h?page_matches=1&event=0" target="_blank" rel="noopener">lihat di FPL &#8599;</a></p>
         </div>
       </div>
       <div style="padding:20px;">
-        <div class="btn-row">
-          <button class="btn btn-primary" id="btn-h2h-autotry" style="font-size:14.5px;padding:13px 24px;">&#8635;&nbsp; Perbarui Head to Head Sekarang</button>
+        <div class="h2h-subtabs" id="h2h-subtabs">
+          <button class="h2h-subtab-btn active" data-h2hsub="matches">Matches</button>
+          <button class="h2h-subtab-btn" data-h2hsub="standings">Standings</button>
         </div>
-        <div class="status-msg" id="h2h-status"></div>
-        <details style="margin-top:16px;">
-          <summary style="cursor:pointer;font-size:12px;font-weight:700;color:var(--text-mute);text-transform:uppercase;letter-spacing:.05em;">Cara manual (kalau update otomatis gagal)</summary>
-          <div style="margin-top:12px;max-width:520px;">
-            <label class="field-label">Game week</label>
-            <select id="gw-select-h2h-input"></select>
-            <div class="btn-row">
-              <a class="btn btn-ghost" href="https://fantasy.premierleague.com/en/leagues/807173/matches/h?page_matches=1&event=0" target="_blank" rel="noopener">Buka halaman H2H &#8599;</a>
-            </div>
-            <div class="notice-strip">Untuk data mentah JSON: buka <span style="font-family:var(--mono);">fantasy.premierleague.com/api/leagues-h2h-matches/league/807173/?page=1&amp;event=GW</span> di tab baru (ganti GW dengan nomor game week), salin semua teksnya, lalu tempel di bawah.</div>
-            <label class="field-label" style="margin-top:12px;display:block;">Tempel JSON di sini</label>
-            <textarea id="h2h-json-input" placeholder='{"has_next":false,"page":1,"results":[...]}'></textarea>
-            <div class="btn-row">
-              <button class="btn btn-primary" id="btn-h2h-process">Proses &amp; simpan</button>
-              <button class="btn btn-ghost" id="btn-h2h-clear">Bersihkan</button>
-            </div>
-          </div>
-        </details>
       </div>
     </div>
-    <p class="section-label">Pilih game week</p>
-    <div class="gw-picker" id="h2h-gw-picker"></div>
-    <div id="h2h-matches"></div>
+
+    <div class="h2h-subview active" id="h2h-sub-matches">
+      <div class="h2h-filter-row">
+        <select id="h2h-filter-team">
+          <option value="">Semua Tim</option>
+        </select>
+        <select id="h2h-filter-gw">
+          <option value="">Semua Game Week</option>
+        </select>
+        <button class="btn btn-ghost" id="btn-h2h-reset">&#8635; Reset</button>
+      </div>
+      <div id="h2h-matches"></div>
+    </div>
+
+    <div class="h2h-subview" id="h2h-sub-standings">
+      <div class="card">
+        <div class="table-scroll"><table id="h2h-standings-table"></table></div>
+      </div>
+    </div>
+  </div>
+
+  <div class="view" id="view-manager">
+    <div class="manager-picker-row">
+      <p class="section-label" style="margin:0;">Pilih tim &amp; manager</p>
+      <select id="manager-page-select" style="max-width:280px;"></select>
+    </div>
+    <div id="manager-page-content"></div>
+  </div>
+
+  <div class="view" id="view-prize">
+    <div class="page-hero">
+      <div class="page-hero-icon">&#127942;</div>
+      <div>
+        <h2 class="page-hero-title">Prize Pool &amp; Ketentuan Hadiah</h2>
+        <p class="page-hero-sub">Coffee &amp; Juice League Divisi IT &mdash; musim 2026/27</p>
+      </div>
+    </div>
+
+    <div class="weekly-rule-card">
+      <div class="weekly-rule-icon">&#9749;</div>
+      <div class="weekly-rule-text">
+        <strong>Aturan tiap Game Week:</strong> tim yang kalah di Game Week tersebut wajib mentraktir kopi atau jus kepada tim yang menjadi juara minggu itu.
+      </div>
+    </div>
+
+    <div class="section-heading">
+      <div class="icon-badge">&#128176;</div>
+      <div>
+        <h3>Bonus Juara Mingguan</h3>
+        <p>Berlaku untuk Game Week 1 sampai Game Week 8</p>
+      </div>
+    </div>
+    <div class="prize-grid" style="margin-bottom:26px;">
+      <div class="prize-card">
+        <div class="tier-icon">&#127942;</div>
+        <div class="tier-lbl">Juara GW1 &ndash; GW8</div>
+        <div class="tier-name">Tambahan hadiah tiap minggu</div>
+        <div class="tier-amount">Rp50.000</div>
+      </div>
+    </div>
+
+    <div class="section-heading">
+      <div class="icon-badge">&#127942;</div>
+      <div>
+        <h3>Hadiah Musiman &mdash; Classic League</h3>
+        <p>Coffee &amp; Juice League</p>
+      </div>
+    </div>
+    <div class="prize-grid" style="margin-bottom:26px;">
+      <div class="prize-card silver">
+        <div class="tier-icon">&#129352;</div>
+        <div class="tier-lbl">Juara Paruh Musim</div>
+        <div class="tier-name">Classic &mdash; Coffee &amp; Juice League</div>
+        <div class="tier-amount">Rp250.000</div>
+      </div>
+      <div class="prize-card gold">
+        <div class="tier-icon">&#127942;</div>
+        <div class="tier-lbl">Juara Akhir Musim</div>
+        <div class="tier-name">Classic &mdash; Coffee &amp; Juice League</div>
+        <div class="tier-amount">Rp750.000</div>
+      </div>
+    </div>
+
+    <div class="section-heading">
+      <div class="icon-badge">&#9876;&#65039;</div>
+      <div>
+        <h3>Hadiah Musiman &mdash; Head to Head League</h3>
+        <p>Kompetisi format head-to-head</p>
+      </div>
+    </div>
+    <div class="prize-grid">
+      <div class="prize-card h2h">
+        <div class="tier-icon">&#127942;</div>
+        <div class="tier-lbl">Juara Akhir Musim</div>
+        <div class="tier-name">Head to Head League</div>
+        <div class="tier-amount">Rp280.000</div>
+      </div>
+    </div>
+
+    <div class="penalty-card">
+      <div class="penalty-icon">&#128170;</div>
+      <div class="penalty-text">
+        <strong>Konsekuensi juru kunci:</strong> peringkat terakhir dan kedua terakhir di klasemen Head to Head League pada akhir musim wajib melakukan <strong>push up 30 kali</strong>, direkam video sebagai bukti.
+      </div>
+    </div>
+  </div>
+
+  <div class="view" id="view-rules">
+    <div class="page-hero">
+      <div class="page-hero-icon">&#128214;</div>
+      <div>
+        <h2 class="page-hero-title">Rule Book</h2>
+        <p class="page-hero-sub">FPL Season 2026/2027 &middot; Coffee &amp; Juice League Divisi IT</p>
+      </div>
+    </div>
+
+    <div class="section-heading">
+      <div class="icon-badge">&#9881;&#65039;</div>
+      <div>
+        <h3>Format Kompetisi</h3>
+        <p>Ketentuan dasar sesuai aturan resmi Fantasy Premier League</p>
+      </div>
+    </div>
+    <div class="spec-grid" style="margin-bottom:26px;">
+      <div class="spec-item"><div class="spec-icon">&#128176;</div><div><div class="spec-lbl">Budget</div><div class="spec-val">&pound;100m</div></div></div>
+      <div class="spec-item"><div class="spec-icon">&#128101;</div><div><div class="spec-lbl">Squad</div><div class="spec-val">15 pemain</div></div></div>
+      <div class="spec-item"><div class="spec-icon">&#127967;&#65039;</div><div><div class="spec-lbl">Gameweek</div><div class="spec-val">38 GW</div></div></div>
+      <div class="spec-item"><div class="spec-icon">&#128110;</div><div><div class="spec-lbl">Maks. Pemain/Klub</div><div class="spec-val">3 pemain</div></div></div>
+      <div class="spec-item"><div class="spec-icon">&#9917;</div><div><div class="spec-lbl">Starting XI</div><div class="spec-val">11 pemain</div></div></div>
+      <div class="spec-item"><div class="spec-icon">&#129505;</div><div><div class="spec-lbl">Captain</div><div class="spec-val">&times;2 poin</div></div></div>
+      <div class="spec-item"><div class="spec-icon">&#128081;</div><div><div class="spec-lbl">Triple Captain</div><div class="spec-val">&times;3 poin</div></div></div>
+      <div class="spec-item"><div class="spec-icon">&#128260;</div><div><div class="spec-lbl">Free Transfer</div><div class="spec-val">1 FT/GW</div></div></div>
+      <div class="spec-item"><div class="spec-icon">&#128190;</div><div><div class="spec-lbl">Maks. FT Tersimpan</div><div class="spec-val">5 FT</div></div></div>
+      <div class="spec-item"><div class="spec-icon">&#128165;</div><div><div class="spec-lbl">Extra Transfer</div><div class="spec-val">-4 poin</div></div></div>
+    </div>
+
+    <div class="section-heading">
+      <div class="icon-badge">&#127183;</div>
+      <div>
+        <h3>Chips</h3>
+        <p>Jatah penggunaan chip sepanjang musim</p>
+      </div>
+    </div>
+    <div class="chip-grid" style="margin-bottom:26px;">
+      <div class="chip-item"><div class="chip-icon">&#127788;&#65039;</div><div class="chip-name">Wildcard</div><div class="chip-count">2&times;</div></div>
+      <div class="chip-item"><div class="chip-icon">&#128640;</div><div class="chip-name">Free Hit</div><div class="chip-count">2&times;</div></div>
+      <div class="chip-item"><div class="chip-icon">&#129681;</div><div class="chip-name">Bench Boost</div><div class="chip-count">2&times;</div></div>
+      <div class="chip-item"><div class="chip-icon">&#128081;</div><div class="chip-name">Triple Captain</div><div class="chip-count">2&times;</div></div>
+    </div>
+
+    <div class="section-heading">
+      <div class="icon-badge">&#9917;</div>
+      <div>
+        <h3>Ketentuan Pertandingan</h3>
+        <p>Hal-hal teknis yang perlu diperhatikan tiap Game Week</p>
+      </div>
+    </div>
+    <div class="match-cond-list" style="margin-bottom:26px;">
+      <div class="match-cond-item"><div class="mc-icon">&#128737;&#65039;</div><div><div class="mc-title">Defensive Contribution</div><div class="mc-desc">Tetap berlaku sesuai aturan resmi FPL musim ini.</div></div></div>
+      <div class="match-cond-item"><div class="mc-icon">&#128293;</div><div><div class="mc-title">DGW &mdash; Double Gameweek</div><div class="mc-desc">Pemain berpotensi bermain dua kali dalam satu Game Week.</div></div></div>
+      <div class="match-cond-item"><div class="mc-icon">&#128683;</div><div><div class="mc-title">BGW &mdash; Blank Gameweek</div><div class="mc-desc">Pemain tidak memiliki pertandingan pada Game Week tersebut.</div></div></div>
+      <div class="match-cond-item"><div class="mc-icon">&#127942;</div><div><div class="mc-title">Kompetisi</div><div class="mc-desc">Berjalan paralel: Classic League dan Head-to-Head League.</div></div></div>
+      <div class="match-cond-item"><div class="mc-icon">&#9203;</div><div><div class="mc-title">Deadline</div><div class="mc-desc">Wajib mengatur susunan tim sebelum Game Week dimulai.</div></div></div>
+    </div>
+
+    <div class="section-heading">
+      <div class="icon-badge">&#128203;</div>
+      <div>
+        <h3>Additional Rules</h3>
+        <p>Ketentuan tambahan khusus liga ini</p>
+      </div>
+    </div>
+    <div class="rule-card">
+      <div class="rule-num">1</div>
+      <div>
+        <h4>&#128181; Biaya Pendaftaran</h4>
+        <p>Setiap peserta dikenakan biaya pendaftaran sebesar Rp10.000.</p>
+      </div>
+    </div>
+    <div class="rule-card">
+      <div class="rule-num">2</div>
+      <div>
+        <h4>&#128100; Satu Peserta, Satu Tim</h4>
+        <p>Setiap peserta hanya diperbolehkan mendaftarkan satu tim FPL.</p>
+      </div>
+    </div>
+    <div class="rule-card">
+      <div class="rule-num">3</div>
+      <div>
+        <h4>&#127942; Wajib Bergabung di League</h4>
+        <p>Setiap peserta wajib mengikuti Classic League (Coffee &amp; Juice League) dan Head-to-Head League.</p>
+        <div class="rule-callout">
+          <div class="rc-icon">&#9888;&#65039;</div>
+          <div class="rc-text"><strong>Catatan:</strong> Head-to-Head League saat ini sudah ditutup. Peserta baru yang belum bergabung tidak dapat masuk ke league tersebut.</div>
+        </div>
+      </div>
+    </div>
+    <div class="rule-card">
+      <div class="rule-num">4</div>
+      <div>
+        <h4>&#128260; Penalti Transfer</h4>
+        <p>Setiap aktivitas transfer yang melebihi jumlah Free Transfer (FT) yang tersedia akan dikenakan penalti -4 poin per transfer, sesuai ketentuan resmi FPL.</p>
+      </div>
+    </div>
   </div>
 
   <div class="view" id="view-admin-api">
@@ -486,6 +854,13 @@ footer{text-align:center;padding:30px 20px 8px;font-family:var(--mono);font-size
         Auto-refresh: ulangi otomatis tiap app dibuka &amp; tiap 15 menit selama tab terbuka
       </label>
       <div class="notice-strip" style="margin-top:0;">Auto-refresh hanya berjalan selagi tab/app ini terbuka di browser &mdash; ini bukan scheduler server 24 jam.</div>
+      <label class="field-label" style="margin-top:16px;display:block;">Relay pribadi (opsional, lebih andal dari proxy publik)</label>
+      <input type="text" id="custom-proxy-input" placeholder="https://worker-kamu.workers.dev/?url=" style="font-size:12px;">
+      <div class="btn-row">
+        <button class="btn btn-ghost" id="btn-save-proxy">Simpan Relay</button>
+      </div>
+      <div class="notice-strip">Masukkan URL Cloudflare Worker kamu sendiri (kalau ada) diakhiri dengan <span style="font-family:var(--mono);">?url=</span> &mdash; relay ini akan dicoba PALING PERTAMA sebelum proxy publik. Minta Claude membuatkan kode Worker-nya kalau belum punya.</div>
+      <div class="status-msg" id="proxy-status"></div>
     </div>
   </div>
 
@@ -555,6 +930,56 @@ footer{text-align:center;padding:30px 20px 8px;font-family:var(--mono);font-size
     </div>
   </div>
 
+  <div class="view" id="view-admin-h2hadmin">
+    <div class="admin-toolbar">
+      <div class="admin-toolbar-left">&#128274; <strong>Admin Mode</strong> &mdash; kelola data Head to Head (liga 807173)</div>
+    </div>
+    <div class="update-grid">
+      <div class="panel">
+        <h3>Update Matches</h3>
+        <p>Ambil data pertandingan H2H per game week dari <a class="link-inline" href="https://fantasy.premierleague.com/en/leagues/807173/matches/h?page_matches=1&event=0" target="_blank" rel="noopener">liga H2H</a>.</p>
+        <div class="btn-row">
+          <button class="btn btn-primary" id="btn-h2h-autotry" style="font-size:14.5px;padding:12px 22px;">&#8635;&nbsp; Perbarui Matches Sekarang</button>
+        </div>
+        <div class="status-msg" id="h2h-status"></div>
+        <details style="margin-top:14px;">
+          <summary style="cursor:pointer;font-size:12px;font-weight:700;color:var(--text-mute);text-transform:uppercase;letter-spacing:.05em;">Cara manual (kalau update otomatis gagal)</summary>
+          <div style="margin-top:12px;">
+            <label class="field-label">Game week</label>
+            <select id="gw-select-h2h-input"></select>
+            <div class="notice-strip">Buka <span style="font-family:var(--mono);">fantasy.premierleague.com/api/leagues-h2h-matches/league/807173/?page=1&amp;event=GW</span> (ganti GW dengan nomor game week), salin semua teksnya, lalu tempel di bawah.</div>
+            <label class="field-label" style="margin-top:12px;display:block;">Tempel JSON di sini</label>
+            <textarea id="h2h-json-input" placeholder='{"has_next":false,"page":1,"results":[...]}'></textarea>
+            <div class="btn-row">
+              <button class="btn btn-primary" id="btn-h2h-process">Proses &amp; simpan</button>
+              <button class="btn btn-ghost" id="btn-h2h-clear">Bersihkan</button>
+            </div>
+          </div>
+        </details>
+      </div>
+      <div class="panel">
+        <h3>Update Standings</h3>
+        <p>Ambil klasemen H2H dari <a class="link-inline" href="https://fantasy.premierleague.com/en/leagues/807173/standings/h" target="_blank" rel="noopener">liga H2H</a>.</p>
+        <div class="btn-row">
+          <button class="btn btn-primary" id="btn-h2h-standings-autotry" style="font-size:14.5px;padding:12px 22px;">&#8635;&nbsp; Perbarui Standings Sekarang</button>
+        </div>
+        <div class="status-msg" id="h2h-standings-status"></div>
+        <details style="margin-top:14px;">
+          <summary style="cursor:pointer;font-size:12px;font-weight:700;color:var(--text-mute);text-transform:uppercase;letter-spacing:.05em;">Cara manual (kalau update otomatis gagal)</summary>
+          <div style="margin-top:12px;">
+            <div class="notice-strip">Buka <span style="font-family:var(--mono);">fantasy.premierleague.com/api/leagues-h2h/807173/standings/</span>, salin semua teksnya, lalu tempel di bawah.</div>
+            <label class="field-label" style="margin-top:12px;display:block;">Tempel JSON di sini</label>
+            <textarea id="h2h-standings-json-input" placeholder='{"standings":{"results":[...]}}'></textarea>
+            <div class="btn-row">
+              <button class="btn btn-primary" id="btn-h2h-standings-process">Proses &amp; simpan</button>
+              <button class="btn btn-ghost" id="btn-h2h-standings-clear">Bersihkan</button>
+            </div>
+          </div>
+        </details>
+      </div>
+    </div>
+  </div>
+
   <div class="view" id="view-h2hplaceholder" style="display:none;"></div>
 
 </div>
@@ -594,9 +1019,9 @@ const N_GW = 38;
 const STORAGE_KEY = "liga-kopi-2026-27-v2";
 const BADGE_COLORS = ["#37003C","#00707A","#A3003B","#5A3E85","#0B5F3A","#8A4B00","#3D3D8F","#7A1F3D"];
 
-const DEFAULT_TEAMS = ["PSGR","faishal's Team","Tianlala","Kamileung FC","Pending Moderation","jowwwtim","kokorobet FC","helmoni fc","ARFantasy","CIMSEL UNITED","Alunos 2.0","Grindboys","JosJis FC","Gurandilepce","komodomodol FC","Olahlah Fc","Katapang_Pride","Kontol FC","Maung FC","Bubble Gummy","DOBHAN FC","Brancos FC","Blink 182","theluckyone","PROJECT ALMANAC","Backlight FC"];
+const DEFAULT_TEAMS = ["PSGR","faishal's Team","Tianlala","Kamileung FC","Change Name","jowwwtim","kokorobet FC","helmoni fc","ARFantasy","CIMSEL UNITED","Alunos 2.0","Grindboys","JosJis FC","Gurandilepce","komodomodol FC","Olahlah Fc","Katapang_Pride","Kontol FC","Maung FC","Bubble Gummy","DOBHAN FC","Brancos FC","Blink 182","theluckyone","PROJECT ALMANAC","Backlight FC","Welldone","SSB Fak Fak","Tarkam Fried Chicken"];
 
-const GW1_POINTS = {"PSGR":74,"Tianlala":64,"JosJis FC":64,"faishal's Team":62,"Kamileung FC":58,"Pending Moderation":58,"jowwwtim":57,"helmoni fc":57,"kokorobet FC":57,"Alunos 2.0":54,"CIMSEL UNITED":54,"Kontol FC":54,"ARFantasy":54,"Olahlah Fc":53,"Grindboys":50,"Maung FC":48,"komodomodol FC":47,"Gurandilepce":47,"Katapang_Pride":46,"Bubble Gummy":45,"DOBHAN FC":42,"theluckyone":41,"Brancos FC":39,"Blink 182":37,"Backlight FC":35,"PROJECT ALMANAC":35};
+const GW1_POINTS = {"PSGR":74,"Tianlala":64,"JosJis FC":64,"faishal's Team":62,"Kamileung FC":58,"Change Name":58,"jowwwtim":57,"helmoni fc":57,"kokorobet FC":57,"Alunos 2.0":54,"CIMSEL UNITED":54,"Kontol FC":54,"ARFantasy":54,"Olahlah Fc":53,"Grindboys":50,"Maung FC":48,"komodomodol FC":47,"Gurandilepce":47,"Katapang_Pride":46,"Bubble Gummy":45,"DOBHAN FC":42,"theluckyone":41,"Brancos FC":39,"Blink 182":37,"Backlight FC":35,"PROJECT ALMANAC":35};
 const CLUB_BADGES = {
   "PSGR":"https://fantasy.premierleague.com/gcs/plfpl-production-adobe-approved/plfpl-production/4473842/2f0c8738-abfe-4f50-8ba3-acf96524e206.png",
   "JosJis FC":"https://fantasy.premierleague.com/gcs/plfpl-production-adobe-approved/plfpl-production/7769856/84600082-051c-40d8-ae54-0bf23841a52b.png",
@@ -607,16 +1032,27 @@ const CLUB_BADGES = {
   "Bubble Gummy":"https://fantasy.premierleague.com/gcs/plfpl-production-adobe-approved/plfpl-production/3844902/0dcdd86e-3859-4ee3-ae71-a62426bf3a1b.png",
   "DOBHAN FC":"https://fantasy.premierleague.com/gcs/plfpl-production-adobe-approved/plfpl-production/2772961/fdbdeaf5-644e-4e3a-92b5-9ef3bc405fda.png"
 };
-const DATA_VERSION = 3;
+const DATA_VERSION = 8;
+const WELLDONE_GW1_POINTS = 110; // poin Welldone di GW1 (masuk total musim, tapi tidak dihitung sbg juara/kalah GW1 di menu Game Week)
+// GW2: dihitung dari (total resmi FPL - GW1 yang sudah tersimpan), agar Grand Total selalu presisi
+// sama dengan fantasy.premierleague.com/leagues/803630/standings/c meski GW1 sempat direvisi bonus poin.
+const GW2_POINTS = {
+  "Welldone":30, "JosJis FC":27, "PSGR":13, "jowwwtim":26, "CIMSEL UNITED":29, "Maung FC":33,
+  "Alunos 2.0":26, "ARFantasy":26, "Tianlala":15, "Bubble Gummy":31, "Grindboys":26, "Gurandilepce":26,
+  "komodomodol FC":26, "Change Name":13, "faishal's Team":9, "kokorobet FC":13, "theluckyone":28,
+  "helmoni fc":11, "Kamileung FC":7, "Olahlah Fc":10, "Kontol FC":7, "Katapang_Pride":13, "DOBHAN FC":9,
+  "PROJECT ALMANAC":13, "Blink 182":9, "Brancos FC":1, "Backlight FC":2, "SSB Fak Fak":28, "Tarkam Fried Chicken":18
+};
 
 const MANAGER_NAMES = {
   "Alunos 2.0":"Gilang Gumilar", "ARFantasy":"Achmad Ramdani", "Backlight FC":"Malwan Fauzan", "Blink 182":"Ilyas Muntaha",
   "Brancos FC":"Faisal Auliaghani", "Bubble Gummy":"Fahmi Mohamad", "CIMSEL UNITED":"Maulana Abdul", "DOBHAN FC":"Dani R",
   "faishal's Team":"Faishal Abyan", "Grindboys":"Ruby Wndr", "Gurandilepce":"Ferryan Reynaldi", "helmoni fc":"Isom Mutaqin",
   "JosJis FC":"Ignatius Aryo", "jowwwtim":"Anggi Suprayogi", "Kamileung FC":"Pipin Effendy", "Katapang_Pride":"Katapang Pride",
-  "kokorobet FC":"Firan Firhan", "komodomodol FC":"Hafid", "Kontol FC":"Diar Malik", "Maung FC":"Wahyudin Wahyudin",
-  "Olahlah Fc":"Miftahul Reza", "Pending Moderation":"Baltasario Saga", "PROJECT ALMANAC":"Akbar Lazuardi",
-  "PSGR":"Rezi Hafiz", "theluckyone":"Lucky One", "Tianlala":"Agil Kusuma"
+  "kokorobet FC":"Firan Firhan", "komodomodol FC":"Hafid Siddiq", "Kontol FC":"Diar Malik", "Maung FC":"Wahyudin Wahyudin",
+  "Olahlah Fc":"Miftahul Reza", "Change Name":"Baltasario Saga", "PROJECT ALMANAC":"Akbar Lazuardi",
+  "PSGR":"Rezi Hafiz", "theluckyone":"Lucky One", "Tianlala":"Agil Kusuma",
+  "Welldone":"Wildan Pratama", "SSB Fak Fak":"Ilham Satria", "Tarkam Fried Chicken":"Irham Ulya"
 };
 
 function deriveManager(teamName){
@@ -630,8 +1066,13 @@ function buildDefaultState(){
   const scores = {};
   const managers = {};
   DEFAULT_TEAMS.forEach(t=>{
-    scores[t] = {1: {pts: GW1_POINTS[t], cost: 0}};
-    managers[t] = deriveManager(t);
+    scores[t] = (GW1_POINTS[t] !== undefined) ? {1: {pts: GW1_POINTS[t], cost: 0}} : {};
+    managers[t] = MANAGER_NAMES[t] || deriveManager(t);
+  });
+  scores['Welldone'][1] = { pts: WELLDONE_GW1_POINTS, cost: 0, captain: 0, bench: 0 };
+  Object.keys(GW2_POINTS).forEach(team=>{
+    if(!scores[team]) scores[team] = {};
+    scores[team][2] = { pts: GW2_POINTS[team], cost: 0, captain: 0, bench: 0 };
   });
   return { teams: DEFAULT_TEAMS.slice(), scores, managers, clubBadges:Object.assign({}, CLUB_BADGES), h2h:{}, nextDeadline:null, lastUpdated: new Date().toISOString(), dataVersion: DATA_VERSION };
 }
@@ -650,6 +1091,19 @@ async function loadState(){
       if(!state.managers) state.managers = {};
       if(!state.clubBadges) state.clubBadges = {};
       if(!state.h2h) state.h2h = {};
+      if(!state.dataVersion || state.dataVersion < DATA_VERSION){
+        const oldIdx = state.teams.indexOf('Pending Moderation');
+        if(oldIdx !== -1){
+          state.teams[oldIdx] = 'Change Name';
+          if(state.scores['Pending Moderation']){ state.scores['Change Name'] = state.scores['Pending Moderation']; delete state.scores['Pending Moderation']; }
+          if(state.managers['Pending Moderation']){ delete state.managers['Pending Moderation']; }
+          if(state.clubBadges['Pending Moderation']){ state.clubBadges['Change Name'] = state.clubBadges['Pending Moderation']; delete state.clubBadges['Pending Moderation']; }
+        }
+        ['Welldone','SSB Fak Fak','Tarkam Fried Chicken'].forEach(t=>{
+          if(!state.teams.includes(t)){ state.teams.push(t); }
+          if(!state.scores[t]) state.scores[t] = {};
+        });
+      }
       state.teams.forEach(t=>{
         if(MANAGER_NAMES[t]) state.managers[t] = MANAGER_NAMES[t];
         else if(!state.managers[t]) state.managers[t] = deriveManager(t);
@@ -662,6 +1116,24 @@ async function loadState(){
         });
         Object.keys(CLUB_BADGES).forEach(team=>{
           if(!state.clubBadges[team]) state.clubBadges[team] = CLUB_BADGES[team];
+        });
+        if(!state.scores['Welldone']) state.scores['Welldone'] = {};
+        if(state.scores['Welldone'][2] && state.scores['Welldone'][2].pts===110 && !state.scores['Welldone'][1]){
+          delete state.scores['Welldone'][2];
+        }
+        if(!state.scores['Welldone'][1]){
+          state.scores['Welldone'][1] = { pts: WELLDONE_GW1_POINTS, cost: 0, captain: 0, bench: 0 };
+        }
+        Object.keys(GW2_POINTS).forEach(team=>{
+          if(!state.scores[team]) state.scores[team] = {};
+          const existingGw2 = state.scores[team][2];
+          state.scores[team][2] = {
+            pts: GW2_POINTS[team],
+            cost: existingGw2 ? existingGw2.cost : 0,
+            captain: existingGw2 ? existingGw2.captain : 0,
+            bench: existingGw2 ? existingGw2.bench : 0
+          };
+          if(!state.teams.includes(team)) state.teams.push(team);
         });
         state.dataVersion = DATA_VERSION;
         await persist();
@@ -711,6 +1183,35 @@ function teamBadgeHtml(team, sizePx){
     return `<img src="${url}" alt="" style="width:${sizePx}px;height:${sizePx}px;border-radius:8px;object-fit:cover;flex:0 0 auto;box-shadow:0 1px 3px rgba(0,0,0,0.15);" onerror="this.style.display='none';this.nextSibling.style.display='flex';"><div class="team-badge" style="display:none;width:${sizePx}px;height:${sizePx}px;font-size:${Math.round(sizePx*0.34)}px;background:${badgeColor(team)};">${initials(team)}</div>`;
   }
   return `<div class="team-badge" style="width:${sizePx}px;height:${sizePx}px;font-size:${Math.round(sizePx*0.34)}px;background:${badgeColor(team)};">${initials(team)}</div>`;
+}
+
+function computeGwLeaderboard(gw){
+  const rows = state.teams.map(team=>{
+    const e = getEntry(team, gw);
+    if(!e) return null;
+    return { team, pts: e.pts, cost: e.cost, net: e.pts - e.cost, captain: e.captain, bench: e.bench };
+  }).filter(Boolean);
+  rows.sort((a,b)=>{
+    if(b.net !== a.net) return b.net - a.net;
+    if(b.captain !== a.captain) return b.captain - a.captain;
+    return b.bench - a.bench;
+  });
+  rows.forEach((r,i)=>{
+    r.rank = i+1;
+    r.tieBroken = (i>0 && rows[i-1].net===r.net) || (i<rows.length-1 && rows[i+1].net===r.net);
+  });
+  const prevRows = state.teams.map(team=>{
+    const e = getEntry(team, gw-1);
+    return e ? { team, net: e.pts - e.cost } : null;
+  }).filter(Boolean);
+  prevRows.sort((a,b)=>b.net-a.net);
+  const prevRankMap = {};
+  prevRows.forEach((r,i)=>{ prevRankMap[r.team] = i+1; });
+  rows.forEach(r=>{
+    const pr = prevRankMap[r.team];
+    r.rankDelta = (pr!==undefined) ? pr - r.rank : 0;
+  });
+  return rows;
 }
 
 function computeLeaderboard(asOfGW){
@@ -771,10 +1272,20 @@ function computeWeekly(gw){
     if(b.captain !== a.captain) return b.captain - a.captain;
     return b.bench - a.bench;
   });
-  const winner = entries[0];
-  const lowest = entries[entries.length-1];
+  let winner = entries[0];
+  let lowest = entries[entries.length-1];
   winner.tieBroken = entries.length>1 && entries[1].pts===winner.pts;
   lowest.tieBroken = entries.length>1 && entries[entries.length-2].pts===lowest.pts;
+
+  // Kunci manual GW1: PSGR juara, Backlight FC kalah (tim yang belum join di GW1
+  // tidak boleh terhitung sebagai juara/kalah GW1 meski datanya ditambahkan belakangan).
+  if(gw === 1){
+    const lockedWinner = entries.find(e=>e.team==='PSGR');
+    const lockedLowest = entries.find(e=>e.team==='Backlight FC');
+    if(lockedWinner){ winner = lockedWinner; winner.tieBroken = false; }
+    if(lockedLowest){ lowest = lockedLowest; lowest.tieBroken = false; }
+  }
+
   return { winner, lowest, count: entries.length };
 }
 
@@ -796,31 +1307,73 @@ function renderHero(){
 
   const champ = lb[0];
   const champManager = champ ? ((state.managers && state.managers[champ.team]) || deriveManager(champ.team)) : '';
+  const bottom = lb.length ? lb[lb.length-1] : null;
+  const bottomManager = bottom ? ((state.managers && state.managers[bottom.team]) || deriveManager(bottom.team)) : '';
+
   const wk = computeWeekly(maxGW);
   let weeklyBox = '';
   if(wk){
     const winManager = (state.managers && state.managers[wk.winner.team]) || deriveManager(wk.winner.team);
     const lowManager = (state.managers && state.managers[wk.lowest.team]) || deriveManager(wk.lowest.team);
+    const winTie = wk.winner.tieBroken ? '<div class="tie-note">Poin sama dengan tim lain &mdash; ditentukan lewat Captain/Bench</div>' : '';
+    const lowTie = wk.lowest.tieBroken ? '<div class="tie-note">Poin sama dengan tim lain &mdash; ditentukan lewat Captain/Bench</div>' : '';
     weeklyBox = `
-    <div class="stat-card">
+    <div class="stat-card win">
       <div class="lbl">Juara GW ${maxGW}</div>
-      <div class="big" style="font-family:var(--font);font-size:16px;">${escapeHtml(wk.winner.team)}</div>
-      <div class="sub">${escapeHtml(winManager)} &middot; ${wk.winner.pts} poin minggu ini</div>
+      <div class="team-line">${escapeHtml(wk.winner.team)}</div>
+      <div class="manager-line">${escapeHtml(winManager)}</div>
+      <div class="pts-big">${wk.winner.pts}<span>poin</span></div>
+      ${winTie}
     </div>
-    <div class="stat-card">
+    <div class="stat-card low">
       <div class="lbl">Kalah GW ${maxGW}</div>
-      <div class="big" style="font-family:var(--font);font-size:16px;color:var(--pink-ink);">${escapeHtml(wk.lowest.team)}</div>
-      <div class="sub">${escapeHtml(lowManager)} &middot; ${wk.lowest.pts} poin minggu ini</div>
+      <div class="team-line">${escapeHtml(wk.lowest.team)}</div>
+      <div class="manager-line">${escapeHtml(lowManager)}</div>
+      <div class="pts-big">${wk.lowest.pts}<span>poin</span></div>
+      ${lowTie}
     </div>`;
   }
+
+  const winCounts = {}, weakCounts = {};
+  for(let g=1; g<=maxGW; g++){
+    const w = computeWeekly(g);
+    if(!w) continue;
+    winCounts[w.winner.team] = (winCounts[w.winner.team]||0)+1;
+    weakCounts[w.lowest.team] = (weakCounts[w.lowest.team]||0)+1;
+  }
+  let topWinner = null, topWinnerCount = 0;
+  Object.entries(winCounts).forEach(([team,c])=>{ if(c>topWinnerCount){ topWinnerCount=c; topWinner=team; } });
+  let topWeak = null, topWeakCount = 0;
+  Object.entries(weakCounts).forEach(([team,c])=>{ if(c>topWeakCount){ topWeakCount=c; topWeak=team; } });
+  const topWinnerManager = topWinner ? ((state.managers && state.managers[topWinner]) || deriveManager(topWinner)) : '';
+  const topWeakManager = topWeak ? ((state.managers && state.managers[topWeak]) || deriveManager(topWeak)) : '';
 
   document.getElementById('hero-stats').innerHTML = `
     <div class="stat-card champ">
       <div class="lbl">Puncak klasemen</div>
-      <div class="big">${champ ? escapeHtml(champ.team) : '-'}</div>
-      <div class="sub">${champ ? escapeHtml(champManager) + ' &middot; ' + champ.grandTotal + ' poin grand total' : ''}</div>
+      <div class="team-line">${champ ? escapeHtml(champ.team) : '-'}</div>
+      <div class="manager-line">${champ ? escapeHtml(champManager) : ''}</div>
+      <div class="pts-big">${champ ? champ.grandTotal : '-'}<span>poin</span></div>
+    </div>
+    <div class="stat-card bottom">
+      <div class="lbl">Dasar klasemen</div>
+      <div class="team-line">${bottom ? escapeHtml(bottom.team) : '-'}</div>
+      <div class="manager-line">${bottom ? escapeHtml(bottomManager) : ''}</div>
+      <div class="pts-big">${bottom ? bottom.grandTotal : '-'}<span>poin</span></div>
     </div>
     ${weeklyBox}
+    <div class="stat-card win">
+      <div class="lbl">Juara terbanyak</div>
+      <div class="team-line">${topWinner ? escapeHtml(topWinner) : '-'}</div>
+      <div class="manager-line">${topWinner ? escapeHtml(topWinnerManager) : ''}</div>
+      <div class="pts-big">${topWinnerCount}<span>${topWinnerCount===1?'kali juara':'kali juara'}</span></div>
+    </div>
+    <div class="stat-card low">
+      <div class="lbl">Kalah terbanyak</div>
+      <div class="team-line">${topWeak ? escapeHtml(topWeak) : '-'}</div>
+      <div class="manager-line">${topWeak ? escapeHtml(topWeakManager) : ''}</div>
+      <div class="pts-big">${topWeakCount}<span>kali kalah</span></div>
+    </div>
     <div class="stat-card">
       <div class="lbl">Game week tercatat</div>
       <div class="big">${maxGW || 0}<span style="font-size:14px;color:var(--text-mute);"> / ${N_GW}</span></div>
@@ -854,7 +1407,7 @@ function renderTable(el, rows){
       ? `<span class="rank-badge-medal medal-${r.rank}">${r.rank}</span>`
       : `<span class="rank-num">${r.rank}</span>`;
     body += `<tr class="${rowCls}">
-      <td data-label="Rank"><div class="rank-cell">${rankHtml}${trendHtml(r.rankDelta)}${tieBadge(r)}</div></td>
+      <td data-label="Rank"><div class="rank-cell">${rankHtml}${trendHtml(r.rankDelta)}</div></td>
       <td><div class="team-cell" style="cursor:pointer;" onclick="openTeamDetail('${escapeHtml(r.team).replace(/'/g,"\\'")}')">${teamBadgeHtml(r.team,32)}<div class="team-name-wrap"><span class="team-name">${escapeHtml(r.team)}</span><span class="team-manager">${escapeHtml(manager)}</span></div></div></td>
       <td class="num-cell" data-label="GW">${r.latestPts}</td>
       <td class="deduct-cell" data-label="Pengurangan">${r.totalCost ? '-' + r.totalCost : '0'}</td>
@@ -878,7 +1431,7 @@ function renderHomeTable(el, rows){
       ? `<span class="rank-badge-medal medal-${r.rank}">${r.rank}</span>`
       : `<span class="rank-num">${r.rank}</span>`;
     body += `<tr class="${rowCls}">
-      <td data-label="Rank"><div class="rank-cell">${rankHtml}${trendHtml(r.rankDelta)}${tieBadge(r)}</div></td>
+      <td data-label="Rank"><div class="rank-cell">${rankHtml}${trendHtml(r.rankDelta)}</div></td>
       <td><div class="team-cell" style="cursor:pointer;" onclick="openTeamDetail('${escapeHtml(r.team).replace(/'/g,"\\'")}')">${teamBadgeHtml(r.team,32)}<div class="team-name-wrap"><span class="team-name">${escapeHtml(r.team)}</span><span class="team-manager">${escapeHtml(manager)}</span></div></div></td>
       <td class="num-cell" data-label="GW">${r.latestPts}</td>
       <td class="pts-cell" data-label="Total Poin">${r.grandTotal}</td>
@@ -901,18 +1454,58 @@ function populateGwScopeSelect(){
   sel.value = prevVal && Number(prevVal)<=maxGW ? prevVal : maxGW;
 }
 
+function renderGwTable(el, rows, gw){
+  const lbAll = computeLeaderboard(gw);
+  const grandTotalMap = {};
+  lbAll.forEach(r=> grandTotalMap[r.team] = r.grandTotal);
+  let head = `<thead><tr>
+    <th>Rank</th><th>Tim &amp; Manager</th><th class="right" style="text-align:right;">Poin</th><th class="right" style="text-align:right;">Kurang</th><th class="right" style="text-align:right;">Net GW${gw}</th><th class="right" style="text-align:right;">Grand Total</th>
+  </tr></thead>`;
+  let body = '<tbody>';
+  rows.forEach(r=>{
+    const col = badgeColor(r.team);
+    const rowCls = r.rank===1?'top1':r.rank===2?'top2':r.rank===3?'top3':'';
+    const manager = (state.managers && state.managers[r.team]) || deriveManager(r.team);
+    const rankHtml = r.rank<=3
+      ? `<span class="rank-badge-medal medal-${r.rank}">${r.rank}</span>`
+      : `<span class="rank-num">${r.rank}</span>`;
+    body += `<tr class="${rowCls}">
+      <td data-label="Rank"><div class="rank-cell">${rankHtml}${trendHtml(r.rankDelta)}</div></td>
+      <td><div class="team-cell" style="cursor:pointer;" onclick="openTeamDetail('${escapeHtml(r.team).replace(/'/g,"\\'")}')">${teamBadgeHtml(r.team,32)}<div class="team-name-wrap"><span class="team-name">${escapeHtml(r.team)}</span><span class="team-manager">${escapeHtml(manager)}</span></div></div></td>
+      <td class="num-cell" data-label="Poin">${r.pts}</td>
+      <td class="deduct-cell" data-label="Kurang">${r.cost ? '-' + r.cost : '0'}</td>
+      <td class="pts-cell" data-label="Net GW">${r.net}</td>
+      <td class="num-cell" data-label="Grand Total">${grandTotalMap[r.team] !== undefined ? grandTotalMap[r.team] : '-'}</td>
+    </tr>`;
+  });
+  body += '</tbody>';
+  el.innerHTML = head + body;
+}
+
 function renderKlasemen(){
   populateGwScopeSelect();
   const scopeGW = Number(document.getElementById('gw-scope-select').value);
-  const lb = computeLeaderboard(scopeGW);
-  renderTable(document.getElementById('full-table'), lb);
+  const gwlb = computeGwLeaderboard(scopeGW);
+  let tableEl = document.getElementById('full-table');
+  if(!gwlb.length){
+    tableEl.outerHTML = `<div class="empty-state" id="full-table"><div class="glyph">&#128197;</div><p>Belum ada data untuk Game Week ${scopeGW}.</p></div>`;
+  } else {
+    if(tableEl.tagName === 'DIV'){ tableEl.outerHTML = '<table id="full-table"></table>'; tableEl = document.getElementById('full-table'); }
+    renderGwTable(tableEl, gwlb, scopeGW);
+  }
   const searchInput = document.getElementById('team-search');
   const applyFilter = ()=>{
     const q = searchInput.value.trim().toLowerCase();
     const currentGW = Number(document.getElementById('gw-scope-select').value);
-    const data = computeLeaderboard(currentGW);
+    const data = computeGwLeaderboard(currentGW);
     const filtered = q ? data.filter(r=> r.team.toLowerCase().includes(q) || (state.managers[r.team]||'').toLowerCase().includes(q)) : data;
-    renderTable(document.getElementById('full-table'), filtered);
+    let el = document.getElementById('full-table');
+    if(!filtered.length){
+      el.outerHTML = `<div class="empty-state" id="full-table"><div class="glyph">&#128197;</div><p>Tidak ada tim yang cocok.</p></div>`;
+    } else {
+      if(el.tagName === 'DIV'){ el.outerHTML = '<table id="full-table"></table>'; el = document.getElementById('full-table'); }
+      renderGwTable(el, filtered, currentGW);
+    }
   };
   searchInput.oninput = applyFilter;
   document.getElementById('gw-scope-select').onchange = applyFilter;
@@ -933,6 +1526,85 @@ function renderGwPicker(){
   document.querySelectorAll('#gw-picker .gw-chip').forEach(btn=>{
     btn.onclick = ()=>{ selectedWeeklyGW = Number(btn.dataset.gw); renderMingguan(); };
   });
+}
+
+function populateManagerPageSelect(){
+  const sel = document.getElementById('manager-page-select');
+  const prevVal = sel.value;
+  const lb = computeLeaderboard();
+  sel.innerHTML = lb.map(r=>`<option value="${escapeHtml(r.team)}">#${r.rank} &middot; ${escapeHtml(r.team)}</option>`).join('');
+  if(prevVal && state.teams.includes(prevVal)) sel.value = prevVal;
+}
+
+function renderManagerPage(team){
+  if(!team || !state.teams.includes(team)) team = state.teams[0];
+  const maxGW = getMaxFilledGW();
+  const lb = computeLeaderboard(maxGW);
+  const row = lb.find(r=>r.team===team);
+  const manager = (state.managers && state.managers[team]) || deriveManager(team);
+  const box = document.getElementById('manager-page-content');
+  if(!row){ box.innerHTML = `<div class="empty-state"><p>Belum ada tim terdaftar.</p></div>`; return; }
+
+  let winnerCount = 0, weakCount = 0;
+  const perf = [];
+  for(let g=1; g<=maxGW; g++){
+    const e = getEntry(team, g);
+    if(e) perf.push({ gw:g, net: e.pts - e.cost });
+    const wk = computeWeekly(g);
+    if(wk){
+      if(wk.winner.team===team) winnerCount++;
+      if(wk.lowest.team===team) weakCount++;
+    }
+  }
+
+  const posHistory = [];
+  let prevRank = null;
+  for(let g=1; g<=maxGW; g++){
+    const lbg = computeLeaderboard(g);
+    const r = lbg.find(x=>x.team===team);
+    if(!r) continue;
+    const delta = prevRank!==null ? prevRank - r.rank : 0;
+    posHistory.push({ gw:g, rank:r.rank, delta });
+    prevRank = r.rank;
+  }
+
+  const avg = row.playedCount ? (perf.reduce((a,b)=>a+b.net,0) / row.playedCount) : 0;
+  const best = perf.length ? Math.max(...perf.map(p=>p.net)) : 0;
+  const worst = perf.length ? Math.min(...perf.map(p=>p.net)) : 0;
+  const maxBar = perf.length ? Math.max(...perf.map(p=>p.net), 1) : 1;
+
+  box.innerHTML = `
+    <div class="manager-hero">
+      ${teamBadgeHtml(team, 64)}
+      <div class="team-name-wrap">
+        <span class="team-name">${escapeHtml(team)}</span>
+        <span class="team-manager">${escapeHtml(manager)}</span>
+      </div>
+    </div>
+    <div class="modal-stat-grid" style="margin-bottom:20px;">
+      <div class="modal-stat"><div class="k">Current Rank</div><div class="v">#${row.rank}</div></div>
+      <div class="modal-stat"><div class="k">Total Point</div><div class="v">${row.grandTotal}</div></div>
+      <div class="modal-stat"><div class="k">GW Average</div><div class="v">${avg.toFixed(1)}</div></div>
+      <div class="modal-stat"><div class="k">Best GW</div><div class="v" style="color:var(--green-ink);">${best}</div></div>
+      <div class="modal-stat"><div class="k">Worst GW</div><div class="v" style="color:var(--pink-ink);">${worst}</div></div>
+      <div class="modal-stat"><div class="k">GW Winner</div><div class="v">&#127942; ${winnerCount}&times;</div></div>
+      <div class="modal-stat"><div class="k">Weak of the Week</div><div class="v" style="color:var(--pink-ink);">&#9888;&#65039; ${weakCount}&times;</div></div>
+    </div>
+    <div class="chart-card" style="margin-bottom:20px;">
+      <h3>Performance History</h3>
+      ${perf.length ? `<div class="perf-bar-row">${perf.map(p=>`<div class="perf-bar"><div class="val">${p.net}</div><div class="bar" style="height:${Math.max(6,(p.net/maxBar)*90)}px;"></div><div class="gwlbl">GW${p.gw}</div></div>`).join('')}</div>` : `<div class="empty-state"><p>Belum ada data.</p></div>`}
+    </div>
+    <div class="chart-card">
+      <h3>Position History</h3>
+      ${posHistory.length ? `<div class="pos-chip-row">${posHistory.map(p=>{
+        let trend;
+        if(p.delta>0) trend = `<span class="trend-up">&#9650;${p.delta}</span>`;
+        else if(p.delta<0) trend = `<span class="trend-down">&#9660;${Math.abs(p.delta)}</span>`;
+        else trend = `<span class="trend-flat">&#9473;</span>`;
+        return `<div class="pos-chip"><span>GW${p.gw}</span>#${p.rank} ${trend}</div>`;
+      }).join('')}</div>` : `<div class="empty-state"><p>Belum ada data.</p></div>`}
+    </div>
+  `;
 }
 
 function openTeamDetail(team){
@@ -1152,12 +1824,12 @@ function renderStandingsChart(){
 
 function renderSeasonStats(){
   const maxGW = getMaxFilledGW();
-  const lb = computeLeaderboard(maxGW);
   const box = document.getElementById('season-stats');
   if(!maxGW){ box.innerHTML = `<div class="empty-state" style="grid-column:1/-1;"><p>Belum ada data game week untuk dihitung statistiknya.</p></div>`; return; }
 
   let totalPts=0, countPts=0;
   let bestSingle = {team:null, gw:null, val:-Infinity};
+  let worstSingle = {team:null, gw:null, val:Infinity};
   for(let g=1; g<=maxGW; g++){
     state.teams.forEach(team=>{
       const e = getEntry(team, g);
@@ -1165,29 +1837,15 @@ function renderSeasonStats(){
       const net = e.pts - e.cost;
       totalPts += net; countPts++;
       if(net > bestSingle.val) bestSingle = {team, gw:g, val:net};
+      if(net < worstSingle.val) worstSingle = {team, gw:g, val:net};
     });
   }
   const avgAll = countPts ? (totalPts/countPts) : 0;
 
-  const lb1 = computeLeaderboard(1);
-  const rank1Map = {}; lb1.forEach(r=> rank1Map[r.team] = r.rank);
-  let bestComeback = {team:null, delta:-Infinity};
-  lb.forEach(r=>{
-    const r1 = rank1Map[r.team];
-    if(r1===undefined) return;
-    const delta = r1 - r.rank;
-    if(delta > bestComeback.delta) bestComeback = {team:r.team, delta};
-  });
-
-  const bestCaptain = lb.slice().sort((a,b)=>b.captainTotal-a.captainTotal)[0];
-  const worstBench = lb.slice().sort((a,b)=>b.benchTotal-a.benchTotal)[0];
-
   const cards = [
     { lbl:'Rata-rata Liga', big: avgAll.toFixed(1), sub:'poin / tim / GW' },
     { lbl:'Skor Tertinggi Sepanjang Musim', big: bestSingle.team ? bestSingle.val : '-', sub: bestSingle.team ? `${escapeHtml(bestSingle.team)} &middot; GW${bestSingle.gw}` : '' },
-    { lbl:'Comeback Terbesar', big: bestComeback.team ? (bestComeback.delta>0? '+'+bestComeback.delta : bestComeback.delta) : '-', sub: bestComeback.team ? `${escapeHtml(bestComeback.team)} (rank sejak GW1)` : '' },
-    { lbl:'Kapten Terbaik', big: bestCaptain ? bestCaptain.captainTotal : '-', sub: bestCaptain ? escapeHtml(bestCaptain.team) : '' },
-    { lbl:'Raja Bangku Cadangan', big: worstBench ? worstBench.benchTotal : '-', sub: worstBench ? escapeHtml(worstBench.team) : '' },
+    { lbl:'Skor Terendah Sepanjang Musim', big: worstSingle.team ? worstSingle.val : '-', sub: worstSingle.team ? `${escapeHtml(worstSingle.team)} &middot; GW${worstSingle.gw}` : '' },
   ];
   box.innerHTML = cards.map(c=>`
     <div class="stat-card">
@@ -1251,47 +1909,166 @@ async function h2hProcessJsonPaste(){
   if(!result){ showStatus(statusEl,'err','Struktur JSON tidak dikenali.'); return; }
   await persist();
   selectedH2HGW = gw;
-  showStatus(statusEl,'ok', `Tersimpan untuk GW ${gw}: ${result.count} pertandingan.`);
+  const msg = `GW ${gw}: ${result.count} pertandingan tersimpan.`;
+  showStatus(statusEl,'ok', msg);
+  showToast('Data Head to Head disimpan', msg, 'ok');
   document.getElementById('h2h-json-input').value = '';
   renderH2H();
 }
 
-function renderH2HGwPicker(){
-  const maxGW = Math.max(getMaxFilledGW(), selectedH2HGW, 1);
-  const upper = Math.min(N_GW, maxGW + 1);
-  let html = '';
-  for(let g=1; g<=upper; g++){
-    const filled = state.h2h && state.h2h[g] && state.h2h[g].length;
-    const cls = ['gw-chip'];
-    if(filled) cls.push('filled');
-    if(g===selectedH2HGW) cls.push('active');
-    html += `<button class="${cls.join(' ')}" data-gw="${g}">GW${g}</button>`;
-  }
-  document.getElementById('h2h-gw-picker').innerHTML = html;
-  document.querySelectorAll('#h2h-gw-picker .gw-chip').forEach(btn=>{
-    btn.onclick = ()=>{ selectedH2HGW = Number(btn.dataset.gw); renderH2H(); };
-  });
+function populateH2HFilters(){
+  const teamSel = document.getElementById('h2h-filter-team');
+  const gwSel = document.getElementById('h2h-filter-gw');
+  const prevTeam = teamSel.value, prevGw = gwSel.value;
+  teamSel.innerHTML = '<option value="">Semua Tim</option>' + state.teams.map(t=>`<option value="${escapeHtml(t)}">${escapeHtml(t)}</option>`).join('');
+  const gws = state.h2h ? Object.keys(state.h2h).map(Number).sort((a,b)=>a-b) : [];
+  gwSel.innerHTML = '<option value="">Semua Game Week</option>' + gws.map(g=>`<option value="${g}">GW${g}</option>`).join('');
+  teamSel.value = prevTeam || '';
+  gwSel.value = prevGw || '';
 }
 
 function renderH2H(){
-  renderH2HGwPicker();
+  populateH2HFilters();
   const box = document.getElementById('h2h-matches');
-  const matches = (state.h2h && state.h2h[selectedH2HGW]) || [];
-  if(!matches.length){
-    box.innerHTML = `<div class="empty-state"><div class="glyph">&#9917;</div><p>Belum ada data Head to Head untuk GW ${selectedH2HGW}. Klik "Perbarui Head to Head Sekarang" atau isi manual di atas.</p></div>`;
+  const teamFilter = document.getElementById('h2h-filter-team').value;
+  const gwFilter = document.getElementById('h2h-filter-gw').value;
+  const gws = state.h2h ? Object.keys(state.h2h).map(Number).sort((a,b)=> gwFilter? 0 : b-a) : [];
+  const targetGws = gwFilter ? [Number(gwFilter)] : gws;
+
+  let rows = [];
+  targetGws.forEach(g=>{
+    const matches = (state.h2h && state.h2h[g]) || [];
+    matches.forEach(m=>{
+      if(teamFilter && m.teamA!==teamFilter && m.teamB!==teamFilter) return;
+      rows.push({gw:g, ...m});
+    });
+  });
+
+  if(!rows.length){
+    box.innerHTML = `<div class="empty-state"><div class="glyph">&#9917;</div><p>Belum ada data Head to Head yang cocok. Minta admin liga untuk update lewat &#128274; Admin Mode &rarr; tab "Head to Head".</p></div>`;
     return;
   }
-  box.innerHTML = `<div class="cup-round"><div class="cup-matches" style="padding:16px;">` + matches.map(m=>{
+
+  let closestIdx = -1, closestMargin = Infinity;
+  rows.forEach((m,i)=>{
+    if(m.isBye) return;
+    const margin = Math.abs(m.ptsA - m.ptsB);
+    if(margin < closestMargin){ closestMargin = margin; closestIdx = i; }
+  });
+
+  box.innerHTML = `<div class="card">` + rows.map((m,i)=>{
+    const managerA = (state.managers && state.managers[m.teamA]) || deriveManager(m.teamA);
+    const managerB = m.isBye ? '' : ((state.managers && state.managers[m.teamB]) || deriveManager(m.teamB));
     const aWin = !m.isBye && m.ptsA > m.ptsB;
     const bWin = !m.isBye && m.ptsB > m.ptsA;
-    return `<div class="cup-match" style="grid-template-columns:1fr auto auto auto 1fr;">
-      <div class="cup-side ${aWin?'winner':m.isBye?'':'loser'}"><span class="cup-team-name">${escapeHtml(m.teamA)}</span></div>
-      <div class="cup-vs" style="font-family:var(--mono);font-weight:800;font-size:15px;color:${aWin?'var(--green-ink)':'var(--text)'};">${m.ptsA}</div>
-      <div class="cup-vs">vs</div>
-      <div class="cup-vs" style="font-family:var(--mono);font-weight:800;font-size:15px;color:${bWin?'var(--green-ink)':'var(--text)'};">${m.isBye?'-':m.ptsB}</div>
-      <div class="cup-side ${bWin?'winner':''}" style="justify-content:flex-end;text-align:right;"><span class="cup-team-name">${m.isBye ? 'BYE' : escapeHtml(m.teamB)}</span></div>
+    const isClosest = i===closestIdx && rows.length>1;
+    return `<div class="h2h-match-row ${isClosest?'win-highlight':''}">
+      <div class="h2h-gw-label">GW${m.gw}${isClosest?'<br><span style="font-size:9px;">&#9889; SENGIT</span>':''}</div>
+      <div class="h2h-side ${aWin?'winner':''}">
+        <span class="h2h-side-name">${escapeHtml(m.teamA)}</span>
+        <span class="h2h-side-team">${escapeHtml(managerA)}</span>
+      </div>
+      <div class="h2h-score"><span>${m.ptsA}</span><span class="divider">|</span><span>${m.isBye?'-':m.ptsB}</span></div>
+      <div class="h2h-side right ${bWin?'winner':''}">
+        <span class="h2h-side-name">${m.isBye ? 'BYE' : escapeHtml(m.teamB)}</span>
+        <span class="h2h-side-team">${m.isBye ? '' : escapeHtml(managerB)}</span>
+      </div>
     </div>`;
-  }).join('') + `</div></div>`;
+  }).join('') + `</div>`;
+}
+
+const H2H_STANDINGS_URL = `https://fantasy.premierleague.com/api/leagues-h2h/${'807173'}/standings/`;
+
+function applyH2HStandingsJSON(parsed){
+  const results = parsed && parsed.standings && parsed.standings.results;
+  if(!Array.isArray(results)) return null;
+  state.h2hStandings = results.map(r=>({
+    team: r.entry_name,
+    manager: r.player_name,
+    played: r.matches_played||0,
+    won: r.matches_won||0,
+    drawn: r.matches_drawn||0,
+    lost: r.matches_lost||0,
+    pointsFor: r.points_for||0,
+    total: r.total||0,
+    rank: r.rank
+  }));
+  return { count: results.length };
+}
+
+async function h2hStandingsTryAutoFetch(silent){
+  const statusEl = document.getElementById('h2h-standings-status');
+  if(!silent) showStatus(statusEl,'info','Menghubungi FPL...');
+  const { data, attempts } = await fetchViaProxies(H2H_STANDINGS_URL);
+  if(!data){
+    if(!silent) showStatus(statusEl,'err','Gagal lewat semua jalur otomatis (' + attempts.join(' · ') + '). Coba buka file HTML di luar Claude, atau pakai cara manual di bawah.');
+    return false;
+  }
+  const result = applyH2HStandingsJSON(data);
+  if(!result){
+    if(!silent) showStatus(statusEl,'err','Data berhasil diambil tapi format tidak dikenali.');
+    return false;
+  }
+  await persist();
+  if(!silent) showStatus(statusEl,'ok', `Berhasil! ${result.count} tim tersimpan.`);
+  renderH2HStandings();
+  return true;
+}
+
+async function h2hStandingsProcessJsonPaste(){
+  const statusEl = document.getElementById('h2h-standings-status');
+  const raw = document.getElementById('h2h-standings-json-input').value.trim();
+  if(!raw){ showStatus(statusEl,'err','Tempel dulu data JSON standings H2H.'); return; }
+  let parsed;
+  try{ parsed = JSON.parse(raw); }
+  catch(e){ showStatus(statusEl,'err','Format JSON tidak valid.'); return; }
+  const result = applyH2HStandingsJSON(parsed);
+  if(!result){ showStatus(statusEl,'err','Struktur JSON tidak dikenali.'); return; }
+  await persist();
+  showStatus(statusEl,'ok', `Tersimpan: ${result.count} tim.`);
+  showToast('Standings Head to Head disimpan', `${result.count} tim berhasil diperbarui.`, 'ok');
+  document.getElementById('h2h-standings-json-input').value = '';
+  renderH2HStandings();
+}
+
+function renderH2HStandings(){
+  const el = document.getElementById('h2h-standings-table');
+  const rows = state.h2hStandings || [];
+  if(!rows.length){
+    el.parentElement.innerHTML = `<div class="empty-state"><div class="glyph">&#127942;</div><p>Belum ada data Standings H2H. Minta admin liga untuk update lewat &#128274; Admin Mode &rarr; tab "Head to Head".</p></div>`;
+    return;
+  }
+  const sorted = rows.slice().sort((a,b)=> a.rank - b.rank);
+  let head = `<thead><tr><th>Rank</th><th>Tim &amp; Manager</th><th style="text-align:right;">Main</th><th style="text-align:right;">M</th><th style="text-align:right;">S</th><th style="text-align:right;">K</th><th style="text-align:right;">Poin FPL</th><th style="text-align:right;">Poin H2H</th></tr></thead>`;
+  let body = '<tbody>';
+  sorted.forEach(r=>{
+    const rowCls = r.rank===1?'top1':r.rank===2?'top2':r.rank===3?'top3':'';
+    const rankHtml = r.rank<=3 ? `<span class="rank-badge-medal medal-${r.rank}">${r.rank}</span>` : `<span class="rank-num">${r.rank}</span>`;
+    body += `<tr class="${rowCls}">
+      <td data-label="Rank"><div class="rank-cell">${rankHtml}</div></td>
+      <td><div class="team-cell">${teamBadgeHtml(r.team,32)}<div class="team-name-wrap"><span class="team-name">${escapeHtml(r.team)}</span><span class="team-manager">${escapeHtml(r.manager)}</span></div></div></td>
+      <td class="num-cell" data-label="Main">${r.played}</td>
+      <td class="num-cell" data-label="M">${r.won}</td>
+      <td class="num-cell" data-label="S">${r.drawn}</td>
+      <td class="num-cell" data-label="K">${r.lost}</td>
+      <td class="num-cell" data-label="Poin FPL">${r.pointsFor}</td>
+      <td class="pts-cell" data-label="Poin H2H">${r.total}</td>
+    </tr>`;
+  });
+  body += '</tbody>';
+  el.innerHTML = head + body;
+}
+
+function initH2HSubtabs(){
+  document.querySelectorAll('.h2h-subtab-btn').forEach(btn=>{
+    btn.onclick = ()=>{
+      document.querySelectorAll('.h2h-subtab-btn').forEach(b=>b.classList.remove('active'));
+      document.querySelectorAll('.h2h-subview').forEach(v=>v.classList.remove('active'));
+      btn.classList.add('active');
+      document.getElementById('h2h-sub-'+btn.dataset.h2hsub).classList.add('active');
+      if(btn.dataset.h2hsub==='standings'){ renderH2HStandings(); }
+    };
+  });
 }
 
 function populateGwSelects(){
@@ -1341,19 +2118,42 @@ function renderManagerRoster(){
   box.innerHTML = headHtml + rowsHtml;
 }
 
+async function saveCustomProxy(){
+  const statusEl = document.getElementById('proxy-status');
+  const val = document.getElementById('custom-proxy-input').value.trim();
+  state.customProxyBase = val || null;
+  await persist();
+  showStatus(statusEl,'ok', val ? 'Relay pribadi disimpan dan akan dicoba lebih dulu.' : 'Relay pribadi dihapus, kembali pakai proxy publik.');
+  showToast('Pengaturan relay disimpan', val ? 'Relay pribadi aktif.' : 'Relay pribadi dinonaktifkan.', 'ok');
+}
+
 async function saveManagers(){
   const statusEl = document.getElementById('manager-status');
   const rows = document.querySelectorAll('#manager-roster .roster-row');
   if(!state.managers) state.managers = {};
+  let count = 0;
   rows.forEach(row=>{
     const input = row.querySelector('input[type=text]');
     const team = input.dataset.team;
     const val = input.value.trim().split(/\s+/).slice(0,2).join(' ') || deriveManager(team);
     state.managers[team] = val;
+    count++;
   });
   await persist();
   showStatus(statusEl,'ok','Nama manager tersimpan.');
+  showToast('Nama manager disimpan', `${count} tim berhasil diperbarui.`, 'ok');
   renderAll();
+  renderManagerRoster();
+}
+
+function showToast(title, msg, type){
+  const stack = document.getElementById('toast-stack');
+  const icon = type==='ok' ? '&#9989;' : '&#9888;&#65039;';
+  const el = document.createElement('div');
+  el.className = 'toast ' + (type||'ok');
+  el.innerHTML = `<span class="toast-icon">${icon}</span><div class="toast-text"><strong>${title}</strong><span>${msg}</span></div><button class="toast-close" onclick="this.parentElement.remove()">&times;</button>`;
+  stack.appendChild(el);
+  setTimeout(()=>{ if(el.parentElement) el.remove(); }, 5000);
 }
 
 function showStatus(el, type, msg){
@@ -1390,33 +2190,39 @@ function applyStandingsJSON(parsed, gw){
   return { matched, added };
 }
 
-const CORS_PROXIES = [
-  url => url,
-  url => `https://api.allorigins.win/raw?url=${encodeURIComponent(url)}`,
-  url => `https://api.codetabs.com/v1/proxy?quest=${encodeURIComponent(url)}`,
-  url => `https://corsproxy.io/?url=${encodeURIComponent(url)}`,
-  url => `https://thingproxy.freeboard.io/fetch/${url}`,
-];
-
-const PROXY_NAMES = ['langsung', 'allorigins', 'codetabs', 'corsproxy.io', 'thingproxy'];
+function getActiveProxies(){
+  const list = [ url => url ];
+  if(state.customProxyBase){
+    const base = state.customProxyBase;
+    list.push(url => base.includes('{url}') ? base.replace('{url}', encodeURIComponent(url)) : base + encodeURIComponent(url));
+  }
+  return list.concat([
+    url => `https://api.allorigins.win/raw?url=${encodeURIComponent(url)}`,
+    url => `https://api.codetabs.com/v1/proxy?quest=${encodeURIComponent(url)}`,
+    url => `https://corsproxy.io/?url=${encodeURIComponent(url)}`,
+    url => `https://thingproxy.freeboard.io/fetch/${url}`,
+  ]);
+}
 
 async function fetchViaProxies(targetUrl, timeoutMs=12000){
+  const proxies = getActiveProxies();
+  const names = ['langsung', ...(state.customProxyBase ? ['relay pribadi'] : []), 'allorigins', 'codetabs', 'corsproxy.io', 'thingproxy'];
   const attempts = [];
-  for(let i=0;i<CORS_PROXIES.length;i++){
-    const wrap = CORS_PROXIES[i];
+  for(let i=0;i<proxies.length;i++){
+    const wrap = proxies[i];
     const finalUrl = wrap(targetUrl);
     try{
       const controller = new AbortController();
       const t = setTimeout(()=>controller.abort(), timeoutMs);
       const res = await fetch(finalUrl, { signal: controller.signal, cache:'no-store' });
       clearTimeout(t);
-      if(!res.ok){ attempts.push(`${PROXY_NAMES[i]}: HTTP ${res.status}`); continue; }
+      if(!res.ok){ attempts.push(`${names[i]}: HTTP ${res.status}`); continue; }
       const text = await res.text();
       let data;
-      try{ data = JSON.parse(text); }catch(e){ attempts.push(`${PROXY_NAMES[i]}: respons bukan JSON`); continue; }
+      try{ data = JSON.parse(text); }catch(e){ attempts.push(`${names[i]}: respons bukan JSON`); continue; }
       if(data) return { data, attempts };
     }catch(e){
-      attempts.push(`${PROXY_NAMES[i]}: ${e.name==='AbortError' ? 'timeout' : 'diblokir/network error'}`);
+      attempts.push(`${names[i]}: ${e.name==='AbortError' ? 'timeout' : 'diblokir/network error'}`);
     }
   }
   return { data:null, attempts };
@@ -1493,7 +2299,9 @@ async function processJsonPaste(){
   if(!result){ showStatus(statusEl,'err','Struktur JSON tidak dikenali. Cek apakah link yang dibuka benar.'); return; }
 
   await persist();
-  showStatus(statusEl,'ok', `Tersimpan untuk GW ${gw}: ${result.matched} tim cocok${result.added? ', ' + result.added + ' tim baru ditambahkan' : ''}. Cek/sesuaikan pengurangan poin di panel manual jika perlu.`);
+  const msg = `GW ${gw}: ${result.matched} tim cocok${result.added? ', ' + result.added + ' tim baru ditambahkan' : ''}.`;
+  showStatus(statusEl,'ok', msg + ' Cek/sesuaikan pengurangan poin di panel manual jika perlu.');
+  showToast('Data berhasil disimpan', msg, 'ok');
   document.getElementById('json-input').value = '';
   renderAll(); populateGwSelects();
 }
@@ -1572,7 +2380,9 @@ async function saveManualScores(){
   });
   await persist();
   showStatus(statusEl,'ok', `Poin GW ${gw} tersimpan untuk ${count} tim.`);
-  renderAll(); populateGwSelects();
+  showToast('Poin manual disimpan', `GW ${gw}: ${count} tim berhasil diperbarui.`, 'ok');
+  document.querySelectorAll('#manual-roster input[type=number]').forEach(inp=>{ inp.value=''; });
+  renderAll();
 }
 
 let unlockedThisSession = false;
@@ -1598,6 +2408,8 @@ function enterAdminMode(){
   document.querySelector('.admin-tab[data-admintab="api"]').classList.add('active');
   const pinSetInput = document.getElementById('pin-set-input');
   if(pinSetInput) pinSetInput.value = state.adminPin || '';
+  const proxyInput = document.getElementById('custom-proxy-input');
+  if(proxyInput) proxyInput.value = state.customProxyBase || '';
 }
 
 function exitAdminMode(){
@@ -1699,6 +2511,7 @@ function initTabs(){
       document.getElementById('view-'+btn.dataset.tab).classList.add('active');
       if(btn.dataset.tab==='grafik'){ renderTrendChart(); renderStandingsChart(); renderSeasonStats(); }
       if(btn.dataset.tab==='h2h'){ renderH2H(); }
+      if(btn.dataset.tab==='manager'){ populateManagerPageSelect(); renderManagerPage(document.getElementById('manager-page-select').value); }
     };
   });
   document.querySelectorAll('.admin-tab').forEach(btn=>{
@@ -1715,6 +2528,7 @@ function initTabs(){
     else { enterAdminMode(); }
   };
   document.getElementById('btn-theme-toggle').onclick = toggleTheme;
+  document.getElementById('manager-page-select').onchange = (e)=> renderManagerPage(e.target.value);
   document.getElementById('btn-admin-unlock').onclick = tryAdminUnlock;
   document.getElementById('admin-pin-input').addEventListener('keydown', e=>{ if(e.key==='Enter') tryAdminUnlock(); });
   document.getElementById('btn-exit-admin').onclick = exitAdminMode;
@@ -1740,9 +2554,20 @@ async function init(){
   document.getElementById('btn-save-managers').onclick = saveManagers;
   document.getElementById('chk-auto-refresh').onchange = toggleAutoRefresh;
   document.getElementById('btn-save-pin').onclick = savePin;
+  document.getElementById('btn-save-proxy').onclick = saveCustomProxy;
   document.getElementById('btn-h2h-autotry').onclick = ()=> h2hTryAutoFetch(false);
   document.getElementById('btn-h2h-process').onclick = h2hProcessJsonPaste;
   document.getElementById('btn-h2h-clear').onclick = ()=>{ document.getElementById('h2h-json-input').value=''; };
+  document.getElementById('h2h-filter-team').onchange = renderH2H;
+  document.getElementById('h2h-filter-gw').onchange = renderH2H;
+  document.getElementById('btn-h2h-reset').onclick = ()=>{
+    document.getElementById('h2h-filter-team').value = '';
+    document.getElementById('h2h-filter-gw').value = '';
+    renderH2H();
+  };
+  document.getElementById('btn-h2h-standings-autotry').onclick = ()=> h2hStandingsTryAutoFetch(false);
+  document.getElementById('btn-h2h-standings-process').onclick = h2hStandingsProcessJsonPaste;
+  document.getElementById('btn-h2h-standings-clear').onclick = ()=>{ document.getElementById('h2h-standings-json-input').value=''; };
   applyAutoRefreshSetting();
 }
 
