@@ -156,24 +156,60 @@ h1{font-size:24px;font-weight:800;margin:0;letter-spacing:-0.01em;color:var(--pu
 .stat-card.champ .pts-big span, .stat-card.bottom .pts-big span{color:rgba(255,255,255,0.6);}
 
 .deadline-banner{
-  border-radius:16px;padding:20px 24px;margin-bottom:20px;position:relative;overflow:hidden;
-  background:linear-gradient(120deg, rgba(139,92,246,0.25), rgba(0,255,135,0.12));
-  border:1px solid var(--purple-line);
-  display:flex;align-items:center;justify-content:space-between;gap:20px;flex-wrap:wrap;
+  border-radius:20px;padding:28px 32px;margin-bottom:22px;position:relative;overflow:hidden;
+  background:linear-gradient(120deg, #1A0A2E 0%, var(--purple) 55%, #2D0B3F 100%);
+  border:1px solid rgba(139,92,246,0.4);
+  display:flex;align-items:center;justify-content:space-between;gap:24px;flex-wrap:wrap;
+  box-shadow:0 16px 40px rgba(55,0,60,0.25), inset 0 1px 0 rgba(255,255,255,0.06);
 }
 .deadline-banner::before{
-  content:'';position:absolute;top:-40px;right:-40px;width:180px;height:180px;border-radius:50%;
-  background:radial-gradient(circle, rgba(0,255,135,0.25), transparent 70%);pointer-events:none;
+  content:'';position:absolute;top:-60px;right:-40px;width:260px;height:260px;border-radius:50%;
+  background:radial-gradient(circle, rgba(0,255,135,0.28), transparent 70%);pointer-events:none;
+  animation:deadlineGlow 6s ease-in-out infinite;
 }
+.deadline-banner::after{
+  content:'';position:absolute;bottom:-80px;left:10%;width:220px;height:220px;border-radius:50%;
+  background:radial-gradient(circle, var(--cyan), transparent 70%);opacity:0.16;pointer-events:none;
+}
+.deadline-banner.urgent{
+  background:linear-gradient(120deg, #2E0A0A 0%, #7A0038 55%, #3A0A1E 100%);
+  border-color:rgba(255,45,120,0.45);
+}
+.deadline-banner.urgent::before{background:radial-gradient(circle, rgba(255,45,120,0.32), transparent 70%);}
+@keyframes deadlineGlow{0%,100%{opacity:1;transform:scale(1);}50%{opacity:0.6;transform:scale(1.08);}}
 .deadline-left{position:relative;z-index:1;}
-.deadline-label{font-family:var(--mono);font-size:10.5px;font-weight:700;text-transform:uppercase;letter-spacing:.1em;color:var(--green);margin-bottom:4px;}
-.deadline-event{font-size:15px;font-weight:800;color:var(--text);}
-.deadline-date{font-size:12.5px;color:var(--text-2);margin-top:2px;}
-.deadline-countdown{display:flex;gap:10px;position:relative;z-index:1;}
-.deadline-unit{background:rgba(0,0,0,0.25);border:1px solid var(--line-strong);border-radius:10px;padding:8px 12px;text-align:center;min-width:56px;}
-.deadline-unit .num{font-family:var(--mono);font-weight:800;font-size:22px;color:var(--green);line-height:1;}
-.deadline-unit .lbl{font-size:9px;color:var(--text-mute);text-transform:uppercase;letter-spacing:.05em;margin-top:3px;}
-.deadline-link{font-size:11px;color:var(--text-mute);margin-top:8px;display:block;}
+.deadline-label{
+  font-family:var(--mono);font-size:11px;font-weight:800;text-transform:uppercase;letter-spacing:.14em;
+  color:var(--green);margin-bottom:6px;display:flex;align-items:center;gap:8px;
+}
+.deadline-banner.urgent .deadline-label{color:#FF6B96;}
+.deadline-pulse-dot{width:7px;height:7px;border-radius:50%;background:var(--green);box-shadow:0 0 0 4px rgba(0,255,135,0.2);animation:pulseDot 1.4s ease-in-out infinite;}
+.deadline-banner.urgent .deadline-pulse-dot{background:#FF2D78;box-shadow:0 0 0 4px rgba(255,45,120,0.25);}
+@keyframes pulseDot{0%,100%{transform:scale(1);opacity:1;}50%{transform:scale(1.5);opacity:0.5;}}
+.deadline-event{font-size:26px;font-weight:900;color:#fff;letter-spacing:-0.02em;line-height:1.1;}
+.deadline-date{font-size:13.5px;color:rgba(255,255,255,0.65);margin-top:5px;font-weight:500;}
+.deadline-cta{
+  margin-top:14px;display:inline-flex;align-items:center;gap:6px;font-size:12.5px;font-weight:700;
+  color:#1A0A2E;background:var(--green);padding:9px 16px;border-radius:9px;text-decoration:none;
+  box-shadow:0 4px 14px rgba(0,255,135,0.3);transition:transform .15s ease;
+}
+.deadline-cta:hover{transform:translateY(-1px);}
+.deadline-banner.urgent .deadline-cta{background:#FF2D78;color:#fff;box-shadow:0 4px 14px rgba(255,45,120,0.35);}
+.deadline-countdown{display:flex;gap:12px;position:relative;z-index:1;}
+.deadline-unit{
+  background:rgba(0,0,0,0.35);border:1px solid rgba(255,255,255,0.12);border-radius:14px;
+  padding:14px 10px;text-align:center;min-width:70px;
+  box-shadow:inset 0 1px 0 rgba(255,255,255,0.08), 0 6px 16px rgba(0,0,0,0.25);
+}
+.deadline-unit .num{
+  font-family:var(--mono);font-weight:800;font-size:34px;color:var(--green);line-height:1;
+  text-shadow:0 0 18px rgba(0,255,135,0.5);font-variant-numeric:tabular-nums;
+}
+.deadline-banner.urgent .deadline-unit .num{color:#FF6B96;text-shadow:0 0 18px rgba(255,45,120,0.5);}
+.deadline-unit .lbl{font-size:9.5px;color:rgba(255,255,255,0.5);text-transform:uppercase;letter-spacing:.08em;margin-top:5px;font-weight:700;}
+.deadline-unit.seconds .num{animation:secondTick 1s steps(1) infinite;}
+@keyframes secondTick{0%{opacity:1;}50%{opacity:0.55;}100%{opacity:1;}}
+.deadline-link{display:none;}
 
 .klasemen-hero{
   display:flex;align-items:center;gap:18px;padding:26px 30px;border-radius:18px;margin-bottom:20px;
@@ -405,7 +441,11 @@ footer{text-align:center;padding:30px 20px 8px;font-family:var(--mono);font-size
   .update-grid{grid-template-columns:1fr;}
   .modal-box{max-height:90vh;}
   .admin-toolbar{flex-direction:column;align-items:stretch;}
-  .deadline-banner{flex-direction:column;align-items:flex-start;}
+  .deadline-banner{flex-direction:column;align-items:flex-start;padding:22px 20px;}
+  .deadline-event{font-size:21px;}
+  .deadline-countdown{width:100%;justify-content:space-between;gap:6px;}
+  .deadline-unit{min-width:0;flex:1;padding:10px 4px;}
+  .deadline-unit .num{font-size:24px;}
 }
 
 .modal-overlay{display:none;position:fixed;inset:0;background:rgba(26,10,46,0.55);z-index:100;align-items:center;justify-content:center;padding:20px;}
@@ -843,8 +883,11 @@ footer{text-align:center;padding:30px 20px 8px;font-family:var(--mono);font-size
     </div>
     <div class="status-msg" id="pin-set-status"></div>
     <div class="panel">
-      <h3>Update data FPL (otomatis)</h3>
-      <p>Klik satu tombol di bawah &mdash; aplikasi akan otomatis mengambil data terbaru dari <a class="link-inline" href="https://fantasy.premierleague.com/api/leagues-classic/803630/standings/" target="_blank" rel="noopener">API resmi liga kamu</a> dan mendeteksi sendiri game week yang sedang berjalan.</p>
+      <h3>Update data FPL</h3>
+      <p>Pilih game week yang mau di-update, lalu klik tombol di bawah. Aplikasi akan mengambil data terbaru dari <a class="link-inline" href="https://fantasy.premierleague.com/api/leagues-classic/803630/standings/" target="_blank" rel="noopener">API resmi liga kamu</a> dan menyimpannya sebagai GW yang kamu pilih.</p>
+      <label class="field-label">Game week yang di-update</label>
+      <select id="gw-select-input"></select>
+      <div class="notice-strip" style="margin-top:0;margin-bottom:14px;">Untuk refresh skor GW yang sedang berjalan, biarkan pilihan default. Untuk <strong>maju ke game week baru</strong>, ubah dropdown ini ke nomor GW berikutnya sebelum klik tombol &mdash; ini keputusan manual, tidak akan pernah terjadi otomatis.</div>
       <div class="btn-row">
         <button class="btn btn-primary" id="btn-autotry" style="font-size:14.5px;padding:13px 24px;">&#8635;&nbsp; Perbarui Data Sekarang</button>
       </div>
@@ -853,7 +896,7 @@ footer{text-align:center;padding:30px 20px 8px;font-family:var(--mono);font-size
         <input type="checkbox" id="chk-auto-refresh" style="width:auto;margin:0;">
         Auto-refresh: ulangi otomatis tiap app dibuka &amp; tiap 15 menit selama tab terbuka
       </label>
-      <div class="notice-strip" style="margin-top:0;">Auto-refresh hanya berjalan selagi tab/app ini terbuka di browser &mdash; ini bukan scheduler server 24 jam.</div>
+      <div class="notice-strip" style="margin-top:0;">Auto-refresh <strong>hanya me-refresh GW yang sedang aktif</strong> (tidak pernah maju sendiri ke GW baru) dan hanya berjalan selagi tab/app ini terbuka di browser &mdash; bukan scheduler server 24 jam.</div>
       <label class="field-label" style="margin-top:16px;display:block;">Relay pribadi (opsional, lebih andal dari proxy publik)</label>
       <input type="text" id="custom-proxy-input" placeholder="https://worker-kamu.workers.dev/?url=" style="font-size:12px;">
       <div class="btn-row">
@@ -872,7 +915,7 @@ footer{text-align:center;padding:30px 20px 8px;font-family:var(--mono);font-size
       <h3>Tempel JSON manual</h3>
       <p>Dipakai kalau tombol update otomatis gagal (biasanya karena sandbox preview membatasi koneksi keluar).</p>
       <label class="field-label">Game week yang diinput</label>
-      <select id="gw-select-input"></select>
+      <select id="gw-select-json-input"></select>
       <div class="btn-row">
         <a class="btn btn-ghost" href="https://fantasy.premierleague.com/api/leagues-classic/803630/standings/" target="_blank" rel="noopener">Buka JSON liga &#8599;</a>
       </div>
@@ -883,6 +926,7 @@ footer{text-align:center;padding:30px 20px 8px;font-family:var(--mono);font-size
         <button class="btn btn-primary" id="btn-process">Proses &amp; simpan</button>
         <button class="btn btn-ghost" id="btn-clear-json">Bersihkan</button>
       </div>
+      <div class="status-msg" id="json-manual-status"></div>
     </div>
   </div>
 
@@ -928,6 +972,20 @@ footer{text-align:center;padding:30px 20px 8px;font-family:var(--mono);font-size
       <p>Pengecekan otomatis untuk membantu memastikan data liga lengkap dan konsisten.</p>
       <div id="validation-report"></div>
     </div>
+    <div class="panel" style="margin-top:18px;">
+      <h3>&#128190; Backup &amp; Restore</h3>
+      <p>Data liga tersimpan di sistem penyimpanan bawaan Claude (bukan database yang bisa kamu akses langsung). Untuk jaga-jaga, unduh salinan datanya secara berkala sebagai file JSON.</p>
+      <div class="btn-row">
+        <button class="btn btn-primary" id="btn-backup-download">&#11015;&nbsp; Unduh Backup (JSON)</button>
+      </div>
+      <div class="notice-strip" style="margin-top:14px;">Untuk memulihkan data dari backup: tempel isi file JSON di kotak bawah ini, lalu klik "Pulihkan". <strong>Ini akan menimpa semua data yang ada saat ini</strong> &mdash; pastikan file backup-nya benar.</div>
+      <label class="field-label" style="margin-top:12px;display:block;">Tempel isi file backup di sini</label>
+      <textarea id="restore-input" placeholder="Tempel isi file backup JSON..."></textarea>
+      <div class="btn-row">
+        <button class="btn btn-ghost" id="btn-backup-restore" style="border-color:#F4C6D6;color:var(--pink-ink);">&#9888;&#65039; Pulihkan dari Backup</button>
+      </div>
+      <div class="status-msg" id="backup-status"></div>
+    </div>
   </div>
 
   <div class="view" id="view-admin-h2hadmin">
@@ -937,7 +995,9 @@ footer{text-align:center;padding:30px 20px 8px;font-family:var(--mono);font-size
     <div class="update-grid">
       <div class="panel">
         <h3>Update Matches</h3>
-        <p>Ambil data pertandingan H2H per game week dari <a class="link-inline" href="https://fantasy.premierleague.com/en/leagues/807173/matches/h?page_matches=1&event=0" target="_blank" rel="noopener">liga H2H</a>.</p>
+        <p>Pilih game week yang mau di-update, lalu ambil data pertandingan H2H dari <a class="link-inline" href="https://fantasy.premierleague.com/en/leagues/807173/matches/h?page_matches=1&event=0" target="_blank" rel="noopener">liga H2H</a>.</p>
+        <label class="field-label">Game week yang di-update</label>
+        <select id="gw-select-h2h-input"></select>
         <div class="btn-row">
           <button class="btn btn-primary" id="btn-h2h-autotry" style="font-size:14.5px;padding:12px 22px;">&#8635;&nbsp; Perbarui Matches Sekarang</button>
         </div>
@@ -945,9 +1005,7 @@ footer{text-align:center;padding:30px 20px 8px;font-family:var(--mono);font-size
         <details style="margin-top:14px;">
           <summary style="cursor:pointer;font-size:12px;font-weight:700;color:var(--text-mute);text-transform:uppercase;letter-spacing:.05em;">Cara manual (kalau update otomatis gagal)</summary>
           <div style="margin-top:12px;">
-            <label class="field-label">Game week</label>
-            <select id="gw-select-h2h-input"></select>
-            <div class="notice-strip">Buka <span style="font-family:var(--mono);">fantasy.premierleague.com/api/leagues-h2h-matches/league/807173/?page=1&amp;event=GW</span> (ganti GW dengan nomor game week), salin semua teksnya, lalu tempel di bawah.</div>
+            <div class="notice-strip">Buka <span style="font-family:var(--mono);">fantasy.premierleague.com/api/leagues-h2h-matches/league/807173/?page=1&amp;event=GW</span> (ganti GW dengan nomor game week yang dipilih di atas), salin semua teksnya, lalu tempel di bawah.</div>
             <label class="field-label" style="margin-top:12px;display:block;">Tempel JSON di sini</label>
             <textarea id="h2h-json-input" placeholder='{"has_next":false,"page":1,"results":[...]}'></textarea>
             <div class="btn-row">
@@ -1019,9 +1077,9 @@ const N_GW = 38;
 const STORAGE_KEY = "liga-kopi-2026-27-v2";
 const BADGE_COLORS = ["#37003C","#00707A","#A3003B","#5A3E85","#0B5F3A","#8A4B00","#3D3D8F","#7A1F3D"];
 
-const DEFAULT_TEAMS = ["PSGR","faishal's Team","Tianlala","Kamileung FC","Change Name","jowwwtim","kokorobet FC","helmoni fc","ARFantasy","CIMSEL UNITED","Alunos 2.0","Grindboys","JosJis FC","Gurandilepce","komodomodol FC","Olahlah Fc","Katapang_Pride","Kontol FC","Maung FC","Bubble Gummy","DOBHAN FC","Brancos FC","Blink 182","theluckyone","PROJECT ALMANAC","Backlight FC","Welldone","SSB Fak Fak","Tarkam Fried Chicken"];
+const DEFAULT_TEAMS = ["PSGR","faishal's Team","Tianlala","Kamileung FC","Sedotan Aqua","jowwwtim","kokorobet FC","helmoni fc","ARFantasy","CIMSEL UNITED","Alunos 2.0","Grindboys","JosJis FC","Gurandilepce","komodomodol FC","Olahlah Fc","Katapang_Pride","Kontol FC","Maung FC","Bubble Gummy","DOBHAN FC","Brancos FC","Blink 182","theluckyone","PROJECT ALMANAC","Backlight FC","Welldone","SSB Fak Fak","Tarkam Fried Chicken"];
 
-const GW1_POINTS = {"PSGR":74,"Tianlala":64,"JosJis FC":64,"faishal's Team":62,"Kamileung FC":58,"Change Name":58,"jowwwtim":57,"helmoni fc":57,"kokorobet FC":57,"Alunos 2.0":54,"CIMSEL UNITED":54,"Kontol FC":54,"ARFantasy":54,"Olahlah Fc":53,"Grindboys":50,"Maung FC":48,"komodomodol FC":47,"Gurandilepce":47,"Katapang_Pride":46,"Bubble Gummy":45,"DOBHAN FC":42,"theluckyone":41,"Brancos FC":39,"Blink 182":37,"Backlight FC":35,"PROJECT ALMANAC":35};
+const GW1_POINTS = {"PSGR":74,"Tianlala":64,"JosJis FC":64,"faishal's Team":62,"Kamileung FC":58,"Sedotan Aqua":58,"jowwwtim":57,"helmoni fc":57,"kokorobet FC":57,"Alunos 2.0":54,"CIMSEL UNITED":54,"Kontol FC":54,"ARFantasy":54,"Olahlah Fc":53,"Grindboys":50,"Maung FC":48,"komodomodol FC":47,"Gurandilepce":47,"Katapang_Pride":46,"Bubble Gummy":45,"DOBHAN FC":42,"theluckyone":41,"Brancos FC":39,"Blink 182":37,"Backlight FC":35,"PROJECT ALMANAC":35};
 const CLUB_BADGES = {
   "PSGR":"https://fantasy.premierleague.com/gcs/plfpl-production-adobe-approved/plfpl-production/4473842/2f0c8738-abfe-4f50-8ba3-acf96524e206.png",
   "JosJis FC":"https://fantasy.premierleague.com/gcs/plfpl-production-adobe-approved/plfpl-production/7769856/84600082-051c-40d8-ae54-0bf23841a52b.png",
@@ -1032,16 +1090,20 @@ const CLUB_BADGES = {
   "Bubble Gummy":"https://fantasy.premierleague.com/gcs/plfpl-production-adobe-approved/plfpl-production/3844902/0dcdd86e-3859-4ee3-ae71-a62426bf3a1b.png",
   "DOBHAN FC":"https://fantasy.premierleague.com/gcs/plfpl-production-adobe-approved/plfpl-production/2772961/fdbdeaf5-644e-4e3a-92b5-9ef3bc405fda.png"
 };
-const DATA_VERSION = 8;
+const DATA_VERSION = 16;
+const KNOWN_ENTRY_IDS = { "Sedotan Aqua": 8198726 }; // dulu "Pending Moderation" -> "Change Name" -> "Sedotan Aqua", manager: Baltasario Saga
+const DEFAULT_CUSTOM_PROXY = "https://ligakopi.ikokrumah.workers.dev/?url=";
 const WELLDONE_GW1_POINTS = 110; // poin Welldone di GW1 (masuk total musim, tapi tidak dihitung sbg juara/kalah GW1 di menu Game Week)
-// GW2: dihitung dari (total resmi FPL - GW1 yang sudah tersimpan), agar Grand Total selalu presisi
-// sama dengan fantasy.premierleague.com/leagues/803630/standings/c meski GW1 sempat direvisi bonus poin.
+// GW1_POINTS di atas adalah data ASLI/BENAR (tidak direvisi). GW2 di bawah = poin mentah GW2 (event_total resmi FPL).
+// Kalau ada tim yang total-nya belum pas dengan link resmi, itu karena ada pengurangan poin transfer di GW2
+// yang belum diinput -- masukkan manual lewat Admin Mode -> Manual Point -> kolom "Kurang" untuk GW2.
+// Diperbarui via relay pribadi (ligakopi.ikokrumah.workers.dev).
 const GW2_POINTS = {
-  "Welldone":30, "JosJis FC":27, "PSGR":13, "jowwwtim":26, "CIMSEL UNITED":29, "Maung FC":33,
-  "Alunos 2.0":26, "ARFantasy":26, "Tianlala":15, "Bubble Gummy":31, "Grindboys":26, "Gurandilepce":26,
-  "komodomodol FC":26, "Change Name":13, "faishal's Team":9, "kokorobet FC":13, "theluckyone":28,
-  "helmoni fc":11, "Kamileung FC":7, "Olahlah Fc":10, "Kontol FC":7, "Katapang_Pride":13, "DOBHAN FC":9,
-  "PROJECT ALMANAC":13, "Blink 182":9, "Brancos FC":1, "Backlight FC":2, "SSB Fak Fak":28, "Tarkam Fried Chicken":18
+  "Welldone":30, "Grindboys":52, "JosJis FC":34, "CIMSEL UNITED":42, "PSGR":17, "Alunos 2.0":35,
+  "jowwwtim":32, "Tianlala":23, "faishal's Team":24, "Maung FC":37, "ARFantasy":31, "komodomodol FC":37,
+  "Kamileung FC":24, "Kontol FC":25, "helmoni fc":25, "Bubble Gummy":31, "Sedotan Aqua":17, "Gurandilepce":28,
+  "kokorobet FC":17, "theluckyone":32, "Olahlah Fc":19, "Backlight FC":32, "Katapang_Pride":17, "Brancos FC":21,
+  "DOBHAN FC":10, "SSB Fak Fak":52, "PROJECT ALMANAC":14, "Blink 182":14, "Tarkam Fried Chicken":24
 };
 
 const MANAGER_NAMES = {
@@ -1050,7 +1112,7 @@ const MANAGER_NAMES = {
   "faishal's Team":"Faishal Abyan", "Grindboys":"Ruby Wndr", "Gurandilepce":"Ferryan Reynaldi", "helmoni fc":"Isom Mutaqin",
   "JosJis FC":"Ignatius Aryo", "jowwwtim":"Anggi Suprayogi", "Kamileung FC":"Pipin Effendy", "Katapang_Pride":"Katapang Pride",
   "kokorobet FC":"Firan Firhan", "komodomodol FC":"Hafid Siddiq", "Kontol FC":"Diar Malik", "Maung FC":"Wahyudin Wahyudin",
-  "Olahlah Fc":"Miftahul Reza", "Change Name":"Baltasario Saga", "PROJECT ALMANAC":"Akbar Lazuardi",
+  "Olahlah Fc":"Miftahul Reza", "Sedotan Aqua":"Baltasario Saga", "PROJECT ALMANAC":"Akbar Lazuardi",
   "PSGR":"Rezi Hafiz", "theluckyone":"Lucky One", "Tianlala":"Agil Kusuma",
   "Welldone":"Wildan Pratama", "SSB Fak Fak":"Ilham Satria", "Tarkam Fried Chicken":"Irham Ulya"
 };
@@ -1074,7 +1136,7 @@ function buildDefaultState(){
     if(!scores[team]) scores[team] = {};
     scores[team][2] = { pts: GW2_POINTS[team], cost: 0, captain: 0, bench: 0 };
   });
-  return { teams: DEFAULT_TEAMS.slice(), scores, managers, clubBadges:Object.assign({}, CLUB_BADGES), h2h:{}, nextDeadline:null, lastUpdated: new Date().toISOString(), dataVersion: DATA_VERSION };
+  return { teams: DEFAULT_TEAMS.slice(), scores, managers, clubBadges:Object.assign({}, CLUB_BADGES), entryMap:Object.assign({}, Object.fromEntries(Object.entries(KNOWN_ENTRY_IDS).map(([t,id])=>[id,t]))), h2h:{}, nextDeadline:null, customProxyBase: DEFAULT_CUSTOM_PROXY, autoRefresh:true, lastUpdated: new Date().toISOString(), dataVersion: DATA_VERSION };
 }
 
 let state = null;
@@ -1091,6 +1153,7 @@ async function loadState(){
       if(!state.managers) state.managers = {};
       if(!state.clubBadges) state.clubBadges = {};
       if(!state.h2h) state.h2h = {};
+      if(!state.entryMap) state.entryMap = {};
       if(!state.dataVersion || state.dataVersion < DATA_VERSION){
         const oldIdx = state.teams.indexOf('Pending Moderation');
         if(oldIdx !== -1){
@@ -1134,6 +1197,30 @@ async function loadState(){
             bench: existingGw2 ? existingGw2.bench : 0
           };
           if(!state.teams.includes(team)) state.teams.push(team);
+        });
+        if(!state.customProxyBase){
+          state.customProxyBase = DEFAULT_CUSTOM_PROXY;
+        }
+        if(state.autoRefresh === undefined || state.autoRefresh === null){
+          state.autoRefresh = true;
+        }
+        // Pembersihan sekali jalan: hapus data GW3 yang mungkin sempat tersimpan keliru
+        // akibat bug deteksi GW (auto-refresh sempat salah menandai data GW2 sebagai GW3
+        // karena GW3 belum benar-benar dimainkan). Hanya berjalan sekali di migrasi ini.
+        state.teams.forEach(team=>{
+          if(state.scores[team] && state.scores[team][3]){
+            delete state.scores[team][3];
+          }
+        });
+        // Gabungkan duplikat tim yang sempat terjadi akibat rename tanpa ID entry
+        // (Pending Moderation -> Change Name -> Sedotan Aqua, manager: Baltasario Saga).
+        if(!state.entryMap) state.entryMap = {};
+        const dupNames = ["Pending Moderation", "Change Name"];
+        dupNames.forEach(oldName=>{
+          if(state.teams.includes(oldName)){ renameTeam(oldName, "Sedotan Aqua"); }
+        });
+        Object.keys(KNOWN_ENTRY_IDS).forEach(team=>{
+          if(state.teams.includes(team)) state.entryMap[KNOWN_ENTRY_IDS[team]] = team;
         });
         state.dataVersion = DATA_VERSION;
         await persist();
@@ -1470,7 +1557,7 @@ function renderGwTable(el, rows, gw){
       ? `<span class="rank-badge-medal medal-${r.rank}">${r.rank}</span>`
       : `<span class="rank-num">${r.rank}</span>`;
     body += `<tr class="${rowCls}">
-      <td data-label="Rank"><div class="rank-cell">${rankHtml}${trendHtml(r.rankDelta)}</div></td>
+      <td data-label="Rank"><div class="rank-cell">${rankHtml}</div></td>
       <td><div class="team-cell" style="cursor:pointer;" onclick="openTeamDetail('${escapeHtml(r.team).replace(/'/g,"\\'")}')">${teamBadgeHtml(r.team,32)}<div class="team-name-wrap"><span class="team-name">${escapeHtml(r.team)}</span><span class="team-manager">${escapeHtml(manager)}</span></div></div></td>
       <td class="num-cell" data-label="Poin">${r.pts}</td>
       <td class="deduct-cell" data-label="Kurang">${r.cost ? '-' + r.cost : '0'}</td>
@@ -1875,9 +1962,10 @@ function applyH2HJSON(parsed, gw){
 async function h2hTryAutoFetch(silent){
   const statusEl = document.getElementById('h2h-status');
   if(!silent) showStatus(statusEl,'info','Menghubungi FPL...');
-  let targetGW = selectedH2HGW || getMaxFilledGW() || 1;
-  const detected = await detectCurrentGW();
-  if(detected) targetGW = detected;
+  // Baca GW target dari dropdown Admin (sumber kebenaran utama), bukan dari GW yang
+  // sedang dilihat di tab publik -- supaya admin bisa sengaja pilih GW yang mau di-update.
+  const gwSelInput = document.getElementById('gw-select-h2h-input');
+  let targetGW = gwSelInput ? Number(gwSelInput.value) : (selectedH2HGW || getMaxFilledGW() || 1);
   const { data, attempts } = await fetchViaProxies(`https://fantasy.premierleague.com/api/leagues-h2h-matches/league/${H2H_LEAGUE_ID}/?page=1&event=${targetGW}`);
   if(!data){
     if(!silent) showStatus(statusEl,'err','Gagal lewat semua jalur otomatis (' + attempts.join(' · ') + '). Coba buka file HTML di luar Claude, atau pakai cara manual di bawah.');
@@ -2073,8 +2161,10 @@ function initH2HSubtabs(){
 
 function populateGwSelects(){
   const maxGW = getMaxFilledGW();
-  const suggested = Math.min(N_GW, maxGW + 1);
-  [document.getElementById('gw-select-input'), document.getElementById('gw-select-manual'), document.getElementById('gw-select-h2h-input')].forEach(sel=>{
+  // Default ke GW yang SEDANG berjalan/terakhir ada datanya (bukan GW berikutnya yang belum main),
+  // supaya konsisten dengan aturan "tidak pernah auto-maju ke GW baru" di seluruh aplikasi.
+  const suggested = Math.max(maxGW, 1);
+  [document.getElementById('gw-select-input'), document.getElementById('gw-select-json-input'), document.getElementById('gw-select-manual'), document.getElementById('gw-select-h2h-input')].forEach(sel=>{
     if(!sel) return;
     sel.innerHTML = '';
     for(let g=1; g<=N_GW; g++){
@@ -2167,17 +2257,51 @@ function findTeamMatch(entryName){
   return state.teams.find(t => norm(t) === target);
 }
 
+function renameTeam(oldName, newName){
+  if(oldName === newName || !oldName || !newName) return;
+  const idx = state.teams.indexOf(oldName);
+  const newAlreadyPresent = state.teams.includes(newName);
+  if(idx !== -1){
+    if(newAlreadyPresent){ state.teams.splice(idx, 1); }
+    else { state.teams[idx] = newName; }
+  }
+  if(state.scores[oldName]){
+    state.scores[newName] = Object.assign({}, state.scores[oldName], state.scores[newName]||{});
+    delete state.scores[oldName];
+  }
+  if(state.managers[oldName] !== undefined){
+    if(state.managers[newName] === undefined) state.managers[newName] = state.managers[oldName];
+    delete state.managers[oldName];
+  }
+  if(state.clubBadges && state.clubBadges[oldName]){
+    if(!state.clubBadges[newName]) state.clubBadges[newName] = state.clubBadges[oldName];
+    delete state.clubBadges[oldName];
+  }
+}
+
 function applyStandingsJSON(parsed, gw){
   const results = parsed && parsed.standings && parsed.standings.results;
   if(!Array.isArray(results) || !results.length) return null;
-  let matched = 0, added = 0;
+  if(!state.entryMap) state.entryMap = {};
+  let matched = 0, added = 0, renamed = 0;
   results.forEach(r=>{
     const name = r.entry_name;
     const pts = r.event_total;
+    const entryId = r.entry;
     if(name===undefined || pts===undefined) return;
-    let team = findTeamMatch(name);
+    let team = null;
+    // Primary key: ID entry FPL (permanen, tidak berubah walau nama tim diganti-ganti).
+    if(entryId!==undefined && state.entryMap[entryId] && state.teams.includes(state.entryMap[entryId])){
+      team = state.entryMap[entryId];
+      if(team !== name){ renameTeam(team, name); team = name; renamed++; }
+    }
+    if(!team){
+      // Fallback untuk tim lama yang belum punya ID entry tercatat: cocokkan lewat nama.
+      team = findTeamMatch(name);
+    }
     if(!team){ team = name; state.teams.push(team); state.scores[team] = {}; state.managers[team] = deriveManager(team); added++; }
     else matched++;
+    if(entryId!==undefined) state.entryMap[entryId] = team;
     if(r.club_badge_src){ if(!state.clubBadges) state.clubBadges = {}; state.clubBadges[team] = r.club_badge_src; }
     const existing = getEntry(team, gw);
     state.scores[team][gw] = {
@@ -2187,7 +2311,7 @@ function applyStandingsJSON(parsed, gw){
       bench: existing ? existing.bench : 0
     };
   });
-  return { matched, added };
+  return { matched, added, renamed };
 }
 
 function getActiveProxies(){
@@ -2231,7 +2355,11 @@ async function fetchViaProxies(targetUrl, timeoutMs=12000){
 async function detectCurrentGW(){
   const { data } = await fetchViaProxies('https://fantasy.premierleague.com/api/bootstrap-static/');
   if(!data || !Array.isArray(data.events)) return null;
-  const cur = data.events.find(e=>e.is_current) || data.events.find(e=>e.is_next);
+  // PENTING: jangan pernah pakai "is_next" (GW yang belum dimainkan) sebagai target.
+  // Data standings (event_total) selalu merujuk ke GW yang SEDANG berjalan atau yang
+  // TERAKHIR SELESAI dimainkan -- bukan GW berikutnya yang belum dimulai.
+  const cur = data.events.find(e=>e.is_current)
+    || data.events.slice().reverse().find(e=>e.finished);
   return cur ? cur.id : null;
 }
 
@@ -2253,14 +2381,14 @@ function renderDeadlineBanner(){
   const info = state.nextDeadline;
   if(!info || !info.deadline){ box.style.display='none'; if(deadlineTickTimer){clearInterval(deadlineTickTimer);deadlineTickTimer=null;} return; }
   const deadlineDate = new Date(info.deadline);
-  const dateStr = deadlineDate.toLocaleDateString('id-ID',{weekday:'short', day:'2-digit', month:'short'}) + ', ' + deadlineDate.toLocaleTimeString('id-ID',{hour:'2-digit',minute:'2-digit'});
+  const dateStr = deadlineDate.toLocaleDateString('id-ID',{weekday:'long', day:'2-digit', month:'long'}) + ' &middot; ' + deadlineDate.toLocaleTimeString('id-ID',{hour:'2-digit',minute:'2-digit'}) + ' WIB';
   box.style.display = 'flex';
   box.innerHTML = `
     <div class="deadline-left">
-      <div class="deadline-label">&#9203; Deadline Berikutnya</div>
+      <div class="deadline-label"><span class="deadline-pulse-dot"></span>Deadline Berikutnya</div>
       <div class="deadline-event">${escapeHtml(info.name)}</div>
       <div class="deadline-date">${dateStr}</div>
-      <a class="deadline-link link-inline" href="https://fantasy.premierleague.com/en/transfers" target="_blank" rel="noopener">Buka Transfers &#8599;</a>
+      <a class="deadline-cta" href="https://fantasy.premierleague.com/en/transfers" target="_blank" rel="noopener">&#9889; Atur Tim Sekarang</a>
     </div>
     <div class="deadline-countdown" id="deadline-countdown-units"></div>
   `;
@@ -2271,26 +2399,28 @@ function renderDeadlineBanner(){
     const unitsBox = document.getElementById('deadline-countdown-units');
     if(!unitsBox) { clearInterval(deadlineTickTimer); deadlineTickTimer=null; return; }
     if(diff <= 0){
-      unitsBox.innerHTML = `<div class="deadline-unit"><div class="num" style="color:var(--pink);font-size:14px;">DEADLINE<br>LEWAT</div></div>`;
+      unitsBox.innerHTML = `<div class="deadline-unit"><div class="num" style="font-size:15px;">DEADLINE<br>LEWAT</div></div>`;
+      box.classList.add('urgent');
       clearInterval(deadlineTickTimer); deadlineTickTimer=null;
       return;
     }
+    box.classList.toggle('urgent', diff < 24*3600000);
     const d = Math.floor(diff/86400000); diff -= d*86400000;
     const h = Math.floor(diff/3600000); diff -= h*3600000;
     const m = Math.floor(diff/60000); diff -= m*60000;
     const s = Math.floor(diff/1000);
     unitsBox.innerHTML = [
-      {v:d,l:'Hari'}, {v:h,l:'Jam'}, {v:m,l:'Menit'}, {v:s,l:'Detik'}
-    ].map(u=>`<div class="deadline-unit"><div class="num">${String(u.v).padStart(2,'0')}</div><div class="lbl">${u.l}</div></div>`).join('');
+      {v:d,l:'Hari'}, {v:h,l:'Jam'}, {v:m,l:'Menit'}, {v:s,l:'Detik',cls:'seconds'}
+    ].map(u=>`<div class="deadline-unit ${u.cls||''}"><div class="num">${String(u.v).padStart(2,'0')}</div><div class="lbl">${u.l}</div></div>`).join('');
   };
   tick();
   deadlineTickTimer = setInterval(tick, 1000);
 }
 
 async function processJsonPaste(){
-  const statusEl = document.getElementById('update-status');
+  const statusEl = document.getElementById('json-manual-status');
   const raw = document.getElementById('json-input').value.trim();
-  const gw = Number(document.getElementById('gw-select-input').value);
+  const gw = Number(document.getElementById('gw-select-json-input').value);
   if(!raw){ showStatus(statusEl,'err','Tempel dulu data JSON dari API resmi FPL.'); return; }
   let parsed;
   try{ parsed = JSON.parse(raw); }
@@ -2299,7 +2429,7 @@ async function processJsonPaste(){
   if(!result){ showStatus(statusEl,'err','Struktur JSON tidak dikenali. Cek apakah link yang dibuka benar.'); return; }
 
   await persist();
-  const msg = `GW ${gw}: ${result.matched} tim cocok${result.added? ', ' + result.added + ' tim baru ditambahkan' : ''}.`;
+  const msg = `GW ${gw}: ${result.matched} tim cocok${result.added? ', ' + result.added + ' tim baru ditambahkan' : ''}${result.renamed? ', ' + result.renamed + ' tim di-rename otomatis' : ''}.`;
   showStatus(statusEl,'ok', msg + ' Cek/sesuaikan pengurangan poin di panel manual jika perlu.');
   showToast('Data berhasil disimpan', msg, 'ok');
   document.getElementById('json-input').value = '';
@@ -2314,10 +2444,10 @@ async function tryAutoFetch(silent){
     if(!silent) showStatus(statusEl,'err','Gagal lewat semua jalur otomatis (' + attempts.join(' · ') + '). Ini kemungkinan karena environment preview di Claude membatasi koneksi keluar ke domain luar. Coba buka file HTML yang sudah kamu unduh langsung di browser (Chrome/Edge) di luar Claude, atau pakai "Cara manual" di bawah.');
     return false;
   }
-  let targetGW = getMaxFilledGW() + 1;
-  if(targetGW < 1) targetGW = 1;
-  const detected = await detectCurrentGW();
-  if(detected) targetGW = detected;
+  // PENTING: auto-refresh HANYA memperbarui game week yang sudah punya data (refresh live score),
+  // TIDAK PERNAH otomatis maju ke game week baru -- itu harus dipilih manual oleh admin lewat
+  // dropdown GW di bawah, supaya tidak ada game week yang belum dimainkan tapi sudah terisi data.
+  let targetGW = getMaxFilledGW() || 1;
   const gwInputSel = document.getElementById('gw-select-input');
   if(gwInputSel) gwInputSel.value = targetGW;
   const result = applyStandingsJSON(data, targetGW);
@@ -2326,7 +2456,7 @@ async function tryAutoFetch(silent){
     return false;
   }
   await persist();
-  if(!silent) showStatus(statusEl,'ok', `Berhasil! GW ${targetGW} diperbarui: ${result.matched} tim cocok${result.added? ', ' + result.added + ' baru' : ''}.`);
+  if(!silent) showStatus(statusEl,'ok', `Berhasil! GW ${targetGW} diperbarui: ${result.matched} tim cocok${result.added? ', ' + result.added + ' baru' : ''}${result.renamed? ', ' + result.renamed + ' di-rename' : ''}.`);
   renderAll(); populateGwSelects();
   return true;
 }
@@ -2443,6 +2573,45 @@ async function savePin(){
   showStatus(statusEl,'ok', val ? 'PIN disimpan. Admin Mode akan minta PIN ini mulai sesi berikutnya.' : 'PIN dihapus. Admin Mode bisa dibuka tanpa PIN.');
 }
 
+function downloadBackup(){
+  const statusEl = document.getElementById('backup-status');
+  try{
+    const blob = new Blob([JSON.stringify(state, null, 2)], { type: 'application/json' });
+    const url = URL.createObjectURL(blob);
+    const a = document.createElement('a');
+    const dateStr = new Date().toISOString().slice(0,10);
+    a.href = url;
+    a.download = `coffee-juice-league-backup-${dateStr}.json`;
+    document.body.appendChild(a);
+    a.click();
+    document.body.removeChild(a);
+    URL.revokeObjectURL(url);
+    showStatus(statusEl,'ok','Backup berhasil diunduh.');
+    showToast('Backup diunduh', `File coffee-juice-league-backup-${dateStr}.json tersimpan di folder Downloads.`, 'ok');
+  }catch(e){
+    showStatus(statusEl,'err','Gagal membuat file backup: ' + e.message);
+  }
+}
+
+async function restoreBackup(){
+  const statusEl = document.getElementById('backup-status');
+  const raw = document.getElementById('restore-input').value.trim();
+  if(!raw){ showStatus(statusEl,'err','Tempel dulu isi file backup JSON.'); return; }
+  let parsed;
+  try{ parsed = JSON.parse(raw); }
+  catch(e){ showStatus(statusEl,'err','Format JSON tidak valid.'); return; }
+  if(!parsed.teams || !parsed.scores){ showStatus(statusEl,'err','File ini tidak terlihat seperti backup Coffee & Juice League yang valid.'); return; }
+  if(!confirm('Ini akan MENIMPA semua data saat ini dengan isi backup. Yakin lanjutkan?')) return;
+  state = parsed;
+  state.dataVersion = DATA_VERSION;
+  await persist();
+  showStatus(statusEl,'ok','Data berhasil dipulihkan dari backup.');
+  showToast('Data dipulihkan', 'Semua data berhasil dikembalikan dari file backup.', 'ok');
+  document.getElementById('restore-input').value = '';
+  renderAll();
+  renderValidationReport();
+}
+
 function renderValidationReport(){
   const box = document.getElementById('validation-report');
   const maxGW = getMaxFilledGW();
@@ -2540,6 +2709,7 @@ async function init(){
   await loadState();
   selectedWeeklyGW = getMaxFilledGW() || 1;
   initTabs();
+  initH2HSubtabs();
   renderAll();
   renderTrendToggles();
   populateGwSelects();
@@ -2555,6 +2725,8 @@ async function init(){
   document.getElementById('chk-auto-refresh').onchange = toggleAutoRefresh;
   document.getElementById('btn-save-pin').onclick = savePin;
   document.getElementById('btn-save-proxy').onclick = saveCustomProxy;
+  document.getElementById('btn-backup-download').onclick = downloadBackup;
+  document.getElementById('btn-backup-restore').onclick = restoreBackup;
   document.getElementById('btn-h2h-autotry').onclick = ()=> h2hTryAutoFetch(false);
   document.getElementById('btn-h2h-process').onclick = h2hProcessJsonPaste;
   document.getElementById('btn-h2h-clear').onclick = ()=>{ document.getElementById('h2h-json-input').value=''; };
