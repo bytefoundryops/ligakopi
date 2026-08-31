@@ -48,7 +48,7 @@
   --line-strong:#D9D2E8;
   --text:#37003C;
   --text-2:#63607A;
-  --text-mute:#9694A6;
+  --text-mute:#756F82;
   --font:'Inter', sans-serif;
   --mono:'JetBrains Mono', monospace;
   --glow-1:rgba(55,0,60,0.045);
@@ -172,7 +172,7 @@ h1{font-size:24px;font-weight:800;margin:0;letter-spacing:-0.01em;color:var(--pu
 .stat-card .pts-big span{font-size:13px;font-weight:600;color:var(--text-mute);margin-left:5px;font-family:var(--font);}
 .stat-card.win .pts-big{color:var(--green-ink);}
 .stat-card.low .pts-big{color:var(--pink-ink);}
-.stat-card .team-line{font-size:17px;font-weight:800;color:var(--purple);margin:8px 0 1px;}
+.stat-card .team-line{font-size:17px;font-weight:800;color:var(--purple);margin:8px 0 1px;overflow-wrap:break-word;word-break:break-word;}
 .stat-card .manager-line{font-size:12.5px;color:var(--text-mute);font-weight:600;margin-bottom:12px;}
 .stat-card .tie-note{font-size:10.5px;color:var(--text-mute);font-style:italic;margin-top:10px;}
 .stat-card.champ .team-line, .stat-card.bottom .team-line{color:#fff;}
@@ -282,7 +282,7 @@ tbody tr.top1 td:first-child, tbody tr.top2 td:first-child, tbody tr.top3 td:fir
   box-shadow:0 1px 3px rgba(0,0,0,0.15);
 }
 .team-name-wrap{display:flex;flex-direction:column;gap:1px;line-height:1.2;}
-.team-name{color:var(--purple);font-weight:700;}
+.team-name{color:var(--purple);font-weight:700;overflow-wrap:break-word;word-break:break-word;}
 .team-manager{color:var(--text-mute);font-size:11px;font-weight:500;}
 .pts-cell{font-family:var(--mono);font-weight:800;text-align:right;font-variant-numeric:tabular-nums;color:var(--purple);}
 .num-cell{font-family:var(--mono);text-align:right;font-variant-numeric:tabular-nums;color:var(--text-2);}
@@ -406,6 +406,130 @@ select:focus, textarea:focus, input:focus{border-color:var(--purple);}
 .penalty-text{font-size:14.5px;color:var(--text);line-height:1.6;}
 .penalty-text strong{color:var(--pink-ink);}
 
+/* ================= PRIZE PAGE 2.0 — powerful edition ================= */
+.prize-hero{
+  position:relative;overflow:hidden;border-radius:24px;padding:38px 34px;margin-bottom:26px;
+  background:linear-gradient(125deg, #1A0A2E 0%, var(--purple) 45%, #3A0A4A 75%, #1A0A2E 100%);
+  box-shadow:0 20px 50px rgba(55,0,60,0.3), inset 0 1px 0 rgba(255,255,255,0.06);
+  text-align:center;
+}
+.prize-hero::before{
+  content:'';position:absolute;top:-90px;left:-60px;width:320px;height:320px;border-radius:50%;
+  background:radial-gradient(circle, rgba(255,215,80,0.28), transparent 70%);pointer-events:none;
+  animation:prizeGlowA 7s ease-in-out infinite;
+}
+.prize-hero::after{
+  content:'';position:absolute;bottom:-100px;right:-60px;width:340px;height:340px;border-radius:50%;
+  background:radial-gradient(circle, rgba(0,255,135,0.22), transparent 70%);pointer-events:none;
+  animation:prizeGlowB 8s ease-in-out infinite;
+}
+@keyframes prizeGlowA{0%,100%{opacity:0.9;transform:scale(1);}50%{opacity:0.5;transform:scale(1.15);}}
+@keyframes prizeGlowB{0%,100%{opacity:0.7;transform:scale(1.05);}50%{opacity:1;transform:scale(0.9);}}
+.prize-hero-icon{font-size:44px;position:relative;z-index:1;filter:drop-shadow(0 6px 16px rgba(255,215,80,0.5));animation:trophyFloat 3s ease-in-out infinite;}
+@keyframes trophyFloat{0%,100%{transform:translateY(0) rotate(-3deg);}50%{transform:translateY(-8px) rotate(3deg);}}
+.prize-hero-title{position:relative;z-index:1;font-size:28px;font-weight:900;color:#fff;margin:12px 0 4px;letter-spacing:-0.01em;}
+.prize-hero-sub{position:relative;z-index:1;font-size:13px;color:rgba(255,255,255,0.65);margin-bottom:22px;}
+.prize-total-strip{position:relative;z-index:1;display:inline-flex;align-items:baseline;gap:10px;background:rgba(0,0,0,0.3);border:1px solid rgba(255,215,80,0.35);border-radius:14px;padding:14px 26px;}
+.prize-total-strip .lbl{font-family:var(--mono);font-size:10.5px;font-weight:700;text-transform:uppercase;letter-spacing:.1em;color:rgba(255,255,255,0.6);}
+.prize-total-strip .amt{font-family:var(--mono);font-weight:900;font-size:30px;color:#FFD650;text-shadow:0 0 20px rgba(255,214,80,0.5);}
+
+.vs-card{
+  display:grid;grid-template-columns:1fr auto 1fr;align-items:center;gap:18px;
+  border-radius:18px;padding:24px 26px;margin-bottom:26px;position:relative;overflow:hidden;
+  background:linear-gradient(120deg, rgba(233,0,82,0.06) 0%, var(--card) 45%, rgba(0,168,89,0.07) 100%);
+  border:1px solid var(--line);box-shadow:0 8px 24px rgba(55,0,60,0.06);
+}
+.vs-side{text-align:center;}
+.vs-side .vs-icon{font-size:32px;margin-bottom:8px;}
+.vs-side .vs-lbl{font-size:11px;font-weight:800;text-transform:uppercase;letter-spacing:.06em;margin-bottom:4px;}
+.vs-side.lose .vs-lbl{color:var(--pink-ink);}
+.vs-side.win .vs-lbl{color:var(--green-ink);}
+.vs-side .vs-desc{font-size:12.5px;color:var(--text-2);line-height:1.5;}
+.vs-badge{
+  font-family:var(--mono);font-weight:900;font-size:15px;color:var(--purple);
+  background:var(--purple-tint);border:1px solid var(--purple-line);border-radius:50%;
+  width:52px;height:52px;display:flex;align-items:center;justify-content:center;
+}
+
+.section-heading{position:relative;}
+.section-heading .icon-badge{transition:transform .2s ease;}
+.section-heading:hover .icon-badge{transform:scale(1.1) rotate(-6deg);}
+
+.podium-wrap{display:grid;grid-template-columns:1fr 1.15fr 1fr;gap:14px;align-items:end;margin-bottom:28px;}
+.podium-card{
+  position:relative;overflow:hidden;border-radius:18px;padding:24px 18px 22px;text-align:center;
+  box-shadow:0 10px 28px rgba(55,0,60,0.08);transition:transform .25s cubic-bezier(.22,1,.36,1);
+}
+.podium-card:hover{transform:translateY(-6px);}
+.podium-card .rank-crown{font-size:22px;margin-bottom:6px;}
+.podium-card .tier-lbl{font-size:10.5px;font-weight:800;text-transform:uppercase;letter-spacing:.07em;margin-bottom:8px;opacity:0.85;}
+.podium-card .tier-name{font-size:13.5px;font-weight:700;margin-bottom:14px;line-height:1.35;}
+.podium-card .tier-amount{font-family:var(--mono);font-weight:900;font-variant-numeric:tabular-nums;}
+.podium-card.rank2{background:linear-gradient(165deg, rgba(139,92,246,0.14), var(--card) 60%);border:1px solid var(--purple-line);padding-top:20px;}
+.podium-card.rank2 .tier-lbl{color:var(--purple);}
+.podium-card.rank2 .tier-amount{font-size:26px;color:var(--purple);}
+.podium-card.rank1{
+  background:linear-gradient(165deg, rgba(255,215,80,0.22), var(--card) 62%);
+  border:2px solid #F0D27A;padding-top:30px;padding-bottom:30px;
+  box-shadow:0 16px 36px rgba(184,144,30,0.22), 0 0 0 6px rgba(240,210,122,0.10);
+}
+.podium-card.rank1::before{
+  content:'';position:absolute;top:-40px;left:50%;transform:translateX(-50%);width:160px;height:160px;border-radius:50%;
+  background:radial-gradient(circle, rgba(255,215,80,0.35), transparent 70%);pointer-events:none;
+}
+.podium-card.rank1 .tier-lbl{color:#B8901E;position:relative;}
+.podium-card.rank1 .tier-amount{font-size:32px;color:#B8901E;position:relative;text-shadow:0 0 18px rgba(184,144,30,0.35);}
+.podium-card.rank1 .rank-crown{font-size:30px;position:relative;animation:crownPulse 2.4s ease-in-out infinite;}
+@keyframes crownPulse{0%,100%{transform:scale(1) rotate(0deg);}50%{transform:scale(1.14) rotate(-4deg);}}
+.podium-card.rank3{background:linear-gradient(165deg, rgba(0,168,89,0.10), var(--card) 60%);border:1px solid #BFEFD6;padding-top:20px;}
+.podium-card.rank3 .tier-lbl{color:var(--green-ink);}
+.podium-card.rank3 .tier-amount{font-size:26px;color:var(--green-ink);}
+.podium-base{
+  font-family:var(--mono);font-weight:800;font-size:11px;color:rgba(255,255,255,0.85);
+  background:var(--purple);border-radius:8px;padding:4px 0;margin-top:14px;letter-spacing:.05em;
+}
+.podium-card.rank1 .podium-base{background:linear-gradient(90deg,#B8901E,#F0D27A);color:#3D2F13;}
+.podium-card.rank3 .podium-base{background:linear-gradient(90deg,var(--green-ink),#3DBE7E);}
+
+.penalty-card-v2{
+  display:flex;align-items:center;gap:20px;border-radius:20px;padding:26px 28px;margin-top:24px;
+  position:relative;overflow:hidden;
+  background:linear-gradient(120deg, #2E0A0A 0%, #7A0038 60%, #3A0A1E 100%);
+  box-shadow:0 16px 40px rgba(122,0,56,0.28);
+}
+.penalty-card-v2::before{
+  content:'';position:absolute;top:-50px;right:-30px;width:220px;height:220px;border-radius:50%;
+  background:radial-gradient(circle, rgba(255,45,120,0.3), transparent 70%);pointer-events:none;
+  animation:prizeGlowA 6s ease-in-out infinite;
+}
+.penalty-icon-v2{
+  font-size:36px;flex:0 0 auto;width:66px;height:66px;border-radius:16px;position:relative;z-index:1;
+  background:rgba(255,255,255,0.12);display:flex;align-items:center;justify-content:center;
+  animation:shakeIcon 2.6s ease-in-out infinite;
+}
+@keyframes shakeIcon{0%,90%,100%{transform:rotate(0deg);}92%{transform:rotate(-8deg);}94%{transform:rotate(8deg);}96%{transform:rotate(-6deg);}98%{transform:rotate(6deg);}}
+.penalty-text-v2{position:relative;z-index:1;font-size:14.5px;color:#fff;line-height:1.65;}
+.penalty-text-v2 strong{color:#FF9EB8;font-weight:800;}
+.penalty-badge{
+  display:inline-block;margin-top:10px;font-family:var(--mono);font-weight:800;font-size:11px;
+  background:rgba(255,255,255,0.14);border:1px solid rgba(255,255,255,0.25);border-radius:20px;
+  padding:5px 14px;color:#fff;letter-spacing:.05em;
+}
+@media (max-width:640px){
+  .podium-wrap{grid-template-columns:1fr;gap:12px;}
+  .podium-card.rank1{order:-1;}
+  .prize-hero{padding:28px 22px;}
+  .prize-hero-title{font-size:22px;}
+  .vs-card{grid-template-columns:1fr;text-align:center;}
+  .vs-badge{margin:0 auto;}
+  .penalty-card-v2{flex-direction:column;text-align:center;padding:22px 20px;}
+  .rule-card{padding:16px;gap:12px;}
+  .rule-card h4{font-size:13.5px;}
+  .h2h-filter-row{flex-direction:column;align-items:stretch;}
+  .h2h-filter-row select{width:100%;}
+}
+
+
 .spec-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(150px,1fr));gap:12px;margin-bottom:8px;}
 .spec-item{background:var(--card);border:1px solid var(--line);border-radius:14px;padding:16px 18px;display:flex;align-items:center;gap:12px;}
 .spec-item .spec-icon{font-size:20px;flex:0 0 auto;width:40px;height:40px;border-radius:10px;background:var(--purple-tint);display:flex;align-items:center;justify-content:center;}
@@ -432,6 +556,77 @@ select:focus, textarea:focus, input:focus{border-color:var(--purple);}
 .rule-callout .rc-icon{font-size:18px;flex:0 0 auto;}
 .rule-callout .rc-text{font-size:12.5px;color:var(--text-2);line-height:1.6;}
 .rule-callout .rc-text strong{color:var(--pink-ink);}
+
+/* ================= Coffee Debt Tracker ================= */
+.debt-summary-strip{
+  display:flex;align-items:center;justify-content:space-between;gap:16px;flex-wrap:wrap;
+  background:linear-gradient(120deg, rgba(233,0,82,0.07), var(--surface) 60%);
+  border:1px solid #F4C6D6;border-radius:16px;padding:18px 22px;margin-bottom:20px;
+}
+.debt-summary-strip .ds-item{text-align:center;}
+.debt-summary-strip .ds-num{font-family:var(--mono);font-weight:900;font-size:26px;color:var(--pink-ink);}
+.debt-summary-strip .ds-num.ok{color:var(--green-ink);}
+.debt-summary-strip .ds-lbl{font-size:10px;font-weight:700;text-transform:uppercase;letter-spacing:.06em;color:var(--text-mute);margin-top:2px;}
+.debt-list{display:flex;flex-direction:column;gap:10px;}
+.debt-row{
+  display:grid;grid-template-columns:56px 1fr auto 1fr auto;align-items:center;gap:12px;
+  background:var(--card);border:1px solid var(--line);border-radius:14px;padding:14px 18px;
+  transition:transform .15s ease;
+}
+.debt-row:hover{transform:translateX(2px);}
+.debt-row.unpaid{border-color:#F4C6D6;background:linear-gradient(90deg, rgba(233,0,82,0.04), var(--card) 30%);}
+.debt-row.paid{opacity:0.72;}
+.debt-gw{font-family:var(--mono);font-weight:800;font-size:13px;color:var(--purple);}
+.debt-side{display:flex;align-items:center;gap:8px;}
+.debt-side .lbl{font-size:9px;font-weight:700;text-transform:uppercase;color:var(--text-mute);display:block;}
+.debt-side .name{font-size:13px;font-weight:700;color:var(--purple);}
+.debt-arrow{font-size:16px;color:var(--text-mute);text-align:center;}
+.debt-status{
+  font-family:var(--mono);font-size:10.5px;font-weight:800;padding:6px 12px;border-radius:20px;text-align:center;
+  white-space:nowrap;
+}
+.debt-status.unpaid{background:rgba(233,0,82,0.12);color:var(--pink-ink);}
+.debt-status.paid{background:rgba(0,168,89,0.12);color:var(--green-ink);}
+.debt-toggle-btn{
+  font-family:var(--mono);font-size:10.5px;font-weight:800;padding:8px 14px;border-radius:10px;border:none;cursor:pointer;
+  transition:transform .12s ease;
+}
+.debt-toggle-btn:active{transform:scale(0.94);}
+.debt-toggle-btn.mark-paid{background:var(--green-ink);color:#fff;}
+.debt-toggle-btn.mark-unpaid{background:var(--surface);color:var(--pink-ink);border:1px solid #F4C6D6;}
+@media (max-width:640px){
+  .debt-row{grid-template-columns:1fr;text-align:center;gap:6px;}
+  .debt-side{flex-direction:column;gap:2px;}
+  .debt-arrow{display:none;}
+}
+
+/* ================= Audit Log ================= */
+.audit-timeline{position:relative;padding-left:8px;}
+.audit-item{position:relative;padding:14px 0 14px 30px;border-left:2px solid var(--line);}
+.audit-item:last-child{border-left-color:transparent;}
+.audit-item::before{
+  content:'';position:absolute;left:-7px;top:16px;width:12px;height:12px;border-radius:50%;
+  background:var(--green-ink);border:2px solid var(--bg);
+}
+.audit-item.warn::before{background:#D97706;}
+.audit-item.err::before{background:var(--pink-ink);}
+.audit-item .audit-head{display:flex;align-items:center;gap:8px;flex-wrap:wrap;margin-bottom:3px;}
+.audit-item .audit-action{font-weight:800;font-size:13px;color:var(--purple);}
+.audit-item .audit-time{font-family:var(--mono);font-size:10.5px;color:var(--text-mute);}
+.audit-item .audit-detail{font-size:12.5px;color:var(--text-2);line-height:1.5;}
+.audit-badge{font-family:var(--mono);font-size:9px;font-weight:800;padding:2px 8px;border-radius:10px;text-transform:uppercase;}
+.audit-badge.ok{background:rgba(0,168,89,0.12);color:var(--green-ink);}
+.audit-badge.warn{background:rgba(217,119,6,0.14);color:#B45309;}
+.audit-badge.err{background:rgba(233,0,82,0.12);color:var(--pink-ink);}
+
+/* ================= Deadline notification button ================= */
+.notif-btn{
+  font-family:var(--mono);font-size:11px;font-weight:700;
+  background:rgba(255,255,255,0.12);border:1px solid rgba(255,255,255,0.25);color:#fff;
+  border-radius:9px;padding:8px 14px;cursor:pointer;margin-top:12px;transition:background .15s ease;
+}
+.notif-btn:hover{background:rgba(255,255,255,0.2);}
+.notif-btn.active{background:rgba(0,255,135,0.2);border-color:rgba(0,255,135,0.4);}
 
 footer{text-align:center;padding:30px 20px 8px;font-family:var(--mono);font-size:11px;color:var(--text-mute);}
 
@@ -663,6 +858,8 @@ footer{text-align:center;padding:30px 20px 8px;font-family:var(--mono);font-size
       <button class="tab-btn admin-tab" data-admintab="manager">Manager Mapping</button>
       <button class="tab-btn admin-tab" data-admintab="validation">Data Validation</button>
       <button class="tab-btn admin-tab" data-admintab="h2hadmin">Head to Head</button>
+      <button class="tab-btn admin-tab" data-admintab="coffeedebt">Utang Kopi</button>
+      <button class="tab-btn admin-tab" data-admintab="auditlog">Audit Log</button>
       <button class="tab-btn" id="btn-exit-admin" style="margin-left:auto;color:var(--pink);">&#8592; Mode Publik</button>
     </div>
   </div>
@@ -767,6 +964,10 @@ footer{text-align:center;padding:30px 20px 8px;font-family:var(--mono);font-size
 
     <div class="h2h-subview" id="h2h-sub-standings">
       <div class="card">
+        <div class="card-head">
+          <h2>Klasemen Head to Head</h2>
+          <input class="search-box" id="h2h-standings-search" type="text" placeholder="Cari tim atau manager...">
+        </div>
         <div class="table-scroll"><table id="h2h-standings-table"></table></div>
       </div>
     </div>
@@ -781,18 +982,27 @@ footer{text-align:center;padding:30px 20px 8px;font-family:var(--mono);font-size
   </div>
 
   <div class="view" id="view-prize">
-    <div class="page-hero">
-      <div class="page-hero-icon">&#127942;</div>
-      <div>
-        <h2 class="page-hero-title">Prize Pool &amp; Ketentuan Hadiah</h2>
-        <p class="page-hero-sub">Coffee &amp; Juice League Divisi IT &mdash; musim 2026/27</p>
+    <div class="prize-hero">
+      <div class="prize-hero-icon">&#127942;</div>
+      <div class="prize-hero-title">Prize Pool &amp; Ketentuan Hadiah</div>
+      <div class="prize-hero-sub">Coffee &amp; Juice League Divisi IT &mdash; Musim 2026/27</div>
+      <div class="prize-total-strip">
+        <span class="lbl">Total Hadiah Musiman</span>
+        <span class="amt">Rp1.280.000</span>
       </div>
     </div>
 
-    <div class="weekly-rule-card">
-      <div class="weekly-rule-icon">&#9749;</div>
-      <div class="weekly-rule-text">
-        <strong>Aturan tiap Game Week:</strong> tim yang kalah di Game Week tersebut wajib mentraktir kopi atau jus kepada tim yang menjadi juara minggu itu.
+    <div class="vs-card">
+      <div class="vs-side lose">
+        <div class="vs-icon">&#128557;</div>
+        <div class="vs-lbl">Tim Kalah GW</div>
+        <div class="vs-desc">Wajib mentraktir kopi atau jus</div>
+      </div>
+      <div class="vs-badge">VS</div>
+      <div class="vs-side win">
+        <div class="vs-icon">&#127942;</div>
+        <div class="vs-lbl">Tim Juara GW</div>
+        <div class="vs-desc">Berhak ditraktir minggu itu</div>
       </div>
     </div>
 
@@ -803,9 +1013,9 @@ footer{text-align:center;padding:30px 20px 8px;font-family:var(--mono);font-size
         <p>Berlaku untuk Game Week 1 sampai Game Week 8</p>
       </div>
     </div>
-    <div class="prize-grid" style="margin-bottom:26px;">
-      <div class="prize-card">
-        <div class="tier-icon">&#127942;</div>
+    <div class="prize-grid" style="margin-bottom:30px;">
+      <div class="prize-card gold">
+        <div class="tier-icon">&#9917;</div>
         <div class="tier-lbl">Juara GW1 &ndash; GW8</div>
         <div class="tier-name">Tambahan hadiah tiap minggu</div>
         <div class="tier-amount">Rp50.000</div>
@@ -815,47 +1025,51 @@ footer{text-align:center;padding:30px 20px 8px;font-family:var(--mono);font-size
     <div class="section-heading">
       <div class="icon-badge">&#127942;</div>
       <div>
-        <h3>Hadiah Musiman &mdash; Classic League</h3>
-        <p>Coffee &amp; Juice League</p>
+        <h3>Hadiah Musiman</h3>
+        <p>Classic League &amp; Head to Head League</p>
       </div>
     </div>
-    <div class="prize-grid" style="margin-bottom:26px;">
-      <div class="prize-card silver">
-        <div class="tier-icon">&#129352;</div>
-        <div class="tier-lbl">Juara Paruh Musim</div>
-        <div class="tier-name">Classic &mdash; Coffee &amp; Juice League</div>
+    <div class="podium-wrap">
+      <div class="podium-card rank2">
+        <div class="rank-crown">&#129352;</div>
+        <div class="tier-lbl">Paruh Musim</div>
+        <div class="tier-name">Classic League</div>
         <div class="tier-amount">Rp250.000</div>
+        <div class="podium-base">JUARA TENGAH MUSIM</div>
       </div>
-      <div class="prize-card gold">
-        <div class="tier-icon">&#127942;</div>
-        <div class="tier-lbl">Juara Akhir Musim</div>
-        <div class="tier-name">Classic &mdash; Coffee &amp; Juice League</div>
+      <div class="podium-card rank1">
+        <div class="rank-crown">&#127942;</div>
+        <div class="tier-lbl">Akhir Musim</div>
+        <div class="tier-name">Classic League<br>Coffee &amp; Juice League</div>
         <div class="tier-amount">Rp750.000</div>
+        <div class="podium-base">JUARA UTAMA MUSIM</div>
+      </div>
+      <div class="podium-card rank3">
+        <div class="rank-crown">&#9876;&#65039;</div>
+        <div class="tier-lbl">Akhir Musim</div>
+        <div class="tier-name">Head to Head League</div>
+        <div class="tier-amount">Rp280.000</div>
+        <div class="podium-base">JUARA H2H</div>
+      </div>
+    </div>
+
+    <div class="penalty-card-v2">
+      <div class="penalty-icon-v2">&#128170;</div>
+      <div class="penalty-text-v2">
+        <strong>Konsekuensi juru kunci:</strong> peringkat terakhir dan kedua terakhir di klasemen Head to Head League pada akhir musim wajib melakukan <strong>push up 30 kali</strong>, direkam video sebagai bukti.
+        <div class="penalty-badge">&#128064; Wajib Direkam</div>
       </div>
     </div>
 
     <div class="section-heading">
-      <div class="icon-badge">&#9876;&#65039;</div>
+      <div class="icon-badge">&#9749;</div>
       <div>
-        <h3>Hadiah Musiman &mdash; Head to Head League</h3>
-        <p>Kompetisi format head-to-head</p>
+        <h3>Tracker Utang Kopi</h3>
+        <p>Siapa masih berutang traktir ke siapa, tiap Game Week</p>
       </div>
     </div>
-    <div class="prize-grid">
-      <div class="prize-card h2h">
-        <div class="tier-icon">&#127942;</div>
-        <div class="tier-lbl">Juara Akhir Musim</div>
-        <div class="tier-name">Head to Head League</div>
-        <div class="tier-amount">Rp280.000</div>
-      </div>
-    </div>
-
-    <div class="penalty-card">
-      <div class="penalty-icon">&#128170;</div>
-      <div class="penalty-text">
-        <strong>Konsekuensi juru kunci:</strong> peringkat terakhir dan kedua terakhir di klasemen Head to Head League pada akhir musim wajib melakukan <strong>push up 30 kali</strong>, direkam video sebagai bukti.
-      </div>
-    </div>
+    <div id="coffee-debt-summary"></div>
+    <div class="debt-list" id="coffee-debt-list"></div>
   </div>
 
   <div class="view" id="view-rules">
@@ -1122,6 +1336,31 @@ footer{text-align:center;padding:30px 20px 8px;font-family:var(--mono);font-size
     </div>
   </div>
 
+  <div class="view" id="view-admin-coffeedebt">
+    <div class="admin-toolbar">
+      <div class="admin-toolbar-left">&#128274; <strong>Admin Mode</strong> &mdash; tandai siapa sudah/belum bayar traktir kopi</div>
+    </div>
+    <div class="panel">
+      <h3>&#9749; Kelola Utang Kopi</h3>
+      <p>Tim yang kalah tiap Game Week wajib mentraktir tim juara. Tandai di sini kalau traktirannya sudah lunas.</p>
+      <div id="admin-debt-list"></div>
+    </div>
+  </div>
+
+  <div class="view" id="view-admin-auditlog">
+    <div class="admin-toolbar">
+      <div class="admin-toolbar-left">&#128274; <strong>Admin Mode</strong> &mdash; riwayat semua perubahan data</div>
+    </div>
+    <div class="panel">
+      <h3>&#128220; Audit Log</h3>
+      <p>Catatan otomatis setiap kali data diperbarui &mdash; siapa aksinya, kapan, dan hasilnya. Menyimpan 150 aktivitas terakhir.</p>
+      <div class="btn-row" style="margin-bottom:16px;">
+        <button class="btn btn-ghost" id="btn-clear-audit">Bersihkan Log</button>
+      </div>
+      <div class="audit-timeline" id="audit-log-list"></div>
+    </div>
+  </div>
+
   <div class="view" id="view-h2hplaceholder" style="display:none;"></div>
 
 </div>
@@ -1319,6 +1558,12 @@ async function loadState(){
 async function persist(){
   state.lastUpdated = new Date().toISOString();
   try{ await window.storage.set(STORAGE_KEY, JSON.stringify(state), true); }catch(e){}
+}
+
+function logAudit(action, detail, level){
+  if(!state.auditLog) state.auditLog = [];
+  state.auditLog.unshift({ ts: new Date().toISOString(), action, detail, level: level||'ok' });
+  if(state.auditLog.length > 150) state.auditLog.length = 150;
 }
 
 function getEntry(team, gw){
@@ -2039,7 +2284,9 @@ function applyH2HJSON(parsed, gw){
     ptsB: r.entry_2_points!=null ? r.entry_2_points : 0,
     isBye: !r.entry_2_entry
   }));
-  return { count: results.length };
+  const expectedMatches = Math.ceil(state.teams.length/2);
+  const partial = results.length < expectedMatches;
+  return { count: results.length, expectedMatches, partial };
 }
 
 async function h2hTryAutoFetch(silent){
@@ -2052,16 +2299,28 @@ async function h2hTryAutoFetch(silent){
   const { data, attempts } = await fetchViaProxies(`https://fantasy.premierleague.com/api/leagues-h2h-matches/league/${H2H_LEAGUE_ID}/?page=1&event=${targetGW}`);
   if(!data){
     if(!silent) showStatus(statusEl,'err','Gagal lewat semua jalur otomatis (' + attempts.join(' · ') + '). Coba buka file HTML di luar Claude, atau pakai cara manual di bawah.');
+    logAudit('H2H Matches', `GW ${targetGW}: gagal menghubungi FPL`, 'err');
     return false;
   }
   const result = applyH2HJSON(data, targetGW);
   if(!result){
     if(!silent) showStatus(statusEl,'err','Data berhasil diambil tapi format tidak dikenali.');
+    logAudit('H2H Matches', `GW ${targetGW}: format tidak dikenali`, 'err');
     return false;
   }
   await persist();
   selectedH2HGW = targetGW;
-  if(!silent) showStatus(statusEl,'ok', `Berhasil! GW ${targetGW}: ${result.count} pertandingan tersimpan.`);
+  if(result.partial){
+    const warnMsg = `GW ${targetGW}: cuma ${result.count} dari sekitar ${result.expectedMatches} pertandingan ter-update.`;
+    if(!silent) showStatus(statusEl,'err', '⚠️ ' + warnMsg);
+    if(!silent) showToast('Update sebagian (perlu dicek)', warnMsg, 'err');
+    logAudit('H2H Matches', warnMsg, 'warn');
+  } else {
+    if(!silent) showStatus(statusEl,'ok', `Berhasil! GW ${targetGW}: ${result.count} pertandingan tersimpan.`);
+    if(!silent) showToast('Matches H2H diperbarui', `GW ${targetGW}: ${result.count} pertandingan.`, 'ok');
+    logAudit('H2H Matches', `GW ${targetGW}: ${result.count} pertandingan tersimpan`, 'ok');
+  }
+  await persist();
   const gwInputSel = document.getElementById('gw-select-h2h-input');
   if(gwInputSel) gwInputSel.value = targetGW;
   renderH2H();
@@ -2081,8 +2340,16 @@ async function h2hProcessJsonPaste(){
   await persist();
   selectedH2HGW = gw;
   const msg = `GW ${gw}: ${result.count} pertandingan tersimpan.`;
-  showStatus(statusEl,'ok', msg);
-  showToast('Data Head to Head disimpan', msg, 'ok');
+  if(result.partial){
+    showStatus(statusEl,'err', '⚠️ ' + msg + ` (diperkirakan ada ${result.expectedMatches})`);
+    showToast('Update sebagian (perlu dicek)', msg, 'err');
+    logAudit('H2H Matches (manual)', msg + ' — SEBAGIAN', 'warn');
+  } else {
+    showStatus(statusEl,'ok', msg);
+    showToast('Data Head to Head disimpan', msg, 'ok');
+    logAudit('H2H Matches (manual)', msg, 'ok');
+  }
+  await persist();
   document.getElementById('h2h-json-input').value = '';
   renderH2H();
 }
@@ -2164,7 +2431,9 @@ function applyH2HStandingsJSON(parsed){
     total: r.total||0,
     rank: r.rank
   }));
-  return { count: results.length };
+  const expectedCount = state.teams.length;
+  const partial = results.length < expectedCount;
+  return { count: results.length, expectedCount, partial };
 }
 
 async function h2hStandingsTryAutoFetch(silent){
@@ -2173,15 +2442,27 @@ async function h2hStandingsTryAutoFetch(silent){
   const { data, attempts } = await fetchViaProxies(H2H_STANDINGS_URL);
   if(!data){
     if(!silent) showStatus(statusEl,'err','Gagal lewat semua jalur otomatis (' + attempts.join(' · ') + '). Coba buka file HTML di luar Claude, atau pakai cara manual di bawah.');
+    logAudit('H2H Standings', 'Gagal menghubungi FPL', 'err');
     return false;
   }
   const result = applyH2HStandingsJSON(data);
   if(!result){
     if(!silent) showStatus(statusEl,'err','Data berhasil diambil tapi format tidak dikenali.');
+    logAudit('H2H Standings', 'Format tidak dikenali', 'err');
     return false;
   }
   await persist();
-  if(!silent) showStatus(statusEl,'ok', `Berhasil! ${result.count} tim tersimpan.`);
+  if(result.partial){
+    const warnMsg = `Cuma ${result.count} dari ${result.expectedCount} tim ter-update.`;
+    if(!silent) showStatus(statusEl,'err', '⚠️ ' + warnMsg);
+    if(!silent) showToast('Update sebagian (perlu dicek)', warnMsg, 'err');
+    logAudit('H2H Standings', warnMsg, 'warn');
+  } else {
+    if(!silent) showStatus(statusEl,'ok', `Berhasil! ${result.count} tim tersimpan.`);
+    if(!silent) showToast('Standings H2H diperbarui', `${result.count} tim tersimpan.`, 'ok');
+    logAudit('H2H Standings', `${result.count} tim tersimpan`, 'ok');
+  }
+  await persist();
   renderH2HStandings();
   return true;
 }
@@ -2196,8 +2477,17 @@ async function h2hStandingsProcessJsonPaste(){
   const result = applyH2HStandingsJSON(parsed);
   if(!result){ showStatus(statusEl,'err','Struktur JSON tidak dikenali.'); return; }
   await persist();
-  showStatus(statusEl,'ok', `Tersimpan: ${result.count} tim.`);
-  showToast('Standings Head to Head disimpan', `${result.count} tim berhasil diperbarui.`, 'ok');
+  const msg = `Tersimpan: ${result.count} tim.`;
+  if(result.partial){
+    showStatus(statusEl,'err', '⚠️ ' + msg + ` (seharusnya ${result.expectedCount})`);
+    showToast('Update sebagian (perlu dicek)', msg, 'err');
+    logAudit('H2H Standings (manual)', msg + ' — SEBAGIAN', 'warn');
+  } else {
+    showStatus(statusEl,'ok', msg);
+    showToast('Standings Head to Head disimpan', `${result.count} tim berhasil diperbarui.`, 'ok');
+    logAudit('H2H Standings (manual)', msg, 'ok');
+  }
+  await persist();
   document.getElementById('h2h-standings-json-input').value = '';
   renderH2HStandings();
 }
@@ -2209,7 +2499,14 @@ function renderH2HStandings(){
     el.parentElement.innerHTML = `<div class="empty-state"><div class="glyph">&#127942;</div><p>Belum ada data Standings H2H. Minta admin liga untuk update lewat &#128274; Admin Mode &rarr; tab "Head to Head".</p></div>`;
     return;
   }
-  const sorted = rows.slice().sort((a,b)=> a.rank - b.rank);
+  const searchInput = document.getElementById('h2h-standings-search');
+  const q = searchInput ? searchInput.value.trim().toLowerCase() : '';
+  const filtered = q ? rows.filter(r=> (r.team||'').toLowerCase().includes(q) || (r.manager||'').toLowerCase().includes(q)) : rows;
+  const sorted = filtered.slice().sort((a,b)=> a.rank - b.rank);
+  if(!sorted.length){
+    el.innerHTML = `<thead></thead><tbody><tr><td style="padding:24px;text-align:center;color:var(--text-mute);">Tidak ada tim yang cocok.</td></tr></tbody>`;
+    return;
+  }
   let head = `<thead><tr><th>Rank</th><th>Tim &amp; Manager</th><th style="text-align:right;">Main</th><th style="text-align:right;">M</th><th style="text-align:right;">S</th><th style="text-align:right;">K</th><th style="text-align:right;">Poin FPL</th><th style="text-align:right;">Poin H2H</th></tr></thead>`;
   let body = '<tbody>';
   sorted.forEach(r=>{
@@ -2228,6 +2525,7 @@ function renderH2HStandings(){
   });
   body += '</tbody>';
   el.innerHTML = head + body;
+  if(searchInput) searchInput.oninput = renderH2HStandings;
 }
 
 function initH2HSubtabs(){
@@ -2315,6 +2613,8 @@ async function saveManagers(){
   await persist();
   showStatus(statusEl,'ok','Nama manager tersimpan.');
   showToast('Nama manager disimpan', `${count} tim berhasil diperbarui.`, 'ok');
+  logAudit('Manager Mapping', `${count} nama manager diperbarui`, 'ok');
+  await persist();
   renderAll();
   renderManagerRoster();
 }
@@ -2394,7 +2694,10 @@ function applyStandingsJSON(parsed, gw){
       bench: existing ? existing.bench : 0
     };
   });
-  return { matched, added, renamed };
+  const expectedCount = state.teams.length;
+  const receivedCount = matched + added;
+  const partial = receivedCount < expectedCount;
+  return { matched, added, renamed, receivedCount, expectedCount, partial };
 }
 
 function getActiveProxies(){
@@ -2459,11 +2762,64 @@ async function fetchNextDeadline(){
   return true;
 }
 
+let notifiedThresholds = new Set();
+
+function notifPermissionState(){
+  if(typeof Notification === 'undefined') return 'unsupported';
+  return Notification.permission; // 'granted' | 'denied' | 'default'
+}
+
+async function toggleDeadlineNotif(){
+  if(typeof Notification === 'undefined'){
+    showToast('Tidak didukung', 'Browser ini tidak mendukung notifikasi.', 'err');
+    return;
+  }
+  if(Notification.permission === 'granted'){
+    state.notifEnabled = !state.notifEnabled;
+  } else {
+    const perm = await Notification.requestPermission();
+    state.notifEnabled = (perm === 'granted');
+    if(perm !== 'granted'){
+      showToast('Izin ditolak', 'Aktifkan izin notifikasi di pengaturan browser untuk memakai fitur ini.', 'err');
+    }
+  }
+  await persist();
+  updateNotifButton();
+  if(state.notifEnabled) showToast('Reminder aktif', 'Kamu akan diingatkan saat deadline mendekat (selagi tab ini terbuka).', 'ok');
+}
+
+function updateNotifButton(){
+  const btn = document.getElementById('btn-toggle-notif');
+  if(!btn) return;
+  const on = state.notifEnabled && notifPermissionState()==='granted';
+  btn.className = 'notif-btn' + (on ? ' active' : '');
+  btn.innerHTML = on ? '&#128276; Reminder Aktif' : '&#128276; Aktifkan Reminder Deadline';
+}
+
+function maybeNotifyDeadline(diffMs, eventName){
+  if(!state.notifEnabled || notifPermissionState()!=='granted') return;
+  const thresholds = [
+    {ms:24*3600000, key:'24h', label:'24 jam lagi'},
+    {ms:6*3600000, key:'6h', label:'6 jam lagi'},
+    {ms:1*3600000, key:'1h', label:'1 jam lagi'},
+    {ms:30*60000, key:'30m', label:'30 menit lagi'},
+  ];
+  thresholds.forEach(t=>{
+    if(diffMs <= t.ms && diffMs > 0 && !notifiedThresholds.has(t.key)){
+      notifiedThresholds.add(t.key);
+      try{
+        new Notification('⏳ Deadline ' + eventName, { body: `Tinggal ${t.label}! Buka Coffee & Juice League untuk atur tim.`, icon: undefined });
+      }catch(e){}
+    }
+  });
+}
+
 function renderDeadlineBanner(){
   const box = document.getElementById('deadline-banner');
   const info = state.nextDeadline;
   if(!info || !info.deadline){ box.style.display='none'; if(deadlineTickTimer){clearInterval(deadlineTickTimer);deadlineTickTimer=null;} return; }
   const deadlineDate = new Date(info.deadline);
+  notifiedThresholds = new Set(); // deadline baru -> reset penanda notifikasi
   const dateStr = deadlineDate.toLocaleDateString('id-ID',{weekday:'long', day:'2-digit', month:'long'}) + ' &middot; ' + deadlineDate.toLocaleTimeString('id-ID',{hour:'2-digit',minute:'2-digit'}) + ' WIB';
   box.style.display = 'flex';
   box.innerHTML = `
@@ -2472,13 +2828,17 @@ function renderDeadlineBanner(){
       <div class="deadline-event">${escapeHtml(info.name)}</div>
       <div class="deadline-date">${dateStr}</div>
       <a class="deadline-cta" href="https://fantasy.premierleague.com/en/transfers" target="_blank" rel="noopener">&#9889; Atur Tim Sekarang</a>
+      <br><button class="notif-btn" id="btn-toggle-notif">&#128276; Aktifkan Reminder Deadline</button>
     </div>
     <div class="deadline-countdown" id="deadline-countdown-units"></div>
   `;
+  document.getElementById('btn-toggle-notif').onclick = toggleDeadlineNotif;
+  updateNotifButton();
   if(deadlineTickTimer) clearInterval(deadlineTickTimer);
   const tick = ()=>{
     const now = new Date();
     let diff = deadlineDate - now;
+    maybeNotifyDeadline(diff, info.name);
     const unitsBox = document.getElementById('deadline-countdown-units');
     if(!unitsBox) { clearInterval(deadlineTickTimer); deadlineTickTimer=null; return; }
     if(diff <= 0){
@@ -2513,8 +2873,17 @@ async function processJsonPaste(){
 
   await persist();
   const msg = `GW ${gw}: ${result.matched} tim cocok${result.added? ', ' + result.added + ' tim baru ditambahkan' : ''}${result.renamed? ', ' + result.renamed + ' tim di-rename otomatis' : ''}.`;
-  showStatus(statusEl,'ok', msg + ' Cek/sesuaikan pengurangan poin di panel manual jika perlu.');
-  showToast('Data berhasil disimpan', msg, 'ok');
+  if(result.partial){
+    const warnMsg = `Cuma ${result.receivedCount} dari ${result.expectedCount} tim ter-update di GW ${gw}. Sisanya mungkin belum ter-refresh.`;
+    showStatus(statusEl,'err', msg + ' ⚠️ ' + warnMsg);
+    showToast('Update sebagian (perlu dicek)', warnMsg, 'err');
+    logAudit('Manual JSON', `GW ${gw}: ${result.receivedCount}/${result.expectedCount} tim (SEBAGIAN)`, 'warn');
+  } else {
+    showStatus(statusEl,'ok', msg + ' Cek/sesuaikan pengurangan poin di panel manual jika perlu.');
+    showToast('Data berhasil disimpan', msg, 'ok');
+    logAudit('Manual JSON', `GW ${gw}: ${result.matched} cocok, ${result.added} baru, ${result.renamed} rename`, 'ok');
+  }
+  await persist();
   document.getElementById('json-input').value = '';
   renderAll(); populateGwSelects();
 }
@@ -2525,21 +2894,37 @@ async function tryAutoFetch(silent){
   const { data, attempts } = await fetchViaProxies(`https://fantasy.premierleague.com/api/leagues-classic/${LEAGUE_ID}/standings/`);
   if(!data){
     if(!silent) showStatus(statusEl,'err','Gagal lewat semua jalur otomatis (' + attempts.join(' · ') + '). Ini kemungkinan karena environment preview di Claude membatasi koneksi keluar ke domain luar. Coba buka file HTML yang sudah kamu unduh langsung di browser (Chrome/Edge) di luar Claude, atau pakai "Cara manual" di bawah.');
+    logAudit('Update API', 'Gagal menghubungi FPL (' + attempts.join(', ') + ')', 'err');
     return false;
   }
-  // PENTING: auto-refresh HANYA memperbarui game week yang sudah punya data (refresh live score),
-  // TIDAK PERNAH otomatis maju ke game week baru -- itu harus dipilih manual oleh admin lewat
-  // dropdown GW di bawah, supaya tidak ada game week yang belum dimainkan tapi sudah terisi data.
-  let targetGW = getMaxFilledGW() || 1;
+  // Auto-refresh diam-diam (silent) HANYA memperbarui GW yang sudah ada datanya (tidak pernah maju sendiri).
+  // Klik manual oleh admin BOLEH memakai GW yang dipilih di dropdown -- itu keputusan sadar admin.
   const gwInputSel = document.getElementById('gw-select-input');
+  let targetGW;
+  if(silent){
+    targetGW = getMaxFilledGW() || 1;
+  } else {
+    targetGW = gwInputSel ? Number(gwInputSel.value) : (getMaxFilledGW() || 1);
+  }
   if(gwInputSel) gwInputSel.value = targetGW;
   const result = applyStandingsJSON(data, targetGW);
   if(!result){
     if(!silent) showStatus(statusEl,'err','Data berhasil diambil tapi format tidak dikenali.');
+    logAudit('Update API', `GW ${targetGW}: format tidak dikenali`, 'err');
     return false;
   }
   await persist();
-  if(!silent) showStatus(statusEl,'ok', `Berhasil! GW ${targetGW} diperbarui: ${result.matched} tim cocok${result.added? ', ' + result.added + ' baru' : ''}${result.renamed? ', ' + result.renamed + ' di-rename' : ''}.`);
+  if(result.partial){
+    const warnMsg = `GW ${targetGW}: cuma ${result.receivedCount} dari ${result.expectedCount} tim ter-update. Sisanya belum ter-refresh -- coba lagi beberapa saat lagi.`;
+    if(!silent) showStatus(statusEl,'err', '⚠️ ' + warnMsg);
+    if(!silent) showToast('Update sebagian (perlu dicek)', warnMsg, 'err');
+    logAudit('Update API', warnMsg, 'warn');
+  } else {
+    if(!silent) showStatus(statusEl,'ok', `Berhasil! GW ${targetGW} diperbarui: ${result.matched} tim cocok${result.added? ', ' + result.added + ' baru' : ''}${result.renamed? ', ' + result.renamed + ' di-rename' : ''}.`);
+    if(!silent) showToast('Update API berhasil', `GW ${targetGW}: ${result.receivedCount}/${result.expectedCount} tim ter-update.`, 'ok');
+    logAudit('Update API', `GW ${targetGW}: ${result.matched} cocok, ${result.added} baru${silent?' (auto-refresh)':''}`, 'ok');
+  }
+  await persist();
   renderAll(); populateGwSelects();
   return true;
 }
@@ -2594,6 +2979,8 @@ async function saveManualScores(){
   await persist();
   showStatus(statusEl,'ok', `Poin GW ${gw} tersimpan untuk ${count} tim.`);
   showToast('Poin manual disimpan', `GW ${gw}: ${count} tim berhasil diperbarui.`, 'ok');
+  logAudit('Manual Point', `GW ${gw}: ${count} tim diinput manual`, 'ok');
+  await persist();
   document.querySelectorAll('#manual-roster input[type=number]').forEach(inp=>{ inp.value=''; });
   renderAll();
 }
@@ -2652,6 +3039,7 @@ async function savePin(){
   const statusEl = document.getElementById('pin-set-status');
   const val = document.getElementById('pin-set-input').value.trim();
   state.adminPin = val || null;
+  logAudit('Keamanan', val ? 'PIN admin diubah' : 'PIN admin dihapus', 'ok');
   await persist();
   showStatus(statusEl,'ok', val ? 'PIN disimpan. Admin Mode akan minta PIN ini mulai sesi berikutnya.' : 'PIN dihapus. Admin Mode bisa dibuka tanpa PIN.');
 }
@@ -2687,6 +3075,7 @@ async function restoreBackup(){
   if(!confirm('Ini akan MENIMPA semua data saat ini dengan isi backup. Yakin lanjutkan?')) return;
   state = parsed;
   state.dataVersion = DATA_VERSION;
+  logAudit('Backup & Restore', 'Data dipulihkan dari file backup JSON', 'warn');
   await persist();
   showStatus(statusEl,'ok','Data berhasil dipulihkan dari backup.');
   showToast('Data dipulihkan', 'Semua data berhasil dikembalikan dari file backup.', 'ok');
@@ -2746,12 +3135,28 @@ function renderValidationReport(){
   </div>`).join('');
 }
 
-function toggleTheme(){
+const THEME_STORAGE_KEY = 'liga-kopi-theme-pref';
+
+async function toggleTheme(){
   const dark = document.body.classList.toggle('theme-dark');
   const btn = document.getElementById('btn-theme-toggle');
   btn.innerHTML = dark ? '&#127769; Dark' : '&#9788;&#65039; Light';
   const grafikActive = document.getElementById('view-grafik').classList.contains('active');
   if(grafikActive){ renderTrendChart(); renderStandingsChart(); }
+  // Preferensi tema disimpan personal (bukan shared) -- jadi tiap orang punya pilihannya sendiri,
+  // tidak memaksa tema yang sama ke semua pengunjung.
+  try{ await window.storage.set(THEME_STORAGE_KEY, dark ? 'dark' : 'light', false); }catch(e){}
+}
+
+async function loadThemePref(){
+  try{
+    const res = await window.storage.get(THEME_STORAGE_KEY, false);
+    if(res && res.value === 'dark'){
+      document.body.classList.add('theme-dark');
+      const btn = document.getElementById('btn-theme-toggle');
+      if(btn) btn.innerHTML = '&#127769; Dark';
+    }
+  }catch(e){}
 }
 
 function initTabs(){
@@ -2773,6 +3178,8 @@ function initTabs(){
       btn.classList.add('active');
       document.getElementById('view-admin-'+btn.dataset.admintab).classList.add('active');
       if(btn.dataset.admintab==='validation'){ renderValidationReport(); }
+      if(btn.dataset.admintab==='coffeedebt'){ renderAdminDebtList(); }
+      if(btn.dataset.admintab==='auditlog'){ renderAuditLog(); }
     };
   });
   document.getElementById('btn-open-admin').onclick = ()=>{
@@ -2786,10 +3193,123 @@ function initTabs(){
   document.getElementById('btn-exit-admin').onclick = exitAdminMode;
 }
 
-function renderAll(){ renderHero(); renderKlasemen(); renderMingguan(); renderManagerRoster(); }
+function computeCoffeeDebts(){
+  const maxGW = getMaxFilledGW();
+  const debts = [];
+  for(let g=1; g<=maxGW; g++){
+    const wk = computeWeekly(g);
+    if(!wk) continue;
+    debts.push({
+      gw: g,
+      winner: wk.winner.team,
+      loser: wk.lowest.team,
+      paid: !!(state.coffeeDebtsPaid && state.coffeeDebtsPaid[g])
+    });
+  }
+  return debts.reverse(); // terbaru dulu
+}
+
+function renderCoffeeDebtSummary(){
+  const box = document.getElementById('coffee-debt-summary');
+  if(!box) return;
+  const debts = computeCoffeeDebts();
+  const unpaid = debts.filter(d=>!d.paid).length;
+  const paid = debts.length - unpaid;
+  box.innerHTML = `
+    <div class="debt-summary-strip">
+      <div class="ds-item"><div class="ds-num">${debts.length}</div><div class="ds-lbl">Total Traktiran</div></div>
+      <div class="ds-item"><div class="ds-num">${unpaid}</div><div class="ds-lbl">Belum Lunas</div></div>
+      <div class="ds-item"><div class="ds-num ok">${paid}</div><div class="ds-lbl">Sudah Lunas</div></div>
+    </div>`;
+}
+
+function renderCoffeeDebtList(){
+  const box = document.getElementById('coffee-debt-list');
+  if(!box) return;
+  const debts = computeCoffeeDebts();
+  if(!debts.length){
+    box.innerHTML = `<div class="empty-state"><div class="glyph">&#9749;</div><p>Belum ada Game Week yang tercatat.</p></div>`;
+    return;
+  }
+  box.innerHTML = debts.map(d=>{
+    const loserMgr = (state.managers && state.managers[d.loser]) || deriveManager(d.loser);
+    const winnerMgr = (state.managers && state.managers[d.winner]) || deriveManager(d.winner);
+    return `<div class="debt-row ${d.paid?'paid':'unpaid'}">
+      <div class="debt-gw">GW${d.gw}</div>
+      <div class="debt-side"><div><span class="lbl">Bayar</span><span class="name" style="color:var(--pink-ink);">${escapeHtml(d.loser)}</span></div></div>
+      <div class="debt-arrow">&#8594;</div>
+      <div class="debt-side"><div><span class="lbl">Ke</span><span class="name" style="color:var(--green-ink);">${escapeHtml(d.winner)}</span></div></div>
+      <div class="debt-status ${d.paid?'paid':'unpaid'}">${d.paid ? '&#9989; Lunas' : '&#9203; Belum Lunas'}</div>
+    </div>`;
+  }).join('');
+}
+
+async function toggleCoffeeDebt(gw){
+  if(!state.coffeeDebtsPaid) state.coffeeDebtsPaid = {};
+  const nowPaid = !state.coffeeDebtsPaid[gw];
+  state.coffeeDebtsPaid[gw] = nowPaid;
+  logAudit('Utang Kopi', `GW ${gw} ditandai ${nowPaid ? 'LUNAS' : 'belum lunas'}`, 'ok');
+  await persist();
+  renderAdminDebtList();
+  renderCoffeeDebtSummary();
+  renderCoffeeDebtList();
+  showToast('Status diperbarui', `GW ${gw} ditandai ${nowPaid?'lunas':'belum lunas'}.`, 'ok');
+}
+
+function renderAdminDebtList(){
+  const box = document.getElementById('admin-debt-list');
+  if(!box) return;
+  const debts = computeCoffeeDebts();
+  if(!debts.length){
+    box.innerHTML = `<div class="empty-state"><div class="glyph">&#9749;</div><p>Belum ada Game Week yang tercatat.</p></div>`;
+    return;
+  }
+  box.innerHTML = `<div class="debt-list">` + debts.map(d=>{
+    return `<div class="debt-row ${d.paid?'paid':'unpaid'}">
+      <div class="debt-gw">GW${d.gw}</div>
+      <div class="debt-side"><div><span class="lbl">Bayar</span><span class="name" style="color:var(--pink-ink);">${escapeHtml(d.loser)}</span></div></div>
+      <div class="debt-arrow">&#8594;</div>
+      <div class="debt-side"><div><span class="lbl">Ke</span><span class="name" style="color:var(--green-ink);">${escapeHtml(d.winner)}</span></div></div>
+      <button class="debt-toggle-btn ${d.paid?'mark-unpaid':'mark-paid'}" onclick="toggleCoffeeDebt(${d.gw})">${d.paid ? 'Batalkan Lunas' : 'Tandai Lunas'}</button>
+    </div>`;
+  }).join('') + `</div>`;
+}
+
+function renderAuditLog(){
+  const box = document.getElementById('audit-log-list');
+  if(!box) return;
+  const log = state.auditLog || [];
+  if(!log.length){
+    box.innerHTML = `<div class="empty-state"><div class="glyph">&#128220;</div><p>Belum ada aktivitas tercatat.</p></div>`;
+    return;
+  }
+  box.innerHTML = log.map(item=>{
+    const d = new Date(item.ts);
+    const timeStr = d.toLocaleDateString('id-ID',{day:'2-digit',month:'short'}) + ' ' + d.toLocaleTimeString('id-ID',{hour:'2-digit',minute:'2-digit'});
+    return `<div class="audit-item ${item.level}">
+      <div class="audit-head">
+        <span class="audit-action">${escapeHtml(item.action)}</span>
+        <span class="audit-badge ${item.level}">${item.level==='ok'?'Berhasil':item.level==='warn'?'Peringatan':'Gagal'}</span>
+        <span class="audit-time">${timeStr}</span>
+      </div>
+      <div class="audit-detail">${escapeHtml(item.detail)}</div>
+    </div>`;
+  }).join('');
+}
+
+async function clearAuditLog(){
+  if(!confirm('Hapus semua riwayat audit log? Ini tidak bisa dibatalkan.')) return;
+  state.auditLog = [];
+  await persist();
+  renderAuditLog();
+  showToast('Audit log dibersihkan', 'Semua riwayat lama telah dihapus.', 'ok');
+}
+
+function renderAll(){ renderHero(); renderKlasemen(); renderMingguan(); renderManagerRoster(); renderCoffeeDebtSummary(); renderCoffeeDebtList(); }
 
 async function init(){
   await loadState();
+  await loadThemePref();
   selectedWeeklyGW = getMaxFilledGW() || 1;
   initTabs();
   initH2HSubtabs();
@@ -2808,6 +3328,7 @@ async function init(){
   document.getElementById('chk-auto-refresh').onchange = toggleAutoRefresh;
   document.getElementById('btn-save-pin').onclick = savePin;
   document.getElementById('btn-save-proxy').onclick = saveCustomProxy;
+  document.getElementById('btn-clear-audit').onclick = clearAuditLog;
   document.getElementById('btn-backup-download').onclick = downloadBackup;
   document.getElementById('btn-backup-restore').onclick = restoreBackup;
   document.getElementById('btn-h2h-autotry').onclick = ()=> h2hTryAutoFetch(false);
