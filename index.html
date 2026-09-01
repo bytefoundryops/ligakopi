@@ -241,12 +241,12 @@ h1{font-size:24px;font-weight:800;margin:0;letter-spacing:-0.01em;color:var(--pu
   background:linear-gradient(120deg, var(--purple), var(--purple-2));color:#fff;position:relative;overflow:hidden;
   box-shadow:0 10px 28px rgba(55,0,60,0.18);
 }
-.klasemen-hero::before{content:'';position:absolute;top:-50px;right:-40px;width:200px;height:200px;border-radius:50%;background:radial-gradient(circle, rgba(255,255,255,0.14), transparent 70%);pointer-events:none;}
-.klasemen-hero::after{content:'';position:absolute;bottom:-60px;left:20%;width:160px;height:160px;border-radius:50%;background:radial-gradient(circle, var(--cyan), transparent 70%);opacity:0.18;pointer-events:none;}
+.klasemen-hero::before{content:'';position:absolute;top:-50px;right:-40px;width:200px;height:200px;border-radius:50%;background:radial-gradient(circle, rgba(255,255,255,0.18), transparent 70%);pointer-events:none;animation:prizeGlowA 6.5s ease-in-out infinite;}
+.klasemen-hero::after{content:'';position:absolute;bottom:-60px;left:20%;width:160px;height:160px;border-radius:50%;background:radial-gradient(circle, var(--cyan), transparent 70%);opacity:0.2;pointer-events:none;animation:prizeGlowB 7.5s ease-in-out infinite;}
 .klasemen-hero-icon{
   font-size:34px;flex:0 0 auto;width:64px;height:64px;border-radius:16px;
   background:rgba(255,255,255,0.14);display:flex;align-items:center;justify-content:center;
-  position:relative;z-index:1;
+  position:relative;z-index:1;animation:trophyFloat 3.2s ease-in-out infinite;
 }
 .klasemen-hero-title{font-size:22px;font-weight:800;margin:0;color:#fff;position:relative;z-index:1;letter-spacing:-0.01em;}
 .klasemen-hero-sub{font-size:13px;color:rgba(255,255,255,0.75);margin:4px 0 0;position:relative;z-index:1;}
@@ -296,12 +296,6 @@ tbody tr.top1 td:first-child, tbody tr.top2 td:first-child, tbody tr.top3 td:fir
 .gw-scope-picker select{margin:0;width:auto;min-width:140px;}
 .gw-scope-label{font-size:11px;color:var(--text-mute);font-weight:600;}
 
-.gw-picker{display:flex;gap:6px;overflow-x:auto;padding-bottom:6px;margin-bottom:22px;}
-.gw-chip{flex:0 0 auto;font-family:var(--mono);font-size:12px;font-weight:600;padding:7px 13px;border-radius:16px;border:1px solid var(--line);background:var(--surface);color:var(--text-mute);cursor:pointer;}
-.gw-chip:hover{border-color:var(--purple);color:var(--purple);}
-.gw-chip.filled{color:var(--text-2);}
-.gw-chip.active{background:var(--purple);border-color:var(--purple);color:#fff;font-weight:700;}
-
 .duel{display:grid;grid-template-columns:1fr 1fr;gap:14px;margin-bottom:28px;}
 @media (max-width:640px){.duel{grid-template-columns:1fr;}}
 .duel-card{border-radius:12px;padding:22px;border:1px solid var(--line);}
@@ -318,10 +312,127 @@ tbody tr.top1 td:first-child, tbody tr.top2 td:first-child, tbody tr.top3 td:fir
 .duel-pts span{font-size:13px;font-weight:600;color:var(--text-mute);margin-left:4px;}
 .duel-tie-note{font-size:10.5px;color:var(--text-mute);margin-top:10px;font-style:italic;}
 
+/* ================= GAME WEEK ARENA — powerful edition ================= */
+.gw-hero{
+  position:relative;overflow:hidden;border-radius:24px;padding:36px 32px;margin-bottom:24px;text-align:center;
+  background:linear-gradient(125deg, #0B0A18 0%, var(--purple) 50%, #1A0A2E 100%);
+  box-shadow:0 20px 50px rgba(55,0,60,0.3), inset 0 1px 0 rgba(255,255,255,0.06);
+}
+.gw-hero::before{
+  content:'';position:absolute;top:-90px;left:-40px;width:300px;height:300px;border-radius:50%;
+  background:radial-gradient(circle, rgba(4,245,255,0.26), transparent 70%);pointer-events:none;
+  animation:prizeGlowA 6.5s ease-in-out infinite;
+}
+.gw-hero::after{
+  content:'';position:absolute;bottom:-100px;right:-40px;width:320px;height:320px;border-radius:50%;
+  background:radial-gradient(circle, rgba(233,0,82,0.24), transparent 70%);pointer-events:none;
+  animation:prizeGlowB 7.5s ease-in-out infinite;
+}
+.gw-hero-icon{font-size:38px;position:relative;z-index:1;filter:drop-shadow(0 6px 16px rgba(4,245,255,0.4));animation:trophyFloat 3s ease-in-out infinite;}
+.gw-hero-title{position:relative;z-index:1;font-size:26px;font-weight:900;color:#fff;margin:10px 0 4px;letter-spacing:-0.01em;}
+.gw-hero-sub{position:relative;z-index:1;font-size:12.5px;color:rgba(255,255,255,0.62);}
+
+.gw-picker{position:relative;z-index:1;display:flex;gap:8px;overflow-x:auto;padding:16px 2px 4px;scrollbar-width:none;-webkit-overflow-scrolling:touch;}
+.gw-chip{
+  font-family:var(--mono);font-weight:700;font-size:12.5px;padding:9px 16px;border-radius:10px;
+  background:rgba(255,255,255,0.08);color:rgba(255,255,255,0.65);border:1px solid rgba(255,255,255,0.14);
+  cursor:pointer;white-space:nowrap;transition:all .18s ease;flex:0 0 auto;
+}
+.gw-chip:hover{background:rgba(255,255,255,0.14);color:#fff;}
+.gw-chip.active{
+  background:linear-gradient(90deg, var(--cyan), var(--purple-2));color:#fff;border-color:transparent;
+  box-shadow:0 4px 16px rgba(4,245,255,0.35);
+}
+.gw-chip.filled:not(.active){color:rgba(255,255,255,0.85);border-color:rgba(255,255,255,0.22);}
+
+.arena-wrap{position:relative;margin-bottom:26px;}
+.arena-vs{
+  display:none;
+}
+.duel.arena{
+  display:grid;grid-template-columns:1fr auto 1fr;align-items:center;gap:0;margin-bottom:0;
+  border-radius:22px;overflow:hidden;position:relative;
+  box-shadow:0 16px 40px rgba(55,0,60,0.12);
+}
+.arena-card{position:relative;overflow:hidden;padding:32px 26px;text-align:center;z-index:1;}
+.arena-card.win{background:linear-gradient(155deg, rgba(0,255,135,0.16), var(--card) 65%);}
+.arena-card.low{background:linear-gradient(155deg, rgba(233,0,82,0.12), var(--card) 65%);}
+.arena-card::before{
+  content:'';position:absolute;top:-60px;width:180px;height:180px;border-radius:50%;pointer-events:none;
+}
+.arena-card.win::before{left:-60px;background:radial-gradient(circle, rgba(0,255,135,0.25), transparent 70%);}
+.arena-card.low::before{right:-60px;background:radial-gradient(circle, rgba(233,0,82,0.22), transparent 70%);}
+.arena-crown{position:relative;z-index:1;font-size:26px;margin-bottom:8px;animation:crownPulse 2.6s ease-in-out infinite;}
+.arena-badge-wrap{position:relative;z-index:1;display:inline-block;margin-bottom:12px;}
+.arena-card.win .arena-badge-wrap::after{
+  content:'';position:absolute;inset:-5px;border-radius:16px;border:2px solid var(--green-ink);opacity:0.5;
+  animation:crownPulse 2.6s ease-in-out infinite;
+}
+.arena-tag{position:relative;z-index:1;font-size:11px;font-weight:800;text-transform:uppercase;letter-spacing:.08em;margin-bottom:8px;}
+.arena-card.win .arena-tag{color:var(--green-ink);}
+.arena-card.low .arena-tag{color:var(--pink-ink);}
+.arena-team{position:relative;z-index:1;font-weight:900;font-size:20px;color:var(--purple);margin-bottom:2px;}
+.arena-manager{position:relative;z-index:1;font-size:12px;color:var(--text-mute);font-weight:600;margin-bottom:14px;}
+.arena-pts{position:relative;z-index:1;font-family:var(--mono);font-weight:900;font-size:38px;font-variant-numeric:tabular-nums;line-height:1;}
+.arena-card.win .arena-pts{color:var(--green-ink);text-shadow:0 0 20px rgba(0,168,89,0.25);}
+.arena-card.low .arena-pts{color:var(--pink-ink);text-shadow:0 0 20px rgba(233,0,82,0.2);}
+.arena-pts span{display:block;font-size:11px;font-weight:700;color:var(--text-mute);margin-top:3px;letter-spacing:.05em;}
+.arena-vs-badge{
+  position:relative;z-index:2;width:64px;height:64px;border-radius:50%;flex:0 0 auto;
+  background:linear-gradient(135deg, var(--purple), var(--purple-2));
+  display:flex;align-items:center;justify-content:center;
+  font-family:var(--mono);font-weight:900;font-size:16px;color:#fff;
+  box-shadow:0 8px 22px rgba(55,0,60,0.35), 0 0 0 6px var(--bg);
+  margin:0 -6px;
+}
+.arena-tie-note{position:relative;z-index:1;font-size:10px;color:var(--text-mute);margin-top:10px;font-style:italic;}
+@media (max-width:640px){
+  .duel.arena{grid-template-columns:1fr;}
+  .arena-vs-badge{margin:-14px auto;}
+}
+
 .chart-controls{display:flex;gap:8px;flex-wrap:wrap;margin-bottom:16px;}
 .chip-toggle{font-family:var(--mono);font-size:11.5px;padding:6px 11px;border-radius:7px;border:1px solid var(--line);background:var(--surface);color:var(--text-mute);cursor:pointer;}
 .chip-toggle.on{background:var(--purple);color:#fff;border-color:var(--purple);font-weight:700;}
-.chart-card{background:var(--bg);border:1px solid var(--line);border-radius:12px;padding:22px;margin-bottom:20px;}
+.chart-card{background:var(--bg);border:1px solid var(--line);border-radius:16px;padding:26px;margin-bottom:20px;box-shadow:0 1px 2px rgba(55,0,60,0.04), 0 8px 24px rgba(55,0,60,0.04);transition:box-shadow .25s ease;}
+.chart-card:hover{box-shadow:0 4px 8px rgba(55,0,60,0.06), 0 16px 36px rgba(55,0,60,0.08);}
+.chart-card-head{display:flex;align-items:center;gap:12px;margin-bottom:18px;}
+.chart-card-icon{width:38px;height:38px;border-radius:11px;display:flex;align-items:center;justify-content:center;font-size:18px;flex:0 0 auto;}
+.chart-card-icon.cyan{background:rgba(4,245,255,0.12);}
+.chart-card-icon.purple{background:rgba(139,92,246,0.12);}
+.chart-card-icon.green{background:rgba(0,168,89,0.12);}
+.chart-card-head-text h3{margin:0;font-size:15.5px;}
+.chart-card-head-text p{margin:2px 0 0;font-size:11.5px;color:var(--text-mute);}
+
+/* ================= GRAFIK page hero ================= */
+.grafik-hero{
+  position:relative;overflow:hidden;border-radius:24px;padding:36px 32px;margin-bottom:24px;text-align:center;
+  background:linear-gradient(125deg, #0B0A18 0%, #0E2A3D 45%, #1A0A2E 100%);
+  box-shadow:0 20px 50px rgba(11,10,24,0.3), inset 0 1px 0 rgba(255,255,255,0.06);
+}
+.grafik-hero::before{
+  content:'';position:absolute;top:-90px;right:-40px;width:320px;height:320px;border-radius:50%;
+  background:radial-gradient(circle, rgba(4,245,255,0.28), transparent 70%);pointer-events:none;
+  animation:prizeGlowA 6.8s ease-in-out infinite;
+}
+.grafik-hero::after{
+  content:'';position:absolute;bottom:-100px;left:-30px;width:280px;height:280px;border-radius:50%;
+  background:radial-gradient(circle, rgba(0,255,135,0.22), transparent 70%);pointer-events:none;
+  animation:prizeGlowB 8s ease-in-out infinite;
+}
+.grafik-hero-icon{font-size:38px;position:relative;z-index:1;filter:drop-shadow(0 6px 16px rgba(4,245,255,0.45));animation:trophyFloat 3.2s ease-in-out infinite;}
+.grafik-hero-title{position:relative;z-index:1;font-size:26px;font-weight:900;color:#fff;margin:10px 0 4px;letter-spacing:-0.01em;}
+.grafik-hero-sub{position:relative;z-index:1;font-size:12.5px;color:rgba(255,255,255,0.62);max-width:440px;margin:0 auto;line-height:1.6;}
+
+.stat-card.stat-elegant{
+  background:var(--card);border:1px solid var(--line);border-radius:16px;padding:20px;
+  position:relative;overflow:hidden;
+}
+.stat-card.stat-elegant::before{
+  content:'';position:absolute;top:0;left:0;right:0;height:3px;
+  background:linear-gradient(90deg, var(--cyan), var(--purple));
+}
+.stat-card.stat-elegant .stat-icon{font-size:20px;margin-bottom:10px;opacity:0.85;}
 .chart-card h3{font-size:15px;font-weight:700;margin:0 0 16px;color:var(--purple);}
 .chart-wrap{position:relative;width:100%;height:320px;}
 
@@ -366,9 +477,9 @@ select:focus, textarea:focus, input:focus{border-color:var(--purple);}
   background:linear-gradient(120deg, var(--purple), var(--purple-2));color:#fff;position:relative;overflow:hidden;
   box-shadow:0 10px 28px rgba(55,0,60,0.18);
 }
-.page-hero::before{content:'';position:absolute;top:-50px;right:-40px;width:200px;height:200px;border-radius:50%;background:radial-gradient(circle, rgba(255,255,255,0.14), transparent 70%);pointer-events:none;}
-.page-hero::after{content:'';position:absolute;bottom:-60px;left:20%;width:160px;height:160px;border-radius:50%;background:radial-gradient(circle, var(--cyan), transparent 70%);opacity:0.18;pointer-events:none;}
-.page-hero-icon{font-size:34px;flex:0 0 auto;width:64px;height:64px;border-radius:16px;background:rgba(255,255,255,0.14);display:flex;align-items:center;justify-content:center;position:relative;z-index:1;}
+.page-hero::before{content:'';position:absolute;top:-50px;right:-40px;width:200px;height:200px;border-radius:50%;background:radial-gradient(circle, rgba(255,255,255,0.18), transparent 70%);pointer-events:none;animation:prizeGlowA 7s ease-in-out infinite;}
+.page-hero::after{content:'';position:absolute;bottom:-60px;left:20%;width:160px;height:160px;border-radius:50%;background:radial-gradient(circle, var(--cyan), transparent 70%);opacity:0.2;pointer-events:none;animation:prizeGlowB 8.2s ease-in-out infinite;}
+.page-hero-icon{font-size:34px;flex:0 0 auto;width:64px;height:64px;border-radius:16px;background:rgba(255,255,255,0.14);display:flex;align-items:center;justify-content:center;position:relative;z-index:1;animation:trophyFloat 3.4s ease-in-out infinite;}
 .page-hero-title{font-size:22px;font-weight:800;margin:0;color:#fff;position:relative;z-index:1;letter-spacing:-0.01em;}
 .page-hero-sub{font-size:13px;color:rgba(255,255,255,0.75);margin:4px 0 0;position:relative;z-index:1;}
 
@@ -630,6 +741,83 @@ select:focus, textarea:focus, input:focus{border-color:var(--purple);}
 
 footer{text-align:center;padding:30px 20px 8px;font-family:var(--mono);font-size:11px;color:var(--text-mute);}
 
+/* ================= Sponsor page ================= */
+.sponsor-hero{
+  position:relative;overflow:hidden;border-radius:24px;padding:40px 34px;margin-bottom:30px;text-align:center;
+  background:linear-gradient(125deg, #1A0A2E 0%, #3D2F13 45%, #1A0A2E 100%);
+  box-shadow:0 20px 50px rgba(55,0,60,0.28), inset 0 1px 0 rgba(255,255,255,0.06);
+}
+.sponsor-hero::before{
+  content:'';position:absolute;top:-80px;left:10%;width:300px;height:300px;border-radius:50%;
+  background:radial-gradient(circle, rgba(255,215,80,0.28), transparent 70%);pointer-events:none;
+  animation:prizeGlowA 7s ease-in-out infinite;
+}
+.sponsor-hero::after{
+  content:'';position:absolute;bottom:-90px;right:5%;width:280px;height:280px;border-radius:50%;
+  background:radial-gradient(circle, rgba(139,92,246,0.28), transparent 70%);pointer-events:none;
+  animation:prizeGlowB 8s ease-in-out infinite;
+}
+.sponsor-hero-icon{font-size:40px;position:relative;z-index:1;filter:drop-shadow(0 6px 16px rgba(255,215,80,0.5));animation:trophyFloat 3.4s ease-in-out infinite;}
+.sponsor-hero-title{position:relative;z-index:1;font-size:27px;font-weight:900;color:#fff;margin:12px 0 6px;letter-spacing:-0.01em;}
+.sponsor-hero-sub{position:relative;z-index:1;font-size:13px;color:rgba(255,255,255,0.68);max-width:480px;margin:0 auto;line-height:1.6;}
+
+.sponsor-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(280px,1fr));gap:22px;margin-bottom:26px;}
+.sponsor-card{
+  position:relative;overflow:hidden;border-radius:22px;padding:32px 28px 28px;text-align:center;
+  background:linear-gradient(165deg, rgba(255,215,80,0.14), var(--card) 55%);
+  border:1.5px solid #F0D27A;
+  box-shadow:0 14px 34px rgba(184,144,30,0.16), 0 0 0 5px rgba(240,210,122,0.08);
+  transition:transform .25s cubic-bezier(.22,1,.36,1), box-shadow .25s ease;
+}
+.sponsor-card:hover{transform:translateY(-8px);box-shadow:0 22px 44px rgba(184,144,30,0.24), 0 0 0 6px rgba(240,210,122,0.12);}
+.sponsor-card::before{
+  content:'';position:absolute;top:-50px;right:-40px;width:170px;height:170px;border-radius:50%;
+  background:radial-gradient(circle, rgba(255,215,80,0.3), transparent 70%);pointer-events:none;
+}
+.sponsor-ribbon{
+  position:absolute;top:16px;left:-38px;transform:rotate(-45deg);
+  background:linear-gradient(90deg,#B8901E,#F0D27A);color:#3D2F13;
+  font-family:var(--mono);font-size:9.5px;font-weight:800;letter-spacing:.08em;
+  padding:5px 46px;box-shadow:0 2px 6px rgba(0,0,0,0.15);
+}
+.sponsor-badge-wrap{position:relative;z-index:1;display:inline-block;margin-bottom:16px;}
+.sponsor-badge-wrap .badge-ring{
+  position:absolute;inset:-6px;border-radius:18px;border:2px solid #F0D27A;
+  animation:crownPulse 2.8s ease-in-out infinite;
+}
+.sponsor-name{position:relative;z-index:1;font-size:20px;font-weight:900;color:var(--purple);margin-bottom:4px;}
+.sponsor-team{position:relative;z-index:1;font-size:12.5px;font-weight:700;color:#B8901E;text-transform:uppercase;letter-spacing:.05em;margin-bottom:14px;}
+.sponsor-quote{position:relative;z-index:1;font-size:12.5px;color:var(--text-2);line-height:1.65;font-style:italic;margin-bottom:16px;}
+.sponsor-tier{
+  position:relative;z-index:1;display:inline-flex;align-items:center;gap:6px;
+  font-family:var(--mono);font-size:10.5px;font-weight:800;letter-spacing:.05em;
+  background:linear-gradient(90deg,#B8901E,#F0D27A);color:#3D2F13;
+  padding:7px 16px;border-radius:20px;
+}
+.sponsor-thanks{
+  text-align:center;padding:26px 24px;border-radius:18px;
+  background:var(--purple-tint);border:1px solid var(--purple-line);
+  font-size:13.5px;color:var(--text-2);line-height:1.7;
+}
+.sponsor-thanks strong{color:var(--purple);}
+@media (max-width:640px){
+  .sponsor-hero{padding:28px 22px;}
+  .sponsor-hero-title{font-size:21px;}
+  .sponsor-grid{grid-template-columns:1fr;gap:16px;}
+  .gw-hero{padding:26px 20px;}
+  .gw-hero-title{font-size:20px;}
+  .gw-hero-icon{font-size:32px;}
+  .arena-card{padding:22px 16px;}
+  .arena-team{font-size:16px;}
+  .arena-pts{font-size:30px;}
+  .grafik-hero{padding:26px 20px;}
+  .grafik-hero-title{font-size:20px;}
+  .grafik-hero-icon{font-size:32px;}
+  .chart-card{padding:18px;}
+  .chart-card-head{gap:10px;}
+  .chart-card-head-text h3{font-size:14px;}
+}
+
 .toast-stack{position:fixed;top:20px;right:20px;z-index:200;display:flex;flex-direction:column;gap:10px;max-width:360px;}
 .toast{
   display:flex;align-items:flex-start;gap:12px;padding:14px 16px;border-radius:12px;
@@ -759,9 +947,18 @@ footer{text-align:center;padding:30px 20px 8px;font-family:var(--mono);font-size
 .pos-chip span{font-size:8.5px;font-weight:600;color:var(--text-mute);text-transform:uppercase;}
 
 .manager-picker-row{display:flex;align-items:center;justify-content:space-between;gap:14px;flex-wrap:wrap;margin-bottom:20px;}
-.manager-hero{display:flex;align-items:center;gap:16px;background:var(--card);border:1px solid var(--line);border-radius:16px;padding:22px 26px;margin-bottom:20px;box-shadow:0 1px 2px rgba(55,0,60,0.04), 0 8px 24px rgba(55,0,60,0.03);}
-.manager-hero .team-name-wrap .team-name{font-size:22px;}
-.manager-hero .team-name-wrap .team-manager{font-size:14px;}
+.manager-hero{
+  display:flex;align-items:center;gap:18px;position:relative;overflow:hidden;
+  background:linear-gradient(120deg, #1A0A2E 0%, var(--purple) 55%, #2D0B3F 100%);
+  border:1px solid rgba(139,92,246,0.35);border-radius:18px;padding:26px 28px;margin-bottom:20px;
+  box-shadow:0 14px 34px rgba(55,0,60,0.22), inset 0 1px 0 rgba(255,255,255,0.06);
+}
+.manager-hero::before{content:'';position:absolute;top:-60px;right:-30px;width:220px;height:220px;border-radius:50%;background:radial-gradient(circle, rgba(4,245,255,0.22), transparent 70%);pointer-events:none;animation:prizeGlowA 6.5s ease-in-out infinite;}
+.manager-hero::after{content:'';position:absolute;bottom:-60px;left:10%;width:180px;height:180px;border-radius:50%;background:radial-gradient(circle, rgba(0,255,135,0.2), transparent 70%);pointer-events:none;animation:prizeGlowB 7.5s ease-in-out infinite;}
+.manager-hero .team-badge, .manager-hero img{position:relative;z-index:1;box-shadow:0 6px 16px rgba(0,0,0,0.25);}
+.manager-hero .team-name-wrap{position:relative;z-index:1;}
+.manager-hero .team-name-wrap .team-name{font-size:22px;color:#fff;}
+.manager-hero .team-name-wrap .team-manager{font-size:14px;color:rgba(255,255,255,0.7);}
 .perf-bar-row{display:flex;align-items:flex-end;gap:6px;height:120px;padding:10px 4px 0;overflow-x:auto;}
 .perf-bar{flex:0 0 auto;width:28px;display:flex;flex-direction:column;align-items:center;gap:4px;}
 .perf-bar .bar{width:100%;border-radius:6px 6px 0 0;background:linear-gradient(180deg, var(--purple-2), var(--purple));min-height:4px;}
@@ -843,12 +1040,13 @@ footer{text-align:center;padding:30px 20px 8px;font-family:var(--mono);font-size
     </div>
     <div class="tabs" id="tabs">
       <button class="tab-btn active" data-tab="beranda">Beranda</button>
-      <button class="tab-btn" data-tab="klasemen">Klasemen Game Week</button>
       <button class="tab-btn" data-tab="mingguan">Game Week</button>
+      <button class="tab-btn" data-tab="klasemen">Klasemen Game Week</button>
       <button class="tab-btn" data-tab="grafik">Grafik</button>
       <button class="tab-btn" data-tab="h2h">Head to Head</button>
       <button class="tab-btn" data-tab="manager">Manager</button>
       <button class="tab-btn" data-tab="prize">Prize</button>
+      <button class="tab-btn" data-tab="sponsor">Sponsor</button>
       <button class="tab-btn" data-tab="rules">Rule Book</button>
     </div>
     <div class="tabs admin-tabs" id="admin-tabs" style="display:none;">
@@ -908,8 +1106,12 @@ footer{text-align:center;padding:30px 20px 8px;font-family:var(--mono);font-size
   </div>
 
   <div class="view" id="view-mingguan">
-    <p class="section-label">Pilih game week</p>
-    <div class="gw-picker" id="gw-picker"></div>
+    <div class="gw-hero">
+      <div class="gw-hero-icon">&#9876;&#65039;</div>
+      <div class="gw-hero-title" id="gw-hero-title">Duel Game Week</div>
+      <div class="gw-hero-sub">Team of the Week vs Team of the Weak &mdash; siapa juara, siapa wajib traktir</div>
+      <div class="gw-picker" id="gw-picker"></div>
+    </div>
     <div id="duel-area"></div>
     <div class="card">
       <div class="card-head"><h2>Riwayat juara &amp; tim kalah per game week</h2></div>
@@ -918,17 +1120,33 @@ footer{text-align:center;padding:30px 20px 8px;font-family:var(--mono);font-size
   </div>
 
   <div class="view" id="view-grafik">
-    <div class="chart-card">
-      <h3>Statistik Musim</h3>
-      <div class="stat-grid" id="season-stats"></div>
+    <div class="grafik-hero">
+      <div class="grafik-hero-icon">&#128202;</div>
+      <div class="grafik-hero-title">Grafik &amp; Statistik Musim</div>
+      <div class="grafik-hero-sub">Data mentah jadi cerita visual &mdash; siapa paling konsisten, siapa paling meledak-ledak, siapa mendominasi klasemen.</div>
     </div>
+
+    <div class="stat-grid" id="season-stats" style="margin-bottom:20px;"></div>
+
     <div class="chart-card">
-      <h3>Tren akumulasi poin</h3>
+      <div class="chart-card-head">
+        <div class="chart-card-icon cyan">&#128200;</div>
+        <div class="chart-card-head-text">
+          <h3>Tren Akumulasi Poin</h3>
+          <p>Perjalanan grand total tiap tim, game week demi game week</p>
+        </div>
+      </div>
       <div class="chart-controls" id="trend-toggles"></div>
       <div class="chart-wrap"><canvas id="trendChart" role="img" aria-label="Grafik garis tren akumulasi poin tiap game week untuk tim terpilih">Grafik tren poin kumulatif per game week.</canvas></div>
     </div>
     <div class="chart-card">
-      <h3>Grand total &mdash; semua klub</h3>
+      <div class="chart-card-head">
+        <div class="chart-card-icon purple">&#127942;</div>
+        <div class="chart-card-head-text">
+          <h3>Grand Total &mdash; Semua Klub</h3>
+          <p>Peringkat penuh seluruh klub berdasarkan total poin musim ini</p>
+        </div>
+      </div>
       <div class="chart-wrap" style="height:560px;"><canvas id="standingsChart" role="img" aria-label="Grafik batang grand total poin seluruh 26 klub">Grafik batang total poin seluruh klub.</canvas></div>
     </div>
   </div>
@@ -1072,6 +1290,10 @@ footer{text-align:center;padding:30px 20px 8px;font-family:var(--mono);font-size
     <div class="debt-list" id="coffee-debt-list"></div>
   </div>
 
+  <div class="view" id="view-sponsor">
+    <div id="sponsor-content"></div>
+  </div>
+
   <div class="view" id="view-rules">
     <div class="page-hero">
       <div class="page-hero-icon">&#128214;</div>
@@ -1194,7 +1416,7 @@ footer{text-align:center;padding:30px 20px 8px;font-family:var(--mono);font-size
         <input type="checkbox" id="chk-auto-refresh" style="width:auto;margin:0;">
         Auto-refresh: ulangi otomatis tiap app dibuka &amp; tiap 15 menit selama tab terbuka
       </label>
-      <div class="notice-strip" style="margin-top:0;">Auto-refresh <strong>hanya me-refresh GW yang sedang aktif</strong> (tidak pernah maju sendiri ke GW baru) dan hanya berjalan selagi tab/app ini terbuka di browser &mdash; bukan scheduler server 24 jam.</div>
+      <div class="notice-strip" style="margin-top:0;">Auto-refresh <strong>hanya me-refresh GW yang sedang aktif</strong> (tidak pernah maju sendiri ke GW baru), dan sekarang juga mencakup <strong>Head to Head Matches &amp; Standings</strong> secara otomatis &mdash; jadi kamu tidak perlu lagi bolak-balik klik manual di tab Head to Head. Hanya berjalan selagi tab/app ini terbuka di browser &mdash; bukan scheduler server 24 jam.</div>
       <label class="field-label" style="margin-top:16px;display:block;">Relay pribadi (opsional, lebih andal dari proxy publik)</label>
       <input type="text" id="custom-proxy-input" placeholder="https://worker-kamu.workers.dev/?url=" style="font-size:12px;">
       <div class="btn-row">
@@ -1351,6 +1573,11 @@ footer{text-align:center;padding:30px 20px 8px;font-family:var(--mono);font-size
     <div class="admin-toolbar">
       <div class="admin-toolbar-left">&#128274; <strong>Admin Mode</strong> &mdash; riwayat semua perubahan data</div>
     </div>
+    <div class="panel" style="margin-bottom:18px;">
+      <h3>&#8617; Undo &mdash; Batalkan Aksi Terakhir</h3>
+      <p>Setiap kali data disimpan lewat Admin Mode, kondisi SEBELUM aksi itu otomatis tersimpan di sini (maksimal 5 aksi terakhir). Kalau ada yang salah input, tinggal klik "Batalkan" tanpa perlu upload backup manual.</p>
+      <div id="undo-panel-list"></div>
+    </div>
     <div class="panel">
       <h3>&#128220; Audit Log</h3>
       <p>Catatan otomatis setiap kali data diperbarui &mdash; siapa aksinya, kapan, dan hasilnya. Menyimpan 150 aktivitas terakhir.</p>
@@ -1413,7 +1640,9 @@ const CLUB_BADGES = {
   "Bubble Gummy":"https://fantasy.premierleague.com/gcs/plfpl-production-adobe-approved/plfpl-production/3844902/0dcdd86e-3859-4ee3-ae71-a62426bf3a1b.png",
   "DOBHAN FC":"https://fantasy.premierleague.com/gcs/plfpl-production-adobe-approved/plfpl-production/2772961/fdbdeaf5-644e-4e3a-92b5-9ef3bc405fda.png"
 };
-const DATA_VERSION = 17;
+const DATA_VERSION = 19;
+// Pengurangan poin transfer (hit) untuk GW2 -- dibatalkan admin, kembali ke poin penuh.
+const GW2_COST_ADJUST = { "helmoni fc": 0, "CIMSEL UNITED": 0, "Blink 182": 0 };
 const KNOWN_ENTRY_IDS = { "Sedotan Aqua": 8198726 }; // dulu "Pending Moderation" -> "Change Name" -> "Sedotan Aqua", manager: Baltasario Saga
 const DEFAULT_CUSTOM_PROXY = "https://ligakopi.ikokrumah.workers.dev/?url=";
 const DEFAULT_ADMIN_PIN = "252525";
@@ -1456,6 +1685,11 @@ function buildDefaultState(){
   const snap = JSON.parse(JSON.stringify(BACKUP_SNAPSHOT));
   snap.lastUpdated = new Date().toISOString();
   snap.dataVersion = DATA_VERSION;
+  Object.keys(GW2_COST_ADJUST).forEach(team=>{
+    if(snap.scores[team] && snap.scores[team][2]){
+      snap.scores[team][2].cost = GW2_COST_ADJUST[team];
+    }
+  });
   return snap;
 }
 
@@ -1524,6 +1758,13 @@ async function loadState(){
         if(!state.adminPin){
           state.adminPin = DEFAULT_ADMIN_PIN;
         }
+        // Pengurangan poin transfer (hit) GW2 yang dikonfirmasi admin.
+        Object.keys(GW2_COST_ADJUST).forEach(team=>{
+          if(state.scores[team] && state.scores[team][2]){
+            state.scores[team][2].cost = GW2_COST_ADJUST[team];
+          }
+        });
+        logAudit('Migrasi Data', 'Pengurangan poin GW2 dibatalkan (helmoni fc, CIMSEL UNITED, Blink 182 kembali ke poin penuh)', 'ok');
         if(state.autoRefresh === undefined || state.autoRefresh === null){
           state.autoRefresh = true;
         }
@@ -1566,6 +1807,55 @@ function logAudit(action, detail, level){
   if(state.auditLog.length > 150) state.auditLog.length = 150;
 }
 
+// ================= Sistem Undo =================
+// Menyimpan snapshot kondisi SEBELUM sebuah aksi admin dilakukan, supaya bisa dibatalkan
+// tanpa perlu upload backup manual. Menyimpan maksimal 5 snapshot terakhir.
+function pushUndoSnapshot(actionLabel){
+  if(!state.undoStack) state.undoStack = [];
+  const snap = JSON.parse(JSON.stringify(state));
+  delete snap.undoStack; // hindari snapshot bersarang
+  state.undoStack.unshift({ ts: new Date().toISOString(), action: actionLabel, snap });
+  if(state.undoStack.length > 5) state.undoStack.length = 5;
+}
+
+async function performUndo(index){
+  if(!state.undoStack || !state.undoStack[index]) return;
+  const entry = state.undoStack[index];
+  if(!confirm(`Batalkan aksi "${entry.action}"? Ini akan mengembalikan SEMUA data ke kondisi sebelum aksi itu dilakukan.`)) return;
+  const remainingStack = state.undoStack.slice(index+1);
+  state = JSON.parse(JSON.stringify(entry.snap));
+  state.undoStack = remainingStack;
+  logAudit('Undo', `Aksi "${entry.action}" dibatalkan, data dikembalikan.`, 'warn');
+  await persist();
+  renderAll();
+  renderValidationReport();
+  renderAdminDebtList();
+  renderAuditLog();
+  renderUndoPanel();
+  showToast('Berhasil dibatalkan', `Data dikembalikan ke sebelum aksi "${entry.action}".`, 'ok');
+}
+
+function renderUndoPanel(){
+  const box = document.getElementById('undo-panel-list');
+  if(!box) return;
+  const stack = state.undoStack || [];
+  if(!stack.length){
+    box.innerHTML = `<div class="notice-strip">Belum ada aksi yang bisa dibatalkan. Setiap update data lewat Admin Mode otomatis tersimpan di sini (maksimal 5 aksi terakhir).</div>`;
+    return;
+  }
+  box.innerHTML = stack.map((entry,i)=>{
+    const d = new Date(entry.ts);
+    const timeStr = d.toLocaleDateString('id-ID',{day:'2-digit',month:'short'}) + ' ' + d.toLocaleTimeString('id-ID',{hour:'2-digit',minute:'2-digit'});
+    return `<div class="audit-item" style="padding:10px 0 10px 30px;">
+      <div class="audit-head">
+        <span class="audit-action">${escapeHtml(entry.action)}</span>
+        <span class="audit-time">${timeStr}</span>
+      </div>
+      <button class="btn btn-ghost" style="margin-top:6px;padding:7px 14px;font-size:11.5px;border-color:#F4C6D6;color:var(--pink-ink);" onclick="performUndo(${i})">&#8617; Batalkan aksi ini</button>
+    </div>`;
+  }).join('');
+}
+
 function getEntry(team, gw){
   const v = (state.scores[team]||{})[gw];
   if(!v) return null;
@@ -1579,6 +1869,12 @@ function getMaxFilledGW(){
     Object.keys(state.scores[t]||{}).map(Number).forEach(g=>{ if(g>max) max = g; });
   });
   return max;
+}
+
+function getMaxFilledH2HGW(){
+  if(!state.h2h) return 0;
+  const keys = Object.keys(state.h2h).map(Number);
+  return keys.length ? Math.max(...keys) : 0;
 }
 
 function badgeColor(name){
@@ -2102,6 +2398,8 @@ function closeTeamDetail(){
 
 function renderMingguan(){
   renderGwPicker();
+  const heroTitle = document.getElementById('gw-hero-title');
+  if(heroTitle) heroTitle.textContent = `Duel Game Week ${selectedWeeklyGW}`;
   const wk = computeWeekly(selectedWeeklyGW);
   const area = document.getElementById('duel-area');
   if(!wk){
@@ -2109,22 +2407,27 @@ function renderMingguan(){
   } else {
     const winManager = (state.managers && state.managers[wk.winner.team]) || deriveManager(wk.winner.team);
     const lowManager = (state.managers && state.managers[wk.lowest.team]) || deriveManager(wk.lowest.team);
-    const winTieNote = wk.winner.tieBroken ? '<div class="duel-tie-note">Poin sama dengan tim lain &mdash; ditentukan lewat Captain/Bench GW ini</div>' : '';
-    const lowTieNote = wk.lowest.tieBroken ? '<div class="duel-tie-note">Poin sama dengan tim lain &mdash; ditentukan lewat Captain/Bench GW ini</div>' : '';
+    const winTieNote = wk.winner.tieBroken ? '<div class="arena-tie-note">&#9888;&#65039; Poin sama dengan tim lain &mdash; ditentukan lewat Captain/Bench GW ini</div>' : '';
+    const lowTieNote = wk.lowest.tieBroken ? '<div class="arena-tie-note">&#9888;&#65039; Poin sama dengan tim lain &mdash; ditentukan lewat Captain/Bench GW ini</div>' : '';
     area.innerHTML = `
-    <div class="duel">
-      <div class="duel-card win">
-        <div class="duel-tag">Team of the Week</div>
-        <div class="duel-team">${escapeHtml(wk.winner.team)}</div>
-        <div class="duel-manager">${escapeHtml(winManager)}</div>
-        <div class="duel-pts">${wk.winner.pts}<span>poin</span></div>
+    <div class="duel arena">
+      <div class="arena-card win">
+        <div class="arena-crown">&#128081;</div>
+        <div class="arena-tag">&#127942; Team of the Week</div>
+        <div class="arena-badge-wrap">${teamBadgeHtml(wk.winner.team, 56)}</div>
+        <div class="arena-team">${escapeHtml(wk.winner.team)}</div>
+        <div class="arena-manager">${escapeHtml(winManager)}</div>
+        <div class="arena-pts">${wk.winner.pts}<span>POIN</span></div>
         ${winTieNote}
       </div>
-      <div class="duel-card low">
-        <div class="duel-tag">Team of the Weak</div>
-        <div class="duel-team">${escapeHtml(wk.lowest.team)}</div>
-        <div class="duel-manager">${escapeHtml(lowManager)}</div>
-        <div class="duel-pts">${wk.lowest.pts}<span>poin</span></div>
+      <div class="arena-vs-badge">VS</div>
+      <div class="arena-card low">
+        <div class="arena-crown">&#128128;</div>
+        <div class="arena-tag">&#9749; Team of the Weak</div>
+        <div class="arena-badge-wrap">${teamBadgeHtml(wk.lowest.team, 56)}</div>
+        <div class="arena-team">${escapeHtml(wk.lowest.team)}</div>
+        <div class="arena-manager">${escapeHtml(lowManager)}</div>
+        <div class="arena-pts">${wk.lowest.pts}<span>POIN</span></div>
         ${lowTieNote}
       </div>
     </div>`;
@@ -2191,6 +2494,8 @@ function renderTrendChart(){
   const palette = chartPalette();
   const cc = chartColors();
   const teams = Array.from(trendSelection);
+  const ctx = document.getElementById('trendChart');
+  const canvasCtx = ctx.getContext('2d');
   const datasets = teams.map((team, idx)=>{
     let running = 0;
     const data = [];
@@ -2199,18 +2504,35 @@ function renderTrendChart(){
       if(e){ running += (e.pts - e.cost); }
       data.push(running);
     }
-    return { label:team, data, borderColor:palette[idx%palette.length], backgroundColor:palette[idx%palette.length], borderWidth:2, pointRadius:3, tension:0.25, fill:false };
+    const color = palette[idx%palette.length];
+    const gradient = canvasCtx.createLinearGradient(0,0,0,320);
+    gradient.addColorStop(0, color + '33');
+    gradient.addColorStop(1, color + '00');
+    return {
+      label:team, data, borderColor:color, backgroundColor:gradient,
+      borderWidth:2.5, pointRadius:0, pointHoverRadius:6, pointHoverBackgroundColor:color,
+      pointHoverBorderColor:'#fff', pointHoverBorderWidth:2,
+      tension:0.35, fill:true, cubicInterpolationMode:'monotone'
+    };
   });
-  const ctx = document.getElementById('trendChart');
   if(trendChartInstance) trendChartInstance.destroy();
   trendChartInstance = new Chart(ctx, {
     type:'line', data:{labels, datasets},
     options:{ responsive:true, maintainAspectRatio:false,
-      plugins:{ legend:{display:false}, tooltip:{mode:'index', intersect:false} },
+      animation:{ duration:900, easing:'easeOutQuart' },
+      plugins:{
+        legend:{display:false},
+        tooltip:{
+          mode:'index', intersect:false, padding:12, cornerRadius:10,
+          backgroundColor: isDarkTheme()?'#1A0A2E':'#37003C', titleColor:'#fff', bodyColor:'#E8E4F5',
+          titleFont:{family:'JetBrains Mono', weight:'700', size:11.5}, bodyFont:{family:'JetBrains Mono', size:11},
+          boxPadding:5, usePointStyle:true,
+        }
+      },
       interaction:{mode:'index', intersect:false},
       scales:{
-        x:{ grid:{color:cc.grid}, ticks:{color:cc.tick, font:{family:'JetBrains Mono', size:10.5}} },
-        y:{ grid:{color:cc.grid}, ticks:{color:cc.tick, font:{family:'JetBrains Mono', size:10.5}} }
+        x:{ grid:{color:cc.grid, drawTicks:false}, border:{display:false}, ticks:{color:cc.tick, font:{family:'JetBrains Mono', size:10.5}} },
+        y:{ grid:{color:cc.grid, drawTicks:false}, border:{display:false}, ticks:{color:cc.tick, font:{family:'JetBrains Mono', size:10.5}} }
       }
     }
   });
@@ -2220,18 +2542,35 @@ function renderStandingsChart(){
   const lb = computeLeaderboard();
   const labels = lb.map(r=>r.team);
   const data = lb.map(r=>r.grandTotal);
-  const palette = chartPalette();
   const cc = chartColors();
-  const colors = lb.map((r,i)=> i<3 ? palette[0] : palette[1]);
+  const dark = isDarkTheme();
   const ctx = document.getElementById('standingsChart');
+  const canvasCtx = ctx.getContext('2d');
+  const rankColors = ['#F0D27A','#C7C3DE','#D9A066']; // emas, perak, perunggu
+  const barColors = lb.map((r,i)=>{
+    if(i < 3) return rankColors[i];
+    const g = canvasCtx.createLinearGradient(0,0,400,0);
+    g.addColorStop(0, dark ? '#8B5CF6' : '#37003C');
+    g.addColorStop(1, dark ? '#22D3EE' : '#00707A');
+    return g;
+  });
   if(standingsChartInstance) standingsChartInstance.destroy();
   standingsChartInstance = new Chart(ctx, {
-    type:'bar', data:{labels, datasets:[{label:'Grand total', data, backgroundColor:colors, borderRadius:4, maxBarThickness:20}]},
+    type:'bar', data:{labels, datasets:[{label:'Grand total', data, backgroundColor:barColors, borderRadius:8, borderSkipped:false, maxBarThickness:22}]},
     options:{ indexAxis:'y', responsive:true, maintainAspectRatio:false,
-      plugins:{ legend:{display:false} },
+      animation:{ duration:1000, easing:'easeOutQuart' },
+      plugins:{
+        legend:{display:false},
+        tooltip:{
+          padding:12, cornerRadius:10,
+          backgroundColor: dark?'#1A0A2E':'#37003C', titleColor:'#fff', bodyColor:'#E8E4F5',
+          titleFont:{family:'Inter', weight:'700', size:11.5}, bodyFont:{family:'JetBrains Mono', size:11.5},
+          callbacks:{ label: (item)=> ' ' + item.parsed.x + ' poin' }
+        }
+      },
       scales:{
-        x:{ grid:{color:cc.grid}, ticks:{color:cc.tick, font:{family:'JetBrains Mono', size:10.5}} },
-        y:{ grid:{display:false}, ticks:{color:cc.tickAlt, font:{family:'Inter', size:11}} }
+        x:{ grid:{color:cc.grid, drawTicks:false}, border:{display:false}, ticks:{color:cc.tick, font:{family:'JetBrains Mono', size:10.5}} },
+        y:{ grid:{display:false}, border:{display:false}, ticks:{color:cc.tickAlt, font:{family:'Inter', size:11, weight:'600'}} }
       }
     }
   });
@@ -2258,12 +2597,13 @@ function renderSeasonStats(){
   const avgAll = countPts ? (totalPts/countPts) : 0;
 
   const cards = [
-    { lbl:'Rata-rata Liga', big: avgAll.toFixed(1), sub:'poin / tim / GW' },
-    { lbl:'Skor Tertinggi Sepanjang Musim', big: bestSingle.team ? bestSingle.val : '-', sub: bestSingle.team ? `${escapeHtml(bestSingle.team)} &middot; GW${bestSingle.gw}` : '' },
-    { lbl:'Skor Terendah Sepanjang Musim', big: worstSingle.team ? worstSingle.val : '-', sub: worstSingle.team ? `${escapeHtml(worstSingle.team)} &middot; GW${worstSingle.gw}` : '' },
+    { icon:'&#9878;&#65039;', lbl:'Rata-rata Liga', big: avgAll.toFixed(1), sub:'poin / tim / GW' },
+    { icon:'&#128293;', lbl:'Skor Tertinggi Sepanjang Musim', big: bestSingle.team ? bestSingle.val : '-', sub: bestSingle.team ? `${escapeHtml(bestSingle.team)} &middot; GW${bestSingle.gw}` : '' },
+    { icon:'&#10052;&#65039;', lbl:'Skor Terendah Sepanjang Musim', big: worstSingle.team ? worstSingle.val : '-', sub: worstSingle.team ? `${escapeHtml(worstSingle.team)} &middot; GW${worstSingle.gw}` : '' },
   ];
   box.innerHTML = cards.map(c=>`
-    <div class="stat-card">
+    <div class="stat-card stat-elegant">
+      <div class="stat-icon">${c.icon}</div>
       <div class="lbl">${c.lbl}</div>
       <div class="big">${c.big}</div>
       <div class="sub">${c.sub}</div>
@@ -2295,13 +2635,19 @@ async function h2hTryAutoFetch(silent){
   // Baca GW target dari dropdown Admin (sumber kebenaran utama), bukan dari GW yang
   // sedang dilihat di tab publik -- supaya admin bisa sengaja pilih GW yang mau di-update.
   const gwSelInput = document.getElementById('gw-select-h2h-input');
-  let targetGW = gwSelInput ? Number(gwSelInput.value) : (selectedH2HGW || getMaxFilledGW() || 1);
+  let targetGW;
+  if(silent){
+    targetGW = getMaxFilledH2HGW() || getMaxFilledGW() || 1;
+  } else {
+    targetGW = gwSelInput ? Number(gwSelInput.value) : (selectedH2HGW || getMaxFilledGW() || 1);
+  }
   const { data, attempts } = await fetchViaProxies(`https://fantasy.premierleague.com/api/leagues-h2h-matches/league/${H2H_LEAGUE_ID}/?page=1&event=${targetGW}`);
   if(!data){
     if(!silent) showStatus(statusEl,'err','Gagal lewat semua jalur otomatis (' + attempts.join(' · ') + '). Coba buka file HTML di luar Claude, atau pakai cara manual di bawah.');
     logAudit('H2H Matches', `GW ${targetGW}: gagal menghubungi FPL`, 'err');
     return false;
   }
+  if(!silent) pushUndoSnapshot(`H2H Matches GW ${targetGW}`);
   const result = applyH2HJSON(data, targetGW);
   if(!result){
     if(!silent) showStatus(statusEl,'err','Data berhasil diambil tapi format tidak dikenali.');
@@ -2335,6 +2681,7 @@ async function h2hProcessJsonPaste(){
   let parsed;
   try{ parsed = JSON.parse(raw); }
   catch(e){ showStatus(statusEl,'err','Format JSON tidak valid.'); return; }
+  pushUndoSnapshot(`H2H Matches GW ${gw}`);
   const result = applyH2HJSON(parsed, gw);
   if(!result){ showStatus(statusEl,'err','Struktur JSON tidak dikenali.'); return; }
   await persist();
@@ -2445,6 +2792,7 @@ async function h2hStandingsTryAutoFetch(silent){
     logAudit('H2H Standings', 'Gagal menghubungi FPL', 'err');
     return false;
   }
+  if(!silent) pushUndoSnapshot('H2H Standings');
   const result = applyH2HStandingsJSON(data);
   if(!result){
     if(!silent) showStatus(statusEl,'err','Data berhasil diambil tapi format tidak dikenali.');
@@ -2474,6 +2822,7 @@ async function h2hStandingsProcessJsonPaste(){
   let parsed;
   try{ parsed = JSON.parse(raw); }
   catch(e){ showStatus(statusEl,'err','Format JSON tidak valid.'); return; }
+  pushUndoSnapshot('H2H Standings (manual)');
   const result = applyH2HStandingsJSON(parsed);
   if(!result){ showStatus(statusEl,'err','Struktur JSON tidak dikenali.'); return; }
   await persist();
@@ -2602,6 +2951,7 @@ async function saveManagers(){
   const statusEl = document.getElementById('manager-status');
   const rows = document.querySelectorAll('#manager-roster .roster-row');
   if(!state.managers) state.managers = {};
+  pushUndoSnapshot('Ubah nama manager');
   let count = 0;
   rows.forEach(row=>{
     const input = row.querySelector('input[type=text]');
@@ -2610,7 +2960,6 @@ async function saveManagers(){
     state.managers[team] = val;
     count++;
   });
-  await persist();
   showStatus(statusEl,'ok','Nama manager tersimpan.');
   showToast('Nama manager disimpan', `${count} tim berhasil diperbarui.`, 'ok');
   logAudit('Manager Mapping', `${count} nama manager diperbarui`, 'ok');
@@ -2868,6 +3217,7 @@ async function processJsonPaste(){
   let parsed;
   try{ parsed = JSON.parse(raw); }
   catch(e){ showStatus(statusEl,'err','Format JSON tidak valid. Pastikan kamu menyalin seluruh isi halaman API.'); return; }
+  pushUndoSnapshot(`Manual JSON GW ${gw}`);
   const result = applyStandingsJSON(parsed, gw);
   if(!result){ showStatus(statusEl,'err','Struktur JSON tidak dikenali. Cek apakah link yang dibuka benar.'); return; }
 
@@ -2886,6 +3236,23 @@ async function processJsonPaste(){
   await persist();
   document.getElementById('json-input').value = '';
   renderAll(); populateGwSelects();
+}
+
+const busyButtons = new Set();
+function withBusyLock(btnId, fn){
+  return async function(...args){
+    if(busyButtons.has(btnId)) return; // sudah ada proses berjalan, abaikan klik ganda
+    const btn = document.getElementById(btnId);
+    const originalHtml = btn ? btn.innerHTML : null;
+    busyButtons.add(btnId);
+    if(btn){ btn.disabled = true; btn.style.opacity = '0.6'; btn.style.cursor = 'not-allowed'; btn.innerHTML = '&#8987;&nbsp; Memproses...'; }
+    try{
+      return await fn(...args);
+    } finally {
+      busyButtons.delete(btnId);
+      if(btn){ btn.disabled = false; btn.style.opacity = ''; btn.style.cursor = ''; btn.innerHTML = originalHtml; }
+    }
+  };
 }
 
 async function tryAutoFetch(silent){
@@ -2907,6 +3274,7 @@ async function tryAutoFetch(silent){
     targetGW = gwInputSel ? Number(gwInputSel.value) : (getMaxFilledGW() || 1);
   }
   if(gwInputSel) gwInputSel.value = targetGW;
+  if(!silent) pushUndoSnapshot(`Update API GW ${targetGW}`);
   const result = applyStandingsJSON(data, targetGW);
   if(!result){
     if(!silent) showStatus(statusEl,'err','Data berhasil diambil tapi format tidak dikenali.');
@@ -2935,9 +3303,14 @@ function applyAutoRefreshSetting(){
   const chk = document.getElementById('chk-auto-refresh');
   if(chk) chk.checked = enabled;
   if(autoRefreshTimer){ clearInterval(autoRefreshTimer); autoRefreshTimer = null; }
+  const silentTick = ()=>{
+    if(!busyButtons.has('btn-autotry')) tryAutoFetch(true);
+    if(!busyButtons.has('btn-h2h-autotry')) h2hTryAutoFetch(true);
+    if(!busyButtons.has('btn-h2h-standings-autotry')) h2hStandingsTryAutoFetch(true);
+  };
   if(enabled){
-    tryAutoFetch(true);
-    autoRefreshTimer = setInterval(()=> tryAutoFetch(true), 15*60*1000);
+    silentTick();
+    autoRefreshTimer = setInterval(silentTick, 15*60*1000);
   }
 }
 
@@ -2954,6 +3327,7 @@ async function saveManualScores(){
   const statusEl = document.getElementById('manual-status');
   const gw = Number(document.getElementById('gw-select-manual').value);
   const rows = document.querySelectorAll('#manual-roster .roster-row');
+  pushUndoSnapshot(`Manual Point GW ${gw}`);
   let count = 0;
   rows.forEach(row=>{
     const ptsInput = row.querySelector('[data-field=pts]');
@@ -2976,7 +3350,6 @@ async function saveManualScores(){
       count++;
     }
   });
-  await persist();
   showStatus(statusEl,'ok', `Poin GW ${gw} tersimpan untuk ${count} tim.`);
   showToast('Poin manual disimpan', `GW ${gw}: ${count} tim berhasil diperbarui.`, 'ok');
   logAudit('Manual Point', `GW ${gw}: ${count} tim diinput manual`, 'ok');
@@ -3038,6 +3411,7 @@ function tryAdminUnlock(){
 async function savePin(){
   const statusEl = document.getElementById('pin-set-status');
   const val = document.getElementById('pin-set-input').value.trim();
+  pushUndoSnapshot('Ubah PIN admin');
   state.adminPin = val || null;
   logAudit('Keamanan', val ? 'PIN admin diubah' : 'PIN admin dihapus', 'ok');
   await persist();
@@ -3179,7 +3553,7 @@ function initTabs(){
       document.getElementById('view-admin-'+btn.dataset.admintab).classList.add('active');
       if(btn.dataset.admintab==='validation'){ renderValidationReport(); }
       if(btn.dataset.admintab==='coffeedebt'){ renderAdminDebtList(); }
-      if(btn.dataset.admintab==='auditlog'){ renderAuditLog(); }
+      if(btn.dataset.admintab==='auditlog'){ renderAuditLog(); renderUndoPanel(); }
     };
   });
   document.getElementById('btn-open-admin').onclick = ()=>{
@@ -3246,6 +3620,7 @@ function renderCoffeeDebtList(){
 
 async function toggleCoffeeDebt(gw){
   if(!state.coffeeDebtsPaid) state.coffeeDebtsPaid = {};
+  pushUndoSnapshot(`Tandai utang kopi GW ${gw}`);
   const nowPaid = !state.coffeeDebtsPaid[gw];
   state.coffeeDebtsPaid[gw] = nowPaid;
   logAudit('Utang Kopi', `GW ${gw} ditandai ${nowPaid ? 'LUNAS' : 'belum lunas'}`, 'ok');
@@ -3305,7 +3680,43 @@ async function clearAuditLog(){
   showToast('Audit log dibersihkan', 'Semua riwayat lama telah dihapus.', 'ok');
 }
 
-function renderAll(){ renderHero(); renderKlasemen(); renderMingguan(); renderManagerRoster(); renderCoffeeDebtSummary(); renderCoffeeDebtList(); }
+const SPONSORS = [
+  { name: 'Faisal', team: 'Katapang_Pride', tier: 'Sponsor Utama', quote: 'Semoga liga ini makin seru tiap musimnya. Selamat berjuang, semua manager!' },
+  { name: 'Hafid', team: 'komodomodol FC', tier: 'Sponsor Utama', quote: 'Dukung penuh hadiah juara musim ini. Ngopi, main, menang bareng-bareng!' },
+];
+
+function renderSponsors(){
+  const box = document.getElementById('sponsor-content');
+  if(!box) return;
+  const cardsHtml = SPONSORS.map(s=>{
+    const manager = (state.managers && state.managers[s.team]) || s.name;
+    return `<div class="sponsor-card">
+      <div class="sponsor-ribbon">SPONSOR</div>
+      <div class="sponsor-badge-wrap">
+        <div class="badge-ring"></div>
+        ${teamBadgeHtml(s.team, 72)}
+      </div>
+      <div class="sponsor-name">${escapeHtml(s.name)}</div>
+      <div class="sponsor-team">${escapeHtml(s.team)} &middot; ${escapeHtml(manager)}</div>
+      <div class="sponsor-quote">&ldquo;${escapeHtml(s.quote)}&rdquo;</div>
+      <div class="sponsor-tier">&#127942; ${escapeHtml(s.tier)}</div>
+    </div>`;
+  }).join('');
+
+  box.innerHTML = `
+    <div class="sponsor-hero">
+      <div class="sponsor-hero-icon">&#129504;</div>
+      <div class="sponsor-hero-title">Sponsor Liga</div>
+      <div class="sponsor-hero-sub">Terima kasih kepada para sponsor yang mendukung penuh hadiah juara Coffee &amp; Juice League Divisi IT musim 2026/27.</div>
+    </div>
+    <div class="sponsor-grid">${cardsHtml}</div>
+    <div class="sponsor-thanks">
+      &#128156; <strong>Terima kasih banyak</strong> untuk semua dukungan yang membuat kompetisi ini makin seru dan hadiahnya makin berarti. Ngopi. Main. Menang.
+    </div>
+  `;
+}
+
+function renderAll(){ renderHero(); renderKlasemen(); renderMingguan(); renderManagerRoster(); renderCoffeeDebtSummary(); renderCoffeeDebtList(); renderSponsors(); }
 
 async function init(){
   await loadState();
@@ -3320,7 +3731,7 @@ async function init(){
   fetchNextDeadline();
 
   document.getElementById('btn-process').onclick = processJsonPaste;
-  document.getElementById('btn-autotry').onclick = ()=> tryAutoFetch(false);
+  document.getElementById('btn-autotry').onclick = withBusyLock('btn-autotry', ()=> tryAutoFetch(false));
   document.getElementById('btn-clear-json').onclick = ()=>{ document.getElementById('json-input').value=''; };
   document.getElementById('btn-save-manual').onclick = saveManualScores;
   document.getElementById('gw-select-manual').onchange = renderManualRoster;
@@ -3331,7 +3742,7 @@ async function init(){
   document.getElementById('btn-clear-audit').onclick = clearAuditLog;
   document.getElementById('btn-backup-download').onclick = downloadBackup;
   document.getElementById('btn-backup-restore').onclick = restoreBackup;
-  document.getElementById('btn-h2h-autotry').onclick = ()=> h2hTryAutoFetch(false);
+  document.getElementById('btn-h2h-autotry').onclick = withBusyLock('btn-h2h-autotry', ()=> h2hTryAutoFetch(false));
   document.getElementById('btn-h2h-process').onclick = h2hProcessJsonPaste;
   document.getElementById('btn-h2h-clear').onclick = ()=>{ document.getElementById('h2h-json-input').value=''; };
   document.getElementById('h2h-filter-team').onchange = renderH2H;
@@ -3341,7 +3752,7 @@ async function init(){
     document.getElementById('h2h-filter-gw').value = '';
     renderH2H();
   };
-  document.getElementById('btn-h2h-standings-autotry').onclick = ()=> h2hStandingsTryAutoFetch(false);
+  document.getElementById('btn-h2h-standings-autotry').onclick = withBusyLock('btn-h2h-standings-autotry', ()=> h2hStandingsTryAutoFetch(false));
   document.getElementById('btn-h2h-standings-process').onclick = h2hStandingsProcessJsonPaste;
   document.getElementById('btn-h2h-standings-clear').onclick = ()=>{ document.getElementById('h2h-standings-json-input').value=''; };
   applyAutoRefreshSetting();
