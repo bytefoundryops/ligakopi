@@ -433,8 +433,9 @@ tbody tr.top1 td:first-child, tbody tr.top2 td:first-child, tbody tr.top3 td:fir
 }
 
 .chart-controls{display:flex;gap:8px;flex-wrap:wrap;margin-bottom:16px;}
-.chip-toggle{font-family:var(--mono);font-size:11.5px;padding:6px 11px;border-radius:7px;border:1px solid var(--line);background:var(--surface);color:var(--text-mute);cursor:pointer;}
-.chip-toggle.on{background:var(--purple);color:#fff;border-color:var(--purple);font-weight:700;}
+.chip-toggle{font-family:var(--mono);font-size:11.5px;padding:8px 13px;border-radius:20px;border:1px solid var(--line);background:var(--surface);color:var(--text-mute);cursor:pointer;transition:all .15s ease;min-height:34px;}
+.chip-toggle:hover{border-color:var(--purple);color:var(--purple);}
+.chip-toggle.on{background:linear-gradient(120deg, var(--purple), var(--purple-2));color:#fff;border-color:transparent;font-weight:700;box-shadow:0 3px 10px rgba(55,0,60,0.25);}
 .chart-card{background:var(--bg);border:1px solid var(--line);border-radius:16px;padding:26px;margin-bottom:20px;box-shadow:0 1px 2px rgba(55,0,60,0.04), 0 8px 24px rgba(55,0,60,0.04);transition:box-shadow .25s ease;}
 .chart-card:hover{box-shadow:0 4px 8px rgba(55,0,60,0.06), 0 16px 36px rgba(55,0,60,0.08);}
 .chart-card-head{display:flex;align-items:center;gap:12px;margin-bottom:18px;}
@@ -467,13 +468,25 @@ tbody tr.top1 td:first-child, tbody tr.top2 td:first-child, tbody tr.top3 td:fir
 
 .stat-card.stat-elegant{
   background:var(--card);border:1px solid var(--line);border-radius:16px;padding:20px;
-  position:relative;overflow:hidden;
+  position:relative;overflow:hidden;transition:transform .2s cubic-bezier(.22,1,.36,1), box-shadow .2s ease;
 }
 .stat-card.stat-elegant::before{
   content:'';position:absolute;top:0;left:0;right:0;height:3px;
   background:linear-gradient(90deg, var(--cyan), var(--purple));
 }
-.stat-card.stat-elegant .stat-icon{font-size:20px;margin-bottom:10px;opacity:0.85;}
+.stat-card.stat-elegant .stat-icon{font-size:22px;margin-bottom:10px;opacity:0.9;}
+.stat-card.stat-elegant.sc-fire{background:linear-gradient(160deg, rgba(255,90,30,0.10), var(--card) 60%);}
+.stat-card.stat-elegant.sc-fire::before{background:linear-gradient(90deg, #FF9F43, #E90052);}
+.stat-card.stat-elegant.sc-fire .big{color:#E9532D;}
+.stat-card.stat-elegant.sc-ice{background:linear-gradient(160deg, rgba(34,211,238,0.10), var(--card) 60%);}
+.stat-card.stat-elegant.sc-ice::before{background:linear-gradient(90deg, #22D3EE, #5B8DEF);}
+.stat-card.stat-elegant.sc-ice .big{color:#0EA5C4;}
+.stat-card.stat-elegant.sc-neutral::before{background:linear-gradient(90deg, var(--purple), var(--purple-2));}
+.stat-card.stat-elegant.sc-clickable{cursor:pointer;}
+@media (hover:hover){.stat-card.stat-elegant.sc-clickable:hover{transform:translateY(-4px);box-shadow:0 12px 28px rgba(55,0,60,0.12);}}
+.stat-card.stat-elegant.sc-clickable:active{transform:scale(0.98);}
+.sc-jump{margin-top:10px;font-size:11px;font-weight:700;color:var(--purple);opacity:0;transition:opacity .2s ease;}
+.sc-clickable:hover .sc-jump{opacity:1;}
 .chart-card h3{font-size:15px;font-weight:700;margin:0 0 16px;color:var(--purple);}
 .chart-wrap{position:relative;width:100%;height:320px;}
 
@@ -1035,6 +1048,12 @@ footer{text-align:center;padding:30px 20px 8px;font-family:var(--mono);font-size
   .chart-card{padding:18px;}
   .chart-card-head{gap:10px;}
   .chart-card-head-text h3{font-size:14px;}
+  .stat-card.stat-elegant{padding:16px;}
+  .stat-card.stat-elegant .big{font-size:22px;}
+  .stat-card.stat-elegant .lbl{font-size:10.5px;}
+  .chart-controls{gap:6px;margin-bottom:14px;}
+  .chip-toggle{font-size:10.5px;padding:7px 11px;}
+  .chart-wrap{height:240px;}
 }
 
 .toast-stack{position:fixed;top:20px;right:20px;z-index:200;display:flex;flex-direction:column;gap:10px;max-width:360px;}
@@ -1153,7 +1172,15 @@ footer{text-align:center;padding:30px 20px 8px;font-family:var(--mono);font-size
 .modal-close:hover{color:var(--purple);border-color:var(--purple);}
 .modal-body{padding:20px 24px;}
 .modal-stat-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(110px,1fr));gap:10px;margin-bottom:18px;}
-.modal-stat{background:var(--surface);border:1px solid var(--line);border-radius:10px;padding:12px 14px;}
+.modal-stat{background:var(--surface);border:1px solid var(--line);border-radius:12px;padding:14px 16px;position:relative;overflow:hidden;transition:transform .2s ease, box-shadow .2s ease;}
+.modal-stat::before{content:'';position:absolute;top:0;left:0;right:0;height:3px;background:linear-gradient(90deg, var(--cyan), var(--purple));opacity:0.8;}
+.modal-stat:hover{transform:translateY(-3px);box-shadow:0 8px 20px rgba(55,0,60,0.1);}
+.modal-stat.ms-cyan::before{background:linear-gradient(90deg, var(--cyan), #0EA5C4);}
+.modal-stat.ms-purple::before{background:linear-gradient(90deg, var(--purple), var(--purple-2));}
+.modal-stat.ms-green::before{background:linear-gradient(90deg, var(--green), var(--green-ink));}
+.modal-stat.ms-pink::before{background:linear-gradient(90deg, var(--pink), #FF9F43);}
+.modal-stat.ms-gold::before{background:linear-gradient(90deg, #F0D27A, #B8901E);}
+.modal-stat.ms-gold{background:linear-gradient(160deg, rgba(240,210,122,0.12), var(--surface) 65%);}
 .modal-stat .k{font-size:10px;font-weight:700;text-transform:uppercase;letter-spacing:.05em;color:var(--text-mute);margin-bottom:4px;}
 .modal-stat .v{font-family:var(--mono);font-weight:800;font-size:18px;color:var(--purple);}
 
@@ -1162,13 +1189,24 @@ footer{text-align:center;padding:30px 20px 8px;font-family:var(--mono);font-size
   font-family:var(--mono);font-size:11px;font-weight:800;color:var(--text);
   background:var(--surface);border:1px solid var(--line-strong);border-radius:8px;
   padding:6px 9px;display:flex;flex-direction:column;align-items:center;gap:2px;min-width:38px;
+  transition:transform .15s ease;
 }
+.pos-chip:hover{transform:translateY(-2px);}
 .pos-chip span{font-size:8.5px;font-weight:600;color:var(--text-mute);text-transform:uppercase;}
+.pos-chip.pos-chip-gold{background:linear-gradient(160deg,#F0D27A,#B8901E);border-color:#B8901E;color:#3D2F13;box-shadow:0 3px 10px rgba(184,144,30,0.3);}
+.pos-chip.pos-chip-gold span{color:rgba(61,47,19,0.7);}
+.pos-chip.pos-chip-podium{background:var(--purple-tint);border-color:var(--purple-line);color:var(--purple);}
+
+.gw-row-best{background:rgba(0,168,89,0.06) !important;}
+.gw-row-worst{background:rgba(233,0,82,0.06) !important;}
 
 .manager-picker-row{display:flex;align-items:center;justify-content:space-between;gap:14px;flex-wrap:wrap;margin-bottom:20px;}
 .manager-hero{
   display:flex;align-items:center;gap:18px;position:relative;overflow:hidden;
-  background:linear-gradient(120deg, #1A0A2E 0%, var(--purple) 55%, #2D0B3F 100%);
+  background:
+    radial-gradient(circle, rgba(255,255,255,0.06) 1px, transparent 1.5px),
+    linear-gradient(120deg, #1A0A2E 0%, var(--purple) 55%, #2D0B3F 100%);
+  background-size:20px 20px, 100% 100%;
   border:1px solid rgba(139,92,246,0.35);border-radius:18px;padding:26px 28px;margin-bottom:20px;
   box-shadow:0 14px 34px rgba(55,0,60,0.22), inset 0 1px 0 rgba(255,255,255,0.06);
 }
@@ -1178,6 +1216,65 @@ footer{text-align:center;padding:30px 20px 8px;font-family:var(--mono);font-size
 .manager-hero .team-name-wrap{position:relative;z-index:1;}
 .manager-hero .team-name-wrap .team-name{font-size:22px;color:#fff;}
 .manager-hero .team-name-wrap .team-manager{font-size:14px;color:rgba(255,255,255,0.7);}
+
+/* ================= GW Snapshot card (gaya app FPL resmi) ================= */
+.gw-snapshot-card{
+  border-radius:18px;padding:22px 26px;margin-bottom:20px;position:relative;overflow:hidden;
+  background:linear-gradient(120deg, var(--cyan) 0%, var(--purple) 100%);
+  box-shadow:0 10px 28px rgba(55,0,60,0.18);
+}
+.gw-snapshot-card::before{
+  content:'';position:absolute;top:-60px;right:-40px;width:200px;height:200px;border-radius:50%;
+  background:radial-gradient(circle, rgba(255,255,255,0.16), transparent 70%);pointer-events:none;
+  animation:prizeGlowA 6s ease-in-out infinite;
+}
+.gw-snapshot-nav{display:flex;align-items:center;justify-content:center;gap:18px;margin-bottom:16px;position:relative;}
+.gw-snapshot-nav::after{content:'';position:absolute;bottom:-14px;left:10%;right:10%;height:1px;background:rgba(255,255,255,0.3);}
+.gws-nav-btn{
+  background:rgba(255,255,255,0.14);border:none;color:#fff;width:32px;height:32px;border-radius:50%;
+  cursor:pointer;font-size:13px;display:flex;align-items:center;justify-content:center;
+  transition:all .15s ease;flex:0 0 auto;
+}
+.gws-nav-btn:hover:not(:disabled){background:rgba(255,255,255,0.28);transform:scale(1.1);}
+.gws-nav-btn:disabled{opacity:0.25;cursor:not-allowed;}
+.gw-snapshot-title{color:#fff;font-size:15px;font-weight:800;text-align:center;position:relative;min-width:110px;}
+.gw-snapshot-empty{color:rgba(255,255,255,0.75);text-align:center;font-size:13px;padding:20px 0;position:relative;}
+.gw-snapshot-row{display:flex;align-items:center;justify-content:space-around;gap:10px;position:relative;}
+.gws-item{text-align:center;}
+.gws-item .gws-num{font-family:var(--font);font-weight:900;font-size:28px;color:#fff;line-height:1;}
+.gws-item.gws-main .gws-num{font-size:42px;}
+.gws-item .gws-lbl{font-size:12.5px;color:rgba(255,255,255,0.8);margin-top:6px;font-weight:600;}
+.gws-item.gws-clickable{cursor:pointer;border-radius:12px;padding:6px 10px;transition:background .15s ease, transform .15s ease;}
+.gws-item.gws-clickable:hover{background:rgba(255,255,255,0.14);transform:translateY(-2px);}
+@media (max-width:640px){
+  .gw-snapshot-card{padding:18px 16px;}
+  .gws-item .gws-num{font-size:22px;}
+  .gws-item.gws-main .gws-num{font-size:32px;}
+}
+
+.mgr-chart-grid{display:grid;grid-template-columns:1fr 1fr;gap:16px;}
+.mgr-compare-row{display:flex;align-items:center;gap:28px;flex-wrap:wrap;}
+.mgr-gauge-center{
+  position:absolute;left:50%;bottom:6%;transform:translateX(-50%);
+  display:flex;flex-direction:column;align-items:center;pointer-events:none;
+}
+.mgr-gauge-pct{
+  font-family:var(--mono);font-weight:800;font-size:26px;color:var(--text);line-height:1;
+  letter-spacing:.03em;background:var(--surface);border:1px solid var(--line-strong);
+  padding:6px 14px;border-radius:8px;
+}
+.mgr-compare-bars{flex:1;min-width:200px;display:flex;flex-direction:column;gap:14px;}
+.mgr-cbar-row{display:grid;grid-template-columns:90px 1fr 44px;align-items:center;gap:10px;}
+.mgr-cbar-lbl{font-size:12px;color:var(--text-2);font-weight:600;}
+.mgr-cbar-track{height:10px;border-radius:6px;background:var(--surface);border:1px solid var(--line);overflow:hidden;}
+.mgr-cbar-fill{height:100%;border-radius:6px;transition:width 1s cubic-bezier(.22,1,.36,1);}
+.mgr-cbar-val{font-family:var(--mono);font-weight:800;font-size:13px;color:var(--text);text-align:right;}
+@media (max-width:640px){
+  .mgr-chart-grid{grid-template-columns:1fr;}
+  .mgr-compare-row{flex-direction:column;align-items:center;}
+  .mgr-compare-bars{width:100%;min-width:0;}
+  .mgr-cbar-row{grid-template-columns:74px 1fr 38px;}
+}
 .perf-bar-row{display:flex;align-items:flex-end;gap:6px;height:120px;padding:10px 4px 0;overflow-x:auto;}
 .perf-bar{flex:0 0 auto;width:28px;display:flex;flex-direction:column;align-items:center;gap:4px;}
 .perf-bar .bar{width:100%;border-radius:6px 6px 0 0;background:linear-gradient(180deg, var(--purple-2), var(--purple));min-height:4px;}
@@ -2523,6 +2620,162 @@ function populateManagerPageSelect(){
   if(prevVal && state.teams.includes(prevVal)) sel.value = prevVal;
 }
 
+let managerPerfChartInstance = null, managerPositionChartInstance = null, managerFormChartInstance = null;
+
+function renderManagerPerfChart(perf){
+  const canvas = document.getElementById('managerPerfChart');
+  if(!canvas) return;
+  const ctx = canvas.getContext('2d');
+  const cc = chartColors();
+  const labels = perf.map(p=>'GW'+p.gw);
+  const data = perf.map(p=>p.net);
+  const colors = data.map(v=> v<0 ? '#E90052' : (isDarkTheme()?'#22D3EE':'#37003C'));
+  const gradient = ctx.createLinearGradient(0,0,0,220);
+  gradient.addColorStop(0, isDarkTheme()?'#22D3EE55':'#37003C33');
+  gradient.addColorStop(1, isDarkTheme()?'#22D3EE00':'#37003C00');
+  if(managerPerfChartInstance) managerPerfChartInstance.destroy();
+  managerPerfChartInstance = new Chart(canvas, {
+    type:'line',
+    data:{ labels, datasets:[{ data, borderColor: isDarkTheme()?'#22D3EE':'#37003C', backgroundColor:gradient, fill:true, tension:0.35, cubicInterpolationMode:'monotone', borderWidth:2.5, pointRadius:3, pointBackgroundColor:colors, pointBorderColor:'#fff', pointBorderWidth:1.5, pointHoverRadius:6 }] },
+    options:{ responsive:true, maintainAspectRatio:false, animation:{duration:800,easing:'easeOutQuart'},
+      plugins:{ legend:{display:false}, tooltip:{ padding:10, cornerRadius:10, backgroundColor: isDarkTheme()?'#1A0A2E':'#37003C', titleFont:{family:'JetBrains Mono',size:11}, bodyFont:{family:'JetBrains Mono',size:12,weight:'700'}, callbacks:{ label:(item)=> ' ' + item.parsed.y + ' poin' } } },
+      scales:{ x:{ grid:{color:cc.grid, drawTicks:false}, border:{display:false}, ticks:{color:cc.tick, font:{family:'JetBrains Mono',size:10}} },
+               y:{ grid:{color:cc.grid, drawTicks:false}, border:{display:false}, ticks:{color:cc.tick, font:{family:'JetBrains Mono',size:10}} } } }
+  });
+}
+
+function renderManagerPositionChart(posHistory, maxGW){
+  const canvas = document.getElementById('managerPositionChart');
+  if(!canvas) return;
+  const cc = chartColors();
+  const labels = posHistory.map(p=>'GW'+p.gw);
+  const data = posHistory.map(p=>p.rank);
+  const teamCount = state.teams.length || 1;
+  if(managerPositionChartInstance) managerPositionChartInstance.destroy();
+  managerPositionChartInstance = new Chart(canvas, {
+    type:'line',
+    data:{ labels, datasets:[{ data, borderColor:'#8B5CF6', backgroundColor:'#8B5CF622', fill:true, tension:0.3, cubicInterpolationMode:'monotone', borderWidth:2.5, pointRadius:4, pointBackgroundColor: posHistory.map(p=>p.rank===1?'#F0D27A':'#8B5CF6'), pointBorderColor:'#fff', pointBorderWidth:1.5, pointHoverRadius:7 }] },
+    options:{ responsive:true, maintainAspectRatio:false, animation:{duration:800,easing:'easeOutQuart'},
+      plugins:{ legend:{display:false}, tooltip:{ padding:10, cornerRadius:10, backgroundColor: isDarkTheme()?'#1A0A2E':'#37003C', titleFont:{family:'JetBrains Mono',size:11}, bodyFont:{family:'JetBrains Mono',size:12,weight:'700'}, callbacks:{ label:(item)=> ' Peringkat #' + item.parsed.y } } },
+      scales:{
+        x:{ grid:{color:cc.grid, drawTicks:false}, border:{display:false}, ticks:{color:cc.tick, font:{family:'JetBrains Mono',size:10}} },
+        y:{ reverse:true, min:1, max:teamCount, grid:{color:cc.grid, drawTicks:false}, border:{display:false}, ticks:{color:cc.tick, font:{family:'JetBrains Mono',size:10}, stepSize:Math.max(1,Math.floor(teamCount/6)), callback:(v)=>'#'+v } }
+      } }
+  });
+}
+
+function renderManagerCompareChart(team, row){
+  const canvas = document.getElementById('managerGaugeChart');
+  if(!canvas) return;
+  const lb = computeLeaderboard();
+  const totalTeams = lb.length || 1;
+  const percentile = totalTeams>1 ? Math.round(((totalTeams - row.rank) / (totalTeams-1)) * 100) : 100;
+  const pctEl = document.getElementById('mgr-gauge-pct');
+  if(pctEl) pctEl.textContent = percentile + '%';
+
+  const gaugeColor = percentile>=70 ? '#0D7A47' : (percentile>=40 ? '#A67C1E' : '#8A0030');
+  const trackColor = isDarkTheme() ? '#241F38' : '#C9C3DE';
+
+  // Gauge bergaya "digital LED" -- dipecah jadi segmen-segmen kecil dengan celah,
+  // bukan lengkungan halus polos, supaya terasa seperti tampilan digital/HUD.
+  const SEGMENTS = 24;
+  const filledSegments = Math.round((percentile/100) * SEGMENTS);
+  const data = []; const bg = [];
+  for(let i=0;i<SEGMENTS;i++){
+    data.push(1);
+    bg.push(i < filledSegments ? gaugeColor : trackColor);
+  }
+  if(managerFormChartInstance) managerFormChartInstance.destroy();
+  managerFormChartInstance = new Chart(canvas, {
+    type:'doughnut',
+    data:{ datasets:[{ data, backgroundColor:bg, borderWidth:2, borderColor: isDarkTheme()?'#150F24':'#fff' }] },
+    options:{ responsive:true, maintainAspectRatio:false, cutout:'72%', rotation:-90, circumference:180,
+      animation:{duration:900,easing:'easeOutQuart'},
+      plugins:{ legend:{display:false}, tooltip:{enabled:false} } }
+  });
+
+  const totals = lb.map(r=>r.grandTotal);
+  const leagueAvg = totals.reduce((a,b)=>a+b,0) / (totals.length||1);
+  const leagueBest = Math.max(...totals, 0);
+  const bars = [
+    { lbl:'Kamu', val: row.grandTotal, color:'linear-gradient(90deg, #0B5F73, #2D0B3F)' },
+    { lbl:'Rata-rata Liga', val: Math.round(leagueAvg), color:'linear-gradient(90deg, #55506B, #2E2A42)' },
+    { lbl:'Tertinggi Liga', val: leagueBest, color:'linear-gradient(90deg, #A67C1E, #7A5A10)' },
+  ];
+  const maxVal = Math.max(...bars.map(b=>b.val), 1);
+  const barsBox = document.getElementById('mgr-compare-bars');
+  if(barsBox){
+    barsBox.innerHTML = bars.map(b=>`
+      <div class="mgr-cbar-row">
+        <div class="mgr-cbar-lbl">${b.lbl}</div>
+        <div class="mgr-cbar-track"><div class="mgr-cbar-fill" style="width:${Math.max(4,(b.val/maxVal)*100)}%;background:${b.color};"></div></div>
+        <div class="mgr-cbar-val">${b.val}</div>
+      </div>`).join('');
+  }
+}
+
+let managerSnapshotGW = null;
+
+function buildGwSnapshotCard(team, gw, maxGW){
+  const gwlb = computeGwLeaderboard(gw);
+  if(!gwlb.length){
+    return `<div class="gw-snapshot-card">
+      <div class="gw-snapshot-nav">
+        <button class="gws-nav-btn" data-dir="-1" ${gw<=1?'disabled':''}>&#10094;</button>
+        <div class="gw-snapshot-title">Gameweek ${gw}</div>
+        <button class="gws-nav-btn" data-dir="1" ${gw>=maxGW?'disabled':''}>&#10095;</button>
+      </div>
+      <div class="gw-snapshot-empty">Belum ada data untuk Game Week ini.</div>
+    </div>`;
+  }
+  const leagueAvg = gwlb.reduce((a,r)=>a+r.net,0) / gwlb.length;
+  const thisTeamGw = gwlb.find(r=>r.team===team);
+  const topScorer = gwlb[0];
+  return `<div class="gw-snapshot-card">
+    <div class="gw-snapshot-nav">
+      <button class="gws-nav-btn" data-dir="-1" ${gw<=1?'disabled':''} title="Game Week sebelumnya">&#10094;</button>
+      <div class="gw-snapshot-title">Gameweek ${gw}</div>
+      <button class="gws-nav-btn" data-dir="1" ${gw>=maxGW?'disabled':''} title="Game Week berikutnya">&#10095;</button>
+    </div>
+    <div class="gw-snapshot-row">
+      <div class="gws-item"><div class="gws-num">${leagueAvg.toFixed(0)}</div><div class="gws-lbl">Average</div></div>
+      <div class="gws-item gws-main"><div class="gws-num">${thisTeamGw ? thisTeamGw.net : '-'}</div><div class="gws-lbl">Points</div></div>
+      <div class="gws-item gws-clickable" id="gw-snapshot-highest">
+        <div class="gws-num">${topScorer.net}</div>
+        <div class="gws-lbl">Highest &#8594;</div>
+      </div>
+    </div>
+  </div>`;
+}
+
+function wireGwSnapshotCard(team){
+  const maxGW = getMaxFilledGW();
+  const container = document.getElementById('gw-snapshot-container');
+  if(!container) return;
+  container.querySelectorAll('.gws-nav-btn').forEach(btn=>{
+    btn.addEventListener('click', ()=>{
+      const dir = Number(btn.dataset.dir);
+      const next = managerSnapshotGW + dir;
+      if(next < 1 || next > maxGW) return;
+      managerSnapshotGW = next;
+      container.innerHTML = buildGwSnapshotCard(team, managerSnapshotGW, maxGW);
+      wireGwSnapshotCard(team);
+    });
+  });
+  const highestEl = document.getElementById('gw-snapshot-highest');
+  if(highestEl){
+    highestEl.addEventListener('click', ()=>{
+      const gwlb = computeGwLeaderboard(managerSnapshotGW);
+      if(!gwlb.length) return;
+      const topTeam = gwlb[0].team;
+      const sel = document.getElementById('manager-page-select');
+      if(sel){ sel.value = topTeam; }
+      renderManagerPage(topTeam);
+      window.scrollTo({top:0, behavior:'smooth'});
+    });
+  }
+}
+
 function renderManagerPage(team){
   if(!team || !state.teams.includes(team)) team = state.teams[0];
   const maxGW = getMaxFilledGW();
@@ -2560,6 +2813,9 @@ function renderManagerPage(team){
   const worst = perf.length ? Math.min(...perf.map(p=>p.net)) : 0;
   const maxBar = perf.length ? Math.max(...perf.map(p=>p.net), 1) : 1;
 
+  managerSnapshotGW = maxGW; // reset ke GW terbaru tiap kali pindah/buka manager
+  const gwSnapshotHtml = `<div id="gw-snapshot-container">${buildGwSnapshotCard(team, managerSnapshotGW, maxGW)}</div>`;
+
   box.innerHTML = `
     <div class="manager-hero">
       ${teamBadgeHtml(team, 64)}
@@ -2568,6 +2824,7 @@ function renderManagerPage(team){
         <span class="team-manager">${escapeHtml(manager)}</span>
       </div>
     </div>
+    ${gwSnapshotHtml}
     <div class="modal-stat-grid" style="margin-bottom:20px;">
       <div class="modal-stat"><div class="k">Current Rank</div><div class="v">#${row.rank}</div></div>
       <div class="modal-stat"><div class="k">Total Point</div><div class="v">${row.grandTotal}</div></div>
@@ -2577,21 +2834,48 @@ function renderManagerPage(team){
       <div class="modal-stat"><div class="k">GW Winner</div><div class="v">&#127942; ${winnerCount}&times;</div></div>
       <div class="modal-stat"><div class="k">Weak of the Week</div><div class="v" style="color:var(--pink-ink);">&#9888;&#65039; ${weakCount}&times;</div></div>
     </div>
-    <div class="chart-card" style="margin-bottom:20px;">
-      <h3>Performance History</h3>
-      ${perf.length ? `<div class="perf-bar-row">${perf.map(p=>`<div class="perf-bar"><div class="val">${p.net}</div><div class="bar" style="height:${Math.max(6,(p.net/maxBar)*90)}px;"></div><div class="gwlbl">GW${p.gw}</div></div>`).join('')}</div>` : `<div class="empty-state"><p>Belum ada data.</p></div>`}
+    <div class="mgr-chart-grid">
+      <div class="chart-card">
+        <div class="chart-card-head">
+          <div class="chart-card-icon cyan">&#128200;</div>
+          <div class="chart-card-head-text"><h3>Performance History</h3><p>Poin bersih tiap Game Week</p></div>
+        </div>
+        <div class="chart-wrap" style="height:220px;"><canvas id="managerPerfChart"></canvas></div>
+      </div>
+      <div class="chart-card">
+        <div class="chart-card-head">
+          <div class="chart-card-icon purple">&#128201;</div>
+          <div class="chart-card-head-text"><h3>Position History</h3><p>Peringkat klasemen dari waktu ke waktu</p></div>
+        </div>
+        <div class="chart-wrap" style="height:220px;"><canvas id="managerPositionChart"></canvas></div>
+      </div>
     </div>
-    <div class="chart-card">
-      <h3>Position History</h3>
-      ${posHistory.length ? `<div class="pos-chip-row">${posHistory.map(p=>{
-        let trend;
-        if(p.delta>0) trend = `<span class="trend-up">&#9650;${p.delta}</span>`;
-        else if(p.delta<0) trend = `<span class="trend-down">&#9660;${Math.abs(p.delta)}</span>`;
-        else trend = `<span class="trend-flat">&#9473;</span>`;
-        return `<div class="pos-chip"><span>GW${p.gw}</span>#${p.rank} ${trend}</div>`;
-      }).join('')}</div>` : `<div class="empty-state"><p>Belum ada data.</p></div>`}
+    <div class="chart-card" style="margin-top:20px;">
+      <div class="chart-card-head">
+        <div class="chart-card-icon green">&#127919;</div>
+        <div class="chart-card-head-text"><h3>Perbandingan vs Liga</h3><p>Seberapa jauh dari rata-rata &amp; puncak klasemen liga</p></div>
+      </div>
+      <div class="mgr-compare-row">
+        <div class="chart-wrap" style="height:190px;width:190px;flex:0 0 auto;position:relative;">
+          <canvas id="managerGaugeChart"></canvas>
+          <div class="mgr-gauge-center">
+            <div class="mgr-gauge-pct" id="mgr-gauge-pct">-</div>
+          </div>
+        </div>
+        <div class="mgr-compare-bars" id="mgr-compare-bars"></div>
+      </div>
     </div>
   `;
+  renderManagerPerfChart(perf);
+  renderManagerPositionChart(posHistory, maxGW);
+  renderManagerCompareChart(team, row);
+  wireGwSnapshotCard(team);
+}
+
+function rankBadgeHtml(rank){
+  if(!rank) return '-';
+  if(rank<=3) return `<span class="rank-badge-medal medal-${rank}" style="display:inline-flex;">${rank}</span>`;
+  return `#${rank}`;
 }
 
 function openTeamDetail(team){
@@ -2625,9 +2909,11 @@ function openTeamDetail(team){
     if(net > best.val) best = {gw:g, val:net};
     if(net < worst.val) worst = {gw:g, val:net};
     if(rowAtG) positionHistory.push({gw:g, rank:rowAtG.rank});
-    rowsHtml += `<tr>
+    const isBest = net === best.val;
+    const isWorst = net === worst.val;
+    rowsHtml += `<tr class="${isBest?'gw-row-best':(isWorst?'gw-row-worst':'')}">
       <td class="num-cell" style="text-align:left;font-weight:700;color:var(--purple);">GW${g}</td>
-      <td class="num-cell">#${rowAtG?rowAtG.rank:'-'}</td>
+      <td class="num-cell">${rowAtG ? rankBadgeHtml(rowAtG.rank) : '-'}</td>
       <td class="num-cell">${e.pts}</td>
       <td class="deduct-cell">${e.cost ? '-'+e.cost : '0'}</td>
       <td class="num-cell">${e.captain||0}</td>
@@ -2641,19 +2927,20 @@ function openTeamDetail(team){
   }
   const avg = row.playedCount ? (row.grandTotal/row.playedCount) : 0;
 
-  const posChips = positionHistory.map(p=>`<div class="pos-chip">${p.rank? '#'+p.rank : '-'}<span>GW${p.gw}</span></div>`).join('');
+  const posChips = positionHistory.map(p=>{
+    const cls = p.rank===1?'pos-chip-gold':(p.rank&&p.rank<=3?'pos-chip-podium':'');
+    return `<div class="pos-chip ${cls}">${p.rank? '#'+p.rank : '-'}<span>GW${p.gw}</span></div>`;
+  }).join('');
 
   document.getElementById('team-modal-body').innerHTML = `
     <div class="modal-stat-grid">
-      <div class="modal-stat"><div class="k">Current Rank</div><div class="v">#${row.rank}</div></div>
-      <div class="modal-stat"><div class="k">Total Point</div><div class="v">${row.grandTotal}</div></div>
-      <div class="modal-stat"><div class="k">GW Average</div><div class="v">${avg.toFixed(1)}</div></div>
-      <div class="modal-stat"><div class="k">Best GW</div><div class="v" style="color:var(--green-ink);">${best.gw?best.val:'-'}</div><div class="k" style="margin-top:2px;">${best.gw?'GW'+best.gw:''}</div></div>
-      <div class="modal-stat"><div class="k">Worst GW</div><div class="v" style="color:var(--pink-ink);">${worst.gw?worst.val:'-'}</div><div class="k" style="margin-top:2px;">${worst.gw?'GW'+worst.gw:''}</div></div>
-      <div class="modal-stat"><div class="k">&#127942; GW Winner</div><div class="v">${gwWinnerCount}&times;</div></div>
-      <div class="modal-stat"><div class="k">Team of the Weak</div><div class="v">${weakWeekCount}&times;</div></div>
-      <div class="modal-stat"><div class="k">Total Captain</div><div class="v">${row.captainTotal}</div></div>
-      <div class="modal-stat"><div class="k">Total Bench</div><div class="v">${row.benchTotal}</div></div>
+      <div class="modal-stat ms-cyan"><div class="k">&#127942; Current Rank</div><div class="v">#${row.rank}</div></div>
+      <div class="modal-stat ms-purple"><div class="k">&#128176; Total Point</div><div class="v">${row.grandTotal}</div></div>
+      <div class="modal-stat ms-purple"><div class="k">&#128202; GW Average</div><div class="v">${avg.toFixed(1)}</div></div>
+      <div class="modal-stat ms-green"><div class="k">&#9989; Best GW</div><div class="v" style="color:var(--green-ink);">${best.gw?best.val:'-'}</div><div class="k" style="margin-top:2px;">${best.gw?'GW'+best.gw:''}</div></div>
+      <div class="modal-stat ms-pink"><div class="k">&#9888;&#65039; Worst GW</div><div class="v" style="color:var(--pink-ink);">${worst.gw?worst.val:'-'}</div><div class="k" style="margin-top:2px;">${worst.gw?'GW'+worst.gw:''}</div></div>
+      <div class="modal-stat ms-gold"><div class="k">&#127942; GW Winner</div><div class="v">${gwWinnerCount}&times;</div></div>
+      <div class="modal-stat ms-pink"><div class="k">&#128557; Team of the Weak</div><div class="v">${weakWeekCount}&times;</div></div>
     </div>
     <div class="section-label" style="margin-top:4px;">Position History</div>
     <div class="pos-chip-row">${posChips || '<span style="font-size:12px;color:var(--text-mute);">Belum ada data.</span>'}</div>
@@ -2851,6 +3138,21 @@ function renderStandingsChart(){
   });
 }
 
+function jumpToManagerTeam(team){
+  if(!team) return;
+  document.querySelectorAll('.tab-btn[data-tab]').forEach(b=>b.classList.remove('active'));
+  document.querySelectorAll('.view').forEach(v=>v.classList.remove('active'));
+  const tabBtn = document.querySelector('.tab-btn[data-tab="manager"]');
+  if(tabBtn) tabBtn.classList.add('active');
+  const view = document.getElementById('view-manager');
+  if(view) view.classList.add('active');
+  populateManagerPageSelect();
+  const sel = document.getElementById('manager-page-select');
+  if(sel) sel.value = team;
+  renderManagerPage(team);
+  window.scrollTo({top:0, behavior:'smooth'});
+}
+
 function renderSeasonStats(){
   const maxGW = getMaxFilledGW();
   const box = document.getElementById('season-stats');
@@ -2872,16 +3174,17 @@ function renderSeasonStats(){
   const avgAll = countPts ? (totalPts/countPts) : 0;
 
   const cards = [
-    { icon:'&#9878;&#65039;', lbl:'Rata-rata Liga', big: avgAll.toFixed(1), sub:'poin / tim / GW' },
-    { icon:'&#128293;', lbl:'Skor Tertinggi Sepanjang Musim', big: bestSingle.team ? bestSingle.val : '-', sub: bestSingle.team ? `${escapeHtml(bestSingle.team)} &middot; GW${bestSingle.gw}` : '' },
-    { icon:'&#10052;&#65039;', lbl:'Skor Terendah Sepanjang Musim', big: worstSingle.team ? worstSingle.val : '-', sub: worstSingle.team ? `${escapeHtml(worstSingle.team)} &middot; GW${worstSingle.gw}` : '' },
+    { icon:'&#9878;&#65039;', lbl:'Rata-rata Liga', big: avgAll.toFixed(1), sub:'poin / tim / GW', cls:'sc-neutral' },
+    { icon:'&#128293;', lbl:'Skor Tertinggi Sepanjang Musim', big: bestSingle.team ? bestSingle.val : '-', sub: bestSingle.team ? `${escapeHtml(bestSingle.team)} &middot; GW${bestSingle.gw}` : '', cls:'sc-fire', team: bestSingle.team },
+    { icon:'&#10052;&#65039;', lbl:'Skor Terendah Sepanjang Musim', big: worstSingle.team ? worstSingle.val : '-', sub: worstSingle.team ? `${escapeHtml(worstSingle.team)} &middot; GW${worstSingle.gw}` : '', cls:'sc-ice', team: worstSingle.team },
   ];
   box.innerHTML = cards.map(c=>`
-    <div class="stat-card stat-elegant">
+    <div class="stat-card stat-elegant ${c.cls}${c.team?' sc-clickable':''}" ${c.team?`onclick="jumpToManagerTeam('${escapeHtml(c.team).replace(/'/g,"\\'")}')"`:''}>
       <div class="stat-icon">${c.icon}</div>
       <div class="lbl">${c.lbl}</div>
       <div class="big">${c.big}</div>
       <div class="sub">${c.sub}</div>
+      ${c.team?'<div class="sc-jump">Lihat profil manager &#8594;</div>':''}
     </div>`).join('');
 }
 
