@@ -621,6 +621,14 @@ select:focus, textarea:focus, input:focus{border-color:var(--purple);}
 .section-heading:hover .icon-badge{transform:scale(1.1) rotate(-6deg);}
 
 .podium-wrap{display:grid;grid-template-columns:1fr 1.15fr 1fr;gap:14px;align-items:end;margin-bottom:28px;}
+.dash-podium-wrap{display:grid;grid-template-columns:1fr 1.15fr 1fr;gap:14px;align-items:end;margin-bottom:22px;}
+.dash-podium-card .podium-badge-wrap{display:flex;justify-content:center;margin-bottom:10px;position:relative;z-index:1;}
+.dash-podium-card .tier-name{font-size:14px;font-weight:800;color:var(--purple);margin-bottom:2px;}
+.dash-podium-card.rank1 .tier-name{font-size:16px;}
+@media (max-width:640px){
+  .dash-podium-wrap{grid-template-columns:1fr;gap:10px;}
+  .dash-podium-wrap .podium-card.rank1{order:-1;}
+}
 .podium-card{
   position:relative;overflow:hidden;border-radius:18px;padding:24px 18px 22px;text-align:center;
   box-shadow:0 10px 28px rgba(55,0,60,0.08);transition:transform .25s cubic-bezier(.22,1,.36,1);
@@ -795,6 +803,30 @@ select:focus, textarea:focus, input:focus{border-color:var(--purple);}
 .notif-btn.active{background:rgba(0,255,135,0.2);border-color:rgba(0,255,135,0.4);}
 
 footer{text-align:center;padding:30px 20px 8px;font-family:var(--mono);font-size:11px;color:var(--text-mute);}
+
+/* ================= Bottom Nav (mobile only, app-native feel) ================= */
+.mobile-bottom-nav{
+  display:none;position:fixed;left:0;right:0;bottom:0;z-index:60;
+  background:rgba(255,255,255,0.82);backdrop-filter:blur(16px);-webkit-backdrop-filter:blur(16px);
+  border-top:1px solid var(--line);
+  padding:6px 4px calc(6px + env(safe-area-inset-bottom));
+  box-shadow:0 -8px 24px rgba(55,0,60,0.08);
+}
+body.theme-dark .mobile-bottom-nav{background:rgba(11,10,24,0.82);}
+.mbn-item{
+  flex:1;display:flex;flex-direction:column;align-items:center;gap:2px;
+  background:none;border:none;cursor:pointer;padding:7px 2px 5px;border-radius:12px;
+  color:var(--text-mute);transition:color .15s ease, transform .15s ease;position:relative;
+}
+.mbn-item:active{transform:scale(0.92);}
+.mbn-icon{font-size:19px;line-height:1;filter:grayscale(1) opacity(0.55);transition:filter .15s ease;}
+.mbn-lbl{font-size:9.5px;font-weight:700;letter-spacing:.01em;}
+.mbn-item.active{color:var(--purple);}
+.mbn-item.active .mbn-icon{filter:none;}
+.mbn-item.active::before{
+  content:'';position:absolute;top:0;left:50%;transform:translateX(-50%);width:22px;height:3px;
+  background:linear-gradient(90deg, var(--cyan), var(--purple));border-radius:0 0 4px 4px;
+}
 
 .export-dropdown{position:relative;display:inline-block;}
 .export-btn{
@@ -1073,7 +1105,9 @@ footer{text-align:center;padding:30px 20px 8px;font-family:var(--mono);font-size
 
 @media (max-width:640px){
   body{background-attachment:scroll;}
-  .wrap{padding:0 12px 60px;}
+  .wrap{padding:0 12px calc(76px + env(safe-area-inset-bottom));}
+  .mobile-bottom-nav{display:flex;}
+  footer{padding-bottom:calc(90px + env(safe-area-inset-bottom));}
   .topstripe{height:4px;}
   .header{padding:18px 14px 0;}
   .brand{gap:10px;}
@@ -1403,6 +1437,7 @@ footer{text-align:center;padding:30px 20px 8px;font-family:var(--mono);font-size
       </div>
     </div>
     <div class="deadline-banner" id="deadline-banner" style="display:none;"></div>
+    <div class="dash-podium-wrap" id="dash-podium"></div>
     <div class="stat-grid" id="hero-stats"></div>
     <div class="klasemen-hero">
       <div class="klasemen-hero-icon">&#127942;</div>
@@ -1914,6 +1949,14 @@ footer{text-align:center;padding:30px 20px 8px;font-family:var(--mono);font-size
 
 <footer>Liga Ngopi &middot; data tersimpan otomatis &middot; sumber resmi: fantasy.premierleague.com/leagues/803630</footer>
 
+<nav class="mobile-bottom-nav" id="mobile-bottom-nav">
+  <button class="mbn-item active" data-jump-tab="beranda"><span class="mbn-icon">&#127968;</span><span class="mbn-lbl">Beranda</span></button>
+  <button class="mbn-item" data-jump-tab="mingguan"><span class="mbn-icon">&#9876;&#65039;</span><span class="mbn-lbl">Game Week</span></button>
+  <button class="mbn-item" data-jump-tab="klasemen"><span class="mbn-icon">&#127942;</span><span class="mbn-lbl">Klasemen</span></button>
+  <button class="mbn-item" data-jump-tab="grafik"><span class="mbn-icon">&#128202;</span><span class="mbn-lbl">Grafik</span></button>
+  <button class="mbn-item" data-jump-tab="manager"><span class="mbn-icon">&#128100;</span><span class="mbn-lbl">Manager</span></button>
+</nav>
+
 <div class="modal-overlay" id="admin-pin-overlay" onclick="if(event.target===this) closeAdminPinModal()">
   <div class="modal-box" style="max-width:380px;">
     <div class="modal-head">
@@ -2363,6 +2406,22 @@ function escapeHtml(s){
   return String(s).replace(/[&<>"']/g, c=>({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;',"'":'&#39;'}[c]));
 }
 
+function animateCountUp(el, endVal, duration){
+  if(!el) return;
+  const start = 0;
+  const startTime = performance.now();
+  const isDecimal = !Number.isInteger(endVal);
+  function tick(now){
+    const progress = Math.min(1, (now - startTime) / duration);
+    const eased = 1 - Math.pow(1-progress, 3); // ease-out cubic
+    const current = start + (endVal - start) * eased;
+    el.textContent = isDecimal ? current.toFixed(1) : Math.round(current).toLocaleString('id-ID');
+    if(progress < 1) requestAnimationFrame(tick);
+    else el.textContent = isDecimal ? endVal.toFixed(1) : endVal.toLocaleString('id-ID');
+  }
+  requestAnimationFrame(tick);
+}
+
 function renderHero(){
   const lb = computeLeaderboard();
   const maxGW = getMaxFilledGW();
@@ -2378,9 +2437,45 @@ function renderHero(){
     dashTicker.innerHTML = [
       { num: state.teams.length, lbl: 'Tim Terdaftar' },
       { num: maxGW || 0, lbl: 'Game Week Berjalan' },
-      { num: totalPoints.toLocaleString('id-ID'), lbl: 'Total Poin Musim' },
-      { num: '38', lbl: 'Game Week Musim' },
-    ].map((t,i)=>`<div class="dash-ticker-item" style="animation-delay:${0.05+i*0.06}s;"><div class="num">${t.num}</div><div class="lbl">${t.lbl}</div></div>`).join('');
+      { num: totalPoints, lbl: 'Total Poin Musim' },
+      { num: 38, lbl: 'Game Week Musim' },
+    ].map((t,i)=>`<div class="dash-ticker-item" style="animation-delay:${0.05+i*0.06}s;"><div class="num" data-countup="${t.num}">0</div><div class="lbl">${t.lbl}</div></div>`).join('');
+    dashTicker.querySelectorAll('[data-countup]').forEach((el,i)=>{
+      setTimeout(()=> animateCountUp(el, Number(el.dataset.countup), 900), 100+i*80);
+    });
+  }
+
+  // ---- Podium Top 3 ----
+  const podiumBox = document.getElementById('dash-podium');
+  if(podiumBox){
+    if(lb.length >= 3){
+      const p1=lb[0], p2=lb[1], p3=lb[2];
+      const mgrOf = t => (state.managers && state.managers[t.team]) || deriveManager(t.team);
+      podiumBox.innerHTML = `
+        <div class="podium-card rank2 dash-podium-card">
+          <div class="rank-crown">&#129352;</div>
+          <div class="podium-badge-wrap">${teamBadgeHtml(p2.team, 40)}</div>
+          <div class="tier-name">${escapeHtml(p2.team)}</div>
+          <div class="tier-lbl" style="opacity:0.7;">${escapeHtml(mgrOf(p2))}</div>
+          <div class="tier-amount">${p2.grandTotal}</div>
+        </div>
+        <div class="podium-card rank1 dash-podium-card">
+          <div class="rank-crown">&#127942;</div>
+          <div class="podium-badge-wrap">${teamBadgeHtml(p1.team, 48)}</div>
+          <div class="tier-name">${escapeHtml(p1.team)}</div>
+          <div class="tier-lbl" style="opacity:0.7;">${escapeHtml(mgrOf(p1))}</div>
+          <div class="tier-amount">${p1.grandTotal}</div>
+        </div>
+        <div class="podium-card rank3 dash-podium-card">
+          <div class="rank-crown">&#129352;</div>
+          <div class="podium-badge-wrap">${teamBadgeHtml(p3.team, 40)}</div>
+          <div class="tier-name">${escapeHtml(p3.team)}</div>
+          <div class="tier-lbl" style="opacity:0.7;">${escapeHtml(mgrOf(p3))}</div>
+          <div class="tier-amount">${p3.grandTotal}</div>
+        </div>`;
+    } else {
+      podiumBox.innerHTML = '';
+    }
   }
 
   document.getElementById('meta-updated').textContent = fmtDate(state.lastUpdated);
@@ -2439,7 +2534,7 @@ function renderHero(){
       <div class="lbl">Puncak klasemen</div>
       <div class="team-line">${champ ? escapeHtml(champ.team) : '-'}</div>
       <div class="manager-line">${champ ? escapeHtml(champManager) : ''}</div>
-      <div class="pts-big">${champ ? champ.grandTotal : '-'}<span>poin</span></div>
+      <div class="pts-big"><span data-countup-champ="${champ ? champ.grandTotal : 0}">0</span><span>poin</span></div>
     </div>
     <div class="stat-card bottom stat-elegant-v2">
       <div class="lbl">Dasar klasemen</div>
@@ -2464,6 +2559,11 @@ function renderHero(){
       <div class="sub">${state.teams.length} klub terdaftar</div>
     </div>
   `;
+  const champCountEl = document.querySelector('[data-countup-champ]');
+  if(champCountEl){
+    if(champ) animateCountUp(champCountEl, champ.grandTotal, 1100);
+    else champCountEl.textContent = '-';
+  }
   renderHomeTable(document.getElementById('home-table'), lb);
 }
 
@@ -3150,6 +3250,7 @@ function jumpToManagerTeam(team){
   const sel = document.getElementById('manager-page-select');
   if(sel) sel.value = team;
   renderManagerPage(team);
+  syncMobileBottomNav('manager');
   window.scrollTo({top:0, behavior:'smooth'});
 }
 
@@ -4456,6 +4557,15 @@ async function tryAutoFetch(silent){
     logAudit('Update API', `GW ${targetGW}: ${result.matched} cocok, ${result.added} baru${silent?' (auto-refresh)':''}${isAutoAdvance?' — 🚀 AUTO-MAJU dari GW'+prevMaxGW+' (deadline sudah lewat)':''}`, 'ok');
     if(isAutoAdvance) showToast('Game Week baru dimulai!', `Otomatis maju ke GW${targetGW} karena deadline sudah lewat.`, 'ok');
   }
+  if(isAutoAdvance){
+    // Ikutkan tampilan "Game Week" & "Klasemen Game Week" maju bareng data-nya,
+    // supaya tidak ada yang tertinggal melihat GW lama padahal GW baru sudah mulai.
+    selectedWeeklyGW = targetGW;
+    const scopeSel = document.getElementById('gw-scope-select');
+    if(scopeSel) scopeSel.value = targetGW;
+    if(document.getElementById('view-mingguan') && document.getElementById('view-mingguan').classList.contains('active')) renderMingguan();
+    if(document.getElementById('view-klasemen') && document.getElementById('view-klasemen').classList.contains('active')) renderKlasemen();
+  }
   await persist();
   renderAll(); populateGwSelects();
   return true;
@@ -4694,6 +4804,12 @@ async function loadThemePref(){
   }catch(e){}
 }
 
+function syncMobileBottomNav(activeTab){
+  document.querySelectorAll('.mbn-item[data-jump-tab]').forEach(mbn=>{
+    mbn.classList.toggle('active', mbn.dataset.jumpTab === activeTab);
+  });
+}
+
 function initTabs(){
   document.querySelectorAll('.tab-btn[data-tab]').forEach(btn=>{
     btn.onclick = ()=>{
@@ -4705,6 +4821,14 @@ function initTabs(){
       if(btn.dataset.tab==='h2h'){ renderH2H(); }
       if(btn.dataset.tab==='manager'){ populateManagerPageSelect(); renderManagerPage(document.getElementById('manager-page-select').value); }
       if(btn.dataset.tab==='report'){ renderReportCenter(); }
+      syncMobileBottomNav(btn.dataset.tab);
+    };
+  });
+  document.querySelectorAll('.mbn-item[data-jump-tab]').forEach(mbn=>{
+    mbn.onclick = ()=>{
+      const target = document.querySelector(`.tab-btn[data-tab="${mbn.dataset.jumpTab}"]`);
+      if(target) target.click();
+      window.scrollTo({top:0, behavior:'smooth'});
     };
   });
   document.querySelectorAll('.dash-quicknav a[data-jump]').forEach(a=>{
