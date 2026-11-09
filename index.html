@@ -41,7 +41,7 @@
 </script>
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&family=JetBrains+Mono:wght@400;500;700&display=swap" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&family=JetBrains+Mono:wght@400;500;700&family=Plus+Jakarta+Sans:wght@600;700;800&display=swap" rel="stylesheet">
 <script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/4.4.1/chart.umd.js"></script>
 <script src="https://cdnjs.cloudflare.com/ajax/libs/xlsx/0.18.5/xlsx.full.min.js"></script>
 <style>
@@ -1430,6 +1430,148 @@ body.theme-dark .mobile-bottom-nav{background:rgba(11,10,24,0.82);}
 .cup-score-input{width:44px;text-align:center;margin:0;padding:6px 4px;font-family:var(--mono);}
 .cup-del{background:none;border:none;color:var(--text-mute);cursor:pointer;font-size:16px;padding:0 4px;}
 .cup-del:hover{color:var(--pink-ink);}
+
+/* =====================================================================
+   DESIGN SYSTEM v2 — tema terang "Kopi Pagi"
+   Porselen hangat + plum tua + aksen violet/zamrud/mawar. Hanya berlaku
+   untuk tema terang (body tanpa .theme-dark); tema gelap tidak berubah.
+   ===================================================================== */
+:root{ --display:'Plus Jakarta Sans','Inter',sans-serif; --gold:#F59E0B; --gold-ink:#B45309; --violet:#7C3AED; }
+body:not(.theme-dark){
+  --purple:#3B0764; --purple-2:#6D28D9; --purple-tint:#F3EDFF; --purple-line:#E2D5FA;
+  --cyan:#06B6D4; --cyan-ink:#0E7490; --green:#10B981; --green-ink:#047857;
+  --pink:#F43F5E; --pink-ink:#BE123C;
+  --surface:#F8F5FF; --card:#FFFFFF; --line:#ECE6F7; --line-strong:#DACEF0;
+  --text:#1E0B3A; --text-2:#5A5274; --text-mute:#7B7494;
+  --shadow-sm:0 1px 2px rgba(59,7,100,.05), 0 4px 14px -6px rgba(59,7,100,.10);
+  --shadow-md:0 2px 4px rgba(59,7,100,.05), 0 14px 34px -14px rgba(59,7,100,.20);
+  --shadow-lg:0 4px 8px rgba(59,7,100,.06), 0 26px 50px -20px rgba(59,7,100,.30);
+  background-color:#F6F3FF;
+  background-image:
+    radial-gradient(1100px 560px at 6% -6%, rgba(124,58,237,.15), transparent 62%),
+    radial-gradient(900px 520px at 100% 2%, rgba(16,185,129,.13), transparent 58%),
+    radial-gradient(900px 600px at 50% 112%, rgba(244,63,94,.09), transparent 62%),
+    linear-gradient(180deg,#F9F7FF 0%,#F3EFFB 100%);
+  background-attachment:fixed; background-size:auto; animation:none;
+}
+body:not(.theme-dark) ::selection{ background:rgba(124,58,237,.22); }
+body:not(.theme-dark) .topstripe{ height:4px; background:linear-gradient(90deg,#3B0764 0%,#7C3AED 35%,#06B6D4 65%,#10B981 100%); }
+
+/* ---- header ---- */
+body:not(.theme-dark) .header{
+  background:rgba(255,255,255,.80); -webkit-backdrop-filter:saturate(170%) blur(16px); backdrop-filter:saturate(170%) blur(16px);
+  border-bottom:1px solid rgba(124,58,237,.12); box-shadow:0 10px 30px -16px rgba(59,7,100,.22);
+}
+body:not(.theme-dark) .header::before{ background:radial-gradient(circle, rgba(124,58,237,.16), transparent 70%); }
+body:not(.theme-dark) .header::after{ background:radial-gradient(circle, rgba(16,185,129,.12), transparent 70%); }
+body:not(.theme-dark) h1{
+  font-family:var(--display); font-size:27px; font-weight:800; letter-spacing:-.02em;
+  background:linear-gradient(95deg,#3B0764 0%,#6D28D9 100%); -webkit-background-clip:text; background-clip:text; color:transparent;
+}
+body:not(.theme-dark) h1 em{ background:linear-gradient(95deg,#F43F5E,#F59E0B); -webkit-background-clip:text; background-clip:text; color:transparent !important; }
+body:not(.theme-dark) .tagline{ background:linear-gradient(90deg,#7C3AED,#10B981); -webkit-background-clip:text; background-clip:text; color:transparent; letter-spacing:.14em; }
+body:not(.theme-dark) .meta-pill{ background:#fff; border:1px solid var(--line); box-shadow:var(--shadow-sm); border-radius:12px; }
+body:not(.theme-dark) .meta-pill .v{ color:var(--purple-2); }
+body:not(.theme-dark) .admin-toggle-btn{ background:#fff; border:1px solid var(--line-strong); border-radius:12px; color:var(--text-2); box-shadow:var(--shadow-sm); transition:all .18s ease; }
+body:not(.theme-dark) .admin-toggle-btn:hover{ border-color:var(--violet); color:var(--purple-2); transform:translateY(-1px); }
+
+/* ---- tabs: pill ---- */
+body:not(.theme-dark) .tabs{ gap:6px; padding:12px 0 14px; margin-top:14px; }
+body:not(.theme-dark) .tab-btn{ border-radius:999px; padding:9px 16px; font-weight:600; transition:background .18s ease,color .18s ease,box-shadow .18s ease,transform .12s ease; }
+body:not(.theme-dark) .tab-btn:hover{ background:var(--purple-tint); color:var(--purple-2); }
+body:not(.theme-dark) .tab-btn.active{ background:linear-gradient(135deg,#3B0764,#6D28D9); color:#fff; box-shadow:0 8px 18px -6px rgba(109,40,217,.55); }
+body:not(.theme-dark) .tab-btn.active::after{ display:none; }
+
+/* ---- cards & panels ---- */
+body:not(.theme-dark) .card{ border-radius:20px; border:1px solid rgba(124,58,237,.10); box-shadow:var(--shadow-md); background:#fff; }
+body:not(.theme-dark) .card:hover{ box-shadow:var(--shadow-lg); }
+body:not(.theme-dark) .card-head{ background:linear-gradient(180deg,#fff,#FBF9FF); border-bottom:1px solid var(--line); padding:18px 22px; }
+body:not(.theme-dark) .card-head h2{ font-family:var(--display); font-size:17px; font-weight:800; letter-spacing:-.01em; }
+body:not(.theme-dark) .panel{ border-radius:18px; border:1px solid rgba(124,58,237,.10); box-shadow:var(--shadow-sm); background:#fff; }
+body:not(.theme-dark) .panel h3{ font-family:var(--display); }
+body:not(.theme-dark) .section-label{ color:var(--purple-2); letter-spacing:.1em; }
+
+/* ---- stat cards ---- */
+body:not(.theme-dark) .stat-card{ background:#fff; border:1px solid rgba(124,58,237,.10); border-radius:18px; box-shadow:var(--shadow-sm); transition:transform .2s ease, box-shadow .2s ease; }
+body:not(.theme-dark) .stat-card:hover{ transform:translateY(-3px); box-shadow:var(--shadow-md); }
+body:not(.theme-dark) .stat-elegant-v2::before{ height:4px; background:linear-gradient(90deg,#7C3AED,#06B6D4); }
+body:not(.theme-dark) .stat-card.win.stat-elegant-v2{ background:linear-gradient(165deg,rgba(16,185,129,.12),#fff 58%); }
+body:not(.theme-dark) .stat-card.low.stat-elegant-v2{ background:linear-gradient(165deg,rgba(244,63,94,.10),#fff 58%); }
+body:not(.theme-dark) .stat-card.win.stat-elegant-v2::before{ background:linear-gradient(90deg,#10B981,#06B6D4); }
+body:not(.theme-dark) .stat-card.low.stat-elegant-v2::before{ background:linear-gradient(90deg,#F43F5E,#F59E0B); }
+body:not(.theme-dark) .stat-card .pts-big, body:not(.theme-dark) .stat-card .big{ font-family:var(--display); letter-spacing:-.02em; }
+body:not(.theme-dark) .stat-card .team-line{ font-family:var(--display); font-weight:800; }
+body:not(.theme-dark) .modal-stat{ background:#fff; border-radius:16px; box-shadow:var(--shadow-sm); }
+
+/* ---- Game Week arena ---- */
+body:not(.theme-dark) .arena-card.win{ background:linear-gradient(155deg,rgba(16,185,129,.16),#fff 66%); }
+body:not(.theme-dark) .arena-card.low{ background:linear-gradient(155deg,rgba(244,63,94,.13),#fff 66%); }
+body:not(.theme-dark) .arena-card.win::before{ background:radial-gradient(circle,rgba(16,185,129,.28),transparent 70%); }
+body:not(.theme-dark) .arena-card.low::before{ background:radial-gradient(circle,rgba(244,63,94,.24),transparent 70%); }
+body:not(.theme-dark) .arena-card.win .arena-pts{ color:var(--green-ink); text-shadow:0 6px 24px rgba(16,185,129,.28); }
+body:not(.theme-dark) .arena-card.low .arena-pts{ color:var(--pink-ink); text-shadow:0 6px 24px rgba(244,63,94,.24); }
+body:not(.theme-dark) .arena-pts, body:not(.theme-dark) .arena-team{ font-family:var(--display); }
+body:not(.theme-dark) .arena-tie-note, body:not(.theme-dark) .tie-note{ background:rgba(245,158,11,.10); color:var(--gold-ink); border:1px dashed rgba(245,158,11,.45); border-radius:10px; padding:7px 10px; font-style:normal; font-size:11px; }
+
+/* ---- tables ---- */
+body:not(.theme-dark) thead th{ background:#F8F5FF; color:var(--purple-2); border-bottom:1px solid var(--line-strong); letter-spacing:.07em; position:sticky; top:0; }
+body:not(.theme-dark) tbody td{ border-bottom:1px solid #F1ECFA; }
+body:not(.theme-dark) tbody tr:hover{ background:rgba(124,58,237,.045); }
+body:not(.theme-dark) tbody tr.top1{ border-left:4px solid #F59E0B; background:linear-gradient(90deg,rgba(245,158,11,.13),transparent 50%); }
+body:not(.theme-dark) tbody tr.top2{ border-left:4px solid #94A3B8; background:linear-gradient(90deg,rgba(148,163,184,.13),transparent 50%); }
+body:not(.theme-dark) tbody tr.top3{ border-left:4px solid #C2763B; background:linear-gradient(90deg,rgba(194,118,59,.12),transparent 50%); }
+body:not(.theme-dark) .pts-cell{ color:var(--purple-2); }
+
+/* ---- buttons & inputs ---- */
+body:not(.theme-dark) .btn{ border-radius:12px; }
+body:not(.theme-dark) .btn-primary{ background:linear-gradient(135deg,#4C1D95,#7C3AED); box-shadow:0 10px 22px -8px rgba(124,58,237,.6); }
+body:not(.theme-dark) .btn-primary:hover{ background:linear-gradient(135deg,#5B21B6,#8B5CF6); box-shadow:0 14px 28px -8px rgba(124,58,237,.65); }
+body:not(.theme-dark) .btn-ghost{ background:#fff; border:1px solid var(--line-strong); }
+body:not(.theme-dark) .btn-ghost:hover{ background:var(--purple-tint); border-color:var(--violet); color:var(--purple-2); }
+body:not(.theme-dark) select, body:not(.theme-dark) textarea, body:not(.theme-dark) input[type=text], body:not(.theme-dark) input[type=number], body:not(.theme-dark) input[type=password], body:not(.theme-dark) .search-box{ border-radius:12px; border:1px solid var(--line-strong); background:#fff; }
+body:not(.theme-dark) select:focus, body:not(.theme-dark) textarea:focus, body:not(.theme-dark) input:focus, body:not(.theme-dark) .search-box:focus{ border-color:var(--violet); box-shadow:0 0 0 4px rgba(124,58,237,.14); outline:none; }
+body:not(.theme-dark) .admin-toolbar{ background:linear-gradient(120deg,rgba(124,58,237,.10),rgba(16,185,129,.08)); border:1px solid var(--purple-line); border-radius:16px; }
+body:not(.theme-dark) .modal-overlay{ background:rgba(30,11,58,.45); -webkit-backdrop-filter:blur(6px); backdrop-filter:blur(6px); }
+body:not(.theme-dark) .modal-box{ border-radius:22px; box-shadow:var(--shadow-lg); }
+body:not(.theme-dark) .toast{ border-radius:16px; box-shadow:var(--shadow-md); }
+
+/* ---- accessibility ---- */
+:focus-visible{ outline:3px solid rgba(124,58,237,.45); outline-offset:2px; border-radius:8px; }
+
+/* ---- Status data (LIVE / FINAL) — kedua tema ---- */
+.data-status-bar{ display:flex; flex-wrap:wrap; gap:8px; align-items:center; margin:16px 0 4px; }
+.data-status-bar:empty{ display:none; }
+.ds-chip{ display:inline-flex; align-items:center; gap:7px; padding:7px 13px; border-radius:999px; font-size:12px; font-weight:700; color:var(--text-2); background:var(--card); border:1px solid var(--line); box-shadow:0 1px 2px rgba(59,7,100,.05); cursor:help; }
+.ds-dot{ width:8px; height:8px; border-radius:50%; background:currentColor; flex:0 0 auto; }
+.ds-live{ color:#BE123C; background:rgba(244,63,94,.10); border-color:rgba(244,63,94,.35); letter-spacing:.04em; }
+.ds-live .ds-dot{ animation:dsPulse 1.5s ease-in-out infinite; }
+.ds-final{ color:#047857; background:rgba(16,185,129,.12); border-color:rgba(16,185,129,.40); letter-spacing:.04em; }
+.ds-check, .ds-empty{ color:#B45309; background:rgba(245,158,11,.13); border-color:rgba(245,158,11,.45); letter-spacing:.04em; }
+.ds-ok{ color:#047857; }
+.ds-warn{ color:#B45309; background:rgba(245,158,11,.10); border-color:rgba(245,158,11,.40); }
+@keyframes dsPulse{ 0%,100%{ box-shadow:0 0 0 0 rgba(244,63,94,.55); } 50%{ box-shadow:0 0 0 7px rgba(244,63,94,0); } }
+
+
+/* kartu juara & kalah selalu sama tinggi, isi tetap di tengah */
+.duel.arena{ align-items:stretch; }
+.duel.arena .arena-card{ display:flex; flex-direction:column; align-items:center; justify-content:center; }
+.data-status-bar{ margin-bottom:14px; }
+/* ---- mobile ---- */
+@media (max-width:720px){
+  .wrap{ padding:0 14px 60px; }
+  body:not(.theme-dark) .header{ padding:16px 14px 0; }
+  body:not(.theme-dark) h1{ font-size:22px; }
+  .brand-art{ width:48px; height:48px; }
+  .tagline, .subtitle{ display:none; }
+  .meta-pill{ padding:6px 10px; }
+  .tabs{ scroll-snap-type:x proximity; }
+  .tab-btn{ scroll-snap-align:start; padding:10px 15px !important; }
+  .card{ overflow-x:auto; }
+  .card table{ min-width:560px; }
+  .stat-grid{ grid-template-columns:repeat(2,minmax(0,1fr)); }
+  .ds-chip{ padding:6px 11px; font-size:11.5px; }
+}
+@media (prefers-reduced-motion:reduce){ .ds-live .ds-dot{ animation:none; } *{ scroll-behavior:auto !important; } }
 </style>
 </head>
 <body>
@@ -1505,6 +1647,7 @@ body.theme-dark .mobile-bottom-nav{background:rgba(11,10,24,0.82);}
       </div>
       <div class="dash-season-progress" id="dash-season-progress"></div>
     </div>
+    <div class="data-status-bar" id="data-status-bar"></div>
     <div class="deadline-banner" id="deadline-banner" style="display:none;"></div>
     <div class="dash-podium-wrap" id="dash-podium"></div>
     <div class="stat-grid" id="hero-stats"></div>
@@ -1855,7 +1998,7 @@ body.theme-dark .mobile-bottom-nav{background:rgba(11,10,24,0.82);}
     <div class="admin-toolbar">
       <div class="admin-toolbar-left">&#128274; <strong>Admin Mode</strong> &mdash; perubahan di sini memengaruhi data yang dilihat semua manager</div>
       <div class="admin-toolbar-right">
-        <input type="password" id="pin-set-input" placeholder="PIN baru (kosongkan = hapus)" style="max-width:200px;margin:0;">
+        <input type="password" id="pin-set-input" autocomplete="new-password" placeholder="PIN baru (minimal 6 karakter)">
         <button class="btn btn-ghost" id="btn-save-pin" style="padding:9px 14px;">Simpan PIN</button>
       </div>
     </div>
@@ -1870,6 +2013,11 @@ body.theme-dark .mobile-bottom-nav{background:rgba(11,10,24,0.82);}
         <button class="btn btn-primary" id="btn-autotry" style="font-size:14.5px;padding:13px 24px;">&#8635;&nbsp; Perbarui Data Sekarang</button>
       </div>
       <div class="status-msg" id="update-status"></div>
+      <div class="btn-row" style="margin-top:10px;">
+        <button class="btn btn-ghost" id="btn-backfill-cb">&#127942;&nbsp; Isi Captain &amp; Bench semua GW</button>
+      </div>
+      <div class="notice-strip" style="margin-top:0;">Captain &amp; Bench dipakai untuk menentukan siapa yang kalah/menang saat poin Game Week sama. Terisi otomatis tiap <strong>Perbarui Data</strong> untuk GW yang dipilih; tombol ini mengisi ulang semua GW sekaligus.</div>
+      <div class="status-msg" id="cb-status"></div>
       <label class="field-label" style="display:flex;align-items:center;gap:8px;cursor:pointer;margin-top:18px;">
         <input type="checkbox" id="chk-auto-refresh" style="width:auto;margin:0;">
         Auto-refresh: ulangi otomatis tiap app dibuka &amp; tiap 15 menit selama tab terbuka
@@ -2084,7 +2232,56 @@ const DATA_VERSION = 21;
 const GW2_COST_ADJUST = { "helmoni fc": 4, "CIMSEL UNITED": 4, "Blink 182": 4 };
 const KNOWN_ENTRY_IDS = { "Sedotan Aqua": 8198726 }; // dulu "Pending Moderation" -> "Change Name" -> "Sedotan Aqua", manager: Baltasario Saga
 const DEFAULT_CUSTOM_PROXY = "https://ligakopi.ikokrumah.workers.dev/?url=";
-const DEFAULT_ADMIN_PIN = "252525";
+// Keamanan PIN: yang tersimpan hanya hash SHA-256 (bukan PIN asli). Catatan: ini pengaman sisi-klien;
+// perlindungan penuh baru tercapai bila verifikasi PIN dipindah ke Cloudflare Worker.
+const PIN_SALT = "ligakopi-v1:";
+const DEFAULT_ADMIN_PIN_HASH = "37fee32a45da85ff6c4d2be6ff9a80c5c29101af12b46d2856b0f0cad50392ea";
+const SHA256_K = [0x428a2f98,0x71374491,0xb5c0fbcf,0xe9b5dba5,0x3956c25b,0x59f111f1,0x923f82a4,0xab1c5ed5,0xd807aa98,0x12835b01,0x243185be,0x550c7dc3,0x72be5d74,0x80deb1fe,0x9bdc06a7,0xc19bf174,0xe49b69c1,0xefbe4786,0x0fc19dc6,0x240ca1cc,0x2de92c6f,0x4a7484aa,0x5cb0a9dc,0x76f988da,0x983e5152,0xa831c66d,0xb00327c8,0xbf597fc7,0xc6e00bf3,0xd5a79147,0x06ca6351,0x14292967,0x27b70a85,0x2e1b2138,0x4d2c6dfc,0x53380d13,0x650a7354,0x766a0abb,0x81c2c92e,0x92722c85,0xa2bfe8a1,0xa81a664b,0xc24b8b70,0xc76c51a3,0xd192e819,0xd6990624,0xf40e3585,0x106aa070,0x19a4c116,0x1e376c08,0x2748774c,0x34b0bcb5,0x391c0cb3,0x4ed8aa4a,0x5b9cca4f,0x682e6ff3,0x748f82ee,0x78a5636f,0x84c87814,0x8cc70208,0x90befffa,0xa4506ceb,0xbef9a3f7,0xc67178f2];
+function sha256Hex(str){
+  const u = unescape(encodeURIComponent(String(str)));
+  const l = u.length, w0 = [];
+  for(let i=0;i<l;i++) w0[i>>2] |= u.charCodeAt(i) << (24-(i%4)*8);
+  w0[l>>2] |= 0x80 << (24-(l%4)*8);
+  w0[(((l+8)>>6)+1)*16-1] = l*8;
+  let H = [0x6a09e667,0xbb67ae85,0x3c6ef372,0xa54ff53a,0x510e527f,0x9b05688c,0x1f83d9ab,0x5be0cd19];
+  for(let j=0;j<w0.length;j+=16){
+    const w = new Array(64);
+    let a=H[0],b=H[1],c=H[2],d=H[3],e=H[4],f=H[5],g=H[6],h=H[7];
+    for(let i=0;i<64;i++){
+      if(i<16) w[i] = w0[j+i]|0;
+      else {
+        const x=w[i-15], y=w[i-2];
+        const s0=((x>>>7)|(x<<25))^((x>>>18)|(x<<14))^(x>>>3);
+        const s1=((y>>>17)|(y<<15))^((y>>>19)|(y<<13))^(y>>>10);
+        w[i]=(w[i-16]+s0+w[i-7]+s1)|0;
+      }
+      const S1=((e>>>6)|(e<<26))^((e>>>11)|(e<<21))^((e>>>25)|(e<<7));
+      const ch=(e&f)^(~e&g);
+      const t1=(h+S1+ch+SHA256_K[i]+w[i])|0;
+      const S0=((a>>>2)|(a<<30))^((a>>>13)|(a<<19))^((a>>>22)|(a<<10));
+      const maj=(a&b)^(a&c)^(b&c);
+      const t2=(S0+maj)|0;
+      h=g; g=f; f=e; e=(d+t1)|0; d=c; c=b; b=a; a=(t1+t2)|0;
+    }
+    H=[(H[0]+a)|0,(H[1]+b)|0,(H[2]+c)|0,(H[3]+d)|0,(H[4]+e)|0,(H[5]+f)|0,(H[6]+g)|0,(H[7]+h)|0];
+  }
+  return H.map(x=>('00000000'+(x>>>0).toString(16)).slice(-8)).join('');
+}
+function hashPin(pin){ return sha256Hex(PIN_SALT + String(pin)); }
+function migratePinToHash(){
+  if(state.adminPin){ state.adminPinHash = hashPin(state.adminPin); }
+  delete state.adminPin;
+  if(!state.adminPinHash) state.adminPinHash = DEFAULT_ADMIN_PIN_HASH;
+  (state.undoStack||[]).forEach(u=>{ if(u && u.snap) delete u.snap.adminPin; });
+}
+function exportableState(){
+  const c = JSON.parse(JSON.stringify(state));
+  delete c.adminPin; delete c.adminPinHash; delete c.undoStack;
+  return c;
+}
+const PIN_GUARD_KEY = 'ln_pin_guard';
+function pinGuardGet(){ try{ return JSON.parse(localStorage.getItem(PIN_GUARD_KEY)||'{}'); }catch(e){ return {}; } }
+function pinGuardSet(o){ try{ localStorage.setItem(PIN_GUARD_KEY, JSON.stringify(o)); }catch(e){} }
 const WELLDONE_GW1_POINTS = 110; // poin Welldone di GW1 (masuk total musim, tapi tidak dihitung sbg juara/kalah GW1 di menu Game Week)
 // GW1_POINTS di atas adalah data ASLI/BENAR (tidak direvisi). GW2 di bawah = poin mentah GW2 (event_total resmi FPL).
 // Kalau ada tim yang total-nya belum pas dengan link resmi, itu karena ada pengurangan poin transfer di GW2
@@ -2116,7 +2313,7 @@ function deriveManager(teamName){
   return parts.slice(0,2).map(p=> p.replace(/[^a-zA-Z0-9'\-]/g,'') || p).join(' ');
 }
 
-const BACKUP_SNAPSHOT = {"teams":["PSGR","faishal's Team","Tianlala","Kamileung FC","Sedotan Aqua","jowwwtim","kokorobet FC","helmoni fc","ARFantasy","CIMSEL UNITED","Alunos 2.0","Grindboys","JosJis FC","Gurandilepce","komodomodol FC","Olahlah Fc","Katapang_Pride","Kontol FC","Maung FC","Bubble Gummy","DOBHAN FC","Brancos FC","Blink 182","theluckyone","PROJECT ALMANAC","Backlight FC","Welldone","SSB Fak Fak","Tarkam Fried Chicken","Muceckyl FC","PSCS United","Tinder lvl 10","Gusti Alif's Team"],"scores":{"PSGR":{"1":{"pts":74,"cost":0},"2":{"pts":86,"cost":0,"captain":0,"bench":0,"verified":true},"3":{"pts":47,"cost":0,"captain":0,"bench":0,"verified":true},"4":{"pts":78,"cost":0,"captain":0,"bench":0},"5":{"pts":57,"cost":0,"captain":0,"bench":0,"verified":true},"6":{"pts":78,"cost":0,"captain":0,"bench":0,"verified":true},"7":{"pts":64,"cost":0,"captain":0,"bench":0}},"faishal's Team":{"1":{"pts":62,"cost":0},"2":{"pts":69,"cost":0,"captain":0,"bench":0,"verified":true},"3":{"pts":29,"cost":0,"captain":0,"bench":0,"verified":true},"4":{"pts":69,"cost":4,"captain":0,"bench":0,"verified":true},"5":{"pts":48,"cost":0,"captain":0,"bench":0,"verified":true},"6":{"pts":62,"cost":0,"captain":0,"bench":0,"verified":true},"7":{"pts":38,"cost":0,"captain":0,"bench":0}},"Tianlala":{"1":{"pts":64,"cost":0},"2":{"pts":76,"cost":0,"captain":0,"bench":0,"verified":true},"3":{"pts":52,"cost":0,"captain":0,"bench":0,"verified":true},"4":{"pts":61,"cost":0,"captain":0,"bench":0},"5":{"pts":75,"cost":0,"captain":0,"bench":0,"verified":true},"6":{"pts":65,"cost":0,"captain":0,"bench":0,"verified":true},"7":{"pts":69,"cost":0,"captain":0,"bench":0}},"Kamileung FC":{"1":{"pts":58,"cost":0},"2":{"pts":115,"cost":0,"captain":0,"bench":0,"verified":true},"3":{"pts":42,"cost":0,"captain":0,"bench":0,"verified":true},"4":{"pts":77,"cost":0,"captain":0,"bench":0,"verified":true},"5":{"pts":57,"cost":0,"captain":0,"bench":0,"verified":true},"6":{"pts":49,"cost":0,"captain":0,"bench":0,"verified":true},"7":{"pts":39,"cost":0,"captain":0,"bench":0}},"Sedotan Aqua":{"1":{"pts":58,"cost":0},"2":{"pts":109,"cost":0,"captain":0,"bench":0,"verified":true},"3":{"pts":38,"cost":0,"captain":0,"bench":0,"verified":true},"4":{"pts":93,"cost":0,"captain":0,"bench":0},"5":{"pts":60,"cost":0,"captain":0,"bench":0,"verified":true},"6":{"pts":52,"cost":0,"captain":0,"bench":0,"verified":true},"7":{"pts":51,"cost":0,"captain":0,"bench":0}},"jowwwtim":{"1":{"pts":57,"cost":0},"2":{"pts":87,"cost":0,"captain":0,"bench":0,"verified":true},"3":{"pts":50,"cost":0,"captain":0,"bench":0,"verified":true},"4":{"pts":77,"cost":0,"captain":0,"bench":0},"5":{"pts":40,"cost":0,"captain":0,"bench":0,"verified":true},"6":{"pts":79,"cost":0,"captain":0,"bench":0,"verified":true},"7":{"pts":65,"cost":0,"captain":0,"bench":0}},"kokorobet FC":{"1":{"pts":57,"cost":0},"2":{"pts":103,"cost":0,"captain":0,"bench":0,"verified":true},"3":{"pts":47,"cost":4,"captain":0,"bench":0,"verified":true},"4":{"pts":107,"cost":0,"captain":0,"bench":0},"5":{"pts":48,"cost":0,"captain":0,"bench":0,"verified":true},"6":{"pts":68,"cost":0,"captain":0,"bench":0,"verified":true},"7":{"pts":73,"cost":0,"captain":0,"bench":0}},"helmoni fc":{"1":{"pts":57,"cost":0},"2":{"pts":92,"cost":4,"captain":0,"bench":0,"verified":true},"3":{"pts":63,"cost":4,"captain":0,"bench":0,"verified":true},"4":{"pts":73,"cost":0,"captain":0,"bench":0},"5":{"pts":44,"cost":4,"captain":0,"bench":0,"verified":true},"6":{"pts":58,"cost":0,"captain":0,"bench":0,"verified":true},"7":{"pts":66,"cost":4,"captain":0,"bench":0}},"ARFantasy":{"1":{"pts":54,"cost":0},"2":{"pts":101,"cost":0,"captain":0,"bench":0,"verified":true},"3":{"pts":43,"cost":0,"captain":0,"bench":0,"verified":true},"4":{"pts":93,"cost":0,"captain":0,"bench":0},"5":{"pts":60,"cost":0,"captain":0,"bench":0,"verified":true},"6":{"pts":57,"cost":0,"captain":0,"bench":0},"7":{"pts":57,"cost":0,"captain":0,"bench":0}},"CIMSEL UNITED":{"1":{"pts":54,"cost":0},"2":{"pts":73,"cost":4,"captain":0,"bench":0,"verified":true},"3":{"pts":54,"cost":0,"captain":0,"bench":0,"verified":true},"4":{"pts":78,"cost":4,"captain":0,"bench":0,"verified":true},"5":{"pts":45,"cost":4,"captain":0,"bench":0,"verified":true},"6":{"pts":53,"cost":0,"captain":0,"bench":0,"verified":true},"7":{"pts":73,"cost":4,"captain":0,"bench":0}},"Alunos 2.0":{"1":{"pts":54,"cost":0},"2":{"pts":64,"cost":0,"captain":0,"bench":0,"verified":true},"3":{"pts":53,"cost":0,"captain":0,"bench":0,"verified":true},"4":{"pts":86,"cost":0,"captain":0,"bench":0},"5":{"pts":50,"cost":0,"captain":0,"bench":0,"verified":true},"6":{"pts":68,"cost":0,"captain":0,"bench":0},"7":{"pts":68,"cost":0,"captain":0,"bench":0}},"Grindboys":{"1":{"pts":50,"cost":0},"2":{"pts":105,"cost":0,"captain":0,"bench":0,"verified":true},"3":{"pts":46,"cost":0,"captain":0,"bench":0,"verified":true},"4":{"pts":94,"cost":0,"captain":0,"bench":0},"5":{"pts":59,"cost":0,"captain":0,"bench":0,"verified":true},"6":{"pts":65,"cost":0,"captain":0,"bench":0,"verified":true},"7":{"pts":66,"cost":0,"captain":0,"bench":0}},"JosJis FC":{"1":{"pts":64,"cost":0},"2":{"pts":79,"cost":0,"captain":0,"bench":0,"verified":true},"3":{"pts":50,"cost":0,"captain":0,"bench":0,"verified":true},"4":{"pts":51,"cost":0,"captain":0,"bench":0},"5":{"pts":51,"cost":0,"captain":0,"bench":0,"verified":true},"6":{"pts":43,"cost":0,"captain":0,"bench":0,"verified":true},"7":{"pts":72,"cost":0,"captain":0,"bench":0}},"Gurandilepce":{"1":{"pts":47,"cost":0},"2":{"pts":103,"cost":0,"captain":0,"bench":0,"verified":true},"3":{"pts":46,"cost":0,"captain":0,"bench":0,"verified":true},"4":{"pts":80,"cost":0,"captain":0,"bench":0},"5":{"pts":61,"cost":0,"captain":0,"bench":0,"verified":true},"6":{"pts":77,"cost":0,"captain":0,"bench":0,"verified":true},"7":{"pts":70,"cost":0,"captain":0,"bench":0}},"komodomodol FC":{"1":{"pts":47,"cost":0},"2":{"pts":89,"cost":0,"captain":0,"bench":0,"verified":true},"3":{"pts":53,"cost":0,"captain":0,"bench":0,"verified":true},"4":{"pts":74,"cost":0,"captain":0,"bench":0},"5":{"pts":61,"cost":0,"captain":0,"bench":0,"verified":true},"6":{"pts":76,"cost":0,"captain":0,"bench":0,"verified":true},"7":{"pts":82,"cost":0,"captain":0,"bench":0}},"Olahlah Fc":{"1":{"pts":53,"cost":0},"2":{"pts":99,"cost":4,"captain":0,"bench":0,"verified":true},"3":{"pts":44,"cost":0,"captain":0,"bench":0,"verified":true},"4":{"pts":54,"cost":4,"captain":0,"bench":0,"verified":true},"5":{"pts":43,"cost":0,"captain":0,"bench":0,"verified":true},"6":{"pts":60,"cost":0,"captain":0,"bench":0,"verified":true},"7":{"pts":58,"cost":0,"captain":0,"bench":0}},"Katapang_Pride":{"1":{"pts":46,"cost":0},"2":{"pts":98,"cost":0,"captain":0,"bench":0,"verified":true},"3":{"pts":38,"cost":0,"captain":0,"bench":0,"verified":true},"4":{"pts":75,"cost":4,"captain":0,"bench":0,"verified":true},"5":{"pts":40,"cost":4,"captain":0,"bench":0,"verified":true},"6":{"pts":65,"cost":0,"captain":0,"bench":0,"verified":true},"7":{"pts":69,"cost":0,"captain":0,"bench":0}},"Kontol FC":{"1":{"pts":54,"cost":0},"2":{"pts":77,"cost":0,"captain":0,"bench":0,"verified":true},"3":{"pts":44,"cost":0,"captain":0,"bench":0,"verified":true},"4":{"pts":78,"cost":0,"captain":0,"bench":0},"5":{"pts":64,"cost":0,"captain":0,"bench":0,"verified":true},"6":{"pts":55,"cost":0,"captain":0,"bench":0,"verified":true},"7":{"pts":33,"cost":0,"captain":0,"bench":0}},"Maung FC":{"1":{"pts":48,"cost":0},"2":{"pts":70,"cost":0,"captain":0,"bench":0,"verified":true},"3":{"pts":56,"cost":0,"captain":0,"bench":0,"verified":true},"4":{"pts":88,"cost":4,"captain":0,"bench":0,"verified":true},"5":{"pts":56,"cost":0,"captain":0,"bench":0,"verified":true},"6":{"pts":55,"cost":0,"captain":0,"bench":0,"verified":true},"7":{"pts":67,"cost":0,"captain":0,"bench":0}},"Bubble Gummy":{"1":{"pts":45,"cost":0},"2":{"pts":82,"cost":0,"captain":0,"bench":0,"verified":true},"3":{"pts":43,"cost":0,"captain":0,"bench":0,"verified":true},"4":{"pts":89,"cost":0,"captain":0,"bench":0},"5":{"pts":41,"cost":0,"captain":0,"bench":0,"verified":true},"6":{"pts":61,"cost":0,"captain":0,"bench":0,"verified":true},"7":{"pts":63,"cost":0,"captain":0,"bench":0}},"DOBHAN FC":{"1":{"pts":44,"cost":0,"captain":0,"bench":0,"verified":true},"2":{"pts":50,"cost":0,"captain":0,"bench":0,"verified":true},"3":{"pts":32,"cost":0,"captain":0,"bench":0,"verified":true},"4":{"pts":75,"cost":0,"captain":0,"bench":0},"5":{"pts":76,"cost":0,"captain":0,"bench":0,"verified":true},"6":{"pts":41,"cost":0,"captain":0,"bench":0,"verified":true},"7":{"pts":46,"cost":0,"captain":0,"bench":0}},"Brancos FC":{"1":{"pts":39,"cost":0},"2":{"pts":67,"cost":0,"captain":0,"bench":0,"verified":true},"3":{"pts":63,"cost":0,"captain":0,"bench":0,"verified":true},"4":{"pts":37,"cost":0,"captain":0,"bench":0},"5":{"pts":55,"cost":0,"captain":0,"bench":0,"verified":true},"6":{"pts":63,"cost":0,"captain":0,"bench":0,"verified":true},"7":{"pts":40,"cost":0,"captain":0,"bench":0}},"Blink 182":{"1":{"pts":37,"cost":0},"2":{"pts":77,"cost":4,"captain":0,"bench":0,"verified":true},"3":{"pts":59,"cost":4,"captain":0,"bench":0,"verified":true},"4":{"pts":64,"cost":0,"captain":0,"bench":0},"5":{"pts":45,"cost":0,"captain":0,"bench":0,"verified":true},"6":{"pts":69,"cost":4,"captain":0,"bench":0,"verified":true},"7":{"pts":75,"cost":0,"captain":0,"bench":0}},"theluckyone":{"1":{"pts":41,"cost":0},"2":{"pts":69,"cost":0,"captain":0,"bench":0,"verified":true},"3":{"pts":59,"cost":8,"captain":0,"bench":0,"verified":true},"4":{"pts":62,"cost":0,"captain":0,"bench":0},"5":{"pts":45,"cost":4,"captain":0,"bench":0,"verified":true},"6":{"pts":57,"cost":0,"captain":0,"bench":0,"verified":true},"7":{"pts":70,"cost":0,"captain":0,"bench":0}},"PROJECT ALMANAC":{"1":{"pts":35,"cost":0},"2":{"pts":91,"cost":0,"captain":0,"bench":0,"verified":true},"3":{"pts":49,"cost":0,"captain":0,"bench":0,"verified":true},"4":{"pts":92,"cost":0,"captain":0,"bench":0},"5":{"pts":60,"cost":0,"captain":0,"bench":0,"verified":true},"6":{"pts":60,"cost":0,"captain":0,"bench":0,"verified":true},"7":{"pts":57,"cost":0,"captain":0,"bench":0}},"Backlight FC":{"1":{"pts":35,"cost":0},"2":{"pts":65,"cost":0,"captain":0,"bench":0,"verified":true},"3":{"pts":43,"cost":0,"captain":0,"bench":0,"verified":true},"4":{"pts":65,"cost":0,"captain":0,"bench":0,"verified":true},"5":{"pts":49,"cost":0,"captain":0,"bench":0,"verified":true},"6":{"pts":82,"cost":0,"captain":0,"bench":0,"verified":true},"7":{"pts":75,"cost":0,"captain":0,"bench":0}},"Welldone":{"1":{"pts":110,"cost":0,"captain":0,"bench":0},"2":{"pts":85,"cost":0,"captain":0,"bench":0,"verified":true},"3":{"pts":69,"cost":0,"captain":0,"bench":0,"verified":true},"4":{"pts":77,"cost":0,"captain":0,"bench":0,"verified":true},"5":{"pts":56,"cost":8,"captain":0,"bench":0,"verified":true},"6":{"pts":55,"cost":0,"captain":0,"bench":0,"verified":true},"7":{"pts":62,"cost":0,"captain":0,"bench":0}},"SSB Fak Fak":{"2":{"pts":75,"cost":0,"captain":0,"bench":0},"3":{"pts":80,"cost":0,"captain":0,"bench":0,"verified":true},"4":{"pts":61,"cost":0,"captain":0,"bench":0},"5":{"pts":61,"cost":0,"captain":0,"bench":0,"verified":true},"6":{"pts":74,"cost":0,"captain":0,"bench":0,"verified":true},"7":{"pts":62,"cost":0,"captain":0,"bench":0}},"Tarkam Fried Chicken":{"2":{"pts":58,"cost":0,"captain":0,"bench":0,"verified":true},"3":{"pts":51,"cost":28,"captain":0,"bench":0,"verified":true},"4":{"pts":62,"cost":0,"captain":0,"bench":0},"5":{"pts":31,"cost":0,"captain":0,"bench":0,"verified":true},"6":{"pts":52,"cost":0,"captain":0,"bench":0,"verified":true},"7":{"pts":66,"cost":0,"captain":0,"bench":0}},"Muceckyl FC":{"1":{"pts":56,"cost":0,"captain":0,"bench":0,"verified":true},"2":{"pts":81,"cost":0,"captain":0,"bench":0,"verified":true},"3":{"pts":75,"cost":8,"captain":0,"bench":0,"verified":true},"4":{"pts":43,"cost":0,"captain":0,"bench":0,"verified":true},"5":{"pts":71,"cost":4,"captain":0,"bench":0,"verified":true},"6":{"pts":49,"cost":0,"captain":0,"bench":0,"verified":true},"7":{"pts":60,"cost":4,"captain":0,"bench":0}},"PSCS United":{"3":{"pts":56,"cost":0,"captain":0,"bench":0,"verified":true},"4":{"pts":86,"cost":0,"captain":0,"bench":0},"5":{"pts":53,"cost":0,"captain":0,"bench":0,"verified":true},"6":{"pts":63,"cost":0,"captain":0,"bench":0,"verified":true},"7":{"pts":72,"cost":0,"captain":0,"bench":0}},"Tinder lvl 10":{"3":{"pts":49,"cost":0,"captain":0,"bench":0,"verified":true},"4":{"pts":74,"cost":0,"captain":0,"bench":0,"verified":true},"5":{"pts":63,"cost":0,"captain":0,"bench":0,"verified":true},"6":{"pts":59,"cost":0,"captain":0,"bench":0,"verified":true},"7":{"pts":75,"cost":0,"captain":0,"bench":0}},"Gusti Alif's Team":{"4":{"pts":69,"cost":0,"captain":0,"bench":0,"verified":true},"5":{"pts":49,"cost":0,"captain":0,"bench":0,"verified":true},"6":{"pts":45,"cost":0,"captain":0,"bench":0,"verified":true},"7":{"pts":63,"cost":44,"captain":0,"bench":0}}},"managers":{"PSGR":"Rezi Hafiz","faishal's Team":"Faishal Abyan","Tianlala":"Agil Kusuma","Kamileung FC":"Pipin Effendy","Sedotan Aqua":"Baltasario Saga","jowwwtim":"Anggi Suprayogi","kokorobet FC":"Firan Firhan","helmoni fc":"Isom Mutaqin","ARFantasy":"Achmad Ramdani","CIMSEL UNITED":"Maulana Abdul","Alunos 2.0":"Gilang Gumilar","Grindboys":"Ruby Wndr","JosJis FC":"Ignatius Aryo","Gurandilepce":"Ferryan Reynaldi","komodomodol FC":"Hafid Siddiq","Olahlah Fc":"Miftahul Reza","Katapang_Pride":"Katapang Pride","Kontol FC":"Diar Malik","Maung FC":"Wahyudin Wahyudin","Bubble Gummy":"Fahmi Mohamad","DOBHAN FC":"Dani R","Brancos FC":"Faisal Auliaghani","Blink 182":"Ilyas Muntaha","theluckyone":"Lucky One","PROJECT ALMANAC":"Akbar Lazuardi","Backlight FC":"Malwan Fauzan","Welldone":"Wildan Pratama","SSB Fak Fak":"Ilham Satria","Tarkam Fried Chicken":"Irham Ulya","Muceckyl FC":"Muceckyl FC","PSCS United":"PSCS United","Tinder lvl 10":"Tinder lvl","Gusti Alif's Team":"Gusti Alif's"},"clubBadges":{"PSGR":"https://fantasy.premierleague.com/gcs/plfpl-production-adobe-approved/plfpl-production/4473842/2f0c8738-abfe-4f50-8ba3-acf96524e206.png","JosJis FC":"https://fantasy.premierleague.com/gcs/plfpl-production-adobe-approved/plfpl-production/7769856/1b80ee66-9704-410c-89f4-c942cd9fd6d5.png","CIMSEL UNITED":"https://fantasy.premierleague.com/gcs/plfpl-production-adobe-approved/plfpl-production/3840511/42fcba34-296e-41ff-a30b-86e602a6c0be.png","Kontol FC":"https://fantasy.premierleague.com/gcs/plfpl-production-adobe-approved/plfpl-production/6962029/e019337f-5f69-4162-801e-72ecbaa761c4.png","Grindboys":"https://fantasy.premierleague.com/gcs/plfpl-production-adobe-approved/plfpl-production/8414036/ec8c1d0e-f179-4860-a4f5-44f3b9329266.png","komodomodol FC":"https://fantasy.premierleague.com/gcs/plfpl-production-adobe-approved/plfpl-production/1691342/a75e60c1-290e-4928-bbf7-64f624291422.png","Bubble Gummy":"https://fantasy.premierleague.com/gcs/plfpl-production-adobe-approved/plfpl-production/3844902/0dcdd86e-3859-4ee3-ae71-a62426bf3a1b.png","DOBHAN FC":"https://fantasy.premierleague.com/gcs/plfpl-production-adobe-approved/plfpl-production/6669682/5b8020d5-c03c-4af6-9771-74caebdb45f3.png","kokorobet FC":"https://fantasy.premierleague.com/gcs/plfpl-production-adobe-approved/plfpl-production/6389042/f2331b90-ce4d-4158-b3b1-e2d92952207a.png","Muceckyl FC":"https://fantasy.premierleague.com/gcs/plfpl-production-adobe-approved/plfpl-production/7721492/e9b2a2a6-5835-4749-a10e-6f67eef95cf2.png","faishal's Team":"https://fantasy.premierleague.com/gcs/plfpl-production-adobe-approved/plfpl-production/6224589/68847732-276e-4885-8d0c-af902e770d03.png","Welldone":"https://fantasy.premierleague.com/gcs/plfpl-production-adobe-approved/plfpl-production/2066139/e13ad676-74fa-4c5b-b23e-0fded2f50f8e.png","Sedotan Aqua":"https://fantasy.premierleague.com/gcs/plfpl-production-adobe-approved/plfpl-production/8198726/1535cb52-406e-4cf3-9d6f-7a8eedd7aeed.png","SSB Fak Fak":"https://fantasy.premierleague.com/gcs/plfpl-production-adobe-approved/plfpl-production/9697240/252572d2-50cf-4239-9c27-ec0717c7fbf7.png","Backlight FC":"https://fantasy.premierleague.com/gcs/plfpl-production-adobe-approved/plfpl-production/7764470/5c5c7144-510d-4973-a8e8-880de9151482.png","PSCS United":"https://fantasy.premierleague.com/gcs/plfpl-production-adobe-approved/plfpl-production/9964731/d7cc5b70-d337-44be-b72e-6cb73b340054.png","Tianlala":"https://fantasy.premierleague.com/gcs/plfpl-production-adobe-approved/plfpl-production/5548027/fe8241c1-21f5-4446-a111-0aecd7526c88.png","Gusti Alif's Team":"https://fantasy.premierleague.com/gcs/plfpl-production-adobe-approved/plfpl-production/10601845/fd29ebc2-7372-4663-b121-dada9bc999db.png"},"entryMap":{"2066139":"Welldone","2301043":"Katapang_Pride","2839268":"Bubble Gummy","3058269":"Kamileung FC","3840511":"CIMSEL UNITED","3937511":"theluckyone","4473842":"PSGR","5548027":"Tianlala","5673843":"Blink 182","5896591":"komodomodol FC","5929119":"Olahlah Fc","5950338":"Brancos FC","5956185":"Gurandilepce","6039817":"Kontol FC","6224589":"faishal's Team","6389042":"kokorobet FC","6596539":"PROJECT ALMANAC","6669682":"DOBHAN FC","6794979":"Grindboys","7522529":"helmoni fc","7550025":"Alunos 2.0","7624385":"Maung FC","7721492":"Muceckyl FC","7764470":"Backlight FC","7767821":"ARFantasy","7768172":"jowwwtim","7769856":"JosJis FC","8198726":"Sedotan Aqua","9697240":"SSB Fak Fak","9908242":"Tarkam Fried Chicken","9964731":"PSCS United","9965798":"Tinder lvl 10","10601845":"Gusti Alif's Team"},"h2h":{"1":[{"teamA":"theluckyone","teamB":"Blink 182","ptsA":41,"ptsB":37,"isBye":false},{"teamA":"ARFantasy","teamB":"Olahlah Fc","ptsA":54,"ptsB":53,"isBye":false},{"teamA":"komodomodol FC","teamB":"Sedotan Aqua","ptsA":47,"ptsB":58,"isBye":false},{"teamA":"Bubble Gummy","teamB":"PSGR","ptsA":45,"ptsB":74,"isBye":false},{"teamA":"Katapang_Pride","teamB":"PROJECT ALMANAC","ptsA":46,"ptsB":35,"isBye":false},{"teamA":"Kontol FC","teamB":"CIMSEL UNITED","ptsA":54,"ptsB":54,"isBye":false},{"teamA":"helmoni fc","teamB":"Maung FC","ptsA":57,"ptsB":48,"isBye":false},{"teamA":"Alunos 2.0","teamB":"Grindboys","ptsA":54,"ptsB":50,"isBye":false},{"teamA":"Kamileung FC","teamB":"jowwwtim","ptsA":58,"ptsB":57,"isBye":false},{"teamA":"JosJis FC","teamB":"Gurandilepce","ptsA":64,"ptsB":47,"isBye":false},{"teamA":"Tianlala","teamB":"kokorobet FC","ptsA":64,"ptsB":57,"isBye":false},{"teamA":"DOBHAN FC","teamB":"faishal's Team","ptsA":44,"ptsB":62,"isBye":false},{"teamA":"Backlight FC","teamB":"Brancos FC","ptsA":35,"ptsB":39,"isBye":false}],"2":[{"teamA":"Blink 182","teamB":"Backlight FC","ptsA":73,"ptsB":65,"isBye":false},{"teamA":"Brancos FC","teamB":"DOBHAN FC","ptsA":67,"ptsB":50,"isBye":false},{"teamA":"faishal's Team","teamB":"Tianlala","ptsA":69,"ptsB":76,"isBye":false},{"teamA":"kokorobet FC","teamB":"JosJis FC","ptsA":103,"ptsB":79,"isBye":false},{"teamA":"Gurandilepce","teamB":"Kamileung FC","ptsA":103,"ptsB":115,"isBye":false},{"teamA":"jowwwtim","teamB":"Alunos 2.0","ptsA":87,"ptsB":64,"isBye":false},{"teamA":"Grindboys","teamB":"helmoni fc","ptsA":105,"ptsB":88,"isBye":false},{"teamA":"Maung FC","teamB":"Kontol FC","ptsA":70,"ptsB":77,"isBye":false},{"teamA":"CIMSEL UNITED","teamB":"Katapang_Pride","ptsA":69,"ptsB":98,"isBye":false},{"teamA":"PROJECT ALMANAC","teamB":"Bubble Gummy","ptsA":91,"ptsB":82,"isBye":false},{"teamA":"PSGR","teamB":"komodomodol FC","ptsA":86,"ptsB":89,"isBye":false},{"teamA":"Sedotan Aqua","teamB":"ARFantasy","ptsA":109,"ptsB":101,"isBye":false},{"teamA":"Olahlah Fc","teamB":"theluckyone","ptsA":95,"ptsB":69,"isBye":false}],"3":[{"teamA":"ARFantasy","teamB":"Blink 182","ptsA":3,"ptsB":2,"isBye":false},{"teamA":"komodomodol FC","teamB":"theluckyone","ptsA":21,"ptsB":1,"isBye":false},{"teamA":"Bubble Gummy","teamB":"Olahlah Fc","ptsA":0,"ptsB":3,"isBye":false},{"teamA":"Katapang_Pride","teamB":"Sedotan Aqua","ptsA":0,"ptsB":1,"isBye":false},{"teamA":"Kontol FC","teamB":"PSGR","ptsA":17,"ptsB":3,"isBye":false},{"teamA":"helmoni fc","teamB":"PROJECT ALMANAC","ptsA":-1,"ptsB":0,"isBye":false},{"teamA":"Alunos 2.0","teamB":"CIMSEL UNITED","ptsA":9,"ptsB":3,"isBye":false},{"teamA":"Kamileung FC","teamB":"Maung FC","ptsA":3,"ptsB":3,"isBye":false},{"teamA":"JosJis FC","teamB":"Grindboys","ptsA":3,"ptsB":3,"isBye":false},{"teamA":"Tianlala","teamB":"jowwwtim","ptsA":3,"ptsB":3,"isBye":false},{"teamA":"DOBHAN FC","teamB":"Gurandilepce","ptsA":0,"ptsB":3,"isBye":false},{"teamA":"Backlight FC","teamB":"kokorobet FC","ptsA":0,"ptsB":-1,"isBye":false},{"teamA":"Brancos FC","teamB":"faishal's Team","ptsA":34,"ptsB":0,"isBye":false}],"4":[{"teamA":"Blink 182","teamB":"Brancos FC","ptsA":64,"ptsB":37,"isBye":false},{"teamA":"faishal's Team","teamB":"Backlight FC","ptsA":64,"ptsB":64,"isBye":false},{"teamA":"kokorobet FC","teamB":"DOBHAN FC","ptsA":107,"ptsB":75,"isBye":false},{"teamA":"Gurandilepce","teamB":"Tianlala","ptsA":80,"ptsB":61,"isBye":false},{"teamA":"jowwwtim","teamB":"JosJis FC","ptsA":77,"ptsB":51,"isBye":false},{"teamA":"Grindboys","teamB":"Kamileung FC","ptsA":94,"ptsB":76,"isBye":false},{"teamA":"Maung FC","teamB":"Alunos 2.0","ptsA":84,"ptsB":86,"isBye":false},{"teamA":"CIMSEL UNITED","teamB":"helmoni fc","ptsA":74,"ptsB":73,"isBye":false},{"teamA":"PROJECT ALMANAC","teamB":"Kontol FC","ptsA":92,"ptsB":78,"isBye":false},{"teamA":"PSGR","teamB":"Katapang_Pride","ptsA":78,"ptsB":71,"isBye":false},{"teamA":"Sedotan Aqua","teamB":"Bubble Gummy","ptsA":93,"ptsB":89,"isBye":false},{"teamA":"Olahlah Fc","teamB":"komodomodol FC","ptsA":50,"ptsB":74,"isBye":false},{"teamA":"theluckyone","teamB":"ARFantasy","ptsA":62,"ptsB":93,"isBye":false}],"7":[{"teamA":"Bubble Gummy","teamB":"Blink 182","ptsA":63,"ptsB":75,"isBye":false},{"teamA":"Katapang_Pride","teamB":"komodomodol FC","ptsA":69,"ptsB":82,"isBye":false},{"teamA":"Kontol FC","teamB":"ARFantasy","ptsA":33,"ptsB":57,"isBye":false},{"teamA":"helmoni fc","teamB":"theluckyone","ptsA":62,"ptsB":70,"isBye":false},{"teamA":"Alunos 2.0","teamB":"Olahlah Fc","ptsA":68,"ptsB":58,"isBye":false},{"teamA":"Kamileung FC","teamB":"Sedotan Aqua","ptsA":39,"ptsB":51,"isBye":false},{"teamA":"JosJis FC","teamB":"PSGR","ptsA":72,"ptsB":64,"isBye":false},{"teamA":"Tianlala","teamB":"PROJECT ALMANAC","ptsA":69,"ptsB":57,"isBye":false},{"teamA":"DOBHAN FC","teamB":"CIMSEL UNITED","ptsA":46,"ptsB":69,"isBye":false},{"teamA":"Backlight FC","teamB":"Maung FC","ptsA":75,"ptsB":67,"isBye":false},{"teamA":"Brancos FC","teamB":"Grindboys","ptsA":40,"ptsB":66,"isBye":false},{"teamA":"faishal's Team","teamB":"jowwwtim","ptsA":38,"ptsB":65,"isBye":false},{"teamA":"kokorobet FC","teamB":"Gurandilepce","ptsA":73,"ptsB":70,"isBye":false}]},"nextDeadline":{"id":8,"name":"Gameweek 8","deadline":"2026-10-23T17:30:00Z"},"customProxyBase":"https://ligakopi.ikokrumah.workers.dev/?url=","autoRefresh":true,"h2hStandings":[{"team":"komodomodol FC","manager":"Hafid Siddiq","played":7,"won":6,"drawn":0,"lost":1,"pointsFor":482,"total":18,"rank":1},{"team":"Tianlala","manager":"agil kusuma","played":7,"won":5,"drawn":1,"lost":1,"pointsFor":462,"total":16,"rank":2},{"team":"Sedotan Aqua","manager":"baltasario saga","played":7,"won":5,"drawn":1,"lost":1,"pointsFor":461,"total":16,"rank":3},{"team":"PSGR","manager":"Rezi Hafiz","played":7,"won":5,"drawn":0,"lost":2,"pointsFor":484,"total":15,"rank":4},{"team":"Blink 182","manager":"ilyas muntaha aiba","played":7,"won":5,"drawn":0,"lost":2,"pointsFor":414,"total":15,"rank":5},{"team":"kokorobet FC","manager":"Firan Firhan Dani","played":7,"won":4,"drawn":2,"lost":1,"pointsFor":499,"total":14,"rank":6},{"team":"CIMSEL UNITED","manager":"Maulana abdul Cholik","played":7,"won":4,"drawn":1,"lost":2,"pointsFor":414,"total":13,"rank":7},{"team":"ARFantasy","manager":"Achmad Ramdani","played":7,"won":4,"drawn":0,"lost":3,"pointsFor":465,"total":12,"rank":8},{"team":"jowwwtim","manager":"Anggi Suprayogi","played":7,"won":4,"drawn":0,"lost":3,"pointsFor":455,"total":12,"rank":9},{"team":"Alunos 2.0","manager":"Gilang Gumilar","played":7,"won":4,"drawn":0,"lost":3,"pointsFor":443,"total":12,"rank":10},{"team":"JosJis FC","manager":"Ignatius Aryo Bimo Danudoro","played":7,"won":4,"drawn":0,"lost":3,"pointsFor":410,"total":12,"rank":11},{"team":"Backlight FC","manager":"Malwan Fauzan","played":7,"won":3,"drawn":2,"lost":2,"pointsFor":414,"total":11,"rank":12},{"team":"Grindboys","manager":"Ruby wndr","played":7,"won":3,"drawn":1,"lost":3,"pointsFor":485,"total":10,"rank":13},{"team":"Katapang_Pride","manager":"Katapang Pride","played":7,"won":3,"drawn":1,"lost":3,"pointsFor":423,"total":10,"rank":14},{"team":"Kontol FC","manager":"Diar Malik","played":7,"won":3,"drawn":1,"lost":3,"pointsFor":405,"total":10,"rank":15},{"team":"Gurandilepce","manager":"Ferryan Reynaldi Akbar","played":7,"won":3,"drawn":0,"lost":4,"pointsFor":484,"total":9,"rank":16},{"team":"PROJECT ALMANAC","manager":"Akbar Lazuardi","played":7,"won":3,"drawn":0,"lost":4,"pointsFor":444,"total":9,"rank":17},{"team":"theluckyone","manager":"lucky One","played":7,"won":3,"drawn":0,"lost":4,"pointsFor":391,"total":9,"rank":18},{"team":"Brancos FC","manager":"faisal Auliaghani","played":7,"won":3,"drawn":0,"lost":4,"pointsFor":364,"total":9,"rank":19},{"team":"Kamileung FC","manager":"pipin effendy","played":7,"won":2,"drawn":0,"lost":5,"pointsFor":437,"total":6,"rank":20},{"team":"helmoni fc","manager":"Isom Mutaqin","played":7,"won":2,"drawn":0,"lost":5,"pointsFor":437,"total":6,"rank":20},{"team":"Maung FC","manager":"wahyudin wahyudin","played":7,"won":2,"drawn":0,"lost":5,"pointsFor":436,"total":6,"rank":22},{"team":"Olahlah Fc","manager":"Miftahul Reza Alqadri","played":7,"won":2,"drawn":0,"lost":5,"pointsFor":403,"total":6,"rank":23},{"team":"faishal's Team","manager":"faishal abyan murtadho","played":7,"won":1,"drawn":2,"lost":4,"pointsFor":373,"total":5,"rank":24},{"team":"Bubble Gummy","manager":"Fahmi Mohamad Iqbal","played":7,"won":1,"drawn":0,"lost":6,"pointsFor":424,"total":3,"rank":25},{"team":"DOBHAN FC","manager":"dani r","played":7,"won":1,"drawn":0,"lost":6,"pointsFor":364,"total":3,"rank":26}],"lastVerifyRun":"2026-10-21T01:22:47.113Z","autoVerifyEnabled":false,"lastUpdated":"2026-10-21T01:49:41.802Z","dataVersion":21};
+const BACKUP_SNAPSHOT = {"teams":["PSGR","faishal's Team","Tianlala","Kamileung FC","Sedotan Aqua","jowwwtim","kokorobet FC","helmoni fc","ARFantasy","CIMSEL UNITED","Alunos 2.0","Grindboys","JosJis FC","Gurandilepce","komodomodol FC","Olahlah Fc","Katapang_Pride","Kontol FC","Maung FC","Bubble Gummy","DOBHAN FC","Brancos FC","Blink 182","theluckyone","PROJECT ALMANAC","Backlight FC","Welldone","SSB Fak Fak","Tarkam Fried Chicken","Muceckyl FC","PSCS United","Tinder lvl 10","Gusti Alif's Team"],"scores":{"PSGR":{"1":{"pts":74,"cost":0},"2":{"pts":86,"cost":0,"captain":0,"bench":0,"verified":true},"3":{"pts":47,"cost":0,"captain":0,"bench":0,"verified":true},"4":{"pts":78,"cost":0,"captain":0,"bench":0},"5":{"pts":57,"cost":0,"captain":0,"bench":0,"verified":true},"6":{"pts":78,"cost":0,"captain":0,"bench":0,"verified":true},"7":{"pts":64,"cost":0,"captain":0,"bench":0},"8":{"pts":45,"cost":0,"captain":0,"bench":0},"9":{"pts":49,"cost":0,"captain":0,"bench":0},"10":{"pts":70,"cost":0,"captain":0,"bench":0}},"faishal's Team":{"1":{"pts":62,"cost":0},"2":{"pts":69,"cost":0,"captain":0,"bench":0,"verified":true},"3":{"pts":29,"cost":0,"captain":0,"bench":0,"verified":true},"4":{"pts":69,"cost":4,"captain":0,"bench":0,"verified":true},"5":{"pts":48,"cost":0,"captain":0,"bench":0,"verified":true},"6":{"pts":62,"cost":0,"captain":0,"bench":0,"verified":true},"7":{"pts":38,"cost":0,"captain":0,"bench":0},"8":{"pts":26,"cost":4,"captain":0,"bench":0},"9":{"pts":60,"cost":0,"captain":0,"bench":0},"10":{"pts":41,"cost":0,"captain":0,"bench":0}},"Tianlala":{"1":{"pts":64,"cost":0},"2":{"pts":76,"cost":0,"captain":0,"bench":0,"verified":true},"3":{"pts":52,"cost":0,"captain":0,"bench":0,"verified":true},"4":{"pts":61,"cost":0,"captain":0,"bench":0},"5":{"pts":75,"cost":0,"captain":0,"bench":0,"verified":true},"6":{"pts":65,"cost":0,"captain":0,"bench":0,"verified":true},"7":{"pts":69,"cost":0,"captain":0,"bench":0},"8":{"pts":44,"cost":0,"captain":0,"bench":0},"9":{"pts":72,"cost":0,"captain":0,"bench":0},"10":{"pts":55,"cost":0,"captain":0,"bench":0}},"Kamileung FC":{"1":{"pts":58,"cost":0},"2":{"pts":115,"cost":0,"captain":0,"bench":0,"verified":true},"3":{"pts":42,"cost":0,"captain":0,"bench":0,"verified":true},"4":{"pts":77,"cost":0,"captain":0,"bench":0,"verified":true},"5":{"pts":57,"cost":0,"captain":0,"bench":0,"verified":true},"6":{"pts":49,"cost":0,"captain":0,"bench":0,"verified":true},"7":{"pts":39,"cost":0,"captain":0,"bench":0},"8":{"pts":52,"cost":0,"captain":0,"bench":0},"9":{"pts":41,"cost":0,"captain":0,"bench":0},"10":{"pts":62,"cost":0,"captain":0,"bench":0}},"Sedotan Aqua":{"1":{"pts":58,"cost":0},"2":{"pts":109,"cost":0,"captain":0,"bench":0,"verified":true},"3":{"pts":38,"cost":0,"captain":0,"bench":0,"verified":true},"4":{"pts":93,"cost":0,"captain":0,"bench":0},"5":{"pts":60,"cost":0,"captain":0,"bench":0,"verified":true},"6":{"pts":52,"cost":0,"captain":0,"bench":0,"verified":true},"7":{"pts":51,"cost":0,"captain":0,"bench":0},"8":{"pts":23,"cost":0,"captain":0,"bench":0},"9":{"pts":60,"cost":0,"captain":0,"bench":0},"10":{"pts":51,"cost":0,"captain":0,"bench":0}},"jowwwtim":{"1":{"pts":57,"cost":0},"2":{"pts":87,"cost":0,"captain":0,"bench":0,"verified":true},"3":{"pts":50,"cost":0,"captain":0,"bench":0,"verified":true},"4":{"pts":77,"cost":0,"captain":0,"bench":0},"5":{"pts":40,"cost":0,"captain":0,"bench":0,"verified":true},"6":{"pts":79,"cost":0,"captain":0,"bench":0,"verified":true},"7":{"pts":65,"cost":0,"captain":0,"bench":0},"8":{"pts":41,"cost":0,"captain":0,"bench":0},"9":{"pts":59,"cost":0,"captain":0,"bench":0},"10":{"pts":67,"cost":0,"captain":0,"bench":0}},"kokorobet FC":{"1":{"pts":57,"cost":0},"2":{"pts":103,"cost":0,"captain":0,"bench":0,"verified":true},"3":{"pts":47,"cost":4,"captain":0,"bench":0,"verified":true},"4":{"pts":107,"cost":0,"captain":0,"bench":0},"5":{"pts":48,"cost":0,"captain":0,"bench":0,"verified":true},"6":{"pts":68,"cost":0,"captain":0,"bench":0,"verified":true},"7":{"pts":73,"cost":0,"captain":0,"bench":0},"8":{"pts":40,"cost":0,"captain":0,"bench":0},"9":{"pts":61,"cost":0,"captain":0,"bench":0},"10":{"pts":62,"cost":0,"captain":0,"bench":0}},"helmoni fc":{"1":{"pts":57,"cost":0},"2":{"pts":92,"cost":4,"captain":0,"bench":0,"verified":true},"3":{"pts":63,"cost":4,"captain":0,"bench":0,"verified":true},"4":{"pts":73,"cost":0,"captain":0,"bench":0},"5":{"pts":44,"cost":4,"captain":0,"bench":0,"verified":true},"6":{"pts":58,"cost":0,"captain":0,"bench":0,"verified":true},"7":{"pts":66,"cost":4,"captain":0,"bench":0},"8":{"pts":46,"cost":0,"captain":0,"bench":0},"9":{"pts":56,"cost":0,"captain":0,"bench":0},"10":{"pts":59,"cost":0,"captain":0,"bench":0}},"ARFantasy":{"1":{"pts":54,"cost":0},"2":{"pts":101,"cost":0,"captain":0,"bench":0,"verified":true},"3":{"pts":43,"cost":0,"captain":0,"bench":0,"verified":true},"4":{"pts":93,"cost":0,"captain":0,"bench":0},"5":{"pts":60,"cost":0,"captain":0,"bench":0,"verified":true},"6":{"pts":57,"cost":0,"captain":0,"bench":0},"7":{"pts":57,"cost":0,"captain":0,"bench":0},"8":{"pts":43,"cost":0,"captain":0,"bench":0},"9":{"pts":35,"cost":0,"captain":0,"bench":0},"10":{"pts":59,"cost":0,"captain":0,"bench":0}},"CIMSEL UNITED":{"1":{"pts":54,"cost":0},"2":{"pts":73,"cost":4,"captain":0,"bench":0,"verified":true},"3":{"pts":54,"cost":0,"captain":0,"bench":0,"verified":true},"4":{"pts":78,"cost":4,"captain":0,"bench":0,"verified":true},"5":{"pts":45,"cost":4,"captain":0,"bench":0,"verified":true},"6":{"pts":53,"cost":0,"captain":0,"bench":0,"verified":true},"7":{"pts":73,"cost":4,"captain":0,"bench":0},"8":{"pts":42,"cost":0,"captain":0,"bench":0},"9":{"pts":31,"cost":4,"captain":0,"bench":0},"10":{"pts":67,"cost":0,"captain":0,"bench":0}},"Alunos 2.0":{"1":{"pts":54,"cost":0},"2":{"pts":64,"cost":0,"captain":0,"bench":0,"verified":true},"3":{"pts":53,"cost":0,"captain":0,"bench":0,"verified":true},"4":{"pts":86,"cost":0,"captain":0,"bench":0},"5":{"pts":50,"cost":0,"captain":0,"bench":0,"verified":true},"6":{"pts":68,"cost":0,"captain":0,"bench":0},"7":{"pts":68,"cost":0,"captain":0,"bench":0},"8":{"pts":53,"cost":0,"captain":0,"bench":0},"9":{"pts":59,"cost":0,"captain":0,"bench":0},"10":{"pts":51,"cost":0,"captain":0,"bench":0}},"Grindboys":{"1":{"pts":50,"cost":0},"2":{"pts":105,"cost":0,"captain":0,"bench":0,"verified":true},"3":{"pts":46,"cost":0,"captain":0,"bench":0,"verified":true},"4":{"pts":94,"cost":0,"captain":0,"bench":0},"5":{"pts":59,"cost":0,"captain":0,"bench":0,"verified":true},"6":{"pts":65,"cost":0,"captain":0,"bench":0,"verified":true},"7":{"pts":66,"cost":0,"captain":0,"bench":0},"8":{"pts":41,"cost":0,"captain":0,"bench":0},"9":{"pts":51,"cost":0,"captain":0,"bench":0},"10":{"pts":46,"cost":0,"captain":0,"bench":0}},"JosJis FC":{"1":{"pts":64,"cost":0},"2":{"pts":79,"cost":0,"captain":0,"bench":0,"verified":true},"3":{"pts":50,"cost":0,"captain":0,"bench":0,"verified":true},"4":{"pts":51,"cost":0,"captain":0,"bench":0},"5":{"pts":51,"cost":0,"captain":0,"bench":0,"verified":true},"6":{"pts":43,"cost":0,"captain":0,"bench":0,"verified":true},"7":{"pts":72,"cost":0,"captain":0,"bench":0},"8":{"pts":51,"cost":0,"captain":0,"bench":0},"9":{"pts":46,"cost":0,"captain":0,"bench":0},"10":{"pts":68,"cost":0,"captain":0,"bench":0}},"Gurandilepce":{"1":{"pts":47,"cost":0},"2":{"pts":103,"cost":0,"captain":0,"bench":0,"verified":true},"3":{"pts":46,"cost":0,"captain":0,"bench":0,"verified":true},"4":{"pts":80,"cost":0,"captain":0,"bench":0},"5":{"pts":61,"cost":0,"captain":0,"bench":0,"verified":true},"6":{"pts":77,"cost":0,"captain":0,"bench":0,"verified":true},"7":{"pts":70,"cost":0,"captain":0,"bench":0},"8":{"pts":37,"cost":0,"captain":0,"bench":0},"9":{"pts":45,"cost":0,"captain":0,"bench":0},"10":{"pts":39,"cost":0,"captain":0,"bench":0}},"komodomodol FC":{"1":{"pts":47,"cost":0},"2":{"pts":89,"cost":0,"captain":0,"bench":0,"verified":true},"3":{"pts":53,"cost":0,"captain":0,"bench":0,"verified":true},"4":{"pts":74,"cost":0,"captain":0,"bench":0},"5":{"pts":61,"cost":0,"captain":0,"bench":0,"verified":true},"6":{"pts":76,"cost":0,"captain":0,"bench":0,"verified":true},"7":{"pts":82,"cost":0,"captain":0,"bench":0},"8":{"pts":36,"cost":0,"captain":0,"bench":0},"9":{"pts":55,"cost":0,"captain":0,"bench":0},"10":{"pts":57,"cost":0,"captain":0,"bench":0}},"Olahlah Fc":{"1":{"pts":53,"cost":0},"2":{"pts":99,"cost":4,"captain":0,"bench":0,"verified":true},"3":{"pts":44,"cost":0,"captain":0,"bench":0,"verified":true},"4":{"pts":54,"cost":4,"captain":0,"bench":0,"verified":true},"5":{"pts":43,"cost":0,"captain":0,"bench":0,"verified":true},"6":{"pts":60,"cost":0,"captain":0,"bench":0,"verified":true},"7":{"pts":58,"cost":0,"captain":0,"bench":0},"8":{"pts":30,"cost":0,"captain":0,"bench":0},"9":{"pts":41,"cost":0,"captain":0,"bench":0},"10":{"pts":45,"cost":0,"captain":0,"bench":0}},"Katapang_Pride":{"1":{"pts":46,"cost":0},"2":{"pts":98,"cost":0,"captain":0,"bench":0,"verified":true},"3":{"pts":38,"cost":0,"captain":0,"bench":0,"verified":true},"4":{"pts":75,"cost":4,"captain":0,"bench":0,"verified":true},"5":{"pts":40,"cost":4,"captain":0,"bench":0,"verified":true},"6":{"pts":65,"cost":0,"captain":0,"bench":0,"verified":true},"7":{"pts":69,"cost":0,"captain":0,"bench":0},"8":{"pts":26,"cost":0,"captain":0,"bench":0},"9":{"pts":45,"cost":0,"captain":0,"bench":0},"10":{"pts":51,"cost":4,"captain":0,"bench":0}},"Kontol FC":{"1":{"pts":54,"cost":0},"2":{"pts":77,"cost":0,"captain":0,"bench":0,"verified":true},"3":{"pts":44,"cost":0,"captain":0,"bench":0,"verified":true},"4":{"pts":78,"cost":0,"captain":0,"bench":0},"5":{"pts":64,"cost":0,"captain":0,"bench":0,"verified":true},"6":{"pts":55,"cost":0,"captain":0,"bench":0,"verified":true},"7":{"pts":33,"cost":0,"captain":0,"bench":0},"8":{"pts":40,"cost":0,"captain":0,"bench":0},"9":{"pts":51,"cost":0,"captain":0,"bench":0},"10":{"pts":61,"cost":0,"captain":0,"bench":0}},"Maung FC":{"1":{"pts":48,"cost":0},"2":{"pts":70,"cost":0,"captain":0,"bench":0,"verified":true},"3":{"pts":56,"cost":0,"captain":0,"bench":0,"verified":true},"4":{"pts":88,"cost":4,"captain":0,"bench":0,"verified":true},"5":{"pts":56,"cost":0,"captain":0,"bench":0,"verified":true},"6":{"pts":55,"cost":0,"captain":0,"bench":0,"verified":true},"7":{"pts":67,"cost":0,"captain":0,"bench":0},"8":{"pts":43,"cost":0,"captain":0,"bench":0},"9":{"pts":41,"cost":0,"captain":0,"bench":0},"10":{"pts":42,"cost":0,"captain":0,"bench":0}},"Bubble Gummy":{"1":{"pts":45,"cost":0},"2":{"pts":82,"cost":0,"captain":0,"bench":0,"verified":true},"3":{"pts":43,"cost":0,"captain":0,"bench":0,"verified":true},"4":{"pts":89,"cost":0,"captain":0,"bench":0},"5":{"pts":41,"cost":0,"captain":0,"bench":0,"verified":true},"6":{"pts":61,"cost":0,"captain":0,"bench":0,"verified":true},"7":{"pts":63,"cost":0,"captain":0,"bench":0},"8":{"pts":50,"cost":0,"captain":0,"bench":0},"9":{"pts":43,"cost":0,"captain":0,"bench":0},"10":{"pts":52,"cost":0,"captain":0,"bench":0}},"DOBHAN FC":{"1":{"pts":44,"cost":0,"captain":0,"bench":0,"verified":true},"2":{"pts":50,"cost":0,"captain":0,"bench":0,"verified":true},"3":{"pts":32,"cost":0,"captain":0,"bench":0,"verified":true},"4":{"pts":75,"cost":0,"captain":0,"bench":0},"5":{"pts":76,"cost":0,"captain":0,"bench":0,"verified":true},"6":{"pts":41,"cost":0,"captain":0,"bench":0,"verified":true},"7":{"pts":46,"cost":0,"captain":0,"bench":0},"8":{"pts":42,"cost":0,"captain":0,"bench":0},"9":{"pts":46,"cost":0,"captain":0,"bench":0},"10":{"pts":73,"cost":0,"captain":0,"bench":0}},"Brancos FC":{"1":{"pts":39,"cost":0},"2":{"pts":67,"cost":0,"captain":0,"bench":0,"verified":true},"3":{"pts":63,"cost":0,"captain":0,"bench":0,"verified":true},"4":{"pts":37,"cost":0,"captain":0,"bench":0},"5":{"pts":55,"cost":0,"captain":0,"bench":0,"verified":true},"6":{"pts":63,"cost":0,"captain":0,"bench":0,"verified":true},"7":{"pts":40,"cost":0,"captain":0,"bench":0},"8":{"pts":38,"cost":0,"captain":0,"bench":0},"9":{"pts":70,"cost":0,"captain":0,"bench":0},"10":{"pts":48,"cost":0,"captain":0,"bench":0}},"Blink 182":{"1":{"pts":37,"cost":0},"2":{"pts":77,"cost":4,"captain":0,"bench":0,"verified":true},"3":{"pts":59,"cost":4,"captain":0,"bench":0,"verified":true},"4":{"pts":64,"cost":0,"captain":0,"bench":0},"5":{"pts":45,"cost":0,"captain":0,"bench":0,"verified":true},"6":{"pts":69,"cost":4,"captain":0,"bench":0,"verified":true},"7":{"pts":75,"cost":0,"captain":0,"bench":0},"8":{"pts":53,"cost":0,"captain":0,"bench":0},"9":{"pts":58,"cost":4,"captain":0,"bench":0},"10":{"pts":61,"cost":4,"captain":0,"bench":0}},"theluckyone":{"1":{"pts":41,"cost":0},"2":{"pts":69,"cost":0,"captain":0,"bench":0,"verified":true},"3":{"pts":59,"cost":8,"captain":0,"bench":0,"verified":true},"4":{"pts":62,"cost":0,"captain":0,"bench":0},"5":{"pts":45,"cost":4,"captain":0,"bench":0,"verified":true},"6":{"pts":57,"cost":0,"captain":0,"bench":0,"verified":true},"7":{"pts":70,"cost":0,"captain":0,"bench":0},"8":{"pts":49,"cost":0,"captain":0,"bench":0},"9":{"pts":47,"cost":0,"captain":0,"bench":0},"10":{"pts":46,"cost":0,"captain":0,"bench":0}},"PROJECT ALMANAC":{"1":{"pts":35,"cost":0},"2":{"pts":91,"cost":0,"captain":0,"bench":0,"verified":true},"3":{"pts":49,"cost":0,"captain":0,"bench":0,"verified":true},"4":{"pts":92,"cost":0,"captain":0,"bench":0},"5":{"pts":60,"cost":0,"captain":0,"bench":0,"verified":true},"6":{"pts":60,"cost":0,"captain":0,"bench":0,"verified":true},"7":{"pts":57,"cost":0,"captain":0,"bench":0},"8":{"pts":24,"cost":0,"captain":0,"bench":0},"9":{"pts":50,"cost":0,"captain":0,"bench":0},"10":{"pts":57,"cost":0,"captain":0,"bench":0}},"Backlight FC":{"1":{"pts":35,"cost":0},"2":{"pts":65,"cost":0,"captain":0,"bench":0,"verified":true},"3":{"pts":43,"cost":0,"captain":0,"bench":0,"verified":true},"4":{"pts":65,"cost":0,"captain":0,"bench":0,"verified":true},"5":{"pts":49,"cost":0,"captain":0,"bench":0,"verified":true},"6":{"pts":82,"cost":0,"captain":0,"bench":0,"verified":true},"7":{"pts":75,"cost":0,"captain":0,"bench":0},"8":{"pts":42,"cost":0,"captain":0,"bench":0},"9":{"pts":60,"cost":0,"captain":0,"bench":0},"10":{"pts":51,"cost":0,"captain":0,"bench":0}},"Welldone":{"1":{"pts":110,"cost":0,"captain":0,"bench":0},"2":{"pts":85,"cost":0,"captain":0,"bench":0,"verified":true},"3":{"pts":69,"cost":0,"captain":0,"bench":0,"verified":true},"4":{"pts":77,"cost":0,"captain":0,"bench":0,"verified":true},"5":{"pts":56,"cost":8,"captain":0,"bench":0,"verified":true},"6":{"pts":55,"cost":0,"captain":0,"bench":0,"verified":true},"7":{"pts":62,"cost":0,"captain":0,"bench":0},"8":{"pts":53,"cost":0,"captain":0,"bench":0},"9":{"pts":55,"cost":0,"captain":0,"bench":0},"10":{"pts":52,"cost":0,"captain":0,"bench":0}},"SSB Fak Fak":{"2":{"pts":75,"cost":0,"captain":0,"bench":0},"3":{"pts":80,"cost":0,"captain":0,"bench":0,"verified":true},"4":{"pts":61,"cost":0,"captain":0,"bench":0},"5":{"pts":61,"cost":0,"captain":0,"bench":0,"verified":true},"6":{"pts":74,"cost":0,"captain":0,"bench":0,"verified":true},"7":{"pts":62,"cost":0,"captain":0,"bench":0},"8":{"pts":36,"cost":0,"captain":0,"bench":0},"9":{"pts":83,"cost":0,"captain":0,"bench":0},"10":{"pts":68,"cost":0,"captain":0,"bench":0}},"Tarkam Fried Chicken":{"2":{"pts":58,"cost":0,"captain":0,"bench":0,"verified":true},"3":{"pts":51,"cost":28,"captain":0,"bench":0,"verified":true},"4":{"pts":62,"cost":0,"captain":0,"bench":0},"5":{"pts":31,"cost":0,"captain":0,"bench":0,"verified":true},"6":{"pts":52,"cost":0,"captain":0,"bench":0,"verified":true},"7":{"pts":66,"cost":0,"captain":0,"bench":0},"8":{"pts":51,"cost":0,"captain":0,"bench":0},"9":{"pts":44,"cost":0,"captain":0,"bench":0},"10":{"pts":45,"cost":0,"captain":0,"bench":0}},"Muceckyl FC":{"1":{"pts":56,"cost":0,"captain":0,"bench":0,"verified":true},"2":{"pts":81,"cost":0,"captain":0,"bench":0,"verified":true},"3":{"pts":75,"cost":8,"captain":0,"bench":0,"verified":true},"4":{"pts":43,"cost":0,"captain":0,"bench":0,"verified":true},"5":{"pts":71,"cost":4,"captain":0,"bench":0,"verified":true},"6":{"pts":49,"cost":0,"captain":0,"bench":0,"verified":true},"7":{"pts":60,"cost":4,"captain":0,"bench":0},"8":{"pts":27,"cost":4,"captain":0,"bench":0},"9":{"pts":47,"cost":4,"captain":0,"bench":0},"10":{"pts":46,"cost":0,"captain":0,"bench":0}},"PSCS United":{"3":{"pts":56,"cost":0,"captain":0,"bench":0,"verified":true},"4":{"pts":86,"cost":0,"captain":0,"bench":0},"5":{"pts":53,"cost":0,"captain":0,"bench":0,"verified":true},"6":{"pts":63,"cost":0,"captain":0,"bench":0,"verified":true},"7":{"pts":72,"cost":0,"captain":0,"bench":0},"8":{"pts":37,"cost":0,"captain":0,"bench":0},"9":{"pts":39,"cost":0,"captain":0,"bench":0},"10":{"pts":60,"cost":0,"captain":0,"bench":0}},"Tinder lvl 10":{"3":{"pts":49,"cost":0,"captain":0,"bench":0,"verified":true},"4":{"pts":74,"cost":0,"captain":0,"bench":0,"verified":true},"5":{"pts":63,"cost":0,"captain":0,"bench":0,"verified":true},"6":{"pts":59,"cost":0,"captain":0,"bench":0,"verified":true},"7":{"pts":75,"cost":0,"captain":0,"bench":0},"8":{"pts":40,"cost":0,"captain":0,"bench":0},"9":{"pts":33,"cost":0,"captain":0,"bench":0},"10":{"pts":39,"cost":0,"captain":0,"bench":0}},"Gusti Alif's Team":{"4":{"pts":69,"cost":0,"captain":0,"bench":0,"verified":true},"5":{"pts":49,"cost":0,"captain":0,"bench":0,"verified":true},"6":{"pts":45,"cost":0,"captain":0,"bench":0,"verified":true},"7":{"pts":63,"cost":44,"captain":0,"bench":0},"8":{"pts":56,"cost":0,"captain":0,"bench":0},"9":{"pts":56,"cost":0,"captain":0,"bench":0},"10":{"pts":46,"cost":0,"captain":0,"bench":0}}},"managers":{"PSGR":"Rezi Hafiz","faishal's Team":"Faishal Abyan","Tianlala":"Agil Kusuma","Kamileung FC":"Pipin Effendy","Sedotan Aqua":"Baltasario Saga","jowwwtim":"Anggi Suprayogi","kokorobet FC":"Firan Firhan","helmoni fc":"Isom Mutaqin","ARFantasy":"Achmad Ramdani","CIMSEL UNITED":"Maulana Abdul","Alunos 2.0":"Gilang Gumilar","Grindboys":"Ruby Wndr","JosJis FC":"Ignatius Aryo","Gurandilepce":"Ferryan Reynaldi","komodomodol FC":"Hafid Siddiq","Olahlah Fc":"Miftahul Reza","Katapang_Pride":"Katapang Pride","Kontol FC":"Diar Malik","Maung FC":"Wahyudin Wahyudin","Bubble Gummy":"Fahmi Mohamad","DOBHAN FC":"Dani R","Brancos FC":"Faisal Auliaghani","Blink 182":"Ilyas Muntaha","theluckyone":"Lucky One","PROJECT ALMANAC":"Akbar Lazuardi","Backlight FC":"Malwan Fauzan","Welldone":"Wildan Pratama","SSB Fak Fak":"Ilham Satria","Tarkam Fried Chicken":"Irham Ulya","Muceckyl FC":"Muceckyl FC","PSCS United":"PSCS United","Tinder lvl 10":"Tinder lvl","Gusti Alif's Team":"Gusti Alif's"},"clubBadges":{"PSGR":"https://fantasy.premierleague.com/gcs/plfpl-production-adobe-approved/plfpl-production/4473842/2f0c8738-abfe-4f50-8ba3-acf96524e206.png","JosJis FC":"https://fantasy.premierleague.com/gcs/plfpl-production-adobe-approved/plfpl-production/7769856/1b80ee66-9704-410c-89f4-c942cd9fd6d5.png","CIMSEL UNITED":"https://fantasy.premierleague.com/gcs/plfpl-production-adobe-approved/plfpl-production/3840511/42fcba34-296e-41ff-a30b-86e602a6c0be.png","Kontol FC":"https://fantasy.premierleague.com/gcs/plfpl-production-adobe-approved/plfpl-production/6962029/e019337f-5f69-4162-801e-72ecbaa761c4.png","Grindboys":"https://fantasy.premierleague.com/gcs/plfpl-production-adobe-approved/plfpl-production/8414036/ec8c1d0e-f179-4860-a4f5-44f3b9329266.png","komodomodol FC":"https://fantasy.premierleague.com/gcs/plfpl-production-adobe-approved/plfpl-production/1691342/a75e60c1-290e-4928-bbf7-64f624291422.png","Bubble Gummy":"https://fantasy.premierleague.com/gcs/plfpl-production-adobe-approved/plfpl-production/3844902/0dcdd86e-3859-4ee3-ae71-a62426bf3a1b.png","DOBHAN FC":"https://fantasy.premierleague.com/gcs/plfpl-production-adobe-approved/plfpl-production/6669682/5b8020d5-c03c-4af6-9771-74caebdb45f3.png","kokorobet FC":"https://fantasy.premierleague.com/gcs/plfpl-production-adobe-approved/plfpl-production/6389042/f2331b90-ce4d-4158-b3b1-e2d92952207a.png","Muceckyl FC":"https://fantasy.premierleague.com/gcs/plfpl-production-adobe-approved/plfpl-production/7721492/e9b2a2a6-5835-4749-a10e-6f67eef95cf2.png","faishal's Team":"https://fantasy.premierleague.com/gcs/plfpl-production-adobe-approved/plfpl-production/6224589/68847732-276e-4885-8d0c-af902e770d03.png","Welldone":"https://fantasy.premierleague.com/gcs/plfpl-production-adobe-approved/plfpl-production/2066139/e13ad676-74fa-4c5b-b23e-0fded2f50f8e.png","Sedotan Aqua":"https://fantasy.premierleague.com/gcs/plfpl-production-adobe-approved/plfpl-production/8198726/1535cb52-406e-4cf3-9d6f-7a8eedd7aeed.png","SSB Fak Fak":"https://fantasy.premierleague.com/gcs/plfpl-production-adobe-approved/plfpl-production/9697240/252572d2-50cf-4239-9c27-ec0717c7fbf7.png","Backlight FC":"https://fantasy.premierleague.com/gcs/plfpl-production-adobe-approved/plfpl-production/7764470/5c5c7144-510d-4973-a8e8-880de9151482.png","PSCS United":"https://fantasy.premierleague.com/gcs/plfpl-production-adobe-approved/plfpl-production/9964731/d7cc5b70-d337-44be-b72e-6cb73b340054.png","Tianlala":"https://fantasy.premierleague.com/gcs/plfpl-production-adobe-approved/plfpl-production/5548027/fe8241c1-21f5-4446-a111-0aecd7526c88.png","Gusti Alif's Team":"https://fantasy.premierleague.com/gcs/plfpl-production-adobe-approved/plfpl-production/10601845/3b715ccf-e1f5-4aca-9b31-ed7911456b02.png"},"entryMap":{"2066139":"Welldone","2301043":"Katapang_Pride","2839268":"Bubble Gummy","3058269":"Kamileung FC","3840511":"CIMSEL UNITED","3937511":"theluckyone","4473842":"PSGR","5548027":"Tianlala","5673843":"Blink 182","5896591":"komodomodol FC","5929119":"Olahlah Fc","5950338":"Brancos FC","5956185":"Gurandilepce","6039817":"Kontol FC","6224589":"faishal's Team","6389042":"kokorobet FC","6596539":"PROJECT ALMANAC","6669682":"DOBHAN FC","6794979":"Grindboys","7522529":"helmoni fc","7550025":"Alunos 2.0","7624385":"Maung FC","7721492":"Muceckyl FC","7764470":"Backlight FC","7767821":"ARFantasy","7768172":"jowwwtim","7769856":"JosJis FC","8198726":"Sedotan Aqua","9697240":"SSB Fak Fak","9908242":"Tarkam Fried Chicken","9964731":"PSCS United","9965798":"Tinder lvl 10","10601845":"Gusti Alif's Team"},"h2h":{"1":[{"teamA":"theluckyone","teamB":"Blink 182","ptsA":41,"ptsB":37,"isBye":false},{"teamA":"ARFantasy","teamB":"Olahlah Fc","ptsA":54,"ptsB":53,"isBye":false},{"teamA":"komodomodol FC","teamB":"Sedotan Aqua","ptsA":47,"ptsB":58,"isBye":false},{"teamA":"Bubble Gummy","teamB":"PSGR","ptsA":45,"ptsB":74,"isBye":false},{"teamA":"Katapang_Pride","teamB":"PROJECT ALMANAC","ptsA":46,"ptsB":35,"isBye":false},{"teamA":"Kontol FC","teamB":"CIMSEL UNITED","ptsA":54,"ptsB":54,"isBye":false},{"teamA":"helmoni fc","teamB":"Maung FC","ptsA":57,"ptsB":48,"isBye":false},{"teamA":"Alunos 2.0","teamB":"Grindboys","ptsA":54,"ptsB":50,"isBye":false},{"teamA":"Kamileung FC","teamB":"jowwwtim","ptsA":58,"ptsB":57,"isBye":false},{"teamA":"JosJis FC","teamB":"Gurandilepce","ptsA":64,"ptsB":47,"isBye":false},{"teamA":"Tianlala","teamB":"kokorobet FC","ptsA":64,"ptsB":57,"isBye":false},{"teamA":"DOBHAN FC","teamB":"faishal's Team","ptsA":44,"ptsB":62,"isBye":false},{"teamA":"Backlight FC","teamB":"Brancos FC","ptsA":35,"ptsB":39,"isBye":false}],"2":[{"teamA":"Blink 182","teamB":"Backlight FC","ptsA":73,"ptsB":65,"isBye":false},{"teamA":"Brancos FC","teamB":"DOBHAN FC","ptsA":67,"ptsB":50,"isBye":false},{"teamA":"faishal's Team","teamB":"Tianlala","ptsA":69,"ptsB":76,"isBye":false},{"teamA":"kokorobet FC","teamB":"JosJis FC","ptsA":103,"ptsB":79,"isBye":false},{"teamA":"Gurandilepce","teamB":"Kamileung FC","ptsA":103,"ptsB":115,"isBye":false},{"teamA":"jowwwtim","teamB":"Alunos 2.0","ptsA":87,"ptsB":64,"isBye":false},{"teamA":"Grindboys","teamB":"helmoni fc","ptsA":105,"ptsB":88,"isBye":false},{"teamA":"Maung FC","teamB":"Kontol FC","ptsA":70,"ptsB":77,"isBye":false},{"teamA":"CIMSEL UNITED","teamB":"Katapang_Pride","ptsA":69,"ptsB":98,"isBye":false},{"teamA":"PROJECT ALMANAC","teamB":"Bubble Gummy","ptsA":91,"ptsB":82,"isBye":false},{"teamA":"PSGR","teamB":"komodomodol FC","ptsA":86,"ptsB":89,"isBye":false},{"teamA":"Sedotan Aqua","teamB":"ARFantasy","ptsA":109,"ptsB":101,"isBye":false},{"teamA":"Olahlah Fc","teamB":"theluckyone","ptsA":95,"ptsB":69,"isBye":false}],"3":[{"teamA":"ARFantasy","teamB":"Blink 182","ptsA":3,"ptsB":2,"isBye":false},{"teamA":"komodomodol FC","teamB":"theluckyone","ptsA":21,"ptsB":1,"isBye":false},{"teamA":"Bubble Gummy","teamB":"Olahlah Fc","ptsA":0,"ptsB":3,"isBye":false},{"teamA":"Katapang_Pride","teamB":"Sedotan Aqua","ptsA":0,"ptsB":1,"isBye":false},{"teamA":"Kontol FC","teamB":"PSGR","ptsA":17,"ptsB":3,"isBye":false},{"teamA":"helmoni fc","teamB":"PROJECT ALMANAC","ptsA":-1,"ptsB":0,"isBye":false},{"teamA":"Alunos 2.0","teamB":"CIMSEL UNITED","ptsA":9,"ptsB":3,"isBye":false},{"teamA":"Kamileung FC","teamB":"Maung FC","ptsA":3,"ptsB":3,"isBye":false},{"teamA":"JosJis FC","teamB":"Grindboys","ptsA":3,"ptsB":3,"isBye":false},{"teamA":"Tianlala","teamB":"jowwwtim","ptsA":3,"ptsB":3,"isBye":false},{"teamA":"DOBHAN FC","teamB":"Gurandilepce","ptsA":0,"ptsB":3,"isBye":false},{"teamA":"Backlight FC","teamB":"kokorobet FC","ptsA":0,"ptsB":-1,"isBye":false},{"teamA":"Brancos FC","teamB":"faishal's Team","ptsA":34,"ptsB":0,"isBye":false}],"4":[{"teamA":"Blink 182","teamB":"Brancos FC","ptsA":64,"ptsB":37,"isBye":false},{"teamA":"faishal's Team","teamB":"Backlight FC","ptsA":64,"ptsB":64,"isBye":false},{"teamA":"kokorobet FC","teamB":"DOBHAN FC","ptsA":107,"ptsB":75,"isBye":false},{"teamA":"Gurandilepce","teamB":"Tianlala","ptsA":80,"ptsB":61,"isBye":false},{"teamA":"jowwwtim","teamB":"JosJis FC","ptsA":77,"ptsB":51,"isBye":false},{"teamA":"Grindboys","teamB":"Kamileung FC","ptsA":94,"ptsB":76,"isBye":false},{"teamA":"Maung FC","teamB":"Alunos 2.0","ptsA":84,"ptsB":86,"isBye":false},{"teamA":"CIMSEL UNITED","teamB":"helmoni fc","ptsA":74,"ptsB":73,"isBye":false},{"teamA":"PROJECT ALMANAC","teamB":"Kontol FC","ptsA":92,"ptsB":78,"isBye":false},{"teamA":"PSGR","teamB":"Katapang_Pride","ptsA":78,"ptsB":71,"isBye":false},{"teamA":"Sedotan Aqua","teamB":"Bubble Gummy","ptsA":93,"ptsB":89,"isBye":false},{"teamA":"Olahlah Fc","teamB":"komodomodol FC","ptsA":50,"ptsB":74,"isBye":false},{"teamA":"theluckyone","teamB":"ARFantasy","ptsA":62,"ptsB":93,"isBye":false}],"7":[{"teamA":"Bubble Gummy","teamB":"Blink 182","ptsA":63,"ptsB":75,"isBye":false},{"teamA":"Katapang_Pride","teamB":"komodomodol FC","ptsA":69,"ptsB":82,"isBye":false},{"teamA":"Kontol FC","teamB":"ARFantasy","ptsA":33,"ptsB":57,"isBye":false},{"teamA":"helmoni fc","teamB":"theluckyone","ptsA":62,"ptsB":70,"isBye":false},{"teamA":"Alunos 2.0","teamB":"Olahlah Fc","ptsA":68,"ptsB":58,"isBye":false},{"teamA":"Kamileung FC","teamB":"Sedotan Aqua","ptsA":39,"ptsB":51,"isBye":false},{"teamA":"JosJis FC","teamB":"PSGR","ptsA":72,"ptsB":64,"isBye":false},{"teamA":"Tianlala","teamB":"PROJECT ALMANAC","ptsA":69,"ptsB":57,"isBye":false},{"teamA":"DOBHAN FC","teamB":"CIMSEL UNITED","ptsA":46,"ptsB":69,"isBye":false},{"teamA":"Backlight FC","teamB":"Maung FC","ptsA":75,"ptsB":67,"isBye":false},{"teamA":"Brancos FC","teamB":"Grindboys","ptsA":40,"ptsB":66,"isBye":false},{"teamA":"faishal's Team","teamB":"jowwwtim","ptsA":38,"ptsB":65,"isBye":false},{"teamA":"kokorobet FC","teamB":"Gurandilepce","ptsA":73,"ptsB":70,"isBye":false}],"8":[{"teamA":"Blink 182","teamB":"kokorobet FC","ptsA":53,"ptsB":40,"isBye":false},{"teamA":"Gurandilepce","teamB":"faishal's Team","ptsA":37,"ptsB":22,"isBye":false},{"teamA":"jowwwtim","teamB":"Brancos FC","ptsA":41,"ptsB":38,"isBye":false},{"teamA":"Grindboys","teamB":"Backlight FC","ptsA":41,"ptsB":42,"isBye":false},{"teamA":"Maung FC","teamB":"DOBHAN FC","ptsA":43,"ptsB":42,"isBye":false},{"teamA":"CIMSEL UNITED","teamB":"Tianlala","ptsA":42,"ptsB":44,"isBye":false},{"teamA":"PROJECT ALMANAC","teamB":"JosJis FC","ptsA":24,"ptsB":51,"isBye":false},{"teamA":"PSGR","teamB":"Kamileung FC","ptsA":45,"ptsB":52,"isBye":false},{"teamA":"Sedotan Aqua","teamB":"Alunos 2.0","ptsA":23,"ptsB":53,"isBye":false},{"teamA":"Olahlah Fc","teamB":"helmoni fc","ptsA":30,"ptsB":46,"isBye":false},{"teamA":"theluckyone","teamB":"Kontol FC","ptsA":49,"ptsB":40,"isBye":false},{"teamA":"ARFantasy","teamB":"Katapang_Pride","ptsA":43,"ptsB":26,"isBye":false},{"teamA":"komodomodol FC","teamB":"Bubble Gummy","ptsA":36,"ptsB":50,"isBye":false}],"9":[{"teamA":"Katapang_Pride","teamB":"Blink 182","ptsA":45,"ptsB":54,"isBye":false},{"teamA":"Kontol FC","teamB":"Bubble Gummy","ptsA":51,"ptsB":43,"isBye":false},{"teamA":"helmoni fc","teamB":"komodomodol FC","ptsA":56,"ptsB":55,"isBye":false},{"teamA":"Alunos 2.0","teamB":"ARFantasy","ptsA":59,"ptsB":35,"isBye":false},{"teamA":"Kamileung FC","teamB":"theluckyone","ptsA":41,"ptsB":47,"isBye":false},{"teamA":"JosJis FC","teamB":"Olahlah Fc","ptsA":46,"ptsB":41,"isBye":false},{"teamA":"Tianlala","teamB":"Sedotan Aqua","ptsA":72,"ptsB":60,"isBye":false},{"teamA":"DOBHAN FC","teamB":"PSGR","ptsA":46,"ptsB":49,"isBye":false},{"teamA":"Backlight FC","teamB":"PROJECT ALMANAC","ptsA":60,"ptsB":50,"isBye":false},{"teamA":"Brancos FC","teamB":"CIMSEL UNITED","ptsA":70,"ptsB":27,"isBye":false},{"teamA":"faishal's Team","teamB":"Maung FC","ptsA":60,"ptsB":41,"isBye":false},{"teamA":"kokorobet FC","teamB":"Grindboys","ptsA":61,"ptsB":51,"isBye":false},{"teamA":"Gurandilepce","teamB":"jowwwtim","ptsA":45,"ptsB":59,"isBye":false}],"10":[{"teamA":"Blink 182","teamB":"Gurandilepce","ptsA":21,"ptsB":20,"isBye":false},{"teamA":"jowwwtim","teamB":"kokorobet FC","ptsA":18,"ptsB":31,"isBye":false},{"teamA":"Grindboys","teamB":"faishal's Team","ptsA":17,"ptsB":19,"isBye":false},{"teamA":"Maung FC","teamB":"Brancos FC","ptsA":30,"ptsB":11,"isBye":false},{"teamA":"CIMSEL UNITED","teamB":"Backlight FC","ptsA":31,"ptsB":7,"isBye":false},{"teamA":"PROJECT ALMANAC","teamB":"DOBHAN FC","ptsA":21,"ptsB":45,"isBye":false},{"teamA":"PSGR","teamB":"Tianlala","ptsA":38,"ptsB":12,"isBye":false},{"teamA":"Sedotan Aqua","teamB":"JosJis FC","ptsA":17,"ptsB":44,"isBye":false},{"teamA":"Olahlah Fc","teamB":"Kamileung FC","ptsA":24,"ptsB":31,"isBye":false},{"teamA":"theluckyone","teamB":"Alunos 2.0","ptsA":26,"ptsB":32,"isBye":false},{"teamA":"ARFantasy","teamB":"helmoni fc","ptsA":33,"ptsB":19,"isBye":false},{"teamA":"komodomodol FC","teamB":"Kontol FC","ptsA":15,"ptsB":14,"isBye":false},{"teamA":"Bubble Gummy","teamB":"Katapang_Pride","ptsA":23,"ptsB":14,"isBye":false}]},"nextDeadline":{"id":11,"name":"Gameweek 11","deadline":"2026-11-21T11:00:00Z"},"customProxyBase":"https://ligakopi.ikokrumah.workers.dev/?url=","autoRefresh":true,"h2hStandings":[{"team":"Tianlala","manager":"agil kusuma","played":9,"won":7,"drawn":1,"lost":1,"pointsFor":578,"total":22,"rank":1},{"team":"Blink 182","manager":"ilyas muntaha aiba","played":9,"won":7,"drawn":0,"lost":2,"pointsFor":521,"total":21,"rank":2},{"team":"PSGR","manager":"Rezi Hafiz","played":9,"won":6,"drawn":0,"lost":3,"pointsFor":578,"total":18,"rank":3},{"team":"komodomodol FC","manager":"Hafid Siddiq","played":9,"won":6,"drawn":0,"lost":3,"pointsFor":573,"total":18,"rank":4},{"team":"Alunos 2.0","manager":"Gilang Gumilar","played":9,"won":6,"drawn":0,"lost":3,"pointsFor":555,"total":18,"rank":5},{"team":"jowwwtim","manager":"Anggi Suprayogi","played":9,"won":6,"drawn":0,"lost":3,"pointsFor":555,"total":18,"rank":5},{"team":"JosJis FC","manager":"Ignatius Aryo Bimo Danudoro","played":9,"won":6,"drawn":0,"lost":3,"pointsFor":507,"total":18,"rank":7},{"team":"kokorobet FC","manager":"Firan Firhan Dani","played":9,"won":5,"drawn":2,"lost":2,"pointsFor":600,"total":17,"rank":8},{"team":"Backlight FC","manager":"Malwan Fauzan","played":9,"won":5,"drawn":2,"lost":2,"pointsFor":516,"total":17,"rank":9},{"team":"Sedotan Aqua","manager":"baltasario saga","played":9,"won":5,"drawn":1,"lost":3,"pointsFor":544,"total":16,"rank":10},{"team":"ARFantasy","manager":"Achmad Ramdani","played":9,"won":5,"drawn":0,"lost":4,"pointsFor":543,"total":15,"rank":11},{"team":"theluckyone","manager":"lucky One","played":9,"won":5,"drawn":0,"lost":4,"pointsFor":487,"total":15,"rank":12},{"team":"Kontol FC","manager":"Diar Malik","played":9,"won":4,"drawn":1,"lost":4,"pointsFor":496,"total":13,"rank":13},{"team":"CIMSEL UNITED","manager":"Maulana abdul Cholik","played":9,"won":4,"drawn":1,"lost":4,"pointsFor":483,"total":13,"rank":14},{"team":"Gurandilepce","manager":"Ferryan Reynaldi Akbar","played":9,"won":4,"drawn":0,"lost":5,"pointsFor":566,"total":12,"rank":15},{"team":"helmoni fc","manager":"Isom Mutaqin","played":9,"won":4,"drawn":0,"lost":5,"pointsFor":539,"total":12,"rank":16},{"team":"Brancos FC","manager":"faisal Auliaghani","played":9,"won":4,"drawn":0,"lost":5,"pointsFor":472,"total":12,"rank":17},{"team":"Grindboys","manager":"Ruby wndr","played":9,"won":3,"drawn":1,"lost":5,"pointsFor":577,"total":10,"rank":18},{"team":"Katapang_Pride","manager":"Katapang Pride","played":9,"won":3,"drawn":1,"lost":5,"pointsFor":494,"total":10,"rank":19},{"team":"Kamileung FC","manager":"pipin effendy","played":9,"won":3,"drawn":0,"lost":6,"pointsFor":530,"total":9,"rank":20},{"team":"Maung FC","manager":"wahyudin wahyudin","played":9,"won":3,"drawn":0,"lost":6,"pointsFor":520,"total":9,"rank":21},{"team":"PROJECT ALMANAC","manager":"Akbar Lazuardi","played":9,"won":3,"drawn":0,"lost":6,"pointsFor":518,"total":9,"rank":22},{"team":"faishal's Team","manager":"faishal abyan murtadho","played":9,"won":2,"drawn":2,"lost":5,"pointsFor":455,"total":8,"rank":23},{"team":"Bubble Gummy","manager":"Fahmi Mohamad Iqbal","played":9,"won":2,"drawn":0,"lost":7,"pointsFor":517,"total":6,"rank":24},{"team":"Olahlah Fc","manager":"Miftahul Reza Alqadri","played":9,"won":2,"drawn":0,"lost":7,"pointsFor":474,"total":6,"rank":25},{"team":"DOBHAN FC","manager":"dani r","played":9,"won":1,"drawn":0,"lost":8,"pointsFor":452,"total":3,"rank":26}],"lastVerifyRun":"2026-11-09T00:38:12.981Z","autoVerifyEnabled":true,"lastUpdated":"2026-11-09T00:38:29.398Z","dataVersion":21};
 
 function buildDefaultState(){
   // Data bawaan = snapshot backup terakhir (diupload admin), supaya instalasi baru
@@ -2194,8 +2391,8 @@ async function loadState(){
         if(!state.customProxyBase){
           state.customProxyBase = DEFAULT_CUSTOM_PROXY;
         }
-        if(!state.adminPin){
-          state.adminPin = DEFAULT_ADMIN_PIN;
+        if(!state.adminPin && !state.adminPinHash){
+          state.adminPinHash = DEFAULT_ADMIN_PIN_HASH;
         }
         // Pengurangan poin transfer (hit) GW2 yang dikonfirmasi admin.
         Object.keys(GW2_COST_ADJUST).forEach(team=>{
@@ -2457,8 +2654,18 @@ function computeWeekly(gw){
   });
   let winner = entries[0];
   let lowest = entries[entries.length-1];
-  winner.tieBroken = entries.length>1 && entries[1].pts===winner.pts;
-  lowest.tieBroken = entries.length>1 && entries[entries.length-2].pts===lowest.pts;
+  // Aturan seri: poin sama -> Captain terkecil kalah; Captain sama -> total Bench terkecil kalah.
+  const markTie = (e, rival)=>{
+    e.tieBroken = !!rival && rival.pts===e.pts;
+    e.tieReason = null; e.tieRival = null;
+    if(!e.tieBroken) return;
+    e.tieRival = { team: rival.team, captain: rival.captain, bench: rival.bench };
+    if(e.captain !== rival.captain) e.tieReason = 'captain';
+    else if(e.bench !== rival.bench) e.tieReason = 'bench';
+    else e.tieReason = 'none';
+  };
+  markTie(winner, entries.length>1 ? entries[1] : null);
+  markTie(lowest, entries.length>1 ? entries[entries.length-2] : null);
 
   // Kunci manual GW1: PSGR juara, Backlight FC kalah (tim yang belum join di GW1
   // tidak boleh terhitung sebagai juara/kalah GW1 meski datanya ditambahkan belakangan).
@@ -2470,6 +2677,21 @@ function computeWeekly(gw){
   }
 
   return { winner, lowest, count: entries.length };
+}
+
+function weeklyTieNote(entry, kind, cls){
+  if(!entry || !entry.tieBroken) return '';
+  const rv = entry.tieRival || {};
+  const who = escapeHtml(rv.team || 'tim lain');
+  let txt;
+  if(entry.tieReason==='captain'){
+    txt = `Poin sama dengan ${who} &mdash; ${kind==='low'?'kalah karena Captain lebih kecil':'menang karena Captain lebih besar'} (${entry.captain} vs ${rv.captain})`;
+  } else if(entry.tieReason==='bench'){
+    txt = `Poin &amp; Captain sama dengan ${who} (${entry.captain}) &mdash; ${kind==='low'?'kalah karena Bench lebih kecil':'menang karena Bench lebih besar'} (${entry.bench} vs ${rv.bench})`;
+  } else {
+    txt = `Poin, Captain, dan Bench sama dengan ${who}` + ((entry.captain===0 && entry.bench===0) ? ' &mdash; data Captain/Bench belum terisi (Admin &rarr; Perbarui Data)' : '');
+  }
+  return `<div class="${cls}">${txt}</div>`;
 }
 
 function fmtDate(iso){
@@ -2589,8 +2811,8 @@ function renderHero(){
   if(wk){
     const winManager = (state.managers && state.managers[wk.winner.team]) || deriveManager(wk.winner.team);
     const lowManager = (state.managers && state.managers[wk.lowest.team]) || deriveManager(wk.lowest.team);
-    const winTie = wk.winner.tieBroken ? '<div class="tie-note">Poin sama dengan tim lain &mdash; ditentukan lewat Captain/Bench</div>' : '';
-    const lowTie = wk.lowest.tieBroken ? '<div class="tie-note">Poin sama dengan tim lain &mdash; ditentukan lewat Captain/Bench</div>' : '';
+    const winTie = weeklyTieNote(wk.winner, 'win', 'tie-note');
+    const lowTie = weeklyTieNote(wk.lowest, 'low', 'tie-note');
     weeklyBox = `
     <div class="stat-card win stat-elegant-v2">
       <div class="lbl">Juara GW ${maxGW}</div>
@@ -3192,8 +3414,8 @@ function renderMingguan(){
   } else {
     const winManager = (state.managers && state.managers[wk.winner.team]) || deriveManager(wk.winner.team);
     const lowManager = (state.managers && state.managers[wk.lowest.team]) || deriveManager(wk.lowest.team);
-    const winTieNote = wk.winner.tieBroken ? '<div class="arena-tie-note">&#9888;&#65039; Poin sama dengan tim lain &mdash; ditentukan lewat Captain/Bench GW ini</div>' : '';
-    const lowTieNote = wk.lowest.tieBroken ? '<div class="arena-tie-note">&#9888;&#65039; Poin sama dengan tim lain &mdash; ditentukan lewat Captain/Bench GW ini</div>' : '';
+    const winTieNote = weeklyTieNote(wk.winner, 'win', 'arena-tie-note');
+    const lowTieNote = weeklyTieNote(wk.lowest, 'low', 'arena-tie-note');
     area.innerHTML = `
     <div class="duel arena">
       <div class="arena-card win">
@@ -3426,9 +3648,45 @@ function applyH2HJSON(parsed, gw){
     ptsB: r.entry_2_points!=null ? r.entry_2_points : 0,
     isBye: !r.entry_2_entry
   }));
-  const expectedMatches = Math.ceil(state.teams.length/2);
+  const expectedMatches = Math.ceil(getH2HLeagueSize()/2);
   const partial = results.length < expectedMatches;
   return { count: results.length, expectedMatches, partial };
+}
+
+// Jumlah tim di liga H2H (bisa lebih sedikit dari total tim klasik).
+function getH2HLeagueSize(){
+  if(state.h2hStandings && state.h2hStandings.length) return state.h2hStandings.length;
+  let m = 0;
+  Object.keys(state.h2h||{}).forEach(g=>{ m = Math.max(m, ((state.h2h[g]||[]).length)*2); });
+  return m || state.teams.length;
+}
+
+async function fetchH2HMatchesAllPages(gw){
+  let page = 1, merged = null, attempts = [];
+  while(page <= 6){
+    const r = await fetchViaProxies(`https://fantasy.premierleague.com/api/leagues-h2h-matches/league/${H2H_LEAGUE_ID}/?page=${page}&event=${gw}`);
+    attempts = attempts.concat(r.attempts||[]);
+    if(!r.data){ if(page===1) return { data:null, attempts }; break; }
+    if(!merged) merged = r.data; else merged.results = (merged.results||[]).concat(r.data.results||[]);
+    if(!r.data.has_next) break;
+    page++;
+  }
+  return { data: merged, attempts };
+}
+
+async function fetchH2HStandingsAllPages(){
+  let page = 1, merged = null, attempts = [];
+  while(page <= 6){
+    const r = await fetchViaProxies(`${H2H_STANDINGS_URL}?page_standings=${page}`);
+    attempts = attempts.concat(r.attempts||[]);
+    if(!r.data){ if(page===1) return { data:null, attempts }; break; }
+    if(!merged) merged = r.data;
+    else if(merged.standings && r.data.standings) merged.standings.results = (merged.standings.results||[]).concat(r.data.standings.results||[]);
+    if(!(r.data.standings && r.data.standings.has_next)) break;
+    page++;
+  }
+  if(merged && merged.standings) merged.standings.has_next = false;
+  return { data: merged, attempts };
 }
 
 function getSafeAutoAdvanceGW(currentMaxGW){
@@ -3456,7 +3714,7 @@ async function h2hTryAutoFetch(silent){
   } else {
     targetGW = gwSelInput ? Number(gwSelInput.value) : (selectedH2HGW || getMaxFilledGW() || 1);
   }
-  const { data, attempts } = await fetchViaProxies(`https://fantasy.premierleague.com/api/leagues-h2h-matches/league/${H2H_LEAGUE_ID}/?page=1&event=${targetGW}`);
+  const { data, attempts } = await fetchH2HMatchesAllPages(targetGW);
   if(!data){
     if(!silent) showStatus(statusEl,'err','Gagal lewat semua jalur otomatis (' + attempts.join(' · ') + '). Coba buka file HTML di luar Claude, atau pakai cara manual di bawah.');
     logAudit('H2H Matches', `GW ${targetGW}: gagal menghubungi FPL`, 'err');
@@ -3593,15 +3851,15 @@ function applyH2HStandingsJSON(parsed){
     total: r.total||0,
     rank: r.rank
   }));
-  const expectedCount = state.teams.length;
-  const partial = results.length < expectedCount;
+  const partial = !!(parsed.standings && parsed.standings.has_next);
+  const expectedCount = partial ? results.length + 1 : results.length;
   return { count: results.length, expectedCount, partial };
 }
 
 async function h2hStandingsTryAutoFetch(silent){
   const statusEl = document.getElementById('h2h-standings-status');
   if(!silent) showStatus(statusEl,'info','Menghubungi FPL...');
-  const { data, attempts } = await fetchViaProxies(H2H_STANDINGS_URL);
+  const { data, attempts } = await fetchH2HStandingsAllPages();
   if(!data){
     if(!silent) showStatus(statusEl,'err','Gagal lewat semua jalur otomatis (' + attempts.join(' · ') + '). Coba buka file HTML di luar Claude, atau pakai cara manual di bawah.');
     logAudit('H2H Standings', 'Gagal menghubungi FPL', 'err');
@@ -3986,6 +4244,16 @@ async function onDbCellChange(e){
 
 let verifyResultsCache = [];
 
+async function getFinishedGWChecker(){
+  const { data } = await fetchViaProxies('https://fantasy.premierleague.com/api/bootstrap-static/');
+  if(data && Array.isArray(data.events)){
+    const fin = new Set(data.events.filter(e=>e.finished).map(e=>e.id));
+    return gw => fin.has(gw);
+  }
+  const lim = (state.nextDeadline && state.nextDeadline.id) ? state.nextDeadline.id - 1 : 0;
+  return gw => gw < lim;
+}
+
 async function runOfficialVerification(){
   const btn = document.getElementById('btn-run-verify');
   const statusEl = document.getElementById('verify-status');
@@ -3999,6 +4267,10 @@ async function runOfficialVerification(){
   resultsEl.innerHTML = '';
   verifyResultsCache = [];
   let checked = 0, failed = 0;
+  // GW yang masih berjalan tidak diverifikasi: data history FPL baru final setelah GW selesai,
+  // dan sebelumnya verifikasi menimpa skor live lalu auto-refresh menimpanya lagi (saling tabrak).
+  const isFinishedGW = await getFinishedGWChecker();
+  const liveGWs = new Set();
 
   for(const [entryId, team] of entries){
     progressEl.textContent = `Memeriksa ${team}... (${checked+1}/${entries.length})`;
@@ -4007,6 +4279,7 @@ async function runOfficialVerification(){
     if(!data || !Array.isArray(data.current)){ failed++; continue; }
     data.current.forEach(ev=>{
       const gw = ev.event;
+      if(!isFinishedGW(gw)){ liveGWs.add(gw); return; }
       const officialNet = (ev.points||0) - (ev.event_transfers_cost||0);
       const stored = getEntry(team, gw);
       const storedNet = stored ? (stored.pts - (stored.cost||0)) : null;
@@ -4042,6 +4315,7 @@ async function runOfficialVerification(){
     });
   }
 
+  if(liveGWs.size) logAudit('Verifikasi Resmi', `GW ${[...liveGWs].join(', ')} masih berjalan, dilewati (diverifikasi setelah GW selesai)`, 'ok');
   logAudit('Verifikasi Resmi', `${checked} tim dicek, ${mismatches.length} selisih ditemukan dan diperbaiki otomatis${failed?`, ${failed} gagal diambil`:''}`, mismatches.length ? 'warn' : 'ok');
   state.lastVerifyRun = new Date().toISOString();
   await persist();
@@ -4185,7 +4459,8 @@ async function checkOneTeamHistory(team, entryId){
     panel.innerHTML = `<div class="notice-strip">Gagal mengambil data. Cek koneksi/relay, atau ID entry mungkin salah.</div>`;
     return;
   }
-  const rows = data.current.map(ev=>{
+  const isFinishedGW = await getFinishedGWChecker();
+  const rows = data.current.filter(ev=>isFinishedGW(ev.event)).map(ev=>{
     const gw = ev.event;
     const officialPts = ev.points||0, officialCost = ev.event_transfers_cost||0;
     const officialNet = officialPts - officialCost;
@@ -4395,7 +4670,7 @@ function renameTeam(oldName, newName){
   }
 }
 
-function applyStandingsJSON(parsed, gw){
+function applyStandingsJSON(parsed, gw, opts){
   const results = parsed && parsed.standings && parsed.standings.results;
   if(!Array.isArray(results) || !results.length) return null;
   if(!state.entryMap) state.entryMap = {};
@@ -4419,6 +4694,9 @@ function applyStandingsJSON(parsed, gw){
     else matched++;
     if(entryId!==undefined) state.entryMap[entryId] = team;
     if(r.club_badge_src){ if(!state.clubBadges) state.clubBadges = {}; state.clubBadges[team] = r.club_badge_src; }
+    const rawExisting = state.scores[team] && state.scores[team][gw];
+    // Auto-refresh tidak boleh menimpa skor yang sudah cocok dengan data resmi FPL (verified).
+    if(opts && opts.keepVerified && rawExisting && typeof rawExisting==='object' && rawExisting.verified) return;
     const existing = getEntry(team, gw);
     state.scores[team][gw] = {
       pts: Number(pts),
@@ -4488,6 +4766,7 @@ async function fetchNextDeadline(){
   const { data } = await fetchViaProxies('https://fantasy.premierleague.com/api/bootstrap-static/');
   if(!data || !Array.isArray(data.events)) return false;
   const next = data.events.find(e=>e.is_next) || data.events.find(e=>!e.finished);
+  state.finishedGWs = data.events.filter(e=>e.finished).map(e=>e.id);
   if(!next) return false;
   state.nextDeadline = { id: next.id, name: next.name, deadline: next.deadline_time };
   await persist();
@@ -4639,6 +4918,57 @@ function withBusyLock(btnId, fn){
   };
 }
 
+// Ambil poin Captain & total poin Bench tiap tim untuk satu GW langsung dari FPL.
+// Captain = poin pemain Captain x pengali (2, atau 3 kalau Triple Captain); Bench = points_on_bench.
+async function fetchCaptainBenchForGW(gw){
+  const entries = Object.entries(state.entryMap||{}).filter(([id,t])=>state.teams.includes(t));
+  const out = { ok:0, fail:0, skipped:0, liveFail:false };
+  if(!entries.length) return out;
+  const live = await fetchViaProxies(`https://fantasy.premierleague.com/api/event/${gw}/live/`);
+  if(!live.data || !Array.isArray(live.data.elements)){ out.liveFail = true; out.fail = entries.length; return out; }
+  const elPts = {};
+  live.data.elements.forEach(el=>{ elPts[el.id] = (el.stats && el.stats.total_points) || 0; });
+  let idx = 0;
+  const worker = async ()=>{
+    while(idx < entries.length){
+      const [entryId, team] = entries[idx++];
+      const raw = state.scores[team] && state.scores[team][gw];
+      if(raw === undefined || raw === null){ out.skipped++; continue; }
+      const { data } = await fetchViaProxies(`https://fantasy.premierleague.com/api/entry/${entryId}/event/${gw}/picks/`);
+      if(!data || !Array.isArray(data.picks)){ out.fail++; continue; }
+      const cap = data.picks.find(p=>p.multiplier>=2) || data.picks.find(p=>p.is_captain);
+      const capPts = cap ? (elPts[cap.element]||0) * Math.max(cap.multiplier||1, 1) : 0;
+      const bench = data.entry_history && data.entry_history.points_on_bench;
+      const cur = (typeof raw === 'object') ? raw : { pts: Number(raw)||0, cost: 0 };
+      cur.captain = capPts;
+      cur.bench = (bench!==undefined && bench!==null) ? bench : (cur.bench||0);
+      state.scores[team][gw] = cur;
+      out.ok++;
+    }
+  };
+  await Promise.all([worker(), worker(), worker()]);
+  return out;
+}
+
+async function backfillCaptainBench(){
+  const statusEl = document.getElementById('cb-status');
+  const maxGW = getMaxFilledGW();
+  if(!maxGW){ showStatus(statusEl,'err','Belum ada data GW.'); return; }
+  pushUndoSnapshot('Isi Captain & Bench semua GW');
+  let ok = 0, fail = 0;
+  for(let g=1; g<=maxGW; g++){
+    showStatus(statusEl,'info',`Mengambil Captain & Bench GW ${g} dari ${maxGW}...`);
+    try{
+      const r = await fetchCaptainBenchForGW(g);
+      ok += r.ok; fail += r.fail;
+    }catch(e){ fail++; }
+    await persist();
+  }
+  logAudit('Captain/Bench', `Semua GW (1-${maxGW}): ${ok} data terisi, ${fail} gagal`, fail ? 'warn' : 'ok');
+  renderAll(); populateGwSelects();
+  showStatus(statusEl, fail ? 'err' : 'ok', `Selesai: ${ok} data Captain/Bench terisi${fail ? ', '+fail+' gagal (coba lagi)' : ''}.`);
+}
+
 async function tryAutoFetch(silent){
   const statusEl = document.getElementById('update-status');
   if(!silent) showStatus(statusEl,'info','Menghubungi FPL...');
@@ -4662,13 +4992,19 @@ async function tryAutoFetch(silent){
   const isAutoAdvance = silent && targetGW > prevMaxGW;
   if(gwInputSel) gwInputSel.value = targetGW;
   if(!silent) pushUndoSnapshot(`Update API GW ${targetGW}`);
-  const result = applyStandingsJSON(data, targetGW);
+  const result = applyStandingsJSON(data, targetGW, { keepVerified: silent });
   if(!result){
     if(!silent) showStatus(statusEl,'err','Data berhasil diambil tapi format tidak dikenali.');
     logAudit('Update API', `GW ${targetGW}: format tidak dikenali`, 'err');
     return false;
   }
   await persist();
+  try{
+    const cb = await fetchCaptainBenchForGW(targetGW);
+    if(cb.fail || cb.liveFail) logAudit('Captain/Bench', `GW ${targetGW}: ${cb.ok} tim terisi, ${cb.fail} gagal${cb.liveFail?' (data live FPL gagal diambil)':''}`, 'warn');
+    else if(!silent) logAudit('Captain/Bench', `GW ${targetGW}: ${cb.ok} tim terisi`, 'ok');
+    await persist();
+  }catch(e){ logAudit('Captain/Bench', `GW ${targetGW}: error ${e && e.message ? e.message : e}`, 'warn'); }
   if(result.partial){
     const warnMsg = `GW ${targetGW}: cuma ${result.receivedCount} dari ${result.expectedCount} tim ter-update. Sisanya belum ter-refresh -- coba lagi beberapa saat lagi.`;
     if(!silent) showStatus(statusEl,'err', '⚠️ ' + warnMsg);
@@ -4743,7 +5079,9 @@ function enterAdminMode(){
   document.querySelectorAll('.admin-tab').forEach(b=>b.classList.remove('active'));
   document.querySelector('.admin-tab[data-admintab="api"]').classList.add('active');
   const pinSetInput = document.getElementById('pin-set-input');
-  if(pinSetInput) pinSetInput.value = state.adminPin || '';
+  if(pinSetInput) pinSetInput.value = '';
+  renderDataStatusBar();
+  if(state.adminPinHash === DEFAULT_ADMIN_PIN_HASH) showToast('Ganti PIN admin', 'PIN masih bawaan aplikasi. Ganti sekarang di tab Update API.', 'err');
   const proxyInput = document.getElementById('custom-proxy-input');
   if(proxyInput) proxyInput.value = state.customProxyBase || '';
   renderLastVerifyInfo();
@@ -4764,29 +5102,41 @@ function exitAdminMode(){
 function tryAdminUnlock(){
   const statusEl = document.getElementById('admin-pin-status');
   const val = document.getElementById('admin-pin-input').value;
-  if(!state.adminPin || val === state.adminPin){
+  const g = pinGuardGet(), now = Date.now();
+  if(g.until && g.until > now){
+    showStatus(statusEl,'err',`Terlalu banyak percobaan. Coba lagi dalam ${Math.ceil((g.until-now)/60000)} menit.`);
+    return;
+  }
+  if(!state.adminPinHash || hashPin(val) === state.adminPinHash){
+    pinGuardSet({});
     unlockedThisSession = true;
     closeAdminPinModal();
     enterAdminMode();
   } else {
-    showStatus(statusEl,'err','PIN salah, coba lagi.');
+    const n = (g.n||0) + 1, o = { n };
+    if(n >= 5) o.until = now + Math.min(60, 5*Math.pow(2, Math.floor((n-5)/5))) * 60000;
+    pinGuardSet(o);
+    showStatus(statusEl,'err', n >= 5 ? 'PIN salah. Akses dikunci sementara.' : `PIN salah (${n}/5).`);
   }
 }
 
 async function savePin(){
   const statusEl = document.getElementById('pin-set-status');
   const val = document.getElementById('pin-set-input').value.trim();
+  if(val.length < 6){ showStatus(statusEl,'err','PIN minimal 6 karakter dan tidak boleh dikosongkan.'); return; }
   pushUndoSnapshot('Ubah PIN admin');
-  state.adminPin = val || null;
-  logAudit('Keamanan', val ? 'PIN admin diubah' : 'PIN admin dihapus', 'ok');
+  state.adminPinHash = hashPin(val);
+  delete state.adminPin;
+  logAudit('Keamanan', 'PIN admin diubah', 'ok');
   await persist();
-  showStatus(statusEl,'ok', val ? 'PIN disimpan. Admin Mode akan minta PIN ini mulai sesi berikutnya.' : 'PIN dihapus. Admin Mode bisa dibuka tanpa PIN.');
+  document.getElementById('pin-set-input').value = '';
+  showStatus(statusEl,'ok','PIN disimpan. Admin Mode akan minta PIN ini mulai sesi berikutnya.');
 }
 
 function downloadBackup(){
   const statusEl = document.getElementById('backup-status');
   try{
-    const blob = new Blob([JSON.stringify(state, null, 2)], { type: 'application/json' });
+    const blob = new Blob([JSON.stringify(exportableState(), null, 2)], { type: 'application/json' });
     const url = URL.createObjectURL(blob);
     const a = document.createElement('a');
     const dateStr = new Date().toISOString().slice(0,10);
@@ -4812,7 +5162,10 @@ async function restoreBackup(){
   catch(e){ showStatus(statusEl,'err','Format JSON tidak valid.'); return; }
   if(!parsed.teams || !parsed.scores){ showStatus(statusEl,'err','File ini tidak terlihat seperti backup Liga Ngopi yang valid.'); return; }
   if(!confirm('Ini akan MENIMPA semua data saat ini dengan isi backup. Yakin lanjutkan?')) return;
+  const keepHash = state.adminPinHash;
   state = parsed;
+  delete state.adminPin; delete state.undoStack;
+  state.adminPinHash = keepHash || DEFAULT_ADMIN_PIN_HASH;
   state.dataVersion = DATA_VERSION;
   logAudit('Backup & Restore', 'Data dipulihkan dari file backup JSON', 'warn');
   await persist();
@@ -4861,7 +5214,7 @@ function renderValidationReport(){
     }
   }
 
-  if(!state.adminPin){
+  if(!state.adminPinHash){
     issues.push({ type:'warn', text: `Belum ada PIN admin diset &mdash; siapapun bisa membuka Admin Mode. Atur PIN di tab "Update API".` });
   }
 
@@ -4973,7 +5326,7 @@ function initTabs(){
     };
   });
   document.getElementById('btn-open-admin').onclick = ()=>{
-    if(state.adminPin && !unlockedThisSession){ openAdminPinModal(); }
+    if(state.adminPinHash && !unlockedThisSession){ openAdminPinModal(); }
     else { enterAdminMode(); }
   };
   document.getElementById('btn-theme-toggle').onclick = toggleTheme;
@@ -5133,10 +5486,64 @@ function renderSponsors(){
   `;
 }
 
-function renderAll(){ renderHero(); renderKlasemen(); renderMingguan(); renderManagerRoster(); renderCoffeeDebtSummary(); renderCoffeeDebtList(); renderSponsors(); }
+function getGWStatus(gw){
+  const cur = (state.nextDeadline && state.nextDeadline.id) ? state.nextDeadline.id - 1 : getMaxFilledGW();
+  const fin = (state.finishedGWs||[]).includes(gw) || (!(state.finishedGWs||[]).length && gw < cur);
+  const teams = state.teams.filter(t=>getEntry(t,gw));
+  let verified = 0, withCB = 0;
+  teams.forEach(t=>{
+    const raw = state.scores[t] && state.scores[t][gw];
+    if(raw && typeof raw==='object' && raw.verified) verified++;
+    const e = getEntry(t,gw);
+    if(e && (e.captain>0 || e.bench>0)) withCB++;
+  });
+  let status;
+  if(!teams.length) status = 'empty';
+  else if(fin) status = (verified===teams.length) ? 'final' : 'check';
+  else if(gw===cur) status = 'live';
+  else status = (verified===teams.length) ? 'final' : 'check';
+  return { gw, status, teams: teams.length, verified, withCB };
+}
+function timeAgoId(iso){
+  if(!iso) return '-';
+  const m = Math.floor((Date.now() - new Date(iso).getTime())/60000);
+  if(isNaN(m)) return '-';
+  if(m < 1) return 'baru saja';
+  if(m < 60) return m + ' menit lalu';
+  const h = Math.floor(m/60);
+  if(h < 24) return h + ' jam lalu';
+  return Math.floor(h/24) + ' hari lalu';
+}
+function renderDataStatusBar(){
+  const box = document.getElementById('data-status-bar');
+  if(!box) return;
+  const gw = getMaxFilledGW();
+  if(!gw){ box.innerHTML = ''; return; }
+  const st = getGWStatus(gw);
+  const label = { live:'LIVE', final:'FINAL', check:'PERLU DICEK', empty:'KOSONG' }[st.status];
+  const tip = {
+    live:'Game Week sedang berjalan. Angka bisa berubah sampai semua pertandingan selesai.',
+    final:'Semua skor cocok dengan data resmi FPL dan terkunci dari auto-refresh.',
+    check:'Game Week sudah selesai tetapi sebagian skor belum diverifikasi dengan data resmi FPL.',
+    empty:'Belum ada data untuk Game Week ini.'
+  }[st.status];
+  const cbOk = st.teams && st.withCB >= st.teams;
+  let html = `<span class="ds-chip ds-${st.status}" title="${tip}"><span class="ds-dot"></span>GW ${gw} &middot; ${label}</span>`;
+  html += `<span class="ds-chip" title="Jumlah tim yang punya skor di GW ini">${st.teams}/${state.teams.length} tim</span>`;
+  html += `<span class="ds-chip ${cbOk?'ds-ok':'ds-warn'}" title="Captain dan Bench dipakai untuk menentukan juara/kalah saat poin sama">${cbOk?'&#10003; Data seri lengkap':'Captain &amp; Bench '+st.withCB+'/'+st.teams}</span>`;
+  html += `<span class="ds-chip" title="Waktu data terakhir disimpan">&#8635; ${timeAgoId(state.lastUpdated)}</span>`;
+  if(typeof adminModeActive !== 'undefined' && adminModeActive){
+    let old = 0; for(let g=1; g<gw; g++){ if(getGWStatus(g).status==='check') old++; }
+    if(old) html += `<span class="ds-chip ds-warn" title="Jalankan Verifikasi Resmi di menu Admin">${old} GW lama belum terverifikasi</span>`;
+  }
+  box.innerHTML = html;
+}
+
+function renderAll(){ renderDataStatusBar(); renderHero(); renderKlasemen(); renderMingguan(); renderManagerRoster(); renderCoffeeDebtSummary(); renderCoffeeDebtList(); renderSponsors(); }
 
 async function init(){
   await loadState();
+  migratePinToHash();
   await loadThemePref();
   await loadAdminNamePref();
   selectedWeeklyGW = getMaxFilledGW() || 1;
@@ -5147,8 +5554,10 @@ async function init(){
   populateGwSelects();
   renderDeadlineBanner();
   fetchNextDeadline();
+  setInterval(renderDataStatusBar, 60000);
 
   document.getElementById('btn-autotry').onclick = withBusyLock('btn-autotry', ()=> tryAutoFetch(false));
+  document.getElementById('btn-backfill-cb').onclick = withBusyLock('btn-backfill-cb', backfillCaptainBench);
   document.getElementById('btn-save-managers').onclick = saveManagers;
   document.getElementById('chk-auto-refresh').onchange = toggleAutoRefresh;
   document.getElementById('btn-save-pin').onclick = savePin;
